@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strava Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    body { background: #f8fafc; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    .tab-btn {
+      padding: 10px 16px;
+      border-bottom: 2px solid transparent;
+      color: #64748b;
+      font-weight: 500;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .tab-btn:hover { color: #FC4C02; }
+    .tab-btn.active { color: #FC4C02; border-bottom-color: #FC4C02; }
+    #map { height: 550px; }
+    .activity-row:hover { background: #fff7f5; }
+    .spinner {
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid #FC4C02;
+      border-radius: 50%;
+      width: 20px; height: 20px;
+      animation: spin 0.8s linear infinite;
+      display: inline-block;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body class="min-h-screen">
+
+<!-- ======= LOGIN SCREEN ======= -->
+<div id="screen-login" class="min-h-screen flex items-center justify-center p-4">
+  <div class="bg-white rounded-2xl shadow-lg p-8 w-full max-w-md">
+    <div class="flex items-center gap-3 mb-6">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="#FC4C02">
+        <path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7 13.828h4.169"/>
+      </svg>
+      <h1 class="text-2xl font-bold text-slate-800">Strava Dashboard</h1>
+    </div>
+
+    <div id="login-error" class="hidden mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg text-sm"></div>
+
+    <div class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-slate-700 mb-1">Client ID</label>
+        <input id="cfg-client-id" type="text" placeholder="12345"
+          class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-slate-700 mb-1">Client Secret</label>
+        <input id="cfg-client-secret" type="password" placeholder="••••••••••••••••••••••••••••••••••••••••"
+          class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400">
+        <p class="text-xs text-slate-400 mt-1">Stocké uniquement dans votre navigateur, jamais transmis à un tiers.</p>
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-slate-700 mb-1">URL de redirection</label>
+        <input id="cfg-redirect-uri" type="text"
+          class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400">
+        <p class="text-xs text-slate-400 mt-1">Doit correspondre exactement à l'URL autorisée dans votre app Strava.</p>
+      </div>
+    </div>
+
+    <button onclick="startOAuth()"
+      class="mt-6 w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded-lg transition-colors flex items-center justify-center gap-2">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+        <path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7 13.828h4.169"/>
+      </svg>
+      Connecter avec Strava
+    </button>
+
+    <div class="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+      <p class="text-xs font-medium text-amber-800 mb-1">Prérequis</p>
+      <ol class="text-xs text-amber-700 space-y-1 list-decimal list-inside">
+        <li>Créez une app sur <strong>strava.com/settings/api</strong></li>
+        <li>Copiez le Client ID et le Client Secret ci-dessus</li>
+        <li>Ajoutez l'URL de redirection à votre app Strava</li>
+        <li>Servez ce fichier via HTTP (<code>python -m http.server 8000</code>)</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<!-- ======= MAIN APP ======= -->
+<div id="screen-app" class="hidden min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="#FC4C02">
+          <path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7 13.828h4.169"/>
+        </svg>
+        <span class="font-bold text-slate-800">Strava Dashboard</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <div id="athlete-mini" class="hidden flex items-center gap-2">
+          <img id="athlete-avatar" class="w-8 h-8 rounded-full object-cover" src="" alt="">
+          <span id="athlete-name" class="text-sm font-medium text-slate-700 hidden sm:block"></span>
+        </div>
+        <button onclick="logout()" class="text-xs text-slate-400 hover:text-red-500 transition-colors">Déconnexion</button>
+      </div>
+    </div>
+    <div class="max-w-6xl mx-auto px-4 flex overflow-x-auto border-t border-slate-100">
+      <button class="tab-btn active" onclick="showMainTab('dashboard', this)">Dashboard</button>
+      <button class="tab-btn" onclick="showMainTab('map', this)">Carte</button>
+      <button class="tab-btn" onclick="showMainTab('performance', this)">Performances</button>
+      <button class="tab-btn" onclick="showMainTab('compare', this)">Comparaison</button>
+    </div>
+  </header>
+
+  <!-- Loading banner -->
+  <div id="loading-banner" class="hidden max-w-6xl mx-auto px-4 pt-4">
+    <div class="flex items-center gap-2 text-sm text-slate-500 bg-white rounded-lg border border-slate-200 px-4 py-3">
+      <span class="spinner"></span>
+      <span id="loading-text">Chargement…</span>
+    </div>
+  </div>
+
+  <main class="max-w-6xl mx-auto px-4 py-6">
+
+    <!-- ===== DASHBOARD TAB ===== -->
+    <div id="tab-dashboard" class="tab-panel active">
+
+      <!-- Stat cards -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <div class="bg-white rounded-xl border border-slate-200 p-4">
+          <p class="text-xs text-slate-400 mb-1">Activités</p>
+          <p id="stat-count" class="text-2xl font-bold text-slate-800">—</p>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 p-4">
+          <p class="text-xs text-slate-400 mb-1">Distance totale</p>
+          <p id="stat-distance" class="text-2xl font-bold text-slate-800">—</p>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 p-4">
+          <p class="text-xs text-slate-400 mb-1">Temps total</p>
+          <p id="stat-time" class="text-2xl font-bold text-slate-800">—</p>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 p-4">
+          <p class="text-xs text-slate-400 mb-1">Dénivelé total</p>
+          <p id="stat-elevation" class="text-2xl font-bold text-slate-800">—</p>
+        </div>
+      </div>
+
+      <!-- Charts row -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div class="md:col-span-2 bg-white rounded-xl border border-slate-200 p-4">
+          <p class="text-sm font-medium text-slate-700 mb-3">Activités par semaine (20 dernières)</p>
+          <canvas id="chart-weekly" height="110"></canvas>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 p-4">
+          <p class="text-sm font-medium text-slate-700 mb-3">Répartition par sport</p>
+          <canvas id="chart-sport-type" height="180"></canvas>
+        </div>
+      </div>
+
+      <!-- Activity list -->
+      <div class="bg-white rounded-xl border border-slate-200">
+        <div class="p-4 border-b border-slate-100 flex flex-wrap items-center gap-2">
+          <input id="search-activity" type="text" placeholder="Rechercher une activité…"
+            class="flex-1 min-w-40 border border-slate-200 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300"
+            oninput="filterActivities()">
+          <select id="filter-sport" class="border border-slate-200 rounded-lg px-3 py-1.5 text-sm" onchange="filterActivities()">
+            <option value="">Tous les sports</option>
+            <option value="Run">Course</option>
+            <option value="Ride">Vélo</option>
+            <option value="Swim">Natation</option>
+            <option value="Walk">Marche</option>
+            <option value="Hike">Randonnée</option>
+          </select>
+        </div>
+        <div id="activity-list"></div>
+        <div id="load-more-wrapper" class="hidden p-4 text-center border-t border-slate-100">
+          <button onclick="loadMoreActivities()" class="text-sm text-orange-500 hover:text-orange-700 font-medium">Charger plus d'activités</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== MAP TAB ===== -->
+    <div id="tab-map" class="tab-panel">
+      <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+        <div class="p-3 border-b border-slate-100 flex flex-wrap items-center gap-3">
+          <select id="map-filter-sport" class="border border-slate-200 rounded-lg px-3 py-1.5 text-sm" onchange="updateMapFilter()">
+            <option value="">Tous les sports</option>
+            <option value="Run">Course</option>
+            <option value="Ride">Vélo</option>
+            <option value="Swim">Natation</option>
+            <option value="Walk">Marche</option>
+            <option value="Hike">Randonnée</option>
+          </select>
+          <button onclick="fitMapToActivities()" class="text-sm text-orange-500 hover:text-orange-700 font-medium">Recadrer</button>
+          <span id="map-count" class="text-xs text-slate-400 ml-auto"></span>
+        </div>
+        <div id="map"></div>
+      </div>
+      <div id="map-selected-card" class="hidden mt-4 bg-white rounded-xl border border-slate-200 p-4">
+        <div id="map-selected-content"></div>
+      </div>
+    </div>
+
+    <!-- ===== PERFORMANCE TAB ===== -->
+    <div id="tab-performance" class="tab-panel">
+      <div class="flex flex-wrap items-center gap-2 mb-5">
+        <button onclick="setPerfPeriod(30, this)" class="perf-btn px-3 py-1.5 text-sm rounded-full bg-orange-100 text-orange-700 font-medium">30j</button>
+        <button onclick="setPerfPeriod(90, this)" class="perf-btn px-3 py-1.5 text-sm rounded-full text-slate-500 hover:bg-slate-100">90j</button>
+        <button onclick="setPerfPeriod(365, this)" class="perf-btn px-3 py-1.5 text-sm rounded-full text-slate-500 hover:bg-slate-100">1 an</button>
+        <button onclick="setPerfPeriod(0, this)" class="perf-btn px-3 py-1.5 text-sm rounded-full text-slate-500 hover:bg-slate-100">Tout</button>
+        <select id="perf-sport" class="ml-auto border border-slate-200 rounded-lg px-3 py-1.5 text-sm" onchange="renderPerfCharts()">
+          <option value="">Tous les sports</option>
+          <option value="Run">Course</option>
+          <option value="Ride">Vélo</option>
+          <option value="Swim">Natation</option>
+          <option value="Walk">Marche</option>
+          <option value="Hike">Randonnée</option>
+        </select>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white rounded-xl border border-slate-200 p-4">
+          <p class="text-sm font-medium text-slate-700 mb-3">Distance (km) par semaine</p>
+          <canvas id="chart-perf-distance"></canvas>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 p-4">
+          <p class="text-sm font-medium text-slate-700 mb-3">Dénivelé (m) par semaine</p>
+          <canvas id="chart-perf-elevation"></canvas>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 p-4">
+          <p class="text-sm font-medium text-slate-700 mb-3">Allure moyenne (min/km) — Course &amp; Marche</p>
+          <canvas id="chart-perf-pace"></canvas>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 p-4">
+          <p class="text-sm font-medium text-slate-700 mb-3">Temps d'activité par semaine (h)</p>
+          <canvas id="chart-perf-time"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== COMPARE TAB ===== -->
+    <div id="tab-compare" class="tab-panel">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div class="bg-white rounded-xl border border-slate-200 flex flex-col">
+          <div class="p-4 border-b border-slate-100">
+            <p class="text-sm font-medium text-slate-700 mb-2">Sélectionner des activités (2–4)</p>
+            <input type="text" placeholder="Rechercher…"
+              class="w-full border border-slate-200 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-orange-300"
+              oninput="filterCompareList(this.value)">
+          </div>
+          <div id="compare-list" class="overflow-y-auto flex-1" style="max-height: 520px;"></div>
+        </div>
+        <div class="lg:col-span-2 space-y-4">
+          <div id="compare-empty" class="bg-white rounded-xl border border-slate-200 p-10 text-center text-slate-400 text-sm">
+            Sélectionnez 2 à 4 activités pour les comparer
+          </div>
+          <div id="compare-results" class="hidden space-y-4">
+            <div class="bg-white rounded-xl border border-slate-200 overflow-x-auto">
+              <table class="w-full text-sm">
+                <thead id="compare-thead"></thead>
+                <tbody id="compare-tbody"></tbody>
+              </table>
+            </div>
+            <div class="bg-white rounded-xl border border-slate-200 p-4">
+              <p class="text-sm font-medium text-slate-700 mb-3">Profil radar (valeurs normalisées)</p>
+              <div class="flex justify-center"><canvas id="chart-compare-radar" style="max-width:360px;max-height:360px;"></canvas></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+// ============================================================
+// STATE
+// ============================================================
+var token = null;
+var athlete = null;
+var activities = [];
+var activitiesPage = 1;
+var mapInstance = null;
+var mapPolylines = [];
+var selectedForCompare = [];
+var perfPeriodDays = 30;
+var charts = {};
+
+var SPORT_COLORS = {
+  Run: '#FC4C02', Ride: '#16a34a', Swim: '#2563eb',
+  Walk: '#d97706', Hike: '#7c3aed', VirtualRide: '#059669',
+  VirtualRun: '#ea580c', WeightTraining: '#6b7280', default: '#94a3b8'
+};
+var SPORT_LABELS = {
+  Run: 'Course', Ride: 'Vélo', Swim: 'Natation', Walk: 'Marche',
+  Hike: 'Randonnée', VirtualRide: 'Vélo virtuel', VirtualRun: 'Course virtuelle',
+  WeightTraining: 'Musculation', Yoga: 'Yoga', Rowing: 'Aviron', Kayaking: 'Kayak'
+};
+
+// ============================================================
+// AUTH
+// ============================================================
+function loadConfig() {
+  return {
+    clientId: localStorage.getItem('strava_client_id') || '',
+    clientSecret: localStorage.getItem('strava_client_secret') || '',
+    redirectUri: localStorage.getItem('strava_redirect_uri') || (window.location.origin + window.location.pathname)
+  };
+}
+
+function saveConfig() {
+  var id = document.getElementById('cfg-client-id').value.trim();
+  var secret = document.getElementById('cfg-client-secret').value.trim();
+  var uri = document.getElementById('cfg-redirect-uri').value.trim();
+  localStorage.setItem('strava_client_id', id);
+  localStorage.setItem('strava_client_secret', secret);
+  localStorage.setItem('strava_redirect_uri', uri);
+  return { clientId: id, clientSecret: secret, redirectUri: uri };
+}
+
+function startOAuth() {
+  var cfg = saveConfig();
+  if (!cfg.clientId) { showLoginError('Veuillez entrer votre Client ID.'); return; }
+  if (!cfg.clientSecret) { showLoginError('Veuillez entrer votre Client Secret.'); return; }
+  var url = 'https://www.strava.com/oauth/authorize'
+    + '?client_id=' + encodeURIComponent(cfg.clientId)
+    + '&redirect_uri=' + encodeURIComponent(cfg.redirectUri)
+    + '&response_type=code&approval_prompt=auto&scope=read,activity:read_all';
+  window.location.href = url;
+}
+
+async function exchangeCode(code) {
+  var cfg = loadConfig();
+  setLoading(true, 'Échange du code d\'autorisation…');
+  try {
+    var res = await fetch('https://www.strava.com/oauth/token', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ client_id: cfg.clientId, client_secret: cfg.clientSecret, code: code, grant_type: 'authorization_code' })
+    });
+    var data = await res.json();
+    if (!res.ok) throw new Error(data.message || 'Échec de l\'échange de code');
+    storeToken(data);
+    await loadApp();
+  } catch (e) {
+    setLoading(false);
+    showScreen('login');
+    showLoginError('Erreur OAuth : ' + e.message);
+  }
+}
+
+async function tryRefreshToken() {
+  var cfg = loadConfig();
+  var stored = JSON.parse(localStorage.getItem('strava_token') || 'null');
+  if (!stored || !stored.refresh_token) { logout(); return; }
+  try {
+    var res = await fetch('https://www.strava.com/oauth/token', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ client_id: cfg.clientId, client_secret: cfg.clientSecret, refresh_token: stored.refresh_token, grant_type: 'refresh_token' })
+    });
+    var data = await res.json();
+    if (!res.ok) throw new Error('refresh failed');
+    storeToken(Object.assign({}, stored, data));
+    await loadApp();
+  } catch (e) { logout(); }
+}
+
+function storeToken(data) {
+  token = data;
+  localStorage.setItem('strava_token', JSON.stringify(data));
+}
+
+function isTokenExpired() {
+  return !token || (Date.now() / 1000) > (token.expires_at - 60);
+}
+
+function logout() {
+  localStorage.removeItem('strava_token');
+  token = null; athlete = null; activities = [];
+  showScreen('login');
+}
+
+// ============================================================
+// API
+// ============================================================
+async function api(path, params) {
+  if (isTokenExpired()) await tryRefreshToken();
+  var url = new URL('https://www.strava.com/api/v3' + path);
+  if (params) Object.keys(params).forEach(function(k) { url.searchParams.set(k, params[k]); });
+  var res = await fetch(url.toString(), { headers: { Authorization: 'Bearer ' + token.access_token } });
+  if (!res.ok) {
+    var err = await res.json().catch(function() { return {}; });
+    throw new Error(err.message || 'HTTP ' + res.status);
+  }
+  return res.json();
+}
+
+// ============================================================
+// APP INIT
+// ============================================================
+async function loadApp() {
+  showScreen('app');
+  setLoading(true, 'Chargement du profil…');
+  try {
+    athlete = (token && token.athlete) ? token.athlete : await api('/athlete');
+    document.getElementById('athlete-avatar').src = athlete.profile_medium || athlete.profile || '';
+    document.getElementById('athlete-name').textContent = athlete.firstname + ' ' + athlete.lastname;
+    document.getElementById('athlete-mini').classList.remove('hidden');
+
+    setLoading(true, 'Chargement des activités…');
+    activitiesPage = 1;
+    activities = [];
+    await fetchPage(1);
+    renderDashboard();
+    renderCompareList('');
+  } catch (e) {
+    alert('Erreur lors du chargement : ' + e.message);
+  } finally {
+    setLoading(false);
+  }
+}
+
+async function fetchPage(page) {
+  var data = await api('/athlete/activities', { per_page: 50, page: page });
+  activities = activities.concat(data);
+  document.getElementById('load-more-wrapper').classList.toggle('hidden', data.length < 50);
+  return data;
+}
+
+async function loadMoreActivities() {
+  activitiesPage++;
+  setLoading(true, 'Chargement…');
+  try {
+    await fetchPage(activitiesPage);
+    filterActivities();
+  } finally { setLoading(false); }
+}
+
+// ============================================================
+// DASHBOARD
+// ============================================================
+function renderDashboard() {
+  var totalDist = activities.reduce(function(s, a) { return s + a.distance; }, 0);
+  var totalTime = activities.reduce(function(s, a) { return s + a.moving_time; }, 0);
+  var totalElev = activities.reduce(function(s, a) { return s + (a.total_elevation_gain || 0); }, 0);
+  document.getElementById('stat-count').textContent = activities.length;
+  document.getElementById('stat-distance').textContent = (totalDist / 1000).toFixed(0) + ' km';
+  document.getElementById('stat-time').textContent = formatDuration(totalTime);
+  document.getElementById('stat-elevation').textContent = totalElev.toFixed(0) + ' m';
+  renderWeeklyChart();
+  renderSportChart();
+  filterActivities();
+}
+
+function renderWeeklyChart() {
+  var weeks = {};
+  activities.forEach(function(a) {
+    var d = new Date(a.start_date);
+    var mon = new Date(d); mon.setDate(d.getDate() - ((d.getDay() + 6) % 7));
+    var key = mon.toISOString().slice(0, 10);
+    weeks[key] = (weeks[key] || 0) + 1;
+  });
+  var sorted = Object.entries(weeks).sort(function(a, b) { return a[0].localeCompare(b[0]); }).slice(-20);
+  destroyChart('chart-weekly');
+  charts['chart-weekly'] = new Chart(document.getElementById('chart-weekly'), {
+    type: 'bar',
+    data: {
+      labels: sorted.map(function(e) { return e[0].slice(5); }),
+      datasets: [{ data: sorted.map(function(e) { return e[1]; }), backgroundColor: '#FC4C0225', borderColor: '#FC4C02', borderWidth: 1.5 }]
+    },
+    options: { plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } } }
+  });
+}
+
+function renderSportChart() {
+  var types = {};
+  activities.forEach(function(a) { var t = a.sport_type || 'Other'; types[t] = (types[t] || 0) + 1; });
+  var sorted = Object.entries(types).sort(function(a, b) { return b[1] - a[1]; });
+  destroyChart('chart-sport-type');
+  charts['chart-sport-type'] = new Chart(document.getElementById('chart-sport-type'), {
+    type: 'doughnut',
+    data: {
+      labels: sorted.map(function(e) { return SPORT_LABELS[e[0]] || e[0]; }),
+      datasets: [{ data: sorted.map(function(e) { return e[1]; }), backgroundColor: sorted.map(function(e) { return SPORT_COLORS[e[0]] || SPORT_COLORS.default; }), borderWidth: 1 }]
+    },
+    options: { plugins: { legend: { position: 'bottom', labels: { font: { size: 11 }, boxWidth: 12 } } } }
+  });
+}
+
+function filterActivities() {
+  var q = (document.getElementById('search-activity').value || '').toLowerCase();
+  var sport = document.getElementById('filter-sport').value;
+  var filtered = activities.filter(function(a) {
+    return (!sport || a.sport_type === sport) && (!q || (a.name || '').toLowerCase().indexOf(q) >= 0);
+  });
+  renderActivityList(filtered);
+}
+
+function renderActivityList(list) {
+  var el = document.getElementById('activity-list');
+  if (!list.length) { el.innerHTML = '<p class="p-6 text-sm text-slate-400 text-center">Aucune activité</p>'; return; }
+  el.innerHTML = list.slice(0, 100).map(function(a) {
+    var color = SPORT_COLORS[a.sport_type] || SPORT_COLORS.default;
+    var dist = a.distance ? (a.distance / 1000).toFixed(2) + ' km' : '—';
+    var time = formatDuration(a.moving_time);
+    var isPace = a.sport_type === 'Run' || a.sport_type === 'Walk' || a.sport_type === 'Hike';
+    var pace = isPace && a.distance > 0 ? formatPace(a.moving_time / (a.distance / 1000)) : (a.average_speed ? (a.average_speed * 3.6).toFixed(1) + ' km/h' : '');
+    var elev = a.total_elevation_gain ? '+' + Math.round(a.total_elevation_gain) + ' m' : '';
+    var date = new Date(a.start_date).toLocaleDateString('fr-FR', { day: '2-digit', month: 'short', year: 'numeric' });
+    return '<div class="activity-row flex items-center gap-3 px-4 py-3 border-b border-slate-50 cursor-pointer" onclick="window.open(\'https://www.strava.com/activities/' + a.id + '\',\'_blank\')">'
+      + '<div class="w-1 h-10 rounded-full flex-shrink-0" style="background:' + color + '"></div>'
+      + '<div class="min-w-0 flex-1">'
+      + '<p class="text-sm font-medium text-slate-800 truncate">' + escHtml(a.name || 'Activité') + '</p>'
+      + '<p class="text-xs text-slate-400">' + date + ' · ' + (SPORT_LABELS[a.sport_type] || a.sport_type) + '</p>'
+      + '</div>'
+      + '<div class="flex gap-4 text-right flex-shrink-0">'
+      + '<div><p class="text-sm font-medium text-slate-700">' + dist + '</p><p class="text-xs text-slate-400">dist.</p></div>'
+      + '<div><p class="text-sm font-medium text-slate-700">' + time + '</p><p class="text-xs text-slate-400">temps</p></div>'
+      + (pace ? '<div class="hidden sm:block"><p class="text-sm font-medium text-slate-700">' + pace + '</p><p class="text-xs text-slate-400">allure</p></div>' : '')
+      + (elev ? '<div class="hidden md:block"><p class="text-sm font-medium text-slate-700">' + elev + '</p><p class="text-xs text-slate-400">dénivelé</p></div>' : '')
+      + '</div></div>';
+  }).join('');
+}
+
+// ============================================================
+// MAP
+// ============================================================
+function initMap() {
+  if (mapInstance) return;
+  mapInstance = L.map('map').setView([46.5, 2.5], 5);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap', maxZoom: 19 }).addTo(mapInstance);
+}
+
+function renderMap() {
+  initMap();
+  setTimeout(function() {
+    mapInstance.invalidateSize();
+    updateMapFilter();
+  }, 150);
+}
+
+function updateMapFilter() {
+  if (!mapInstance) return;
+  mapPolylines.forEach(function(l) { mapInstance.removeLayer(l); });
+  mapPolylines = [];
+  var sport = document.getElementById('map-filter-sport').value;
+  var filtered = activities.filter(function(a) {
+    return (!sport || a.sport_type === sport) && a.map && a.map.summary_polyline;
+  });
+  filtered.forEach(function(a) {
+    var coords = decodePolyline(a.map.summary_polyline);
+    if (!coords.length) return;
+    var color = SPORT_COLORS[a.sport_type] || SPORT_COLORS.default;
+    var line = L.polyline(coords, { color: color, weight: 2, opacity: 0.55 });
+    line.on('click', function() { showMapSelected(a); });
+    line.on('mouseover', function() { line.setStyle({ weight: 4, opacity: 1 }); });
+    line.on('mouseout', function() { line.setStyle({ weight: 2, opacity: 0.55 }); });
+    line.addTo(mapInstance);
+    mapPolylines.push(line);
+  });
+  document.getElementById('map-count').textContent = filtered.length + ' tracé' + (filtered.length > 1 ? 's' : '') + ' affiché' + (filtered.length > 1 ? 's' : '');
+}
+
+function fitMapToActivities() {
+  if (!mapPolylines.length) return;
+  mapInstance.fitBounds(L.featureGroup(mapPolylines).getBounds().pad(0.05));
+}
+
+function showMapSelected(a) {
+  var card = document.getElementById('map-selected-card');
+  card.classList.remove('hidden');
+  var dist = (a.distance / 1000).toFixed(2) + ' km';
+  var time = formatDuration(a.moving_time);
+  var date = new Date(a.start_date).toLocaleDateString('fr-FR', { dateStyle: 'long' });
+  var isPace = a.sport_type === 'Run' || a.sport_type === 'Walk' || a.sport_type === 'Hike';
+  var pace = isPace && a.distance > 0 ? formatPace(a.moving_time / (a.distance / 1000)) : '';
+  document.getElementById('map-selected-content').innerHTML =
+    '<div class="flex items-start justify-between gap-4">'
+    + '<div><p class="font-semibold text-slate-800">' + escHtml(a.name) + '</p>'
+    + '<p class="text-xs text-slate-400 mt-0.5">' + date + ' · ' + (SPORT_LABELS[a.sport_type] || a.sport_type) + '</p></div>'
+    + '<a href="https://www.strava.com/activities/' + a.id + '" target="_blank" class="flex-shrink-0 text-xs text-orange-500 hover:text-orange-700 font-medium">Voir sur Strava →</a>'
+    + '</div>'
+    + '<div class="mt-3 flex flex-wrap gap-5 text-sm">'
+    + '<span><span class="font-semibold text-slate-800">' + dist + '</span> <span class="text-slate-400">distance</span></span>'
+    + '<span><span class="font-semibold text-slate-800">' + time + '</span> <span class="text-slate-400">temps</span></span>'
+    + (pace ? '<span><span class="font-semibold text-slate-800">' + pace + '</span> <span class="text-slate-400">allure</span></span>' : '')
+    + (a.total_elevation_gain ? '<span><span class="font-semibold text-slate-800">+' + Math.round(a.total_elevation_gain) + ' m</span> <span class="text-slate-400">dénivelé</span></span>' : '')
+    + (a.average_heartrate ? '<span><span class="font-semibold text-slate-800">' + Math.round(a.average_heartrate) + ' bpm</span> <span class="text-slate-400">FC moy.</span></span>' : '')
+    + '</div>';
+}
+
+// ============================================================
+// PERFORMANCES
+// ============================================================
+function setPerfPeriod(days, btn) {
+  perfPeriodDays = days;
+  document.querySelectorAll('.perf-btn').forEach(function(b) {
+    b.className = 'perf-btn px-3 py-1.5 text-sm rounded-full text-slate-500 hover:bg-slate-100';
+  });
+  btn.className = 'perf-btn px-3 py-1.5 text-sm rounded-full bg-orange-100 text-orange-700 font-medium';
+  renderPerfCharts();
+}
+
+function renderPerfCharts() {
+  var sport = document.getElementById('perf-sport').value;
+  var cutoff = perfPeriodDays ? Date.now() - perfPeriodDays * 86400000 : 0;
+  var filtered = activities.filter(function(a) {
+    return (!sport || a.sport_type === sport) && (!cutoff || new Date(a.start_date).getTime() > cutoff);
+  });
+
+  var weeks = {};
+  filtered.forEach(function(a) {
+    var d = new Date(a.start_date);
+    var mon = new Date(d); mon.setDate(d.getDate() - ((d.getDay() + 6) % 7));
+    var key = mon.toISOString().slice(0, 10);
+    if (!weeks[key]) weeks[key] = { dist: 0, elev: 0, time: 0, pace: [] };
+    weeks[key].dist += a.distance / 1000;
+    weeks[key].elev += a.total_elevation_gain || 0;
+    weeks[key].time += a.moving_time / 3600;
+    var isPace = a.sport_type === 'Run' || a.sport_type === 'Walk' || a.sport_type === 'Hike';
+    if (isPace && a.average_speed > 0) weeks[key].pace.push(1000 / a.average_speed / 60);
+  });
+  var sorted = Object.entries(weeks).sort(function(a, b) { return a[0].localeCompare(b[0]); });
+  var labels = sorted.map(function(e) { return e[0].slice(5); });
+
+  function makeBarChart(id, data, color) {
+    destroyChart(id);
+    charts[id] = new Chart(document.getElementById(id), {
+      type: 'bar',
+      data: { labels: labels, datasets: [{ data: data, backgroundColor: color + '28', borderColor: color, borderWidth: 1.5 }] },
+      options: { plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true }, x: { ticks: { maxRotation: 45, font: { size: 10 } } } } }
+    });
+  }
+
+  makeBarChart('chart-perf-distance', sorted.map(function(e) { return +e[1].dist.toFixed(1); }), '#FC4C02');
+  makeBarChart('chart-perf-elevation', sorted.map(function(e) { return +e[1].elev.toFixed(0); }), '#16a34a');
+  makeBarChart('chart-perf-time', sorted.map(function(e) { return +e[1].time.toFixed(2); }), '#2563eb');
+
+  var paceData = sorted.map(function(e) {
+    if (!e[1].pace.length) return null;
+    return +(e[1].pace.reduce(function(a, b) { return a + b; }, 0) / e[1].pace.length).toFixed(3);
+  });
+  destroyChart('chart-perf-pace');
+  charts['chart-perf-pace'] = new Chart(document.getElementById('chart-perf-pace'), {
+    type: 'line',
+    data: { labels: labels, datasets: [{ data: paceData, borderColor: '#7c3aed', backgroundColor: '#7c3aed15', tension: 0.3, fill: true, spanGaps: true, pointRadius: 3 }] },
+    options: {
+      plugins: { legend: { display: false } },
+      scales: {
+        y: {
+          reverse: true,
+          ticks: { callback: function(v) { return Math.floor(v) + ':' + String(Math.round((v % 1) * 60)).padStart(2, '0'); } }
+        },
+        x: { ticks: { maxRotation: 45, font: { size: 10 } } }
+      }
+    }
+  });
+}
+
+// ============================================================
+// COMPARE
+// ============================================================
+function renderCompareList(q) {
+  var filtered = activities.filter(function(a) {
+    return !q || (a.name || '').toLowerCase().indexOf(q.toLowerCase()) >= 0;
+  }).slice(0, 200);
+  document.getElementById('compare-list').innerHTML = filtered.map(function(a) {
+    var dist = (a.distance / 1000).toFixed(1) + ' km';
+    var date = new Date(a.start_date).toLocaleDateString('fr-FR', { day: '2-digit', month: 'short' });
+    var checked = selectedForCompare.indexOf(a.id) >= 0;
+    var color = SPORT_COLORS[a.sport_type] || SPORT_COLORS.default;
+    return '<label class="flex items-center gap-3 px-4 py-2.5 border-b border-slate-50 hover:bg-slate-50 cursor-pointer">'
+      + '<input type="checkbox" value="' + a.id + '" ' + (checked ? 'checked' : '') + ' onchange="toggleCompare(' + a.id + ')" style="accent-color:' + color + ';width:14px;height:14px;flex-shrink:0;">'
+      + '<div class="min-w-0 flex-1">'
+      + '<p class="text-xs font-medium text-slate-800 truncate">' + escHtml(a.name || 'Activité') + '</p>'
+      + '<p class="text-xs text-slate-400">' + date + ' · ' + dist + '</p>'
+      + '</div></label>';
+  }).join('');
+}
+
+function filterCompareList(q) { renderCompareList(q); }
+
+function toggleCompare(id) {
+  var idx = selectedForCompare.indexOf(id);
+  if (idx >= 0) { selectedForCompare.splice(idx, 1); }
+  else {
+    if (selectedForCompare.length >= 4) { alert('Maximum 4 activités en comparaison.'); renderCompareList(''); return; }
+    selectedForCompare.push(id);
+  }
+  renderComparison();
+}
+
+function renderComparison() {
+  var empty = document.getElementById('compare-empty');
+  var results = document.getElementById('compare-results');
+  if (selectedForCompare.length < 2) { empty.classList.remove('hidden'); results.classList.add('hidden'); return; }
+  empty.classList.add('hidden'); results.classList.remove('hidden');
+
+  var sel = selectedForCompare.map(function(id) { return activities.find(function(a) { return a.id === id; }); }).filter(Boolean);
+
+  document.getElementById('compare-thead').innerHTML = '<tr class="bg-slate-50"><th class="text-left p-3 text-slate-500 font-medium text-xs w-32">Métrique</th>'
+    + sel.map(function(a) { return '<th class="text-left p-3 font-medium text-xs" style="color:' + (SPORT_COLORS[a.sport_type] || '#64748b') + '">' + escHtml(a.name || 'Activité') + '</th>'; }).join('') + '</tr>';
+
+  var metrics = [
+    { label: 'Type', fn: function(a) { return SPORT_LABELS[a.sport_type] || a.sport_type; } },
+    { label: 'Date', fn: function(a) { return new Date(a.start_date).toLocaleDateString('fr-FR'); } },
+    { label: 'Distance', fn: function(a) { return (a.distance / 1000).toFixed(2) + ' km'; } },
+    { label: 'Temps', fn: function(a) { return formatDuration(a.moving_time); } },
+    { label: 'Allure moy.', fn: function(a) { return a.distance > 0 ? formatPace(a.moving_time / (a.distance / 1000)) : '—'; } },
+    { label: 'Vitesse moy.', fn: function(a) { return a.average_speed ? (a.average_speed * 3.6).toFixed(1) + ' km/h' : '—'; } },
+    { label: 'Dénivelé +', fn: function(a) { return a.total_elevation_gain ? '+' + Math.round(a.total_elevation_gain) + ' m' : '—'; } },
+    { label: 'FC moyenne', fn: function(a) { return a.average_heartrate ? Math.round(a.average_heartrate) + ' bpm' : '—'; } },
+    { label: 'FC max', fn: function(a) { return a.max_heartrate ? a.max_heartrate + ' bpm' : '—'; } },
+    { label: 'Calories', fn: function(a) { return a.calories ? a.calories + ' kcal' : '—'; } },
+  ];
+  document.getElementById('compare-tbody').innerHTML = metrics.map(function(m, i) {
+    return '<tr class="border-t border-slate-50 ' + (i % 2 === 0 ? '' : 'bg-slate-50/50') + '">'
+      + '<td class="p-3 text-xs text-slate-500 font-medium">' + m.label + '</td>'
+      + sel.map(function(a) { return '<td class="p-3 text-xs text-slate-700">' + m.fn(a) + '</td>'; }).join('')
+      + '</tr>';
+  }).join('');
+
+  function normalizeMax(vals) {
+    var m = Math.max.apply(null, vals.concat([1]));
+    return vals.map(function(v) { return m > 0 ? (v / m) * 100 : 0; });
+  }
+  var distances = sel.map(function(a) { return a.distance / 1000; });
+  var elevations = sel.map(function(a) { return a.total_elevation_gain || 0; });
+  var times = sel.map(function(a) { return a.moving_time / 60; });
+  var speeds = sel.map(function(a) { return (a.average_speed || 0) * 3.6; });
+  var hrs = sel.map(function(a) { return a.average_heartrate || 0; });
+
+  destroyChart('chart-compare-radar');
+  charts['chart-compare-radar'] = new Chart(document.getElementById('chart-compare-radar'), {
+    type: 'radar',
+    data: {
+      labels: ['Distance', 'Dénivelé', 'Durée', 'Vitesse', 'FC moy.'],
+      datasets: sel.map(function(a, i) {
+        var color = SPORT_COLORS[a.sport_type] || SPORT_COLORS.default;
+        return {
+          label: a.name || ('Act. ' + (i + 1)),
+          data: [normalizeMax(distances)[i], normalizeMax(elevations)[i], normalizeMax(times)[i], normalizeMax(speeds)[i], normalizeMax(hrs)[i]],
+          backgroundColor: color + '25', borderColor: color, borderWidth: 2, pointRadius: 3
+        };
+      })
+    },
+    options: {
+      plugins: { legend: { position: 'bottom', labels: { font: { size: 11 }, boxWidth: 12 } } },
+      scales: { r: { beginAtZero: true, max: 100, ticks: { display: false }, grid: { color: '#e2e8f0' }, pointLabels: { font: { size: 11 } } } }
+    }
+  });
+}
+
+// ============================================================
+// TABS
+// ============================================================
+function showMainTab(name, btn) {
+  document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  document.getElementById('tab-' + name).classList.add('active');
+  btn.classList.add('active');
+  if (name === 'map') setTimeout(renderMap, 100);
+  if (name === 'performance') renderPerfCharts();
+}
+
+// ============================================================
+// HELPERS
+// ============================================================
+function decodePolyline(str) {
+  var index = 0, lat = 0, lng = 0, result = [];
+  while (index < str.length) {
+    var shift = 0, b, byteVal = 0;
+    do { b = str.charCodeAt(index++) - 63; byteVal |= (b & 0x1f) << shift; shift += 5; } while (b >= 0x20);
+    lat += (byteVal & 1) ? ~(byteVal >> 1) : (byteVal >> 1);
+    shift = 0; byteVal = 0;
+    do { b = str.charCodeAt(index++) - 63; byteVal |= (b & 0x1f) << shift; shift += 5; } while (b >= 0x20);
+    lng += (byteVal & 1) ? ~(byteVal >> 1) : (byteVal >> 1);
+    result.push([lat / 1e5, lng / 1e5]);
+  }
+  return result;
+}
+
+function formatDuration(s) {
+  var h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), sec = s % 60;
+  if (h > 0) return h + 'h' + String(m).padStart(2, '0');
+  return m + ':' + String(sec).padStart(2, '0');
+}
+
+function formatPace(minPerKm) {
+  var m = Math.floor(minPerKm), sec = Math.round((minPerKm - m) * 60);
+  if (sec === 60) { m++; sec = 0; }
+  return m + ':' + String(sec).padStart(2, '0') + '/km';
+}
+
+function escHtml(str) {
+  return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function showScreen(name) {
+  document.getElementById('screen-login').classList.toggle('hidden', name !== 'login');
+  document.getElementById('screen-app').classList.toggle('hidden', name !== 'app');
+}
+
+function setLoading(on, text) {
+  document.getElementById('loading-banner').classList.toggle('hidden', !on);
+  if (text) document.getElementById('loading-text').textContent = text;
+}
+
+function showLoginError(msg) {
+  var el = document.getElementById('login-error');
+  el.textContent = msg;
+  el.classList.remove('hidden');
+}
+
+function destroyChart(id) {
+  if (charts[id]) { charts[id].destroy(); delete charts[id]; }
+}
+
+// ============================================================
+// ENTRY POINT
+// ============================================================
+(async function() {
+  var cfg = loadConfig();
+  document.getElementById('cfg-client-id').value = cfg.clientId;
+  document.getElementById('cfg-redirect-uri').value = cfg.redirectUri;
+
+  var params = new URLSearchParams(window.location.search);
+  var code = params.get('code');
+  var error = params.get('error');
+
+  if (error) {
+    showScreen('login');
+    showLoginError('Autorisation refusée : ' + error);
+    return;
+  }
+
+  if (code) {
+    window.history.replaceState({}, '', window.location.pathname);
+    await exchangeCode(code);
+    return;
+  }
+
+  var stored = localStorage.getItem('strava_token');
+  if (stored) {
+    token = JSON.parse(stored);
+    if (isTokenExpired()) { await tryRefreshToken(); }
+    else { await loadApp(); }
+  } else {
+    showScreen('login');
+  }
+})();
+</script>
+</body>
+</html>
