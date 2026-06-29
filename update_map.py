@@ -49,9 +49,12 @@ with open(HTML, encoding='utf-8') as f:
 pattern = r'const mapRoutes = \[.*?\];'
 new_content = re.sub(pattern, new_block, content, flags=re.DOTALL)
 
-if new_content == content:
-    print('ERREUR : pattern mapRoutes non trouvé')
+if not re.search(r'const mapRoutes = \[', content):
+    print('ERREUR : pattern mapRoutes non trouvé dans le HTML')
     sys.exit(1)
+if new_content == content:
+    print('HTML déjà à jour, aucun changement nécessaire.')
+    sys.exit(0)
 
 with open(HTML, 'w', encoding='utf-8') as f:
     f.write(new_content)
