@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bilans Annuels 2023–2026 · Laurent Miklic</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.umd.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { background: #f1f5f9; font-family: system-ui, sans-serif; }
+  .card { background: white; border-radius: 12px; border: 1px solid #e2e8f0; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 14px rgba(0,0,0,0.05); }
+  .metric-box { background: #f8fafc; border-radius: 8px; padding: 12px 16px; border: 1px solid #e2e8f0; transition: box-shadow .15s; }
+  .metric-box:hover { box-shadow: 0 0 0 2px #FC4C0230; }
+  .metric-val { font-size: 1.5rem; font-weight: 800; color: #0f172a; line-height: 1.1; }
+  .metric-val.lg { font-size: 1.15rem; }
+  .metric-val.orange { color: #FC4C02; }
+  .metric-lbl { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+  .metric-note { font-size: 11px; color: #94a3b8; margin-top: 3px; }
+  h2 { font-size: 1rem; font-weight: 700; color: #1e293b; margin-bottom: 8px; }
+  .section-sub { font-size: 11px; color: #94a3b8; margin-bottom: 10px; }
+  .tab-btn { padding:7px 18px; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer; border:1.5px solid #e2e8f0; background:white; color:#64748b; transition:all .15s; white-space:nowrap; }
+  .tab-btn:hover { border-color:#FC4C02; color:#FC4C02; }
+  .tab-active { background:#FC4C02 !important; color:white !important; border-color:#FC4C02 !important; }
+  .yr-btn { padding:6px 16px; border-radius:8px; font-size:13px; font-weight:700; cursor:pointer; border:1.5px solid #e2e8f0; background:white; color:#64748b; transition:all .15s; display:inline-flex; align-items:center; gap:4px; text-decoration:none; }
+  .yr-btn:hover { border-color:#FC4C02; color:#FC4C02; }
+  .yr-active { background:#FC4C02 !important; color:white !important; border-color:#FC4C02 !important; }
+  .yr-ext { border-style:dashed; color:#94a3b8; font-weight:600; }
+  .yr-ext:hover { border-color:#FC4C02; color:#FC4C02; border-style:dashed; }
+  .data-table { width:100%; border-collapse:collapse; font-size:13.5px; }
+  .data-table th { padding:7px 10px 8px; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:#94a3b8; text-align:left; border-bottom:1px solid #e2e8f0; }
+  .data-table th.r { text-align:right; }
+  .data-table td { padding:9px 10px; border-bottom:1px solid #f1f5f9; color:#334155; }
+  .data-table td.r { text-align:right; }
+  .data-table tbody tr:hover td { background:#f8fafc; }
+  .data-table tfoot td { padding:9px 10px; border-top:1.5px solid #e2e8f0; font-weight:700; color:#1e293b; border-bottom:none; }
+  .badge { display:inline-block; padding:2px 8px; border-radius:99px; font-size:11px; font-weight:600; }
+  .badge-red { background:#fee2e2; color:#dc2626; }
+  .dnf { display:inline-block; padding:1px 7px; border-radius:99px; font-size:11px; font-weight:600; background:#fee2e2; color:#dc2626; margin-left:4px; }
+  .partial { display:inline-block; padding:1px 7px; border-radius:99px; font-size:11px; font-weight:600; background:#fef3c7; color:#d97706; }
+  .highlights { background:#fffbf7; border-left:3px solid #FC4C02; border-radius:0 8px 8px 0; padding:14px 18px; }
+  .highlights li { padding:5px 0; border-bottom:1px solid #f1ece6; display:flex; gap:8px; align-items:baseline; font-size:13.5px; color:#334155; }
+  .highlights li:last-child { border-bottom:none; }
+  .inprogress { background:#fffbeb; border:1px solid #fde68a; border-radius:8px; padding:10px 16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; font-size:13px; color:#92400e; margin-bottom:14px; }
+  .inprogress a { color:#FC4C02; font-weight:700; text-decoration:underline; }
+  .dot-live { display:inline-block; width:7px; height:7px; border-radius:50%; background:#f59e0b; margin-right:5px; animation:blink 1.5s ease-in-out infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+  .cmp-card { background:white; border:1px solid #e2e8f0; border-radius:12px; padding:16px; }
+  .cmp-year { font-weight:800; font-size:1.05rem; color:#1e293b; margin-bottom:10px; }
+  .cmp-row { display:flex; justify-content:space-between; align-items:center; padding:5px 0; border-bottom:1px solid #f1f5f9; font-size:13px; }
+  .cmp-row:last-child { border-bottom:none; }
+  .cmp-row .lbl { color:#94a3b8; font-size:11px; text-transform:uppercase; letter-spacing:.04em; }
+  .cmp-row .val { font-weight:700; color:#0f172a; }
+  .up { color:#16a34a; font-size:11px; font-weight:700; }
+  .dn { color:#dc2626; font-size:11px; font-weight:700; }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+  .yr-section { animation:fadeUp .2s ease-out; }
+</style>
+</head>
+<body class="p-4 md:p-8">
+<div class="max-w-5xl mx-auto">
+
+  <div class="mb-5">
+    <div class="flex items-center gap-3 mb-1">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="#FC4C02"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7 13.828h4.169"/></svg>
+      <h1 class="text-xl font-bold text-slate-800">Bilans Annuels — Laurent Miklic</h1>
+    </div>
+    <p id="hdr-sub" class="text-sm text-slate-500">Sélectionnez une année pour consulter le bilan</p>
+    <p class="text-xs text-slate-400 mt-1">Données Strava · 2023 → 2026 · Généré par Claude Code</p>
+  </div>
+
+  <div class="flex gap-2 flex-wrap items-center mb-4">
+    <button id="yr-btn-2023" class="yr-btn" onclick="showYear(2023)">2023</button>
+    <button id="yr-btn-2024" class="yr-btn" onclick="showYear(2024)">2024</button>
+    <button id="yr-btn-2025" class="yr-btn" onclick="showYear(2025)">2025</button>
+    <button id="yr-btn-2026" class="yr-btn" onclick="showYear(2026)">2026 <span style="font-size:10px;opacity:.7">en cours</span></button>
+    <a href="rapport_performance.html" class="yr-btn yr-ext" title="Rapport détaillé Jan–Jun 2026">↗ Rapport 2026</a>
+  </div>
+
+  <div class="flex gap-2 flex-wrap mb-5">
+    <button id="btn-recap"   class="tab-btn tab-active" onclick="showSubTab('recap')">Vue d'ensemble</button>
+    <button id="btn-courses" class="tab-btn" onclick="showSubTab('courses')">Courses</button>
+    <button id="btn-mensuel" class="tab-btn" onclick="showSubTab('mensuel')">Mensuel</button>
+    <button id="btn-synthese" class="tab-btn" onclick="showSubTab('synthese')" style="margin-left:auto;">✦ Synthèse</button>
+  </div>
+
+  <!-- ════ 2023 ═══════════════════════════════════════════════════════ -->
+  <div id="year-2023" class="hidden yr-section space-y-5">
+    <div id="y2023-recap" class="space-y-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div class="metric-box"><div class="metric-lbl">Distance totale</div><div class="metric-val">2 126 km</div></div>
+        <div class="metric-box"><div class="metric-lbl">Dénivelé cumulé</div><div class="metric-val">26 813 m</div></div>
+        <div class="metric-box"><div class="metric-lbl">Séances run+trail</div><div class="metric-val">169</div></div>
+        <div class="metric-box"><div class="metric-lbl">Temps de mouvement</div><div class="metric-val">~246 h</div></div>
+      </div>
+      <div class="grid grid-cols-3 gap-3">
+        <div class="metric-box"><div class="metric-lbl">Courses</div><div class="metric-val orange">11</div><div class="metric-note">335 km compète</div></div>
+        <div class="metric-box"><div class="metric-lbl">Plus longue distance</div><div class="metric-val lg">Trail d'Auffargis</div><div class="metric-note">60,6 km · 1 859 m D+ · 9h03</div></div>
+        <div class="metric-box"><div class="metric-lbl">Meilleur mois D+ trail</div><div class="metric-val lg">3 033 m</div><div class="metric-note">Octobre · Trail des Hérétiques</div></div>
+      </div>
+      <div class="card">
+        <h2>Volume mensuel (km) + séances</h2>
+        <p class="section-sub">Barres = km Run <span style="color:#16a34a">■</span> + Trail <span style="color:#FC4C02">■</span> · Ligne = nombre de séances <span style="color:#8b5cf6">—</span></p>
+        <canvas id="chartMixed_2023" height="110"></canvas>
+      </div>
+      <div class="card"><h2>Dénivelé mensuel (m D+)</h2><canvas id="chartElev_2023" height="95"></canvas></div>
+      <div class="card">
+        <h2>D+ mensuel — répartition polaire</h2>
+        <p class="section-sub">Surface proportionnelle au dénivelé cumulé · chaque segment = un mois</p>
+        <canvas id="chartPolar_2023" height="240"></canvas>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="card"><h2>Run vs Trail — km</h2><canvas id="chartSplitKm_2023" height="200"></canvas></div>
+        <div class="card"><h2>Run vs Trail — D+</h2><canvas id="chartSplitElev_2023" height="200"></canvas></div>
+      </div>
+      <div class="card"><h2>Temps mensuel (heures)</h2><canvas id="chartTime_2023" height="80"></canvas></div>
+      <div class="highlights">
+        <div class="font-bold text-slate-700 text-sm mb-2">Faits marquants 2023</div>
+        <ul>
+          <li><span>🏔️</span><span><strong>Trail d'Auffargis "la spéciale" (19/03)</strong> — 60,6 km / 1 859 m D+ en 9h03 · 1ère distance 60km</span></li>
+          <li><span>⛰️</span><span><strong>Pilatrail (04/06)</strong> — 43,5 km / 2 288 m D+ · dernier passage en barrière horaire</span></li>
+          <li><span>🏔️</span><span><strong>Grand Trail Haut-Koenigsbourg (03/09)</strong> — 59,1 km / 1 981 m D+ en 8h48 · vacances en Alsace</span></li>
+          <li><span>🏴‍☠️</span><span><strong>Trail des Hérétiques (28/10)</strong> — 61,7 km / 2 589 m D+ en 9h51 · Grand Raid des Cathares</span></li>
+          <li><span>🏁</span><span><strong>Corrida de Thiais (10/12)</strong> — 10 km en 50'17 · sub-50 raté de 17 secondes !</span></li>
+        </ul>
+      </div>
+    </div>
+    <div id="y2023-courses" class="hidden space-y-4">
+      <div class="card">
+        <h2>11 courses en 2023</h2>
+        <div class="overflow-x-auto">
+          <table class="data-table">
+            <thead><tr><th>Date</th><th>Course</th><th class="r">Dist.</th><th class="r">D+</th><th class="r">Temps</th><th>Format</th></tr></thead>
+            <tbody id="race-body-2023"></tbody>
+            <tfoot><tr><td colspan="2">Total 11 courses</td><td class="r">334,8 km</td><td class="r text-blue-600">11 500 m</td><td class="r">~49h</td><td></td></tr></tfoot>
+          </table>
+        </div>
+      </div>
+      <div class="card"><h2>Distance par course (km)</h2><canvas id="chartRaces_2023" height="120"></canvas></div>
+    </div>
+    <div id="y2023-mensuel" class="hidden">
+      <div class="card">
+        <h2>Détail mensuel 2023 — Run + Trail</h2>
+        <div class="overflow-x-auto">
+          <table class="data-table">
+            <thead><tr><th>Mois</th><th class="r" style="color:#16a34a">Run km</th><th class="r" style="color:#ea580c">Trail km</th><th class="r">Total km</th><th class="r" style="color:#2563eb">D+</th><th class="r">Séances</th><th class="r">Temps</th></tr></thead>
+            <tbody id="monthly-body-2023"></tbody>
+            <tfoot><tr><td>Total 2023</td><td class="r" style="color:#16a34a">1 443</td><td class="r" style="color:#ea580c">683</td><td class="r">2 126 km</td><td class="r" style="color:#2563eb">26 813 m</td><td class="r">169</td><td class="r">~246h</td></tr></tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ 2024 ═══════════════════════════════════════════════════════ -->
+  <div id="year-2024" class="hidden yr-section space-y-5">
+    <div id="y2024-recap" class="space-y-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div class="metric-box"><div class="metric-lbl">Distance totale</div><div class="metric-val">2 333 km</div></div>
+        <div class="metric-box"><div class="metric-lbl">Dénivelé cumulé</div><div class="metric-val">33 914 m</div></div>
+        <div class="metric-box"><div class="metric-lbl">Séances run+trail</div><div class="metric-val">165</div></div>
+        <div class="metric-box"><div class="metric-lbl">Temps de mouvement</div><div class="metric-val">~281 h</div></div>
+      </div>
+      <div class="grid grid-cols-3 gap-3">
+        <div class="metric-box"><div class="metric-lbl">Courses</div><div class="metric-val orange">12</div><div class="metric-note">421 km compète · 2 DNF</div></div>
+        <div class="metric-box"><div class="metric-lbl">1er ultra distance</div><div class="metric-val lg">EcoTrail Paris</div><div class="metric-note">83,1 km · 1 272 m D+ · 12h11</div></div>
+        <div class="metric-box"><div class="metric-lbl">Meilleur mois D+ trail</div><div class="metric-val lg">5 398 m</div><div class="metric-note">Août · Alpes du Dauphiné</div></div>
+      </div>
+      <div class="card">
+        <h2>Volume mensuel (km) + séances</h2>
+        <p class="section-sub">Barres = km Run <span style="color:#16a34a">■</span> + Trail <span style="color:#FC4C02">■</span> · Ligne = nombre de séances <span style="color:#8b5cf6">—</span></p>
+        <canvas id="chartMixed_2024" height="110"></canvas>
+      </div>
+      <div class="card"><h2>Dénivelé mensuel (m D+)</h2><canvas id="chartElev_2024" height="95"></canvas></div>
+      <div class="card">
+        <h2>D+ mensuel — répartition polaire</h2>
+        <p class="section-sub">Surface proportionnelle au dénivelé cumulé · chaque segment = un mois</p>
+        <canvas id="chartPolar_2024" height="240"></canvas>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="card"><h2>Run vs Trail — km</h2><canvas id="chartSplitKm_2024" height="200"></canvas></div>
+        <div class="card"><h2>Run vs Trail — D+</h2><canvas id="chartSplitElev_2024" height="200"></canvas></div>
+      </div>
+      <div class="card"><h2>Temps mensuel (heures)</h2><canvas id="chartTime_2024" height="80"></canvas></div>
+      <div class="highlights">
+        <div class="font-bold text-slate-700 text-sm mb-2">Faits marquants 2024</div>
+        <ul>
+          <li><span>🏔️</span><span><strong>EcoTrail de Paris (16/03)</strong> — 83 km / 1 272 m D+ en 12h11 · premier ultra de la carrière</span></li>
+          <li><span>🤕</span><span><strong>Trail des Maures 60km (19/05) — DNF</strong> : hors délai à 59 km — chaleur + panne d'alimentation km 26</span></li>
+          <li><span>🌴</span><span><strong>Octobre à La Réunion</strong> : Bassin la Mer + Trou de Fer + La Mascareignes DNF (barrière horaire)</span></li>
+          <li><span>🏔️</span><span><strong>Août — Alpes du Dauphiné</strong> (Chamrousse) : 6 sorties, 72 km, 4 996 m D+</span></li>
+          <li><span>📊</span><span>Meilleur mois volume : <strong>Juin 206 km</strong> · Meilleur D+ trail : <strong>Août 5 398 m</strong></span></li>
+        </ul>
+      </div>
+    </div>
+    <div id="y2024-courses" class="hidden space-y-4">
+      <div class="card">
+        <h2>12 courses en 2024</h2>
+        <div class="overflow-x-auto">
+          <table class="data-table">
+            <thead><tr><th>Date</th><th>Course</th><th class="r">Dist.</th><th class="r">D+</th><th class="r">Temps</th><th>Format</th></tr></thead>
+            <tbody id="race-body-2024"></tbody>
+            <tfoot><tr><td colspan="2">Total 12 courses <span class="badge badge-red">2 DNF</span></td><td class="r">421 km</td><td class="r text-blue-600">12 707 m</td><td class="r">~72h</td><td></td></tr></tfoot>
+          </table>
+        </div>
+      </div>
+      <div class="card"><h2>Distance par course (km)</h2><canvas id="chartRaces_2024" height="130"></canvas></div>
+    </div>
+    <div id="y2024-mensuel" class="hidden">
+      <div class="card">
+        <h2>Détail mensuel 2024 — Run + Trail</h2>
+        <div class="overflow-x-auto">
+          <table class="data-table">
+            <thead><tr><th>Mois</th><th class="r" style="color:#16a34a">Run km</th><th class="r" style="color:#ea580c">Trail km</th><th class="r">Total km</th><th class="r" style="color:#2563eb">D+</th><th class="r">Séances</th><th class="r">Temps</th></tr></thead>
+            <tbody id="monthly-body-2024"></tbody>
+            <tfoot><tr><td>Total 2024</td><td class="r" style="color:#16a34a">1 550</td><td class="r" style="color:#ea580c">783</td><td class="r">2 333 km</td><td class="r" style="color:#2563eb">33 914 m</td><td class="r">165</td><td class="r">~281h</td></tr></tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ 2025 ═══════════════════════════════════════════════════════ -->
+  <div id="year-2025" class="hidden yr-section space-y-5">
+    <div id="y2025-recap" class="space-y-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div class="metric-box"><div class="metric-lbl">Distance totale</div><div class="metric-val">2 462 km</div></div>
+        <div class="metric-box"><div class="metric-lbl">Dénivelé cumulé</div><div class="metric-val">39 314 m</div></div>
+        <div class="metric-box"><div class="metric-lbl">Séances run+trail</div><div class="metric-val">174</div></div>
+        <div class="metric-box"><div class="metric-lbl">Temps de mouvement</div><div class="metric-val">~299 h</div></div>
+      </div>
+      <div class="grid grid-cols-3 gap-3">
+        <div class="metric-box"><div class="metric-lbl">Courses</div><div class="metric-val orange">9</div><div class="metric-note">347 km compète · 0 DNF</div></div>
+        <div class="metric-box"><div class="metric-lbl">Plus longue distance</div><div class="metric-val lg">Trail Veni Vici</div><div class="metric-note">83,4 km · 2 230 m D+ · 13h56</div></div>
+        <div class="metric-box"><div class="metric-lbl">Meilleur mois D+ trail</div><div class="metric-val lg">10 374 m</div><div class="metric-note">Août · Semaine Alpes</div></div>
+      </div>
+      <div class="card">
+        <h2>Volume mensuel (km) + séances</h2>
+        <p class="section-sub">Barres = km Run <span style="color:#16a34a">■</span> + Trail <span style="color:#FC4C02">■</span> · Ligne = nombre de séances <span style="color:#8b5cf6">—</span></p>
+        <canvas id="chartMixed_2025" height="110"></canvas>
+      </div>
+      <div class="card"><h2>Dénivelé mensuel (m D+)</h2><canvas id="chartElev_2025" height="95"></canvas></div>
+      <div class="card">
+        <h2>D+ mensuel — répartition polaire</h2>
+        <p class="section-sub">Surface proportionnelle au dénivelé cumulé · chaque segment = un mois</p>
+        <canvas id="chartPolar_2025" height="240"></canvas>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="card"><h2>Run vs Trail — km</h2><canvas id="chartSplitKm_2025" height="200"></canvas></div>
+        <div class="card"><h2>Run vs Trail — D+</h2><canvas id="chartSplitElev_2025" height="200"></canvas></div>
+      </div>
+      <div class="card"><h2>Temps mensuel (heures)</h2><canvas id="chartTime_2025" height="80"></canvas></div>
+      <div class="highlights">
+        <div class="font-bold text-slate-700 text-sm mb-2">Faits marquants 2025</div>
+        <ul>
+          <li><span>🏔️</span><span><strong>Août — Semaine Alpes</strong> : 9 sorties trail, 165 km, 10 374 m D+ en une semaine</span></li>
+          <li><span>🔥</span><span><strong>Trail Veni Vici (08/11)</strong> — 83,4 km / 2 230 m D+ en 13h56 · plus longue distance jamais courue</span></li>
+          <li><span>🤕</span><span><strong>Blessure post-Marath'bleau (13/09)</strong> — chute au km 27, côtes douloureuses · reprise progressive</span></li>
+          <li><span>⛰️</span><span><strong>Chouffe Trail (05/07)</strong> — 58 km / 1 777 m D+ en 9h17</span></li>
+          <li><span>📊</span><span>Meilleur mois volume : <strong>Déc 264 km</strong> · Meilleur D+ : <strong>Août 10 374 m</strong></span></li>
+        </ul>
+      </div>
+    </div>
+    <div id="y2025-courses" class="hidden space-y-4">
+      <div class="card">
+        <h2>9 courses en 2025</h2>
+        <div class="overflow-x-auto">
+          <table class="data-table">
+            <thead><tr><th>Date</th><th>Course</th><th class="r">Dist.</th><th class="r">D+</th><th class="r">Temps</th><th>Format</th></tr></thead>
+            <tbody id="race-body-2025"></tbody>
+            <tfoot><tr><td colspan="2">Total 9 courses</td><td class="r">347,1 km</td><td class="r text-blue-600">11 253 m</td><td class="r">~54h43</td><td></td></tr></tfoot>
+          </table>
+        </div>
+      </div>
+      <div class="card"><h2>Distance par course (km)</h2><canvas id="chartRaces_2025" height="100"></canvas></div>
+    </div>
+    <div id="y2025-mensuel" class="hidden">
+      <div class="card">
+        <h2>Détail mensuel 2025 — Run + Trail</h2>
+        <div class="overflow-x-auto">
+          <table class="data-table">
+            <thead><tr><th>Mois</th><th class="r" style="color:#16a34a">Run km</th><th class="r" style="color:#ea580c">Trail km</th><th class="r">Total km</th><th class="r" style="color:#2563eb">D+</th><th class="r">Séances</th><th class="r">Temps</th></tr></thead>
+            <tbody id="monthly-body-2025"></tbody>
+            <tfoot><tr><td>Total 2025</td><td class="r" style="color:#16a34a">1 400</td><td class="r" style="color:#ea580c">1 062</td><td class="r">2 462 km</td><td class="r" style="color:#2563eb">39 314 m</td><td class="r">174</td><td class="r">~299h</td></tr></tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ 2026 ═══════════════════════════════════════════════════════ -->
+  <div id="year-2026" class="hidden yr-section space-y-5">
+    <div id="y2026-recap" class="space-y-4">
+      <div class="inprogress">
+        <span><span class="dot-live"></span>Année en cours · données Jan – 28 juin 2026</span>
+        <a href="rapport_performance.html">→ Rapport détaillé 2026</a>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div class="metric-box"><div class="metric-lbl">Distance totale (Jan–Jun)</div><div class="metric-val">1 506 km</div></div>
+        <div class="metric-box"><div class="metric-lbl">Dénivelé cumulé (Jan–Jun)</div><div class="metric-val">16 214 m</div></div>
+        <div class="metric-box"><div class="metric-lbl">Séances run+trail</div><div class="metric-val">109</div></div>
+        <div class="metric-box"><div class="metric-lbl">Temps de mouvement</div><div class="metric-val">~175 h</div></div>
+      </div>
+      <div class="grid grid-cols-3 gap-3">
+        <div class="metric-box"><div class="metric-lbl">Courses (Jan–Jun)</div><div class="metric-val orange">5</div><div class="metric-note">0 DNF · 196 km compète</div></div>
+        <div class="metric-box"><div class="metric-lbl">Nouveau record distance</div><div class="metric-val lg">ETP 120 km</div><div class="metric-note">EcoTrail Paris · 1 853 m D+ · 21h21</div></div>
+        <div class="metric-box"><div class="metric-lbl">Meilleur mois D+ trail</div><div class="metric-val lg">4 337 m</div><div class="metric-note">Mai · Stage Grand Serre</div></div>
+      </div>
+      <div class="card">
+        <h2>Volume mensuel (km) + séances — Jan–Jun</h2>
+        <p class="section-sub">Barres = km Run <span style="color:#16a34a">■</span> + Trail <span style="color:#FC4C02">■</span> · Ligne = nombre de séances <span style="color:#8b5cf6">—</span></p>
+        <canvas id="chartMixed_2026" height="110"></canvas>
+      </div>
+      <div class="card"><h2>Dénivelé mensuel (m D+) — Jan–Jun</h2><canvas id="chartElev_2026" height="95"></canvas></div>
+      <div class="card">
+        <h2>D+ mensuel — répartition polaire</h2>
+        <p class="section-sub">Surface proportionnelle au dénivelé cumulé · chaque segment = un mois</p>
+        <canvas id="chartPolar_2026" height="240"></canvas>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="card"><h2>Run vs Trail — km</h2><canvas id="chartSplitKm_2026" height="200"></canvas></div>
+        <div class="card"><h2>Run vs Trail — D+</h2><canvas id="chartSplitElev_2026" height="200"></canvas></div>
+      </div>
+      <div class="card"><h2>Temps mensuel (heures)</h2><canvas id="chartTime_2026" height="80"></canvas></div>
+      <div class="highlights">
+        <div class="font-bold text-slate-700 text-sm mb-2">Faits marquants 2026 (Jan–Jun)</div>
+        <ul>
+          <li><span>🔥</span><span><strong>EcoTrail de Paris 120km — ETP 120 (21/03)</strong> — 120,9 km / 1 853 m D+ en 21h21 · nouveau record de distance</span></li>
+          <li><span>🏕️</span><span><strong>Stage Trail (01–02/05)</strong> — Grand Serre (Isère) : 3 sorties, 52 km, 2 979 m D+ en montagne</span></li>
+          <li><span>📈</span><span>Fév–Mars très denses — <strong>308 km</strong> et <strong>306 km</strong> · 41h de mouvement en mars (record mensuel)</span></li>
+          <li><span>🏁</span><span>5 courses dont 1 ultra (ETP 120) · <strong>0 DNF</strong> sur la saison</span></li>
+          <li><span>🎯</span><span>Début prépa <strong>Échappée Belle 42km</strong> D+2500m · 22 août 2026</span></li>
+        </ul>
+      </div>
+    </div>
+    <div id="y2026-courses" class="hidden space-y-4">
+      <div class="card">
+        <h2>5 courses en 2026 · Jan–Jun <span class="partial">En cours</span></h2>
+        <div class="overflow-x-auto">
+          <table class="data-table">
+            <thead><tr><th>Date</th><th>Course</th><th class="r">Dist.</th><th class="r">D+</th><th class="r">Temps</th><th>Format</th></tr></thead>
+            <tbody id="race-body-2026"></tbody>
+            <tfoot><tr><td colspan="2">Total 5 courses · 0 DNF</td><td class="r">196,4 km</td><td class="r text-blue-600">3 573 m</td><td class="r">~30h</td><td></td></tr></tfoot>
+          </table>
+        </div>
+      </div>
+      <div class="card"><h2>Distance par course (km)</h2><canvas id="chartRaces_2026" height="80"></canvas></div>
+    </div>
+    <div id="y2026-mensuel" class="hidden">
+      <div class="card">
+        <h2>Détail mensuel 2026 — Jan–Jun <span class="partial">En cours</span></h2>
+        <div class="overflow-x-auto">
+          <table class="data-table">
+            <thead><tr><th>Mois</th><th class="r" style="color:#16a34a">Run km</th><th class="r" style="color:#ea580c">Trail km</th><th class="r">Total km</th><th class="r" style="color:#2563eb">D+</th><th class="r">Séances</th><th class="r">Temps</th></tr></thead>
+            <tbody id="monthly-body-2026"></tbody>
+            <tfoot><tr><td>Total Jan–Jun</td><td class="r" style="color:#16a34a">805</td><td class="r" style="color:#ea580c">701</td><td class="r">1 506 km</td><td class="r" style="color:#2563eb">16 214 m</td><td class="r">109</td><td class="r">~175h</td></tr></tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ SYNTHÈSE ═══════════════════════════════════════════════════ -->
+  <div id="synthese" class="hidden yr-section space-y-5">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div class="cmp-card" style="border-top:3px solid #3b82f6">
+        <div class="cmp-year" style="color:#2563eb">2023</div>
+        <div class="cmp-row"><span class="lbl">km</span><span class="val">2 126</span></div>
+        <div class="cmp-row"><span class="lbl">D+</span><span class="val">26 813 m</span></div>
+        <div class="cmp-row"><span class="lbl">séances</span><span class="val">169</span></div>
+        <div class="cmp-row"><span class="lbl">temps</span><span class="val">~246h</span></div>
+        <div class="cmp-row"><span class="lbl">courses</span><span class="val">11</span></div>
+      </div>
+      <div class="cmp-card" style="border-top:3px solid #16a34a">
+        <div class="cmp-year" style="color:#16a34a">2024</div>
+        <div class="cmp-row"><span class="lbl">km</span><span class="val">2 333</span><span class="up">+10%</span></div>
+        <div class="cmp-row"><span class="lbl">D+</span><span class="val">33 914 m</span><span class="up">+26%</span></div>
+        <div class="cmp-row"><span class="lbl">séances</span><span class="val">165</span><span class="dn">−2%</span></div>
+        <div class="cmp-row"><span class="lbl">temps</span><span class="val">~281h</span><span class="up">+14%</span></div>
+        <div class="cmp-row"><span class="lbl">courses</span><span class="val">12</span></div>
+      </div>
+      <div class="cmp-card" style="border-top:3px solid #FC4C02">
+        <div class="cmp-year" style="color:#FC4C02">2025</div>
+        <div class="cmp-row"><span class="lbl">km</span><span class="val">2 462</span><span class="up">+6%</span></div>
+        <div class="cmp-row"><span class="lbl">D+</span><span class="val">39 314 m</span><span class="up">+16%</span></div>
+        <div class="cmp-row"><span class="lbl">séances</span><span class="val">174</span><span class="up">+5%</span></div>
+        <div class="cmp-row"><span class="lbl">temps</span><span class="val">~299h</span><span class="up">+6%</span></div>
+        <div class="cmp-row"><span class="lbl">courses</span><span class="val">9</span></div>
+      </div>
+      <div class="cmp-card" style="border-top:3px solid #d97706">
+        <div class="cmp-year" style="color:#d97706">2026 <span class="partial">Jan–Jun</span></div>
+        <div class="cmp-row"><span class="lbl">km</span><span class="val">1 506</span></div>
+        <div class="cmp-row"><span class="lbl">D+</span><span class="val">16 214 m</span></div>
+        <div class="cmp-row"><span class="lbl">séances</span><span class="val">109</span></div>
+        <div class="cmp-row"><span class="lbl">temps</span><span class="val">~175h</span></div>
+        <div class="cmp-row"><span class="lbl">courses</span><span class="val">5</span></div>
+      </div>
+    </div>
+
+    <!-- RADAR -->
+    <div class="card">
+      <h2>Profil multidimensionnel — <span style="color:#3b82f6">■ 2023</span> &nbsp;<span style="color:#16a34a">■ 2024</span> &nbsp;<span style="color:#FC4C02">■ 2025</span> &nbsp;<span style="color:#d97706">■ 2026</span></h2>
+      <p class="section-sub">Valeurs normalisées 0–100 par rapport au meilleur score sur chaque axe · 2026 = Jan–Jun seulement</p>
+      <canvas id="synthRadar" height="300"></canvas>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4">
+      <div class="card"><h2>km total par année — Run <span style="color:#16a34a">■</span> Trail <span style="color:#FC4C02">■</span></h2><canvas id="synthKm" height="190"></canvas></div>
+      <div class="card"><h2>D+ total par année — Run <span style="color:#16a34a">■</span> Trail <span style="color:#FC4C02">■</span></h2><canvas id="synthDp" height="190"></canvas></div>
+    </div>
+    <div class="card">
+      <h2>km mensuel — <span style="color:#3b82f6">■ 2023</span> &nbsp;<span style="color:#16a34a">■ 2024</span> &nbsp;<span style="color:#FC4C02">■ 2025</span> &nbsp;<span style="color:#d97706">■ 2026</span></h2>
+      <canvas id="synthKmLine" height="90"></canvas>
+    </div>
+    <div class="card">
+      <h2>D+ mensuel — <span style="color:#3b82f6">■ 2023</span> &nbsp;<span style="color:#16a34a">■ 2024</span> &nbsp;<span style="color:#FC4C02">■ 2025</span> &nbsp;<span style="color:#d97706">■ 2026</span></h2>
+      <canvas id="synthDpLine" height="90"></canvas>
+    </div>
+    <div class="card">
+      <h2>Séances / mois — <span style="color:#3b82f6">■ 2023</span> &nbsp;<span style="color:#16a34a">■ 2024</span> &nbsp;<span style="color:#FC4C02">■ 2025</span> &nbsp;<span style="color:#d97706">■ 2026</span></h2>
+      <canvas id="synthSess" height="80"></canvas>
+    </div>
+  </div>
+
+  <div class="text-center text-xs text-slate-400 mt-8 pt-5 border-t border-slate-200">
+    Bilans Annuels 2023–2026 · Données Strava · Généré par Claude Code via MCP · 29/06/2026
+  </div>
+</div>
+
+<script>
+const MONTHS = ['Jan','Fév','Mar','Avr','Mai','Jun','Jul','Aoû','Sep','Oct','Nov','Déc'];
+
+// Palette saisonnière : hiver bleu → printemps vert → été orange/rouge → automne ambre → hiver
+const POLAR_COLORS = [
+  'rgba(79,70,229,.88)',   // Jan — indigo profond (hiver)
+  'rgba(99,102,241,.85)',  // Fév — indigo
+  'rgba(52,211,153,.85)',  // Mar — émeraude (printemps)
+  'rgba(16,185,129,.85)',  // Avr — vert
+  'rgba(245,158,11,.85)',  // Mai — ambre
+  'rgba(251,191,36,.85)',  // Jun — jaune d'été
+  'rgba(249,115,22,.88)',  // Jul — orange chaud
+  'rgba(239,68,68,.88)',   // Aoû — rouge (canicule)
+  'rgba(217,119,6,.85)',   // Sep — ambre automne
+  'rgba(180,83,9,.85)',    // Oct — brun profond
+  'rgba(99,102,241,.75)',  // Nov — indigo (fin d'année)
+  'rgba(55,48,163,.80)',   // Déc — indigo sombre
+];
+
+// ── Defaults Chart.js globaux ─────────────────────────────────────────
+Chart.defaults.font.family = 'system-ui, -apple-system, sans-serif';
+Chart.defaults.plugins.tooltip.backgroundColor = 'rgba(15,23,42,0.94)';
+Chart.defaults.plugins.tooltip.titleColor = '#f8fafc';
+Chart.defaults.plugins.tooltip.bodyColor = '#94a3b8';
+Chart.defaults.plugins.tooltip.padding = {x:12,y:10};
+Chart.defaults.plugins.tooltip.cornerRadius = 8;
+Chart.defaults.plugins.tooltip.titleFont = {weight:'700',size:12};
+Chart.defaults.plugins.tooltip.bodyFont = {size:12};
+Chart.defaults.plugins.tooltip.footerColor = '#64748b';
+Chart.defaults.plugins.tooltip.footerFont = {size:11,style:'italic'};
+Chart.defaults.plugins.tooltip.footerMarginTop = 6;
+Chart.defaults.plugins.tooltip.boxPadding = 5;
+Chart.defaults.animation.duration = 650;
+Chart.defaults.animation.easing = 'easeOutQuart';
+
+// ── Plugin : texte centré dans les doughnuts ──────────────────────────
+function doughnutCenter(line1Fn, line2) {
+  return {
+    id: 'dc',
+    afterDraw(chart) {
+      if (chart.config.type !== 'doughnut') return;
+      const {ctx, chartArea:{top,bottom,left,right}} = chart;
+      const cx=(left+right)/2, cy=(top+bottom)/2;
+      ctx.save();
+      ctx.textAlign='center'; ctx.textBaseline='middle';
+      ctx.font='bold 21px system-ui'; ctx.fillStyle='#0f172a';
+      ctx.fillText(line1Fn(chart), cx, cy-9);
+      ctx.font='10px system-ui'; ctx.fillStyle='#94a3b8';
+      ctx.fillText(line2, cx, cy+11);
+      ctx.restore();
+    }
+  };
+}
+
+const DATA = {
+  2023: {
+    runKm:    [103,106,122,74,170,106,122,96,117,173,122,132],
+    trailKm:  [52,27,113,50,34,67,65,91,59,81,27,17],
+    runElev:  [370,455,399,457,717,320,528,411,402,631,402,504],
+    trailElev:[1475,1078,3276,1049,877,2631,2327,2602,1981,3033,572,316],
+    sessions: [12,10,20,10,16,15,14,13,13,19,13,14],
+    timeH:    [19.0,14.2,27.8,13.8,21.9,21.5,22.1,21.8,20.8,30.7,15.3,16.8],
+    sub:'169 séances · 2 126 km · 26 813 m D+ · 11 courses · ~246h · 2023', lowSessions:10,
+  },
+  2024: {
+    runKm:    [143,163,124,150,112,196,84,131,97,75,173,102],
+    trailKm:  [37,37,107,40,91,10,97,110,122,74,11,45],
+    runElev:  [631,461,490,644,471,1111,479,423,607,246,574,463],
+    trailElev:[1018,1278,1841,1564,4382,227,2844,5398,3906,3487,321,1048],
+    sessions: [13,13,12,14,13,19,13,18,14,9,16,11],
+    timeH:    [18.9,22.5,28.2,22.4,27.7,20.9,21.2,33.6,27.2,22.8,19.1,16.1],
+    sub:'165 séances · 2 333 km · 33 914 m D+ · 12 courses · ~281h · 2024', lowSessions:9,
+  },
+  2025: {
+    runKm:    [98,137,146,134,91,147,109,51,32,148,143,164],
+    trailKm:  [67,32,71,79,141,50,63,166,98,96,98,101],
+    runElev:  [379,489,391,547,290,580,712,156,111,390,408,604],
+    trailElev:[2039,1418,2116,2822,5584,1250,1991,10374,1669,1705,2255,1034],
+    sessions: [15,13,18,15,16,17,12,15,7,17,12,17],
+    timeH:    [18.4,19.0,24.1,25.4,32.5,20.9,21.9,37.5,15.3,26.3,29.7,27.8],
+    sub:'174 séances · 2 462 km · 39 314 m D+ · 9 courses · ~299h · 2025', lowSessions:8,
+  },
+  2026: {
+    runKm:    [224,179,74,112,127,89],
+    trailKm:  [70,129,232,75,129,66],
+    runElev:  [692,443,325,421,418,214],
+    trailElev:[1677,2770,3257,836,4337,824],
+    sessions: [21,21,15,16,20,16],
+    timeH:    [31.5,34.8,41.3,19.4,31.9,15.8],
+    sub:'109 séances · 1 506 km · 16 214 m D+ · 5 courses · Jan–Jun 2026 (en cours)', lowSessions:15, partial:true,
+  },
+};
+
+const RACES = {
+  2023: [
+    {date:'05/02',name:'Maxi Cross Bouffémont',          dist:27.1,elev:1078,time:'3h50', fmt:'Trail 27km',dnf:false},
+    {date:'12/03',name:"Trail de la Griffon'Yerres",     dist:12.7,elev:297, time:'1h30', fmt:'Trail 13km',dnf:false},
+    {date:'19/03',name:"Trail d'Auffargis — la spéciale",dist:60.6,elev:1859,time:'9h03', fmt:'Trail 60km',dnf:false},
+    {date:'04/06',name:'Pilatrail : tour des crêts',     dist:43.5,elev:2288,time:'7h22', fmt:'Trail 43km',dnf:false},
+    {date:'18/06',name:'Les Foulées du 12ème',           dist:10.1,elev:17,  time:'50min',fmt:'Run 10km',  dnf:false},
+    {date:'26/07',name:'UBBC 8 (6 tours)',               dist:29.9,elev:1269,time:'4h31', fmt:'Trail 30km',dnf:false},
+    {date:'03/09',name:'Grand Trail Haut-Koenigsbourg',  dist:59.1,elev:1981,time:'8h48', fmt:'Trail 60km',dnf:false},
+    {date:'01/10',name:'10km Odyssea Hove',              dist:9.9, elev:28,  time:'1h01', fmt:'Run 10km',  dnf:false},
+    {date:'28/10',name:'Trail des Hérétiques (Cathares)',dist:61.7,elev:2589,time:'9h51', fmt:'Trail 62km',dnf:false},
+    {date:'05/11',name:'Ekiden de Paris — relais 2',     dist:10.1,elev:57,  time:'50min',fmt:'Run relais', dnf:false},
+    {date:'10/12',name:'Corrida de Thiais',              dist:10.1,elev:37,  time:'50min',fmt:'Run 10km',  dnf:false},
+  ],
+  2024: [
+    {date:'04/02',name:'Maxicross 30km',       dist:30.0,elev:1189,time:'4h32', fmt:'Trail 30km',dnf:false},
+    {date:'10/03',name:"Trail Griffon'Yerres", dist:23.9,elev:569, time:'3h06', fmt:'Trail 24km',dnf:false},
+    {date:'16/03',name:'EcoTrail de Paris',    dist:83.1,elev:1272,time:'12h11',fmt:'Ultra 80km', dnf:false},
+    {date:'19/05',name:'Trail des Maures 60km',dist:59.6,elev:3237,time:'11h41',fmt:'Trail 60km',dnf:true},
+    {date:'29/06',name:'The Canadian Race',    dist:23.4,elev:255, time:'2h14', fmt:'Run 23km',  dnf:false},
+    {date:'03/07',name:'UBBC 9.0 (5 tours)',  dist:26.0,elev:1081,time:'4h02', fmt:'Trail 26km',dnf:false},
+    {date:'21/07',name:'Trail de Thélus',      dist:15.2,elev:228, time:'1h34', fmt:'Trail 15km',dnf:false},
+    {date:'14/09',name:"Marath'bleau",         dist:45.1,elev:945, time:'6h14', fmt:'Trail 45km',dnf:false},
+    {date:'29/09',name:'Paris-Versailles',     dist:16.2,elev:229, time:'1h40', fmt:'Run 16km',  dnf:false},
+    {date:'06/10',name:'10km Odyssea',         dist:10.0,elev:34,  time:'53min',fmt:'Run 10km',  dnf:false},
+    {date:'18/10',name:'La Mascareignes',      dist:52.5,elev:2856,time:'11h27',fmt:'Ultra 65km', dnf:true},
+    {date:'08/12',name:'Trail des Arpents',    dist:35.6,elev:812, time:'4h35', fmt:'Trail 35km',dnf:false},
+  ],
+  2025: [
+    {date:'02/02',name:'Maxicross',                   dist:31.6,elev:1418,time:'5h03', fmt:'Trail 30km',dnf:false},
+    {date:'06/04',name:'2T2M 40',                     dist:48.4,elev:1954,time:'7h26', fmt:'Trail 40km',dnf:false},
+    {date:'11/05',name:"Mara'trail des Maures",       dist:43.3,elev:2444,time:'9h07', fmt:'Trail 43km',dnf:false},
+    {date:'15/06',name:'Foulées du 12ème (pacer AoC)',dist:9.4, elev:20,  time:'49min',fmt:'Run 10km',  dnf:false},
+    {date:'28/06',name:'Trail Vimy Canadian Race',    dist:21.3,elev:341, time:'2h20', fmt:'Trail 21km',dnf:false},
+    {date:'05/07',name:'Chouffe Trail',               dist:58.1,elev:1777,time:'9h17', fmt:'Trail 56km',dnf:false},
+    {date:'13/09',name:"Impérial Trail Marath'bleau", dist:46.5,elev:1037,time:'6h21', fmt:'Trail 46km',dnf:false},
+    {date:'02/11',name:'Ekiden de Paris — relais 5',  dist:5.1, elev:32,  time:'25min',fmt:'Run 5km',   dnf:false},
+    {date:'08/11',name:'Trail Veni Vici',             dist:83.4,elev:2230,time:'13h56',fmt:'Ultra 83km', dnf:false},
+  ],
+  2026: [
+    {date:'02/01',name:'Maxicross 25km',              dist:24.9, elev:760, time:'3h26', fmt:'Trail 25km', dnf:false},
+    {date:'21/03',name:'ETP 120 — EcoTrail de Paris', dist:120.9,elev:1853,time:'21h21',fmt:'Ultra 120km',dnf:false},
+    {date:'10/05',name:'Trail des Lavoirs',            dist:23.0, elev:526, time:'3h32', fmt:'Trail 23km', dnf:false},
+    {date:'31/05',name:'La Foulée verte de Clamart',  dist:17.5, elev:414, time:'2h50', fmt:'Trail 18km', dnf:false},
+    {date:'14/06',name:'Les Foulées du 12ème',         dist:10.1, elev:20,  time:'48min',fmt:'Run 10km',   dnf:false},
+  ],
+};
+
+const NOTES = {
+  2023:{'Jan':'reco Maxicross','Fév':'🏁 Maxi Cross','Mar':"🏁 Griffon'Yerres · 🏁 Auffargis 60km",'Avr':'acc. Marathon Paris','Mai':'🏁 Trail des Lavoirs','Jun':'🏁 Pilatrail 43km · 🏁 Foulées 12ème','Jul':'🏁 UBBC 8','Aoû':'J-14 Haut-Koenigsbourg','Sep':'🏁 Grand Trail HK (Alsace)','Oct':'🏁 Odyssea · 🏁 Hérétiques','Nov':'🏁 Ekiden Paris','Déc':'🏁 Corrida Thiais'},
+  2024:{'Fév':'🏁 Maxicross','Mar':"🏁 Griffon'Yerres · 🏁 EcoTrail 80km",'Avr':'acc. Marathon Paris','Mai':'🏁 Maures DNF','Jun':'🏁 Canadian Race','Jul':'🏁 UBBC · 🏁 Thélus','Aoû':'🏔️ Alpes Dauphiné','Sep':"🏁 Marath'bleau · 🏁 Paris-Versailles",'Oct':'🏁 Odyssea · 🌴 Réunion · DNF','Déc':'🏁 Arpents'},
+  2025:{'Fév':'🏁 Maxicross','Avr':'🏁 2T2M 40','Mai':'🏁 Maures','Jun':'🏁 Foulées + Canadian Race','Jul':'🏁 Chouffe 56km','Aoû':'🏔️ Alpes','Sep':"🏁 Marath'bleau · 🤕",'Nov':'🏁 Ekiden + Veni Vici 83km'},
+  2026:{'Jan':'🏁 Maxicross 25km','Mar':'🏔️ ETP 120km','Avr':'récupération ultra','Mai':'🏕️ Stage Grand Serre · 🏁 Lavoirs · 🏁 Clamart','Jun':'🏁 Foulées 12ème · prépa Échappée Belle'},
+};
+
+// ── Tables ───────────────────────────────────────────────────────────
+[2023,2024,2025,2026].forEach(yr => {
+  const d = DATA[yr], nM = d.runKm.length;
+  RACES[yr].forEach(r => {
+    const tr = document.createElement('tr');
+    const badge = r.dnf ? '<span class="dnf">DNF</span>' : '';
+    tr.innerHTML = `<td class="text-slate-400 text-xs w-14">${r.date}</td><td class="font-medium text-slate-700">${r.name}${badge}</td><td class="r font-semibold" style="color:#FC4C02">${r.dist} km</td><td class="r text-blue-600">${r.elev} m</td><td class="r text-slate-600">${r.time}</td><td class="text-slate-400 text-xs">${r.fmt}</td>`;
+    document.getElementById('race-body-'+yr).appendChild(tr);
+  });
+  MONTHS.slice(0,nM).forEach((m,i) => {
+    const totalKm = d.runKm[i]+d.trailKm[i], totalElev = d.runElev[i]+d.trailElev[i];
+    const note = (NOTES[yr]&&NOTES[yr][m])||'';
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td class="font-semibold text-slate-700">${m}${note?`<span class="text-slate-400 text-xs font-normal ml-2">${note}</span>`:''}</td><td class="r" style="color:#16a34a">${d.runKm[i]}</td><td class="r" style="color:#ea580c">${d.trailKm[i]}</td><td class="r font-bold text-slate-800">${totalKm}</td><td class="r text-blue-600">${totalElev.toLocaleString('fr')}</td><td class="r text-slate-500">${d.sessions[i]}</td><td class="r text-slate-500">${d.timeH[i]}h</td>`;
+    document.getElementById('monthly-body-'+yr).appendChild(tr);
+  });
+});
+
+// ── Charts ───────────────────────────────────────────────────────────
+const GRID='#e2e8f0', TICK='#94a3b8';
+const baseScales = {
+  x:{ticks:{color:TICK,font:{size:11}},grid:{color:GRID}},
+  y:{ticks:{color:TICK,font:{size:11}},grid:{color:GRID}},
+};
+const YR_COLORS = {2023:'#3b82f6',2024:'#16a34a',2025:'#FC4C02',2026:'#d97706'};
+const _chartsInited = {};
+
+function initCharts(yr) {
+  if (_chartsInited[yr]) return;
+  _chartsInited[yr] = true;
+  const d = DATA[yr];
+  const labels = MONTHS.slice(0, d.runKm.length);
+  const totKmArr = labels.map((_,i) => d.runKm[i]+d.trailKm[i]);
+  const totDpArr = labels.map((_,i) => d.runElev[i]+d.trailElev[i]);
+  const avgKm = Math.round(totKmArr.reduce((a,b)=>a+b,0)/labels.length);
+  const avgDp = Math.round(totDpArr.reduce((a,b)=>a+b,0)/labels.length);
+
+  // Dégradé violet pour le chart Temps
+  const timeEl = document.getElementById('chartTime_'+yr);
+  const timeCtx = timeEl.getContext('2d');
+  const timeGrad = timeCtx.createLinearGradient(0,0,0,160);
+  timeGrad.addColorStop(0,'rgba(124,58,237,.26)');
+  timeGrad.addColorStop(1,'rgba(124,58,237,.0)');
+
+  // ── MIXED : barres km empilées + ligne séances ────────────────────
+  new Chart(document.getElementById('chartMixed_'+yr), {
+    type:'bar',
+    data:{ labels, datasets:[
+      { label:'Run km',  type:'bar',  data:d.runKm,
+        backgroundColor:'rgba(34,197,94,.78)',
+        borderRadius:{topLeft:0,topRight:0,bottomLeft:4,bottomRight:4},
+        borderSkipped:false, stack:'s', yAxisID:'y' },
+      { label:'Trail km',type:'bar',  data:d.trailKm,
+        backgroundColor:'rgba(252,76,2,.78)',
+        borderRadius:{topLeft:5,topRight:5,bottomLeft:0,bottomRight:0},
+        borderSkipped:false, stack:'s', yAxisID:'y' },
+      { label:'Séances', type:'line', data:d.sessions,
+        borderColor:'#7c3aed', backgroundColor:'transparent',
+        pointBackgroundColor:'#7c3aed', pointBorderColor:'white', pointBorderWidth:2,
+        pointRadius:5, pointHoverRadius:8, borderWidth:2.5, tension:.35, yAxisID:'y2' },
+    ]},
+    options:{ responsive:true,
+      plugins:{
+        legend:{labels:{color:TICK,font:{size:11},boxWidth:10,boxHeight:10,padding:14}},
+        tooltip:{callbacks:{
+          label: ctx => ctx.dataset.yAxisID==='y2'
+            ? ` Séances : ${ctx.raw}`
+            : ` ${ctx.dataset.label} : ${ctx.raw} km`,
+          footer: ctx => `  Total mois : ${totKmArr[ctx[0].dataIndex]} km`,
+        }},
+        annotation:{annotations:{avgLine:{
+          type:'line', yMin:avgKm, yMax:avgKm, yScaleID:'y',
+          borderColor:'#94a3b8', borderWidth:1.5, borderDash:[5,4],
+          label:{display:true, content:`⌀ ${avgKm} km/mois`, position:'end',
+            yAdjust:-13, backgroundColor:'rgba(248,250,252,.92)',
+            color:'#64748b', font:{size:10,weight:'600'}, padding:{x:6,y:3}, borderRadius:4}
+        }}}
+      },
+      scales:{
+        x:{ stacked:true, ticks:{color:TICK,font:{size:11}}, grid:{color:GRID} },
+        y:{ stacked:true, position:'left', ticks:{color:'#16a34a',font:{size:11}}, grid:{color:GRID},
+            title:{display:true, text:'km', color:'#64748b', font:{size:11}} },
+        y2:{ position:'right', min:0, ticks:{color:'#7c3aed',font:{size:11}}, grid:{display:false},
+             title:{display:true, text:'séances', color:'#7c3aed', font:{size:11}} },
+      }
+    }
+  });
+
+  // ── D+ : barres empilées + annotation moyenne ─────────────────────
+  new Chart(document.getElementById('chartElev_'+yr), {
+    type:'bar',
+    data:{ labels, datasets:[
+      { label:'Run D+',  data:d.runElev,
+        backgroundColor:'rgba(34,197,94,.68)',
+        borderRadius:{topLeft:0,topRight:0,bottomLeft:4,bottomRight:4},
+        borderSkipped:false, stack:'s' },
+      { label:'Trail D+',data:d.trailElev,
+        backgroundColor:'rgba(252,76,2,.78)',
+        borderRadius:{topLeft:5,topRight:5,bottomLeft:0,bottomRight:0},
+        borderSkipped:false, stack:'s' },
+    ]},
+    options:{ responsive:true,
+      plugins:{
+        legend:{labels:{color:TICK,font:{size:11},boxWidth:10,boxHeight:10,padding:14}},
+        tooltip:{callbacks:{
+          label: ctx => ` ${ctx.dataset.label} : ${ctx.raw.toLocaleString('fr')} m`,
+          footer: ctx => `  Total mois : ${totDpArr[ctx[0].dataIndex].toLocaleString('fr')} m D+`,
+        }},
+        annotation:{annotations:{avgLine:{
+          type:'line', yMin:avgDp, yMax:avgDp,
+          borderColor:'#94a3b8', borderWidth:1.5, borderDash:[5,4],
+          label:{display:true, content:`⌀ ${avgDp.toLocaleString('fr')} m/mois`, position:'end',
+            yAdjust:-13, backgroundColor:'rgba(248,250,252,.92)',
+            color:'#64748b', font:{size:10,weight:'600'}, padding:{x:6,y:3}, borderRadius:4}
+        }}}
+      },
+      scales:{...baseScales, x:{...baseScales.x,stacked:true}, y:{...baseScales.y,stacked:true}}
+    }
+  });
+
+  // ── POLAR AREA : D+ mensuel saisonnier ───────────────────────────
+  new Chart(document.getElementById('chartPolar_'+yr), {
+    type:'polarArea',
+    data:{ labels,
+      datasets:[{ data:totDpArr,
+        backgroundColor:POLAR_COLORS.slice(0,labels.length),
+        borderColor:'white', borderWidth:2.5 }]
+    },
+    options:{ responsive:true,
+      startAngle: -Math.PI/2,
+      plugins:{
+        legend:{position:'right', labels:{color:TICK,font:{size:11},boxWidth:12,padding:8}},
+        tooltip:{callbacks:{
+          title: ctx => ctx[0].label,
+          label: ctx => ` D+ : ${ctx.raw.toLocaleString('fr')} m`,
+        }}
+      },
+      scales:{ r:{
+        ticks:{color:TICK,font:{size:10},backdropColor:'rgba(255,255,255,.85)',maxTicksLimit:4,z:1},
+        grid:{color:'rgba(226,232,240,.65)'}, angleLines:{color:GRID}
+      }}
+    }
+  });
+
+  // ── DOUGHNUTS avec total centré ───────────────────────────────────
+  const totRkm=d.runKm.reduce((a,b)=>a+b,0), totTkm=d.trailKm.reduce((a,b)=>a+b,0);
+  new Chart(document.getElementById('chartSplitKm_'+yr), {
+    type:'doughnut',
+    plugins:[ doughnutCenter(c=>c.data.datasets[0].data.reduce((a,b)=>a+b,0).toLocaleString('fr'),'km total') ],
+    data:{ labels:[`Run – ${totRkm} km`,`Trail – ${totTkm} km`],
+      datasets:[{ data:[totRkm,totTkm],
+        backgroundColor:['rgba(34,197,94,.88)','rgba(252,76,2,.88)'],
+        borderWidth:3, borderColor:'white', hoverOffset:10 }]
+    },
+    options:{ cutout:'70%',
+      plugins:{
+        legend:{position:'bottom', labels:{color:TICK,font:{size:11},padding:12}},
+        tooltip:{callbacks:{label:ctx=>{
+          const tot=ctx.dataset.data.reduce((a,b)=>a+b,0);
+          return ` ${ctx.raw.toLocaleString('fr')} km — ${Math.round(ctx.raw*100/tot)}%`;
+        }}}
+      }
+    }
+  });
+
+  const totRe=d.runElev.reduce((a,b)=>a+b,0), totTe=d.trailElev.reduce((a,b)=>a+b,0);
+  new Chart(document.getElementById('chartSplitElev_'+yr), {
+    type:'doughnut',
+    plugins:[ doughnutCenter(c=>c.data.datasets[0].data.reduce((a,b)=>a+b,0).toLocaleString('fr'),'m D+ total') ],
+    data:{ labels:[`Run – ${totRe.toLocaleString('fr')} m`,`Trail – ${totTe.toLocaleString('fr')} m`],
+      datasets:[{ data:[totRe,totTe],
+        backgroundColor:['rgba(34,197,94,.88)','rgba(252,76,2,.88)'],
+        borderWidth:3, borderColor:'white', hoverOffset:10 }]
+    },
+    options:{ cutout:'70%',
+      plugins:{
+        legend:{position:'bottom', labels:{color:TICK,font:{size:11},padding:12}},
+        tooltip:{callbacks:{label:ctx=>{
+          const tot=ctx.dataset.data.reduce((a,b)=>a+b,0);
+          return ` ${ctx.raw.toLocaleString('fr')} m — ${Math.round(ctx.raw*100/tot)}%`;
+        }}}
+      }
+    }
+  });
+
+  // ── TEMPS : ligne avec fill dégradé ──────────────────────────────
+  new Chart(document.getElementById('chartTime_'+yr), {
+    type:'line',
+    data:{ labels, datasets:[{ label:'Heures / mois', data:d.timeH,
+      borderColor:'#7c3aed', backgroundColor:timeGrad,
+      fill:true, tension:.4,
+      pointRadius:5, pointHoverRadius:8,
+      pointBackgroundColor:'#7c3aed', pointBorderColor:'white', pointBorderWidth:2,
+      borderWidth:2.5 }]
+    },
+    options:{ responsive:true,
+      plugins:{
+        legend:{labels:{color:TICK,font:{size:11}}},
+        tooltip:{callbacks:{label:ctx=>` ${ctx.raw} h de mouvement`}}
+      },
+      scales:baseScales
+    }
+  });
+
+  // ── COURSES : horizontal bar avec tooltip enrichi ─────────────────
+  new Chart(document.getElementById('chartRaces_'+yr), {
+    type:'bar',
+    data:{ labels:RACES[yr].map(r=>r.name),
+      datasets:[{ label:'Distance', data:RACES[yr].map(r=>r.dist),
+        backgroundColor:RACES[yr].map(r=>r.dnf?'rgba(239,68,68,.55)':'rgba(252,76,2,.75)'),
+        borderRadius:5, borderSkipped:false }]
+    },
+    options:{ indexAxis:'y', responsive:true,
+      plugins:{
+        legend:{display:false},
+        tooltip:{callbacks:{
+          title: ctx => RACES[yr][ctx[0].dataIndex].name,
+          label: ctx => [
+            ` Distance : ${ctx.raw} km`,
+            ` D+ : ${RACES[yr][ctx[0].dataIndex].elev.toLocaleString('fr')} m`,
+            ` Temps : ${RACES[yr][ctx[0].dataIndex].time}`,
+            ...(RACES[yr][ctx[0].dataIndex].dnf ? [' ⚠️ DNF'] : []),
+          ],
+        }}
+      },
+      scales:{
+        x:{ ...baseScales.x, ticks:{...baseScales.x.ticks, callback:v=>v+' km'} },
+        y:{ ...baseScales.y, ticks:{...baseScales.y.ticks, font:{size:11}} }
+      }
+    }
+  });
+}
+
+// ── Synthèse ─────────────────────────────────────────────────────────
+const ALL_YEARS=[2023,2024,2025,2026];
+let _syntheseInited=false;
+
+function initSynthese() {
+  if (_syntheseInited) return;
+  _syntheseInited=true;
+  function pad12(arr){const r=[...arr];while(r.length<12)r.push(null);return r;}
+
+  const multiLineOpts = (showLegend=true) => ({
+    responsive:true, spanGaps:false,
+    plugins:{
+      legend:{ display:showLegend,
+        labels:{color:TICK,font:{size:12},boxWidth:14,boxHeight:2,padding:16} },
+      tooltip:{callbacks:{
+        label:ctx => {
+          const v=ctx.raw; if(v===null)return null;
+          return ` ${ctx.dataset.label} : ${typeof v==='number'?v.toLocaleString('fr'):v}`;
+        }
+      }}
+    },
+    scales:{
+      x:{ticks:{color:TICK,font:{size:11}},grid:{color:GRID}},
+      y:{ticks:{color:TICK,font:{size:11}},grid:{color:GRID}},
+    }
+  });
+
+  // ── RADAR : profil multidimensionnel ─────────────────────────────
+  const totKm   = y=>DATA[y].runKm.reduce((a,b)=>a+b,0)+DATA[y].trailKm.reduce((a,b)=>a+b,0);
+  const totDp   = y=>DATA[y].runElev.reduce((a,b)=>a+b,0)+DATA[y].trailElev.reduce((a,b)=>a+b,0);
+  const totSess = y=>DATA[y].sessions.reduce((a,b)=>a+b,0);
+  const totTime = y=>DATA[y].timeH.reduce((a,b)=>a+b,0);
+  const totRaces= y=>RACES[y].length;
+  const mxKm=Math.max(...ALL_YEARS.map(totKm)), mxDp=Math.max(...ALL_YEARS.map(totDp));
+  const mxSess=Math.max(...ALL_YEARS.map(totSess)), mxTime=Math.max(...ALL_YEARS.map(totTime));
+  const mxRaces=Math.max(...ALL_YEARS.map(totRaces));
+  const norm=(v,mx)=>Math.round(v/mx*100);
+
+  new Chart(document.getElementById('synthRadar'), {type:'radar',
+    data:{labels:['km total','D+ total','Séances','Temps (h)','Courses'],
+      datasets:ALL_YEARS.map(y=>({
+        label:y===2026?'2026 (Jan–Jun)':String(y),
+        data:[norm(totKm(y),mxKm),norm(totDp(y),mxDp),norm(totSess(y),mxSess),norm(totTime(y),mxTime),norm(totRaces(y),mxRaces)],
+        borderColor:YR_COLORS[y],
+        backgroundColor:YR_COLORS[y]+(y===2026?'28':'1a'),
+        pointBackgroundColor:YR_COLORS[y], pointBorderColor:'white', pointBorderWidth:2,
+        pointRadius:6, pointHoverRadius:8,
+        borderWidth:2.5,
+        borderDash: y===2026?[6,3]:[],
+      }))
+    },
+    options:{responsive:true,
+      plugins:{
+        legend:{labels:{color:TICK,font:{size:12},boxWidth:14,padding:16}},
+        tooltip:{callbacks:{
+          label:ctx=>{
+            const labels=['km total','D+ total','Séances','Temps','Courses'];
+            const raw=[totKm,totDp,totSess,totTime,totRaces];
+            const i=ctx.dataIndex;
+            const y=ALL_YEARS.find(yr=>(yr===2026?'2026 (Jan–Jun)':String(yr))===ctx.dataset.label);
+            if(y===undefined) return '';
+            const v=raw[i](y);
+            return ` ${labels[i]} : ${v.toLocaleString('fr')} (${ctx.raw}/100)`;
+          }
+        }}
+      },
+      scales:{r:{
+        min:0, max:100,
+        ticks:{stepSize:25,color:TICK,font:{size:10},backdropColor:'rgba(255,255,255,.8)'},
+        grid:{color:GRID},
+        pointLabels:{color:'#1e293b',font:{size:13,weight:'700'}},
+        angleLines:{color:GRID}
+      }}
+    }
+  });
+
+  // ── BARRES : totaux annuels ───────────────────────────────────────
+  const yrLabels=['2023','2024','2025','2026 (Jan–Jun)'];
+  new Chart(document.getElementById('synthKm'), {type:'bar',
+    data:{labels:yrLabels, datasets:[
+      {label:'Run',  data:ALL_YEARS.map(y=>DATA[y].runKm.reduce((a,b)=>a+b,0)),
+        backgroundColor:'rgba(34,197,94,.78)',
+        borderRadius:{topLeft:0,topRight:0,bottomLeft:4,bottomRight:4}, borderSkipped:false, stack:'s'},
+      {label:'Trail',data:ALL_YEARS.map(y=>DATA[y].trailKm.reduce((a,b)=>a+b,0)),
+        backgroundColor:'rgba(252,76,2,.78)',
+        borderRadius:{topLeft:5,topRight:5,bottomLeft:0,bottomRight:0}, borderSkipped:false, stack:'s'},
+    ]},
+    options:{responsive:true,
+      plugins:{
+        legend:{labels:{color:TICK,font:{size:11},boxWidth:10,boxHeight:10,padding:14}},
+        tooltip:{callbacks:{
+          footer:ctx=>`  Total : ${(ctx.reduce((s,c)=>s+c.raw,0)).toLocaleString('fr')} km`
+        }}
+      },
+      scales:{x:{...baseScales.x,stacked:true},y:{...baseScales.y,stacked:true}}}
+  });
+  new Chart(document.getElementById('synthDp'), {type:'bar',
+    data:{labels:yrLabels, datasets:[
+      {label:'Run D+',  data:ALL_YEARS.map(y=>DATA[y].runElev.reduce((a,b)=>a+b,0)),
+        backgroundColor:'rgba(34,197,94,.68)',
+        borderRadius:{topLeft:0,topRight:0,bottomLeft:4,bottomRight:4}, borderSkipped:false, stack:'s'},
+      {label:'Trail D+',data:ALL_YEARS.map(y=>DATA[y].trailElev.reduce((a,b)=>a+b,0)),
+        backgroundColor:'rgba(252,76,2,.78)',
+        borderRadius:{topLeft:5,topRight:5,bottomLeft:0,bottomRight:0}, borderSkipped:false, stack:'s'},
+    ]},
+    options:{responsive:true,
+      plugins:{
+        legend:{labels:{color:TICK,font:{size:11},boxWidth:10,boxHeight:10,padding:14}},
+        tooltip:{callbacks:{
+          footer:ctx=>`  Total : ${(ctx.reduce((s,c)=>s+c.raw,0)).toLocaleString('fr')} m D+`
+        }}
+      },
+      scales:{x:{...baseScales.x,stacked:true},y:{...baseScales.y,stacked:true}}}
+  });
+
+  // ── LIGNES mensuelles : km, D+, séances ──────────────────────────
+  const mkLine = (getArr, unit, id) => new Chart(document.getElementById(id), {type:'line',
+    data:{labels:MONTHS, datasets:ALL_YEARS.map(y=>({
+      label:y===2026?'2026 (Jan–Jun)':String(y),
+      data:pad12(DATA[y].runKm.map((_,i)=>getArr(y,i))),
+      borderColor:YR_COLORS[y], backgroundColor:YR_COLORS[y]+'12',
+      fill:false, tension:.4,
+      pointRadius:3, pointHoverRadius:6,
+      pointBackgroundColor:YR_COLORS[y], pointBorderColor:'white', pointBorderWidth:1.5,
+      borderWidth:2.5,
+      borderDash: y===2026?[6,3]:[],
+    }))},
+    options:{...multiLineOpts(),
+      plugins:{...multiLineOpts().plugins,
+        tooltip:{callbacks:{label:ctx=>{
+          if(ctx.raw===null)return null;
+          return ` ${ctx.dataset.label} : ${ctx.raw.toLocaleString('fr')} ${unit}`;
+        }}}
+      }
+    }
+  });
+
+  mkLine((y,i)=>DATA[y].runKm[i]+DATA[y].trailKm[i], 'km', 'synthKmLine');
+  mkLine((y,i)=>DATA[y].runElev[i]+DATA[y].trailElev[i], 'm D+', 'synthDpLine');
+  mkLine((y,i)=>DATA[y].sessions[i], 'séances', 'synthSess');
+}
+
+// ── Nav ──────────────────────────────────────────────────────────────
+const YEARS=[2023,2024,2025,2026];
+const SUB_TABS=['recap','courses','mensuel'];
+let currentYear=2023, currentSubTab='recap';
+
+function showYear(yr) {
+  document.getElementById('synthese').classList.add('hidden');
+  if(currentSubTab==='synthese') currentSubTab='recap';
+  currentYear=yr;
+  YEARS.forEach(y=>{
+    document.getElementById('year-'+y).classList.toggle('hidden',y!==yr);
+    document.getElementById('yr-btn-'+y).className='yr-btn'+(y===yr?' yr-active':'');
+  });
+  document.getElementById('hdr-sub').textContent=DATA[yr].sub;
+  SUB_TABS.forEach(t=>document.getElementById('y'+yr+'-'+t).classList.toggle('hidden',t!==currentSubTab));
+  updateSubTabBtns();
+  initCharts(yr);
+}
+
+function showSubTab(name) {
+  if(name==='synthese'){
+    currentSubTab='synthese';
+    YEARS.forEach(y=>{
+      document.getElementById('year-'+y).classList.add('hidden');
+      document.getElementById('yr-btn-'+y).className='yr-btn';
+    });
+    document.getElementById('synthese').classList.remove('hidden');
+    document.getElementById('hdr-sub').textContent='Comparaison · 2023 · 2024 · 2025 · 2026';
+    updateSubTabBtns();
+    initSynthese();
+    return;
+  }
+  document.getElementById('synthese').classList.add('hidden');
+  currentSubTab=name;
+  SUB_TABS.forEach(t=>document.getElementById('y'+currentYear+'-'+t).classList.toggle('hidden',t!==name));
+  updateSubTabBtns();
+}
+
+function updateSubTabBtns() {
+  const labels={recap:"Vue d'ensemble",courses:currentSubTab==='synthese'?'Courses':`Courses (${RACES[currentYear].length})`,mensuel:'Mensuel',synthese:'✦ Synthèse'};
+  [...SUB_TABS,'synthese'].forEach(t=>{
+    const btn=document.getElementById('btn-'+t);
+    if(!btn)return;
+    btn.textContent=labels[t];
+    btn.className='tab-btn'+(t===currentSubTab?' tab-active':'');
+  });
+}
+
+showYear(2023);
+</script>
+</body>
+</html>
