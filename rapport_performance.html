@@ -28,8 +28,10 @@
     .metric-lbl { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; }
     .annotation-line { border-top: 2px dashed #ef4444; position: relative; }
     @media print { .no-print { display: none; } }
-    .tab-btn { padding: 7px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; border: 1.5px solid #e2e8f0; background: white; color: #64748b; transition: all .15s; }
+    .tab-btn { padding: 7px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; border: 1.5px solid #e2e8f0; background: white; color: #64748b; transition: all .15s; text-decoration: none; display: inline-flex; align-items: center; }
     .tab-btn:hover { border-color: #FC4C02; color: #FC4C02; }
+    .tab-ext { border-style: dashed; color: #94a3b8; }
+    .tab-ext:hover { border-color: #FC4C02; color: #FC4C02; border-style: dashed; }
     .tab-active { background: #FC4C02 !important; color: white !important; border-color: #FC4C02 !important; }
     .hm-cell { border-radius: 6px; text-align: center; padding: 8px 4px; font-size: 13px; font-weight: 700; }
   </style>
@@ -44,7 +46,7 @@
     </svg>
     <h1 class="text-xl font-bold text-slate-800">Rapport Performance Strava</h1>
   </div>
-  <p class="text-sm text-slate-500">Laurent Miklic · 1 janv. → 1 juil. 2026 · 143 activités · Run+Trail : 111 séances</p>
+  <p class="text-sm text-slate-500">Laurent Miklic · 1 janv. → 12 juil. 2026 · 154 activités · Run+Trail : 120 séances</p>
   <p class="text-xs text-slate-400 mt-1">Généré par Claude Code via MCP Strava</p>
 </div>
 
@@ -54,10 +56,13 @@
     <button id="btn-global" class="tab-btn tab-active" onclick="showTab('global')">Vue globale</button>
     <button id="btn-courses" class="tab-btn" onclick="showTab('courses')">Compétitions</button>
     <button id="btn-entrainement" class="tab-btn" onclick="showTab('entrainement')">Entraînement</button>
+    <button id="btn-muscu" class="tab-btn" onclick="showTab('muscu')">Musculation</button>
+    <button id="btn-velo" class="tab-btn" onclick="showTab('velo')">Vélo</button>
     <button id="btn-carte" class="tab-btn" onclick="showTab('carte')">Carte</button>
     <button id="btn-lexique" class="tab-btn" onclick="showTab('lexique')">Lexique</button>
     <button id="btn-plan" class="tab-btn" onclick="showTab('plan')">Plan Échappée Belle</button>
     <button id="btn-marathon" class="tab-btn" onclick="showTab('marathon')">Plan Marathon NC</button>
+    <a href="rapport_annuel.html" class="tab-btn tab-ext" title="Bilan annuel 2023–2026">↗ Bilan annuel</a>
   </div>
 </div>
 
@@ -67,11 +72,11 @@
   <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
     <div class="metric-box">
       <div class="metric-lbl">Distance totale (run+trail)</div>
-      <div class="metric-val">1 531 km</div>
+      <div class="metric-val">1 598 km</div>
     </div>
     <div class="metric-box">
       <div class="metric-lbl">Dénivelé cumulé</div>
-      <div class="metric-val">16 372 m</div>
+      <div class="metric-val">16 766 m</div>
     </div>
     <div class="metric-box">
       <div class="metric-lbl">10km race (14 juin)</div>
@@ -92,7 +97,7 @@
     <canvas id="chart-volume" height="100"></canvas>
     <p class="text-xs text-slate-400 mt-4 mb-2">Barres = km (axe gauche) · Courbe bleue = D+ total (axe droit).</p>
     <canvas id="chart-elev" height="70"></canvas>
-    <p class="text-xs text-slate-400 mt-4 mb-2">Calories dépensées par semaine — toutes activités (total saison : <strong>129 940 kcal</strong>).</p>
+    <p class="text-xs text-slate-400 mt-4 mb-2">Calories dépensées par semaine — toutes activités (total saison : <strong>144 627 kcal</strong>).</p>
     <canvas id="chart-cals" height="70"></canvas>
     <p class="text-xs text-slate-400 mt-4 mb-2">Distribution estimée des zones FC par semaine (Run + Trail) — proxy RE/heure par séance + flag course. Tendances fiables ; valeurs absolues ±10 pts (sans streams FC complets). <span style="color:#3b82f6">■ Z1</span> · <span style="color:#22c55e">■ Z2</span> · <span style="color:#eab308">■ Z3</span> · <span style="color:#f97316">■ Z4</span> · <span style="color:#ef4444">■ Z5</span></p>
     <canvas id="chart-zones-week" height="80"></canvas>
@@ -106,7 +111,7 @@
     <canvas id="chart-acwr" height="90"></canvas>
     <div class="flex gap-3 mt-3 flex-wrap">
       <span class="badge badge-orange">🟠 16 mars : ACWR 1.41 — ETP 120 (charge planifiée)</span>
-      <span class="badge badge-green">✅ Actuel (1 juil.) : ACWR 0.17 — J-52 Échappée Belle · volume encore sous cible S2</span>
+      <span class="badge badge-green">✅ Actuel (12 juil.) : ACWR 0.22 — J-41 Échappée Belle · S3 terminée : 20.0 km / D+ 256 m (cible 70 km / D+1200 m — largement sous cible)</span>
       <span class="badge badge-orange">🌡️ 15–23 juin : 32–35.7°C — volume réduit + acclimatation intentionnelle</span>
     </div>
   </div>
@@ -128,8 +133,8 @@
   <!-- CHART 5 : Sports répartition -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
     <div class="card">
-      <h2>Répartition des activités — 141 activités</h2>
-      <p class="text-xs text-slate-400 mb-3">Chaque barre = 100 % d'une métrique. Le trail pèse moins en nombre de séances (29 %) qu'en temps de mouvement (47 %).</p>
+      <h2>Répartition des activités — 154 activités</h2>
+      <p class="text-xs text-slate-400 mb-3">Chaque barre = 100 % d'une métrique. Le trail pèse moins en nombre de séances (28 %) qu'en temps de mouvement (44 %).</p>
       <canvas id="chart-sports" height="160"></canvas>
     </div>
 
@@ -187,12 +192,12 @@
     </div>
     <div class="card">
       <h2>Distribution d'intensité — Saison entière (168h)</h2>
-      <p class="text-xs text-slate-400 mb-4">Estimation via densité RE/h (proxy FC). Règle 80/20 : idéalement ≥ 80% en endurance/aérobie. Résultat : <strong class="text-green-700">88% facile–modéré + 12% seuil</strong> ≈ conforme.</p>
+      <p class="text-xs text-slate-400 mb-4">Estimation via densité RE/h (proxy FC). Règle 80/20 : idéalement ≥ 80% en endurance/aérobie. Résultat : <strong class="text-green-700">88% facile–modéré + 11% seuil</strong> ≈ conforme.</p>
       <div style="display:flex;gap:24px;align-items:center">
         <div style="flex:0 0 140px;position:relative">
           <canvas id="chart-zones" width="140" height="140"></canvas>
           <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">
-            <div style="font-size:18px;font-weight:700;color:#1e293b;line-height:1">172h</div>
+            <div style="font-size:18px;font-weight:700;color:#1e293b;line-height:1">184h</div>
             <div style="font-size:10px;color:#94a3b8;margin-top:2px">total</div>
           </div>
         </div>
@@ -200,25 +205,25 @@
           <div>
             <div style="display:flex;justify-content:space-between;margin-bottom:4px">
               <span style="font-size:12px;font-weight:600;color:#15803d">Z1–Z2 Endurance</span>
-              <span style="font-size:12px;color:#64748b">47.7h · <strong>28%</strong></span>
+              <span style="font-size:12px;color:#64748b">60.9h · <strong>33%</strong></span>
             </div>
-            <div style="background:#e2e8f0;border-radius:4px;height:7px"><div style="background:#16a34a;width:28%;height:100%;border-radius:4px"></div></div>
+            <div style="background:#e2e8f0;border-radius:4px;height:7px"><div style="background:#16a34a;width:33%;height:100%;border-radius:4px"></div></div>
             <div style="font-size:10px;color:#94a3b8;margin-top:2px">&lt; 130 RE/h · Endurance fondamentale</div>
           </div>
           <div>
             <div style="display:flex;justify-content:space-between;margin-bottom:4px">
               <span style="font-size:12px;font-weight:600;color:#1d4ed8">Z2–Z3 Aérobie</span>
-              <span style="font-size:12px;color:#64748b">99.9h · <strong>59%</strong></span>
+              <span style="font-size:12px;color:#64748b">102.8h · <strong>56%</strong></span>
             </div>
-            <div style="background:#e2e8f0;border-radius:4px;height:7px"><div style="background:#2563eb;width:59%;height:100%;border-radius:4px"></div></div>
+            <div style="background:#e2e8f0;border-radius:4px;height:7px"><div style="background:#2563eb;width:56%;height:100%;border-radius:4px"></div></div>
             <div style="font-size:10px;color:#94a3b8;margin-top:2px">130–200 RE/h · Aérobie modéré</div>
           </div>
           <div>
             <div style="display:flex;justify-content:space-between;margin-bottom:4px">
               <span style="font-size:12px;font-weight:600;color:#ea580c">Z4 Seuil</span>
-              <span style="font-size:12px;color:#64748b">20.8h · <strong>12%</strong></span>
+              <span style="font-size:12px;color:#64748b">20.8h · <strong>11%</strong></span>
             </div>
-            <div style="background:#e2e8f0;border-radius:4px;height:7px"><div style="background:#f97316;width:12%;height:100%;border-radius:4px"></div></div>
+            <div style="background:#e2e8f0;border-radius:4px;height:7px"><div style="background:#f97316;width:11%;height:100%;border-radius:4px"></div></div>
             <div style="font-size:10px;color:#94a3b8;margin-top:2px">200–280 RE/h · Effort seuil / tempo</div>
           </div>
           <div>
@@ -236,8 +241,8 @@
 
   <!-- Heatmap -->
   <div class="card">
-    <h2>Heatmap des entraînements — Jour × Créneau horaire (111 séances Run+Trail)</h2>
-    <p class="text-xs text-slate-400 mb-4">Patterns clés : <strong>Lundi = repos systématique</strong> · Dimanche matin = séance longue principale (22×) · Mercredi soir + Vendredi midi = séances tempo hebdo.</p>
+    <h2>Heatmap des entraînements — Jour × Créneau horaire (120 séances Run+Trail)</h2>
+    <p class="text-xs text-slate-400 mb-4">Patterns clés : <strong>Lundi = repos systématique</strong> · Dimanche matin = séance longue principale (24×) · Mercredi soir + Vendredi midi = séances tempo hebdo.</p>
     <div id="heatmap-container"></div>
   </div>
 
@@ -364,8 +369,8 @@
         <div class="flex items-start gap-3">
           <span class="badge badge-red mt-0.5">P1</span>
           <div>
-            <p class="font-semibold text-slate-800 text-sm">Reconstituer le volume trail — J-55 Échappée Belle (42km / ~D+2500m)</p>
-            <p class="text-xs text-slate-600 mt-1">Semaine 28 juin : prépa lancée ✅ — 13 km D+407m (28 juin). Objectif : monter à 55–65 km/sem avec D+ ≥ 1000 m/sem dès la semaine du 30 juin, cap à 65–70 km D+1500m d'ici mi-juillet. ACWR actuel 0.40 → cible 0.85–1.1 à J-21.</p>
+            <p class="font-semibold text-slate-800 text-sm">Reconstituer le D+ trail — J-45 Échappée Belle (42km / ~D+2500m)</p>
+            <p class="text-xs text-slate-600 mt-1">Semaine S3 (7–13 juil.) terminée : 20.0 km seulement (cible 70 km) et D+ 256 m (cible 1200 m) — semaine largement sous le plan, absorbée par l'accompagnement de Pierre sur son 100km (pas de kilométrage propre) et des sorties courtes. Le bloc volume/D+ prévu n'a pas eu lieu ; ACWR reste bas (0.22), la marge de charge est intacte pour relancer en S4/S5 sans risque, mais le retard de spécifique trail (D+) doit être rattrapé avant l'Échappée Belle (J-41).</p>
           </div>
         </div>
       </div>
@@ -393,9 +398,24 @@
   <!-- RESUME -->
   <div class="card bg-slate-800 text-white" style="background:#1e293b;">
     <h2 style="color:#94a3b8">Résumé exécutif</h2>
-    <p class="text-sm text-slate-300 leading-relaxed">
-      Saison 2026 construite autour de <strong class="text-orange-400">5 compétitions</strong> : Maxicross 25km trail (1er fév, 3h25), ETP 120km ultra-trail (21 mars, 21h21) avec pic à 132 km/semaine et ACWR 1.41, Trail des Lavoirs 23km (10 mai, 2h32), Foulée Verte Clamart 17.5km (31 mai, 1h50, FC max 188 bpm), puis <strong class="text-orange-400">10km en 47:49 le 14 juin (2e all-time)</strong> avec split négatif parfait et puissance record (4.68 W/kg). 110 séances run+trail · 1 531 km · D+ 16 372 m sur 27 semaines. Zones FC recalibrées manuellement (Z1 ≤ 136, Z5 ≥ 176 bpm). Vague de chaleur 15–23 juin (32–35.7°C) : volume réduit intentionnellement, acclimatation cardiovasculaire en cours. Prépa Échappée Belle lancée le 28 juin (D+ 407 m, 13 km) ; semaine du 29 juin encore légère (24 km, D+158 m, ACWR 0.17) — volume à relancer vs cible S2 (62 km / D+900 m). Prochain objectif : <strong class="text-orange-400">Échappée Belle 42km · 22 août · J-52</strong>.
-    </p>
+    <div class="space-y-3 mt-1">
+      <div>
+        <span class="text-xs font-bold uppercase tracking-wide text-orange-400">🏁 Compétitions (5)</span>
+        <p class="text-sm text-slate-300 leading-relaxed mt-1">Maxicross 25km trail (1er fév, 3h25) · ETP 120km ultra-trail (21 mars, 21h21, pic 132 km/sem, ACWR 1.41) · Trail des Lavoirs 23km (10 mai, 2h32) · Foulée Verte Clamart 17.5km (31 mai, 1h50, FC max 188 bpm) · <strong class="text-white">10km en 47:49 (14 juin, 2e all-time, split négatif parfait, 4.68 W/kg)</strong>.</p>
+      </div>
+      <div class="pt-3 border-t border-slate-700">
+        <span class="text-xs font-bold uppercase tracking-wide text-orange-400">📊 Volume saison</span>
+        <p class="text-sm text-slate-300 leading-relaxed mt-1">120 séances run+trail · 1 598 km · D+ 16 766 m sur 28 semaines. Zones FC recalibrées manuellement (Z1 ≤ 136, Z5 ≥ 176 bpm). Vague de chaleur 15–23 juin (32–35.7°C) : volume réduit intentionnellement, acclimatation cardiovasculaire en cours.</p>
+      </div>
+      <div class="pt-3 border-t border-slate-700">
+        <span class="text-xs font-bold uppercase tracking-wide text-orange-400">🔥 Forme actuelle — Prépa Échappée Belle</span>
+        <p class="text-sm text-slate-300 leading-relaxed mt-1">Lancée le 28 juin (D+ 407 m, 13 km). S2 (29 juin–5 juil.) : 71 km (> cible 62 km) mais D+ 296 m seulement (&lt; cible 900 m). S3 (6–12 juil.) terminée : 20.0 km / D+ 256 m — très sous cible (70 km / D+1200 m), semaine absorbée par l'accompagnement de Pierre sur son 100km. ACWR 0.22, marge de charge intacte pour relancer.</p>
+      </div>
+      <div class="pt-3 border-t border-slate-700">
+        <span class="text-xs font-bold uppercase tracking-wide text-orange-400">🎯 Prochain objectif</span>
+        <p class="text-sm text-slate-300 leading-relaxed mt-1"><strong class="text-orange-400">Échappée Belle 42km · 22 août · J-41</strong></p>
+      </div>
+    </div>
   </div>
 
   <p class="text-xs text-slate-400 text-center pb-4">Données : MCP Strava · Analyse : Claude Code · Confiance : Élevé sur données race, Moyen sur volumes et zones FC (zones manuelles actives, distribution estimée sans streams complets)</p>
@@ -716,9 +736,39 @@
     <div class="card"><h2 class="text-center text-slate-700 mb-3">Juillet 2026</h2><div id="cal-7"></div></div>
   </div>
 
-  <p class="text-xs text-slate-400 text-center pb-4">143 activités · 1 janv. → 1 juil. 2026 · Données : MCP Strava</p>
+  <p class="text-xs text-slate-400 text-center pb-4">154 activités · 1 janv. → 12 juil. 2026 · Données : MCP Strava</p>
 
 </div><!-- /pane-entrainement -->
+
+<!-- ══════════ ONGLET MUSCULATION ══════════ -->
+<div id="pane-muscu" class="max-w-5xl mx-auto space-y-5" style="display:none">
+
+  <div class="card">
+    <h2>Musculation</h2>
+    <p class="text-xs text-slate-400 mb-1">Détail séries / répétitions / charges récupéré via l'API Garmin Connect — non disponible via l'API Strava, qui ne fournit qu'une durée et des calories globales pour ce type de séance.</p>
+    <p class="text-xs text-slate-400 mb-3">Le schéma corporel colore les groupes musculaires sollicités : <span style="display:inline-block;width:10px;height:10px;background:#fed7aa;border:1px solid #cbd5e1;border-radius:2px;vertical-align:middle;margin:0 2px"></span> peu de séries → <span style="display:inline-block;width:10px;height:10px;background:#FC4C02;border-radius:2px;vertical-align:middle;margin:0 2px"></span> beaucoup de séries.</p>
+    <div id="muscu-sessions"></div>
+  </div>
+
+</div><!-- /pane-muscu -->
+
+<!-- ══════════ ONGLET VÉLO ══════════ -->
+<div id="pane-velo" class="max-w-5xl mx-auto space-y-5" style="display:none">
+
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="velo-kpis"></div>
+
+  <div class="card">
+    <h2>Volume hebdomadaire vélo (km)</h2>
+    <canvas id="chart-velo-weekly" height="90"></canvas>
+  </div>
+
+  <div class="card">
+    <h2>Sorties vélo</h2>
+    <p class="text-xs text-slate-400 mb-3">Distinct du volume run+trail (ACWR, CTL/ATL, charges hebdo) — le vélo est une activité complémentaire non spécifique à la préparation trail/marathon.</p>
+    <div id="velo-table"></div>
+  </div>
+
+</div><!-- /pane-velo -->
 
 <!-- ══════════ ONGLET LEXIQUE ══════════ -->
 <div id="pane-lexique" class="max-w-5xl mx-auto space-y-5" style="display:none">
@@ -1257,18 +1307,18 @@ const radarDs = (label, data, color, bw=2) => ({
 });
 
 // ── DONNÉES ──
-const weeks     = ['29/12','05/01','12/01','19/01','26/01','02/02','09/02','16/02','23/02','02/03','09/03','16/03','23/03','30/03','06/04','13/04','20/04','27/04','04/05','11/05','18/05','25/05','01/06','08/06','15/06','22/06','29/06'];
-const runKm     = [64.4,65.2,46.6,73.9,68.9,78.0,75.6,74.9,85.0,79.7,45.9,132.5,18.3,22.3,54.7,50.1,47.1,65.8,48.0,45.7,59.8,50.0,44.2,48.6,30.6,30.7,24.2];
-const runKmOnly   = [38.0,65.2,36.3,40.8,44.0,47.8,38.2,49.0,44.4,26.1,23.2,6.5,18.3,9.3,44.0,23.3,22.5,13.0,25.1,45.7,34.3,22.0,21.8,36.1,30.6,0,24.2];
-const trailKmOnly = [26.4,0,10.3,33.0,24.9,30.2,37.5,25.9,40.6,53.6,22.7,125.9,0,13.1,10.7,26.7,24.6,52.8,23.0,0,25.5,28.1,22.4,12.4,0,30.7,0];
-const wkTimeH   = [7.1,6.82,4.99,8.06,7.92,8.44,8.8,8.42,9.32,8.65,4.62,22.57,1.87,2.47,5.68,5.27,4.83,12.45,5.02,4.32,6.31,5.04,4.6,4.81,3.08,3.33,2.44];
-const runElev   = [130,188,72,120,182,113,99,134,97,126,122,36,41,18,169,41,156,37,54,189,132,43,62,78,74,0,158];
-const trailElev = [538,0,329,810,760,396,1045,543,666,657,66,1894,0,187,31,372,246,2979,526,0,395,437,333,39,0,452,0];
+const weeks = ['29/12','05/01','12/01','19/01','26/01','02/02','09/02','16/02','23/02','02/03','09/03','16/03','23/03','30/03','06/04','13/04','20/04','27/04','04/05','11/05','18/05','25/05','01/06','08/06','15/06','22/06','29/06','06/07'];
+const runKm = [64.4,65.2,46.6,73.9,68.9,78.0,75.6,74.9,85.0,79.7,45.9,132.5,18.3,22.3,54.7,50.1,47.1,65.8,48.0,45.7,59.8,50.0,44.2,48.6,30.6,30.8,71.2,20.0];
+const runKmOnly = [38.0,65.2,36.3,40.8,44.0,47.8,38.2,49.0,44.4,26.1,23.2,6.5,18.3,9.3,44.0,23.3,22.5,13.0,25.1,45.7,34.3,22.0,21.8,36.1,30.6,0.0,60.4,1.9];
+const trailKmOnly = [26.4,0.0,10.3,33.0,24.9,30.2,37.5,25.9,40.6,53.6,22.7,125.9,0.0,13.1,10.7,26.7,24.6,52.8,23.0,0.0,25.5,28.1,22.4,12.4,0.0,30.8,10.9,18.1];
+const wkTimeH = [7.1,6.82,4.99,8.06,7.92,8.44,8.8,8.42,9.32,8.65,4.62,22.57,1.87,2.47,5.68,5.27,4.83,12.45,5.02,4.32,6.31,5.04,4.6,4.81,3.08,3.34,7.38,2.29];
+const runElev = [130,188,72,120,182,113,99,134,97,126,122,36,41,18,169,41,156,37,54,189,132,43,62,78,74,0,267,12];
+const trailElev = [538,0,329,810,760,396,1045,543,666,657,66,1894,0,187,31,372,246,2979,526,0,395,437,333,39,0,452,29,244];
 const totalElev = runElev.map((v,i) => v+trailElev[i]);
-const wkCal   = [5940,5691,4826,6287,6524,7093,7413,6552,7496,7151,3922,11731,1439,1858,4706,4140,4455,7215,3520,2761,3862,3463,2806,2848,2454,3011,1909];
-const acwr    = [4.0,1.96,1.04,1.14,0.9,0.92,0.85,0.72,0.89,0.8,0.39,1.41,0.19,0.31,0.82,0.8,0.97,1.01,0.79,0.65,0.95,0.75,0.65,0.61,0.66,0.40,0.17];
-const reData  = [1289,1238,960,1353,1447,1479,1378,1249,1550,1419,600,2567,297,399,1053,1062,900,1135,1000,788,1195,1038,758,675,471,202,59];
-const wkMaxTemp = [null,20.0,null,null,null,null,null,null,19.7,16.6,null,16.8,null,null,24.6,20.9,22.3,21.0,20.0,20.0,28.9,30.5,19.4,20.1,32.1,35.7,25.7];
+const wkCal = [5940,5691,4826,6287,6524,7093,7413,6552,7496,7151,3922,11731,1439,1858,4706,4140,4455,7215,3923,3473,5376,5676,3611,4086,2454,3011,5568,3010];
+const acwr = [4.0,1.96,1.04,1.14,0.9,0.92,0.85,0.72,0.89,0.8,0.39,1.41,0.19,0.31,0.82,0.8,0.97,1.01,0.79,0.65,0.95,0.75,0.65,0.61,0.66,0.4,0.3,0.22];
+const reData = [1289,1238,960,1353,1447,1479,1378,1249,1550,1419,600,2567,297,399,1053,1062,900,1135,1000,788,1195,1038,758,675,471,202,160,96];
+const wkMaxTemp = [null,20.0,null,null,null,null,null,null,19.7,16.6,null,16.8,null,null,24.6,20.9,22.3,21.0,20.0,20.0,28.9,30.5,20.0,20.1,32.1,35.7,25.7,33.3];
 const beLabels = ['17 jan\n(Run 30km)','08 fév\n(Trail 30km)','07 avr\n(Trail frac.)','10 mai\n(Trail 23km)','31 mai\n(Trail 17km)','14 juin\n(Race 10km)'];
 const be400  = [145,135,114,118,113,108];
 const be1k   = [367,345,296,310,291,274];
@@ -1434,9 +1484,9 @@ new Chart(document.getElementById('chart-acwr'), {
 
 // ── chart-sports ──
 const sportActuals = [
-  [68,   37,   9,    8,    5,   1  ],
-  [799,  670,  45,   172,  0,   0  ],
-  [81.6, 89.2, 8.9,  7.9,  2.4, 1.1],
+  [77,43,17,10,6,1],
+  [867.7,730.1,79.1,272.3,0.0,0.0],
+  [88.9,95.6,15.7,12.1,2.7,1.1],
 ];
 const sportPct   = sportActuals.map(row => { const tot=row.reduce((a,b)=>a+b,0); return row.map(v => +(v/tot*100).toFixed(1)); });
 const sportUnits = [' séances',' km',' h'];
@@ -1706,7 +1756,11 @@ new Chart(document.getElementById('chart-re'), {
 })();
 
 // ── Cadence ──
-const wkCadence = [85.1,87.0,84.7,84.2,84.8,86.0,83.6,82.6,85.0,85.3,86.1,81.5,86.0,81.9,84.9,85.0,85.8,73.3,84.7,85.8,84.7,85.2,85.1,86.0,86.4,85.3];
+const wkCadence = [85.1,87.0,84.7,84.2,84.8,86.0,83.6,82.6,85.0,85.3,86.1,81.5,86.0,81.9,84.9,85.0,85.8,73.3,84.7,85.8,84.7,85.2,85.1,86.0,86.4,83.6,83.1,85.6];
+const wkVeloOutKm = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,33.7,0.0,0.0,0.0,0.0,0.0,66.8];
+const wkVeloInKm = [0.0,0.0,44.5,0.0,30.7,32.9,12.2,24.1,0.0,14.0,0.0,0.0,0.0,0.0,13.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
+const wkVeloElev = [0,0,163,0,319,197,13,136,0,14,0,0,0,0,245,0,0,0,0,0,0,159,0,0,0,0,0,456];
+const wkVeloWatts = [null,null,105.1,null,102.5,90.3,115.2,96.4,null,111.4,null,null,null,null,126.7,null,null,null,null,null,null,105.3,null,null,null,null,null,118.1];
 new Chart(document.getElementById('chart-cadence'), {
   type: 'line',
   data: {
@@ -1739,7 +1793,7 @@ new Chart(document.getElementById('chart-zones'), {
   data: {
     labels: ['Z1–Z2 Endurance','Z2–Z3 Aérobie','Z4 Seuil','Z5 Haute Int.'],
     datasets: [{
-      data: [49.7, 102.8, 20.8, 0.0],
+      data: [60.9, 102.8, 20.8, 0.0],
       backgroundColor: [GREEN+'cc', BLUE+'cc', '#f97316cc', RED+'33'],
       borderColor: [GREEN, BLUE, '#f97316', '#ef444433'],
       borderWidth: 1.5,
@@ -1749,7 +1803,7 @@ new Chart(document.getElementById('chart-zones'), {
     maintainAspectRatio: false,
     plugins: {
       legend: { display:false },
-      tooltip: { callbacks:{ label: ctx => ctx.label+' : '+[49.7,102.8,20.8,0][ctx.dataIndex].toFixed(1)+'h ('+[29,59,12,0][ctx.dataIndex]+'%)' } }
+      tooltip: { callbacks:{ label: ctx => ctx.label+' : '+[60.9,102.8,20.8,0.0][ctx.dataIndex].toFixed(1)+'h ('+[33,56,11,0][ctx.dataIndex]+'%)' } }
     },
     cutout: '68%',
   }
@@ -1757,7 +1811,7 @@ new Chart(document.getElementById('chart-zones'), {
 
 // ── Heatmap ──
 (function() {
-  const hm = [[0,0,0,0],[0,0,0,14],[0,0,0,21],[1,1,0,2],[7,16,3,14],[5,0,1,0],[22,0,1,0]];
+  const hm = [[0,0,0,0],[0,0,0,15],[1,0,0,22],[1,1,0,3],[8,17,3,15],[5,0,2,2],[24,0,1,0]];
   const jours  = ['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
   const joursL = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
   const slots  = ['Matin','Midi','Après-midi','Soir'];
@@ -1815,7 +1869,7 @@ new Chart(document.getElementById('chart-zones'), {
   colTotals.forEach(ct => {
     html += `<td style="text-align:center;padding-top:8px;font-size:13px;font-weight:700;color:#ea580c">${ct}</td>`;
   });
-  html += '<td style="text-align:center;padding-top:8px;padding-left:10px;font-size:14px;font-weight:800;color:#374151">108</td>';
+  html += '<td style="text-align:center;padding-top:8px;padding-left:10px;font-size:14px;font-weight:800;color:#374151">120</td>';
   html += '</tr></tbody></table>';
 
   // ── Legend
@@ -1833,7 +1887,7 @@ new Chart(document.getElementById('chart-zones'), {
 // ══════════ TAB SWITCH ══════════
 let _mapInited = false;
 function showTab(name) {
-  ['global','courses','entrainement','carte','lexique','plan','marathon'].forEach(tab => {
+  ['global','courses','entrainement','muscu','velo','carte','lexique','plan','marathon'].forEach(tab => {
     document.getElementById('pane-'+tab).style.display = name===tab ? '' : 'none';
     document.getElementById('btn-'+tab).className = 'tab-btn'+(name===tab ? ' tab-active' : '');
   });
@@ -2156,8 +2210,36 @@ const calActs = [
   {d:'2026-06-26',t:'Trail',km:10.4,dur:'1h05',re:16,elev:31,n:"Boucle du dredi",race:false},
   {d:'2026-06-28',t:'Trail',km:13.3,dur:'1h32',re:44,elev:407,n:"Un peu de D+ (début prépa Échappée Belle)",race:false},
   {d:'2026-06-30',t:'Run',km:12.6,dur:'1h15',re:21,elev:43,n:"Footing du mardi",race:false},
-  {d:'2026-07-01',t:'Run',km:11.6,dur:'1h11',re:38,elev:115,n:"Fractionné en côte",race:false}
+  {d:'2026-07-01',t:'Run',km:11.6,dur:'1h11',re:38,elev:115,n:"Fractionné en côte",race:false},
+  {d:'2026-07-03',t:'Trail',km:10.9,dur:'1h03',re:23,elev:29,n:"Boucle du dredi",race:false},
+  {d:'2026-07-03',t:'Run',km:10.9,dur:'1h07',re:35,elev:28,n:"Fractionné long",race:false},
+  {d:'2026-07-04',t:'Run',km:2.2,dur:'22min',re:3,elev:3,n:"Accompagnement Pierre 100km (1)",race:false},
+  {d:'2026-07-04',t:'Run',km:4.1,dur:'25min',re:5,elev:5,n:"Accompagnement Pierre 100km (2)",race:false},
+  {d:'2026-07-04',t:'Run',km:6.1,dur:'38min',re:10,elev:7,n:"Accompagnement Pierre 100km (3)",race:false},
+  {d:'2026-07-05',t:'Run',km:13.0,dur:'1h18',re:25,elev:66,n:"Petite Baltard",race:false},
+  {d:'2026-07-07',t:'Muscu',km:0.0,dur:'18min',re:2,elev:0,n:"Renforcement musculaire",race:false},
+  {d:'2026-07-08',t:'Trail',km:7.3,dur:'52min',re:31,elev:223,n:"Quelques V à la fraîche",race:false},
+  {d:'2026-07-09',t:'Run',km:1.9,dur:'19min',re:2,elev:12,n:"Veillée Team Outdoor Laser Run",race:false},
+  {d:'2026-07-10',t:'Trail',km:10.8,dur:'1h05',re:17,elev:21,n:"Boucle du dredi",race:false},
+  {d:'2026-07-12',t:'Vélo',km:66.8,dur:'2h51',re:44,elev:456,n:"Sortie vélo le matin",race:false}
 ];
+
+// Détail sorties vélo (Ride/VirtualRide), extrait de activities_store.json par update_report.py
+const veloSessions = [
+  {id:'17061514571',date:'2026-01-15',start_local:'2026-01-15T18:59:22',name:"MyWhoosh - Area 52 (S-9)",km:21.9,elev:126,duration_s:3292,avg_speed_kmh:24.0,calories:374,indoor:true,avg_watts:113.6},
+  {id:'17083979548',date:'2026-01-17',start_local:'2026-01-17T17:44:08',name:"MyWhoosh - Al Wathba-L (S-9)",km:22.6,elev:36,duration_s:3439,avg_speed_kmh:23.7,calories:332,indoor:true,avg_watts:96.6},
+  {id:'17236370480',date:'2026-01-31',start_local:'2026-01-31T10:29:00',name:"MyWhoosh - Ardennes (S-8)",km:30.7,elev:318,duration_s:5799,avg_speed_kmh:19.0,calories:594,indoor:true,avg_watts:102.5},
+  {id:'17315703771',date:'2026-02-07',start_local:'2026-02-07T10:56:38',name:"MyWhoosh - The Seven Gems (S-7)",km:32.9,elev:196,duration_s:5747,avg_speed_kmh:20.6,calories:519,indoor:true,avg_watts:90.3},
+  {id:'17376906454',date:'2026-02-12',start_local:'2026-02-12T20:05:05',name:"MyWhoosh - Downtown LA (S-6)",km:12.2,elev:12,duration_s:1666,avg_speed_kmh:26.4,calories:192,indoor:true,avg_watts:115.2},
+  {id:'17453525545',date:'2026-02-19',start_local:'2026-02-19T19:03:33',name:"MyWhoosh - Kluisbergen (S-5)",km:24.1,elev:135,duration_s:4088,avg_speed_kmh:21.2,calories:395,indoor:true,avg_watts:96.4},
+  {id:'17579212255',date:'2026-03-02',start_local:'2026-03-02T19:19:36',name:"MyWhoosh - Hudayriyat Octopus Loop (J-19)",km:14.0,elev:13,duration_s:1953,avg_speed_kmh:25.8,calories:218,indoor:true,avg_watts:111.4},
+  {id:'18016675324',date:'2026-04-07',start_local:'2026-04-07T19:18:25',name:"MyWhoosh - Montreal",km:13.5,elev:245,duration_s:2484,avg_speed_kmh:19.5,calories:315,indoor:true,avg_watts:126.7},
+  {id:'18644844506',date:'2026-05-25',start_local:'2026-05-25T09:58:01',name:"Quelques tours au polygone",km:33.7,elev:159,duration_s:4863,avg_speed_kmh:25.0,calories:526,indoor:false,avg_watts:105.3},
+  {id:'19279532613',date:'2026-07-12',start_local:'2026-07-12T08:33:39',name:"Sortie vélo le matin",km:66.8,elev:456,duration_s:10268,avg_speed_kmh:23.4,calories:1201,indoor:false,avg_watts:118.1}
+];
+
+// Détail séries/répétitions/charges des séances muscu, extrait des .fit Garmin par update_muscu.py
+const muscuSessions = [{"id":"23515352314","date":"2026-07-07","start_local":"2026-07-07T21:35:00","name":"Renforcement musculaire","duration_s":1135,"calories":93,"avg_hr":93.0,"max_hr":109.0,"exercises":[{"category_name":"Squat","muscles":["quads","glutes","hamstrings"],"sets":[{"reps":20,"weight":0,"duration_s":61.4},{"reps":20,"weight":0,"duration_s":63.0},{"reps":20,"weight":0,"duration_s":58.6},{"reps":20,"weight":0,"duration_s":62.1}]},{"category_name":"Ischio-jambiers (élastique)","muscles":["hamstrings"],"sets":[{"reps":20,"weight":0,"duration_s":66.1},{"reps":20,"weight":0,"duration_s":72.9}]},{"category_name":"Mollets (calf raise)","muscles":["calves"],"sets":[{"reps":20,"weight":0,"duration_s":56.1},{"reps":20,"weight":0,"duration_s":56.1}]},{"category_name":"Crunch triceps","muscles":["abs","triceps"],"sets":[{"reps":10,"weight":0,"duration_s":41.4},{"reps":10,"weight":0,"duration_s":37.2}]}],"source":"garmin_api"}];
 
 // ── chart-zones-week ── (placé après calActs dont il dépend)
 (function() {
@@ -2361,6 +2443,199 @@ const calActs = [
   </tr>`;
   tbl += '</tbody>';
   document.getElementById('cal-stats').innerHTML = tbl;
+})();
+
+// ── MUSCULATION ──
+
+// Schéma corporel (face/dos) — zones colorées selon le nb de séries par groupe musculaire.
+// Rampe séquentielle mono-teinte (gris neutre -> orange Strava), cohérente avec le reste du rapport.
+const MUSCLE_RAMP = ['#f1f5f9', '#fed7aa', '#fdba74', '#fb923c', '#FC4C02'];
+function muscleFill(n) {
+  if (!n) return MUSCLE_RAMP[0];
+  return MUSCLE_RAMP[Math.min(n, MUSCLE_RAMP.length - 1)];
+}
+function bodySvg(view, muscleSets) {
+  const f = zone => muscleFill(muscleSets[zone] || 0);
+  const neutral = MUSCLE_RAMP[0], stroke = '#cbd5e1';
+  const head = `<circle cx="50" cy="15" r="11" fill="${neutral}" stroke="${stroke}"/><rect x="45" y="24" width="10" height="8" fill="${neutral}"/>`;
+  if (view === 'front') {
+    return `<svg viewBox="0 0 100 200" width="72" height="144">${head}
+      <ellipse cx="27" cy="38" rx="9" ry="8" fill="${f('shoulders')}" stroke="${stroke}"><title>Épaules</title></ellipse>
+      <ellipse cx="73" cy="38" rx="9" ry="8" fill="${f('shoulders')}" stroke="${stroke}"><title>Épaules</title></ellipse>
+      <rect x="32" y="33" width="36" height="24" rx="6" fill="${f('chest')}" stroke="${stroke}"><title>Pectoraux</title></rect>
+      <rect x="36" y="57" width="28" height="30" rx="4" fill="${f('abs')}" stroke="${stroke}"><title>Abdominaux</title></rect>
+      <rect x="14" y="40" width="12" height="30" rx="6" fill="${f('biceps')}" stroke="${stroke}"><title>Biceps</title></rect>
+      <rect x="74" y="40" width="12" height="30" rx="6" fill="${f('biceps')}" stroke="${stroke}"><title>Biceps</title></rect>
+      <rect x="12" y="70" width="11" height="28" rx="5" fill="${f('forearms')}" stroke="${stroke}"><title>Avant-bras</title></rect>
+      <rect x="77" y="70" width="11" height="28" rx="5" fill="${f('forearms')}" stroke="${stroke}"><title>Avant-bras</title></rect>
+      <rect x="34" y="87" width="15" height="40" rx="6" fill="${f('quads')}" stroke="${stroke}"><title>Quadriceps</title></rect>
+      <rect x="51" y="87" width="15" height="40" rx="6" fill="${f('quads')}" stroke="${stroke}"><title>Quadriceps</title></rect>
+      <rect x="35" y="127" width="12" height="40" rx="5" fill="${neutral}" stroke="${stroke}"/>
+      <rect x="53" y="127" width="12" height="40" rx="5" fill="${neutral}" stroke="${stroke}"/>
+    </svg>`;
+  }
+  return `<svg viewBox="0 0 100 200" width="72" height="144">${head}
+    <rect x="30" y="33" width="40" height="44" rx="8" fill="${f('back')}" stroke="${stroke}"><title>Dos</title></rect>
+    <rect x="14" y="40" width="12" height="30" rx="6" fill="${f('triceps')}" stroke="${stroke}"><title>Triceps</title></rect>
+    <rect x="74" y="40" width="12" height="30" rx="6" fill="${f('triceps')}" stroke="${stroke}"><title>Triceps</title></rect>
+    <rect x="12" y="70" width="11" height="28" rx="5" fill="${f('forearms')}" stroke="${stroke}"><title>Avant-bras</title></rect>
+    <rect x="77" y="70" width="11" height="28" rx="5" fill="${f('forearms')}" stroke="${stroke}"><title>Avant-bras</title></rect>
+    <rect x="33" y="78" width="34" height="16" rx="8" fill="${f('glutes')}" stroke="${stroke}"><title>Fessiers</title></rect>
+    <rect x="34" y="94" width="15" height="34" rx="6" fill="${f('hamstrings')}" stroke="${stroke}"><title>Ischio-jambiers</title></rect>
+    <rect x="51" y="94" width="15" height="34" rx="6" fill="${f('hamstrings')}" stroke="${stroke}"><title>Ischio-jambiers</title></rect>
+    <rect x="35" y="128" width="13" height="38" rx="5" fill="${f('calves')}" stroke="${stroke}"><title>Mollets</title></rect>
+    <rect x="52" y="128" width="13" height="38" rx="5" fill="${f('calves')}" stroke="${stroke}"><title>Mollets</title></rect>
+  </svg>`;
+}
+
+(function() {
+  const el = document.getElementById('muscu-sessions');
+  if (!el) return;
+  if (!muscuSessions.length) {
+    el.innerHTML = '<p class="text-sm text-slate-400">Aucune séance importée pour l\'instant. Lance <code>python update_muscu.py</code> (après connexion via <code>garmin_login.py</code>).</p>';
+    return;
+  }
+  const fmtDate = iso => new Date(iso).toLocaleDateString('fr-FR', {weekday:'short', day:'numeric', month:'short', year:'numeric'});
+  let html = '';
+  [...muscuSessions].reverse().forEach(s => {
+    const durMin = Math.round(s.duration_s / 60);
+    const totalSets = s.exercises.reduce((n,e) => n + e.sets.length, 0);
+    const totalReps = s.exercises.reduce((n,e) => n + e.sets.reduce((m,st) => m + (st.reps||0), 0), 0);
+    const muscleSets = {};
+    s.exercises.forEach(ex => (ex.muscles||[]).forEach(m => { muscleSets[m] = (muscleSets[m]||0) + ex.sets.length; }));
+    html += `<div style="border-top:1px solid #f1f5f9;padding:14px 0">
+      <div class="flex items-center justify-between flex-wrap gap-2 mb-2">
+        <div><span style="font-weight:700;color:#1e293b">${s.name}</span>
+          <span style="color:#94a3b8;font-size:12px;margin-left:8px">${fmtDate(s.start_local)}</span></div>
+        <div style="font-size:12px;color:#64748b">${durMin} min · ${s.calories} kcal${s.avg_hr ? ' · FC moy '+s.avg_hr : ''} · ${totalSets} séries · ${totalReps} reps</div>
+      </div>
+      <div class="flex gap-4 flex-wrap items-start">
+        <div class="flex gap-2">
+          <div class="flex flex-col items-center">${bodySvg('front', muscleSets)}<span style="font-size:10px;color:#94a3b8">Face</span></div>
+          <div class="flex flex-col items-center">${bodySvg('back', muscleSets)}<span style="font-size:10px;color:#94a3b8">Dos</span></div>
+        </div>
+        <table class="text-sm flex-1" style="min-width:260px">
+          <thead><tr style="text-align:left;border-bottom:1px solid #e2e8f0">
+            <th style="padding:4px 8px;font-size:11px;color:#64748b;font-weight:600">Exercice</th>
+            <th style="padding:4px 8px;font-size:11px;color:#64748b;font-weight:600">Répétitions par série</th>
+            <th style="padding:4px 8px;font-size:11px;color:#64748b;font-weight:600">Charge max</th>
+          </tr></thead>
+          <tbody>`;
+    s.exercises.forEach(ex => {
+      const repsStr = ex.sets.map(st => st.reps || '—').join(' / ');
+      const weights = ex.sets.map(st => st.weight).filter(w => w > 0);
+      const weightStr = weights.length ? Math.max(...weights) + ' kg' : '—';
+      html += `<tr style="border-bottom:1px solid #f8fafc">
+        <td style="padding:6px 8px;color:#334155">${ex.category_name}</td>
+        <td style="padding:6px 8px;color:#0f172a">${repsStr}</td>
+        <td style="padding:6px 8px;color:#64748b">${weightStr}</td>
+      </tr>`;
+    });
+    html += `</tbody></table></div></div>`;
+  });
+  el.innerHTML = html;
+})();
+
+// ── VÉLO ──
+(function() {
+  const kpiEl = document.getElementById('velo-kpis');
+  const tableEl = document.getElementById('velo-table');
+  const weeklyCanvas = document.getElementById('chart-velo-weekly');
+  if (!kpiEl || !tableEl) return;
+  if (!veloSessions.length) {
+    kpiEl.style.display = 'none';
+    if (weeklyCanvas) weeklyCanvas.closest('.card').style.display = 'none';
+    tableEl.innerHTML = '<p class="text-sm text-slate-400">Aucune sortie vélo enregistrée pour l\'instant.</p>';
+    return;
+  }
+  if (weeklyCanvas && (wkVeloOutKm.length || wkVeloInKm.length)) {
+    new Chart(weeklyCanvas, {
+      type: 'bar',
+      data: {
+        labels: weeks,
+        datasets: [
+          { label: 'Extérieur (km)', data: wkVeloOutKm, backgroundColor: BLUE, borderRadius: 4, stack: 'velo', order: 3 },
+          { label: 'Home-trainer (km)', data: wkVeloInKm, backgroundColor: SLATE, borderRadius: 4, stack: 'velo', order: 3 },
+          { label: 'D+ (m)', data: wkVeloElev, type: 'line', yAxisID: 'yElev', borderColor: ORANGE, backgroundColor: ORANGE, tension: 0.3, order: 0, pointRadius: 3, pointBorderColor: 'white', borderWidth: 2 },
+          { label: 'Puissance moy. (W)', data: wkVeloWatts, type: 'line', yAxisID: 'yWatts', borderColor: PURPLE, backgroundColor: 'transparent', tension: 0.3, order: 0, borderWidth: 2, borderDash: [4, 2], spanGaps: false, pointRadius: wkVeloWatts.map(v => v === null ? 0 : 3), pointBorderColor: 'white' },
+        ]
+      },
+      options: {
+        plugins: {
+          legend: { position: 'bottom', labels: { font: { size: 11 }, boxWidth: 12, padding: 10 } },
+          tooltip: { callbacks: { label: ctx => {
+            if (ctx.dataset.yAxisID === 'yElev') return ctx.dataset.label + ' : ' + ctx.parsed.y + ' m';
+            if (ctx.dataset.yAxisID === 'yWatts') return ctx.dataset.label + ' : ' + (ctx.parsed.y ?? '—') + ' W';
+            return ctx.dataset.label + ' : ' + ctx.parsed.y + ' km';
+          } } }
+        },
+        scales: {
+          y: { type: 'linear', beginAtZero: true, stacked: true, ticks: { callback: v => v + ' km' } },
+          yElev: { type: 'linear', position: 'right', beginAtZero: true, ticks: { callback: v => v + ' m' }, grid: noGrid },
+          yWatts: { type: 'linear', position: 'right', beginAtZero: true, display: false, grid: noGrid },
+          x: { ...xWks, stacked: true },
+        },
+        ...anim,
+      }
+    });
+  }
+  const outSessions = veloSessions.filter(v => !v.indoor);
+  const inSessions = veloSessions.filter(v => v.indoor);
+  const totalKm = veloSessions.reduce((s, v) => s + v.km, 0);
+  const totalElev = veloSessions.reduce((s, v) => s + v.elev, 0);
+  const speedOf = arr => {
+    const km = arr.reduce((s, v) => s + v.km, 0);
+    const h = arr.reduce((s, v) => s + v.duration_s, 0) / 3600;
+    return h ? km / h : 0;
+  };
+  kpiEl.innerHTML = `
+    <div class="metric-box" style="border-left:4px solid #2563eb">
+      <div class="metric-lbl">Sorties</div><div class="metric-val">${veloSessions.length}</div>
+      <div class="text-xs text-slate-400 mt-1">${outSessions.length} extérieur · ${inSessions.length} home-trainer</div>
+    </div>
+    <div class="metric-box" style="border-left:4px solid #2563eb">
+      <div class="metric-lbl">Distance totale</div><div class="metric-val">${Math.round(totalKm)} km</div>
+    </div>
+    <div class="metric-box" style="border-left:4px solid #2563eb">
+      <div class="metric-lbl">D+ cumulé</div><div class="metric-val">${Math.round(totalElev)} m</div>
+    </div>
+    <div class="metric-box" style="border-left:4px solid #2563eb">
+      <div class="metric-lbl">Vitesse moy.</div><div class="metric-val">${speedOf(outSessions).toFixed(1)} km/h ext.</div>
+      <div class="text-xs text-slate-400 mt-1">${speedOf(inSessions).toFixed(1)} km/h home-trainer</div>
+    </div>`;
+  const fmtDate = iso => new Date(iso).toLocaleDateString('fr-FR', {weekday:'short', day:'numeric', month:'short', year:'numeric'});
+  let html = `<div class="overflow-x-auto"><table class="text-sm w-full">
+    <thead><tr style="text-align:left;border-bottom:1px solid #e2e8f0">
+      <th style="padding:4px 8px;font-size:11px;color:#64748b;font-weight:600">Date</th>
+      <th style="padding:4px 8px;font-size:11px;color:#64748b;font-weight:600">Sortie</th>
+      <th style="padding:4px 8px;font-size:11px;color:#64748b;font-weight:600">Type</th>
+      <th style="padding:4px 8px;font-size:11px;color:#64748b;font-weight:600">Distance</th>
+      <th style="padding:4px 8px;font-size:11px;color:#64748b;font-weight:600">D+</th>
+      <th style="padding:4px 8px;font-size:11px;color:#64748b;font-weight:600">Durée</th>
+      <th style="padding:4px 8px;font-size:11px;color:#64748b;font-weight:600">Vitesse moy.</th>
+      <th style="padding:4px 8px;font-size:11px;color:#64748b;font-weight:600">Puissance moy.</th>
+      <th style="padding:4px 8px;font-size:11px;color:#64748b;font-weight:600">Calories</th>
+    </tr></thead><tbody>`;
+  [...veloSessions].reverse().forEach(v => {
+    const h = Math.floor(v.duration_s / 3600), m = Math.round((v.duration_s % 3600) / 60);
+    const dur = h ? `${h}h${String(m).padStart(2,'0')}` : `${m}min`;
+    const badge = v.indoor
+      ? '<span class="badge" style="background:#f1f5f9;color:#64748b">🏠 Home-trainer</span>'
+      : '<span class="badge badge-blue">🚴 Extérieur</span>';
+    html += `<tr style="border-bottom:1px solid #f8fafc">
+      <td style="padding:6px 8px;color:#94a3b8;white-space:nowrap">${fmtDate(v.start_local)}</td>
+      <td style="padding:6px 8px;color:#334155;font-weight:600">${v.name}</td>
+      <td style="padding:6px 8px">${badge}</td>
+      <td style="padding:6px 8px;color:#0f172a">${v.km} km</td>
+      <td style="padding:6px 8px;color:#0f172a">${v.elev} m</td>
+      <td style="padding:6px 8px;color:#0f172a">${dur}</td>
+      <td style="padding:6px 8px;color:#0f172a">${v.avg_speed_kmh} km/h</td>
+      <td style="padding:6px 8px;color:#0f172a">${v.avg_watts != null ? v.avg_watts + ' W' : '—'}</td>
+      <td style="padding:6px 8px;color:#64748b">${v.calories} kcal</td>
+    </tr>`;
+  });
+  html += '</tbody></table></div>';
+  tableEl.innerHTML = html;
 })();
 
 // ── PLAN ÉCHAPPÉE BELLE ──

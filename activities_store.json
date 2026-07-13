@@ -1,0 +1,999 @@
+[
+ {
+  "id": "17061514571",
+  "name": "MyWhoosh - Area 52 (S-9)",
+  "sport_type": "VirtualRide",
+  "start_local": "2026-01-15T18:59:22",
+  "summary": {
+   "distance": 21902.3,
+   "moving_time": 3292,
+   "elapsed_time": 3292,
+   "elevation_gain": 126.4,
+   "avg_speed": 6.653189550425274,
+   "max_speed": 16.36,
+   "relative_effort": 52,
+   "total_calories": 374,
+   "avg_cadence": 51.1666,
+   "kudos_count": 43,
+   "achievement_count": 0,
+   "pr_count": 0,
+   "avg_watts": 113.613
+  }
+ },
+ {
+  "id": "17083979548",
+  "name": "MyWhoosh - Al Wathba-L (S-9)",
+  "sport_type": "VirtualRide",
+  "start_local": "2026-01-17T17:44:08",
+  "summary": {
+   "distance": 22630.1,
+   "moving_time": 3439,
+   "elapsed_time": 3439,
+   "elevation_gain": 36.6,
+   "avg_speed": 6.58043035766211,
+   "max_speed": 11.58,
+   "relative_effort": 27,
+   "total_calories": 332,
+   "avg_cadence": 43.4951,
+   "kudos_count": 47,
+   "achievement_count": 0,
+   "pr_count": 0,
+   "avg_watts": 96.5673
+  }
+ },
+ {
+  "id": "17236370480",
+  "name": "MyWhoosh - Ardennes (S-8)",
+  "sport_type": "VirtualRide",
+  "start_local": "2026-01-31T10:29:00",
+  "summary": {
+   "distance": 30654.3,
+   "moving_time": 5799,
+   "elapsed_time": 5799,
+   "elevation_gain": 318.6,
+   "avg_speed": 5.2861355406104495,
+   "max_speed": 20.4,
+   "relative_effort": 84,
+   "total_calories": 594,
+   "avg_cadence": 47.7739,
+   "kudos_count": 47,
+   "achievement_count": 0,
+   "pr_count": 0,
+   "avg_watts": 102.535
+  }
+ },
+ {
+  "id": "17315703771",
+  "name": "MyWhoosh - The Seven Gems (S-7)",
+  "sport_type": "VirtualRide",
+  "start_local": "2026-02-07T10:56:38",
+  "summary": {
+   "distance": 32861.6,
+   "moving_time": 5747,
+   "elapsed_time": 5747,
+   "elevation_gain": 196.8,
+   "avg_speed": 5.7180441969723335,
+   "max_speed": 17.1,
+   "relative_effort": 46,
+   "total_calories": 519,
+   "avg_cadence": 42.4983,
+   "kudos_count": 43,
+   "achievement_count": 0,
+   "pr_count": 0,
+   "avg_watts": 90.3405
+  }
+ },
+ {
+  "id": "17376906454",
+  "name": "MyWhoosh - Downtown LA (S-6)",
+  "sport_type": "VirtualRide",
+  "start_local": "2026-02-12T20:05:05",
+  "summary": {
+   "distance": 12200.6,
+   "moving_time": 1666,
+   "elapsed_time": 1666,
+   "elevation_gain": 12.6,
+   "avg_speed": 7.32328931572629,
+   "max_speed": 9.22,
+   "relative_effort": 19,
+   "total_calories": 192,
+   "avg_cadence": 44.1853,
+   "kudos_count": 39,
+   "achievement_count": 2,
+   "pr_count": 2,
+   "avg_watts": 115.248
+  }
+ },
+ {
+  "id": "17453525545",
+  "name": "MyWhoosh - Kluisbergen (S-5)",
+  "sport_type": "VirtualRide",
+  "start_local": "2026-02-19T19:03:33",
+  "summary": {
+   "distance": 24090,
+   "moving_time": 4088,
+   "elapsed_time": 4088,
+   "elevation_gain": 135.6,
+   "avg_speed": 5.892857142857143,
+   "max_speed": 16.8,
+   "relative_effort": 40,
+   "total_calories": 395,
+   "avg_cadence": 39.4927,
+   "kudos_count": 37,
+   "achievement_count": 0,
+   "pr_count": 0,
+   "avg_watts": 96.3828
+  }
+ },
+ {
+  "id": "17579212255",
+  "name": "MyWhoosh - Hudayriyat Octopus Loop (J-19)",
+  "sport_type": "VirtualRide",
+  "start_local": "2026-03-02T19:19:36",
+  "summary": {
+   "distance": 14000.5,
+   "moving_time": 1953,
+   "elapsed_time": 1953,
+   "elevation_gain": 13.6,
+   "avg_speed": 7.168714797747056,
+   "max_speed": 10,
+   "relative_effort": 26,
+   "total_calories": 218,
+   "avg_cadence": 38.7358,
+   "kudos_count": 37,
+   "achievement_count": 1,
+   "pr_count": 0,
+   "avg_watts": 111.42
+  }
+ },
+ {
+  "id": "18016675324",
+  "name": "MyWhoosh - Montreal",
+  "sport_type": "VirtualRide",
+  "start_local": "2026-04-07T19:18:25",
+  "summary": {
+   "distance": 13468.8,
+   "moving_time": 2484,
+   "elapsed_time": 2484,
+   "elevation_gain": 245.2,
+   "avg_speed": 5.422222222222222,
+   "max_speed": 16.92,
+   "relative_effort": 62,
+   "total_calories": 315,
+   "avg_cadence": 44.0834,
+   "kudos_count": 40,
+   "achievement_count": 36,
+   "pr_count": 36,
+   "avg_watts": 126.674
+  }
+ },
+ {
+  "id": "18403275519",
+  "name": "Fractionné court",
+  "description": "Heat (20°C)",
+  "sport_type": "Run",
+  "start_local": "2026-05-06T19:20:52",
+  "summary": {
+   "distance": 11000.9,
+   "moving_time": 3802,
+   "elevation_gain": 18,
+   "relative_effort": 191,
+   "total_calories": 838,
+   "avg_cadence": 86.3774
+  }
+ },
+ {
+  "id": "18422502649",
+  "name": "Fractionné long",
+  "description": "Heat (20°C)",
+  "sport_type": "Run",
+  "start_local": "2026-05-08T09:21:23",
+  "summary": {
+   "distance": 14061.9,
+   "moving_time": 5121,
+   "elevation_gain": 36,
+   "relative_effort": 255,
+   "total_calories": 1115,
+   "avg_cadence": 86.1525
+  }
+ },
+ {
+  "id": "18448862987",
+  "name": "Trail des Lavoirs",
+  "description": "Heat (20°C)",
+  "sport_type": "TrailRun",
+  "start_local": "2026-05-10T08:50:41",
+  "summary": {
+   "distance": 22952.6,
+   "moving_time": 9140,
+   "elevation_gain": 526,
+   "relative_effort": 554,
+   "total_calories": 1970,
+   "avg_cadence": 81.4478
+  }
+ },
+ {
+  "id": "18481432909",
+  "name": "Footing du mardi",
+  "description": "",
+  "sport_type": "Run",
+  "start_local": "2026-05-12T19:19:16",
+  "summary": {
+   "distance": 12649.8,
+   "moving_time": 4254,
+   "elevation_gain": 37,
+   "relative_effort": 203,
+   "total_calories": 945,
+   "avg_cadence": 86.93
+  }
+ },
+ {
+  "id": "18494736105",
+  "name": "Fractionné court",
+  "description": "Heat (20°C)",
+  "sport_type": "Run",
+  "start_local": "2026-05-13T19:18:50",
+  "summary": {
+   "distance": 10652.8,
+   "moving_time": 3837,
+   "elevation_gain": 25,
+   "relative_effort": 167,
+   "total_calories": 821,
+   "avg_cadence": 86.035
+  }
+ },
+ {
+  "id": "18519001431",
+  "name": "Fractionné long",
+  "description": "Heat (20°C)",
+  "sport_type": "Run",
+  "start_local": "2026-05-15T17:47:04",
+  "summary": {
+   "distance": 9999.2,
+   "moving_time": 3373,
+   "elevation_gain": 41,
+   "relative_effort": 191,
+   "total_calories": 765,
+   "avg_cadence": 84.7553
+  }
+ },
+ {
+  "id": "18538551877",
+  "name": "Vimy - Farbus - Willerval - Vimy",
+  "description": "Heat (20°C)",
+  "sport_type": "Run",
+  "start_local": "2026-05-17T09:06:06",
+  "summary": {
+   "distance": 12430.1,
+   "moving_time": 4086,
+   "elevation_gain": 86,
+   "relative_effort": 227,
+   "total_calories": 942,
+   "avg_cadence": 85.3918
+  }
+ },
+ {
+  "id": "18564480928",
+  "name": "Marche retour garage",
+  "description": "",
+  "sport_type": "Walk",
+  "start_local": "2026-05-19T09:15:13",
+  "summary": {
+   "distance": 2708.9,
+   "moving_time": 1875,
+   "elevation_gain": 14,
+   "relative_effort": 7,
+   "total_calories": 182,
+   "avg_cadence": 61.7423
+  }
+ },
+ {
+  "id": "18572378268",
+  "name": "Footing du mardi",
+  "description": "Heat (20°C)",
+  "sport_type": "Run",
+  "start_local": "2026-05-19T19:21:29",
+  "summary": {
+   "distance": 12596.4,
+   "moving_time": 4531,
+   "elevation_gain": 35,
+   "relative_effort": 221,
+   "total_calories": 994,
+   "avg_cadence": 85.8729
+  }
+ },
+ {
+  "id": "18586264165",
+  "name": "Fractionné court",
+  "description": "Heat (20°C)",
+  "sport_type": "Run",
+  "start_local": "2026-05-20T19:36:00",
+  "summary": {
+   "distance": 11157.5,
+   "moving_time": 4090,
+   "elevation_gain": 76,
+   "relative_effort": 225,
+   "total_calories": 926,
+   "avg_cadence": 85.9962
+  }
+ },
+ {
+  "id": "18596192483",
+  "name": "Marche Aller Garage",
+  "description": "",
+  "sport_type": "Walk",
+  "start_local": "2026-05-21T16:18:35",
+  "summary": {
+   "distance": 3678.4,
+   "moving_time": 2259,
+   "elevation_gain": 10,
+   "relative_effort": 11,
+   "total_calories": 254,
+   "avg_cadence": 63.9022
+  }
+ },
+ {
+  "id": "18607017393",
+  "name": "Boucle du dredi midi",
+  "description": "Heat (24.6°C)",
+  "sport_type": "TrailRun",
+  "start_local": "2026-05-22T12:02:11",
+  "summary": {
+   "distance": 10437.9,
+   "moving_time": 3763,
+   "elevation_gain": 20,
+   "relative_effort": 182,
+   "total_calories": 829,
+   "avg_cadence": 86.1911
+  }
+ },
+ {
+  "id": "18612028146",
+  "name": "Fractionné long",
+  "description": "Heat (28.9°C)",
+  "sport_type": "Run",
+  "start_local": "2026-05-22T19:35:43",
+  "summary": {
+   "distance": 10572.8,
+   "moving_time": 3745,
+   "elevation_gain": 21,
+   "relative_effort": 210,
+   "total_calories": 861,
+   "avg_cadence": 86.1955
+  }
+ },
+ {
+  "id": "18632222472",
+  "name": "Un peu de D+ du côté de Gravelle et de la butte aux canons",
+  "description": "Heat (21.6°C)",
+  "sport_type": "TrailRun",
+  "start_local": "2026-05-24T09:37:12",
+  "summary": {
+   "distance": 15023.1,
+   "moving_time": 6592,
+   "elevation_gain": 375,
+   "relative_effort": 339,
+   "total_calories": 1330,
+   "avg_cadence": 79.0302
+  }
+ },
+ {
+  "id": "18644844506",
+  "name": "Quelques tours au polygone",
+  "description": "average temperature was 20°C",
+  "sport_type": "Ride",
+  "start_local": "2026-05-25T09:58:01",
+  "summary": {
+   "distance": 33735.3,
+   "moving_time": 4863,
+   "elevation_gain": 159,
+   "relative_effort": 60,
+   "total_calories": 526,
+   "avg_watts": 105.333
+  }
+ },
+ {
+  "id": "18648151357",
+  "name": "Marche Tour du Lac",
+  "description": "",
+  "sport_type": "Walk",
+  "start_local": "2026-05-25T14:54:40",
+  "summary": {
+   "distance": 4904.7,
+   "moving_time": 3565,
+   "elevation_gain": 15,
+   "relative_effort": 11,
+   "total_calories": 319,
+   "avg_cadence": 58.1506
+  }
+ },
+ {
+  "id": "18663397535",
+  "name": "Marche Retour TAF",
+  "description": "",
+  "sport_type": "Walk",
+  "start_local": "2026-05-26T17:53:35",
+  "summary": {
+   "distance": 4579.9,
+   "moving_time": 3321,
+   "elevation_gain": 27,
+   "relative_effort": 10,
+   "total_calories": 305,
+   "avg_cadence": 59.2448
+  }
+ },
+ {
+  "id": "18679399082",
+  "name": "Fractionné court",
+  "description": "Heat (30.5°C)",
+  "sport_type": "Run",
+  "start_local": "2026-05-27T19:17:39",
+  "summary": {
+   "distance": 11435.4,
+   "moving_time": 4226,
+   "elevation_gain": 21,
+   "relative_effort": 154,
+   "total_calories": 889,
+   "avg_cadence": 85.911
+  }
+ },
+ {
+  "id": "18698621123",
+  "name": "Boucle du dredi midi (à la fraîche)",
+  "description": "Heat (21.5°C)",
+  "sport_type": "TrailRun",
+  "start_local": "2026-05-29T07:37:04",
+  "summary": {
+   "distance": 10560.5,
+   "moving_time": 3723,
+   "elevation_gain": 23,
+   "relative_effort": 164,
+   "total_calories": 821,
+   "avg_cadence": 86.2932
+  }
+ },
+ {
+  "id": "18703340006",
+  "name": "Marche Bord de Marne",
+  "description": "",
+  "sport_type": "Walk",
+  "start_local": "2026-05-29T15:35:50",
+  "summary": {
+   "distance": 6692.9,
+   "moving_time": 4832,
+   "elevation_gain": 45,
+   "relative_effort": 14,
+   "total_calories": 442,
+   "avg_cadence": 59.5877
+  }
+ },
+ {
+  "id": "18711647967",
+  "name": "Reco Foulées 12 avec Team Outdoor",
+  "description": "Heat (22.8°C)",
+  "sport_type": "Run",
+  "start_local": "2026-05-30T08:17:10",
+  "summary": {
+   "distance": 10515.8,
+   "moving_time": 3600,
+   "elevation_gain": 22,
+   "relative_effort": 152,
+   "total_calories": 799,
+   "avg_cadence": 86.8695
+  }
+ },
+ {
+  "id": "18725084836",
+  "name": "La foulée verte de Clamart",
+  "description": "Heat (16.8°C)",
+  "sport_type": "TrailRun",
+  "start_local": "2026-05-31T09:00:38",
+  "summary": {
+   "distance": 17498,
+   "moving_time": 6587,
+   "elevation_gain": 414,
+   "relative_effort": 473,
+   "total_calories": 1575,
+   "avg_cadence": 81.697
+  }
+ },
+ {
+  "id": "18774410815",
+  "name": "Fractionné court",
+  "description": "Heat (20°C)",
+  "sport_type": "Run",
+  "start_local": "2026-06-03T19:22:09",
+  "summary": {
+   "distance": 11998.6,
+   "moving_time": 4399,
+   "elevation_gain": 45,
+   "relative_effort": 193,
+   "total_calories": 960,
+   "avg_cadence": 86.4864
+  }
+ },
+ {
+  "id": "18795323562",
+  "name": "Boucle du dredi midi",
+  "description": "Heat (17.5°C)",
+  "sport_type": "TrailRun",
+  "start_local": "2026-06-05T12:03:56",
+  "summary": {
+   "distance": 10802.8,
+   "moving_time": 3822,
+   "elevation_gain": 19,
+   "relative_effort": 144,
+   "total_calories": 825,
+   "avg_cadence": 86.2642
+  }
+ },
+ {
+  "id": "18800500690",
+  "name": "Fractionné long",
+  "description": "Heat (19.4°C)",
+  "sport_type": "Run",
+  "start_local": "2026-06-05T19:35:45",
+  "summary": {
+   "distance": 9839.2,
+   "moving_time": 3329,
+   "elevation_gain": 17,
+   "relative_effort": 175,
+   "total_calories": 783,
+   "avg_cadence": 85.8978
+  }
+ },
+ {
+  "id": "18820391514",
+  "name": "Séance Trail du côté de Gravelle",
+  "description": "",
+  "sport_type": "TrailRun",
+  "start_local": "2026-06-07T09:35:29",
+  "summary": {
+   "distance": 11559.2,
+   "moving_time": 4995,
+   "elevation_gain": 314,
+   "relative_effort": 246,
+   "total_calories": 1043,
+   "avg_cadence": 81.632
+  }
+ },
+ {
+  "id": "18854968551",
+  "name": "Footing du mardi",
+  "description": "Heat (17.3°C)",
+  "sport_type": "TrailRun",
+  "start_local": "2026-06-09T19:21:06",
+  "summary": {
+   "distance": 12448.5,
+   "moving_time": 4474,
+   "elevation_gain": 39,
+   "relative_effort": 179,
+   "total_calories": 970,
+   "avg_cadence": 85.4729
+  }
+ },
+ {
+  "id": "18869053702",
+  "name": "Fractionné court",
+  "description": "Heat (17.3°C)",
+  "sport_type": "Run",
+  "start_local": "2026-06-10T19:36:41",
+  "summary": {
+   "distance": 10070.8,
+   "moving_time": 3891,
+   "elevation_gain": 25,
+   "relative_effort": 110,
+   "total_calories": 786,
+   "avg_cadence": 86.4612
+  }
+ },
+ {
+  "id": "18880639981",
+  "name": "Marche Retour TAF",
+  "description": "",
+  "sport_type": "Walk",
+  "start_local": "2026-06-11T17:52:46",
+  "summary": {
+   "distance": 4498.8,
+   "moving_time": 3067,
+   "elevation_gain": 30,
+   "relative_effort": 9,
+   "total_calories": 300,
+   "avg_cadence": 60.6374
+  }
+ },
+ {
+  "id": "18888739552",
+  "name": "Mini footing du dredi midi",
+  "description": "Heat (20.1°C)",
+  "sport_type": "Run",
+  "start_local": "2026-06-12T12:02:06",
+  "summary": {
+   "distance": 5333.5,
+   "moving_time": 1931,
+   "elevation_gain": 11,
+   "relative_effort": 59,
+   "total_calories": 416,
+   "avg_cadence": 84.5223
+  }
+ },
+ {
+  "id": "18899211359",
+  "name": "Séance déblocage veille de course",
+  "description": "Heat (17.0°C)",
+  "sport_type": "Run",
+  "start_local": "2026-06-13T09:01:56",
+  "summary": {
+   "distance": 7005,
+   "moving_time": 2546,
+   "elevation_gain": 16,
+   "relative_effort": 80,
+   "total_calories": 544,
+   "avg_cadence": 85.8914
+  }
+ },
+ {
+  "id": "18912280535",
+  "name": "Échauffement foulées du 12eme",
+  "description": "",
+  "sport_type": "Run",
+  "start_local": "2026-06-14T08:33:51",
+  "summary": {
+   "distance": 3664.3,
+   "moving_time": 1590,
+   "elevation_gain": 6,
+   "relative_effort": 27,
+   "total_calories": 298,
+   "avg_cadence": 84.7535
+  }
+ },
+ {
+  "id": "18912947563",
+  "name": "Les foulées du 12eme",
+  "description": "PR 10km 47:49",
+  "sport_type": "Run",
+  "start_local": "2026-06-14T09:30:37",
+  "summary": {
+   "distance": 10060.9,
+   "moving_time": 2886,
+   "elevation_gain": 20,
+   "relative_effort": 211,
+   "total_calories": 772,
+   "avg_cadence": 88.9563
+  }
+ },
+ {
+  "id": "18947878064",
+  "name": "Footing du mardi",
+  "description": "Heat (27.4°C)",
+  "sport_type": "Run",
+  "start_local": "2026-06-16T19:32:41",
+  "summary": {
+   "distance": 11851.7,
+   "moving_time": 4061,
+   "elevation_gain": 34,
+   "relative_effort": 223,
+   "total_calories": 935,
+   "avg_cadence": 86.7249
+  }
+ },
+ {
+  "id": "18962101925",
+  "name": "Fractionné court",
+  "description": "Heat (32.1°C)",
+  "sport_type": "Run",
+  "start_local": "2026-06-17T19:35:35",
+  "summary": {
+   "distance": 8048,
+   "moving_time": 3143,
+   "elevation_gain": 18,
+   "relative_effort": 101,
+   "total_calories": 675,
+   "avg_cadence": 86.0004
+  }
+ },
+ {
+  "id": "18980615743",
+  "name": "Boucle du dredi",
+  "description": "Heat (22.1°C)",
+  "sport_type": "Run",
+  "start_local": "2026-06-19T07:20:21",
+  "summary": {
+   "distance": 10658.7,
+   "moving_time": 3883,
+   "elevation_gain": 22,
+   "relative_effort": 147,
+   "total_calories": 844,
+   "avg_cadence": 86.4391
+  }
+ },
+ {
+  "id": "19023632542",
+  "name": "Marche Tour du Lac",
+  "description": "",
+  "sport_type": "Walk",
+  "start_local": "2026-06-22T17:03:27",
+  "summary": {
+   "distance": 3004.6,
+   "moving_time": 2307,
+   "elevation_gain": 8,
+   "relative_effort": 6,
+   "total_calories": 196,
+   "avg_cadence": 56.9696
+  }
+ },
+ {
+  "id": "19039668328",
+  "name": "P'tit footing d'acclimatation",
+  "description": "Heat (35.7°C)",
+  "sport_type": "TrailRun",
+  "start_local": "2026-06-23T20:10:00",
+  "summary": {
+   "distance": 7024,
+   "moving_time": 2547,
+   "elevation_gain": 14,
+   "relative_effort": 129,
+   "total_calories": 567,
+   "avg_cadence": 84.3587
+  }
+ },
+ {
+  "id": "19064298438",
+  "name": "Marche Retour TAF",
+  "description": "",
+  "sport_type": "Walk",
+  "start_local": "2026-06-25T18:09:59",
+  "summary": {
+   "distance": 4445.2,
+   "moving_time": 3093,
+   "elevation_gain": 39,
+   "relative_effort": 7,
+   "total_calories": 297,
+   "avg_cadence": 60.2668
+  }
+ },
+ {
+  "id": "19070200772",
+  "name": "Boucle du dredi",
+  "description": "Heat (26.3°C)",
+  "sport_type": "TrailRun",
+  "start_local": "2026-06-26T06:54:27",
+  "summary": {
+   "distance": 10429.8,
+   "moving_time": 3924,
+   "elevation_gain": 31,
+   "relative_effort": 16,
+   "total_calories": 836,
+   "avg_cadence": 86.1719
+  }
+ },
+ {
+  "id": "19094984083",
+  "name": "Un peu de D+ (début prépa Échappée Belle 42km)",
+  "description": "Heat (20°C)",
+  "sport_type": "TrailRun",
+  "start_local": "2026-06-28T09:05:24",
+  "summary": {
+   "distance": 13325.6,
+   "moving_time": 5565,
+   "elevation_gain": 407,
+   "relative_effort": 44,
+   "total_calories": 1115,
+   "avg_cadence": 80.4121
+  }
+ },
+ {
+  "id": "19127862873",
+  "name": "Footing du mardi",
+  "description": "Heat (25.7°C)",
+  "sport_type": "Run",
+  "start_local": "2026-06-30T19:24:18",
+  "summary": {
+   "distance": 12576.2,
+   "moving_time": 4516,
+   "elevation_gain": 43,
+   "relative_effort": 21,
+   "total_calories": 972,
+   "avg_cadence": 84.8848
+  }
+ },
+ {
+  "id": "19141460361",
+  "name": "Fractionné en côte",
+  "description": "Heat (24.7°C)",
+  "sport_type": "Run",
+  "start_local": "2026-07-01T19:22:17",
+  "summary": {
+   "distance": 11584.8,
+   "moving_time": 4260,
+   "elevation_gain": 115,
+   "relative_effort": 38,
+   "total_calories": 937,
+   "avg_cadence": 85.3891
+  }
+ },
+ {
+  "id": "19161771016",
+  "name": "Boucle du dredi",
+  "description": "",
+  "sport_type": "TrailRun",
+  "start_local": "2026-07-03T11:58:27",
+  "summary": {
+   "distance": 10854.1,
+   "moving_time": 3794,
+   "elevation_gain": 29,
+   "relative_effort": 23,
+   "total_calories": 834,
+   "avg_cadence": 86.562
+  }
+ },
+ {
+  "id": "19167189857",
+  "name": "Fractionné long",
+  "description": "",
+  "sport_type": "Run",
+  "start_local": "2026-07-03T19:35:44",
+  "summary": {
+   "distance": 10911.5,
+   "moving_time": 4054,
+   "elevation_gain": 28,
+   "relative_effort": 35,
+   "total_calories": 868,
+   "avg_cadence": 85.1747
+  }
+ },
+ {
+  "id": "19177786747",
+  "name": "Un tour pour accompagner Pierre sur son 100km",
+  "description": "",
+  "sport_type": "Run",
+  "start_local": "2026-07-04T16:25:32",
+  "summary": {
+   "distance": 2161.3,
+   "moving_time": 1336,
+   "elevation_gain": 3,
+   "relative_effort": 3,
+   "total_calories": 148,
+   "avg_cadence": 62.8072
+  }
+ },
+ {
+  "id": "19179461024",
+  "name": "Accompagnement de Pierre sur son 100km",
+  "description": "",
+  "sport_type": "Run",
+  "start_local": "2026-07-04T18:38:15",
+  "summary": {
+   "distance": 4050.2,
+   "moving_time": 1545,
+   "elevation_gain": 5,
+   "relative_effort": 5,
+   "total_calories": 313,
+   "avg_cadence": 86.3116
+  }
+ },
+ {
+  "id": "19180241862",
+  "name": "Accompagnement de Pierre sur son 100km",
+  "description": "",
+  "sport_type": "Run",
+  "start_local": "2026-07-04T19:50:47",
+  "summary": {
+   "distance": 6077.5,
+   "moving_time": 2329,
+   "elevation_gain": 7,
+   "relative_effort": 10,
+   "total_calories": 485,
+   "avg_cadence": 86.3736
+  }
+ },
+ {
+  "id": "19185969769",
+  "name": "Petite Baltard",
+  "description": "",
+  "sport_type": "Run",
+  "start_local": "2026-07-05T09:37:14",
+  "summary": {
+   "distance": 12996.5,
+   "moving_time": 4722,
+   "elevation_gain": 66,
+   "relative_effort": 25,
+   "total_calories": 1011,
+   "avg_cadence": 87.5652
+  }
+ },
+ {
+  "id": "19219565804",
+  "name": "Renforcement musculaire",
+  "description": "",
+  "sport_type": "WeightTraining",
+  "start_local": "2026-07-07T21:35:28",
+  "summary": {
+   "distance": 0,
+   "moving_time": 1134,
+   "elevation_gain": 0,
+   "relative_effort": 2,
+   "total_calories": 93
+  }
+ },
+ {
+  "id": "19223968163",
+  "name": "Quelques V à la fraîche",
+  "description": "Heat (19.2°C)",
+  "sport_type": "TrailRun",
+  "start_local": "2026-07-08T06:32:57",
+  "summary": {
+   "distance": 7306.9,
+   "moving_time": 3144,
+   "elevation_gain": 223,
+   "relative_effort": 31,
+   "total_calories": 671,
+   "avg_cadence": 81.718
+  }
+ },
+ {
+  "id": "19246477817",
+  "name": "Veillée Team Outdoor Laser Run",
+  "description": "📈 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📈\n⚽ You ran across 18 football fields!\nAdjusted Pace: 𝟵:𝟰𝟵/km\n🏝️ Elevation (0.6% avg) cost you 𝟬'𝟬𝟲\"/km.\n🥵 Heat (33.3°C) cost you 𝟬'𝟭𝟰\"/km.\n🍃 Wind (13.5km/h) cost you 𝟬'𝟬𝟴\"/km.\n👌 The altitude didn't affect your run.\n⏱ Under standard conditions, you would have gained 𝟬'𝟱𝟯\".\n🔥 Estimated energy cost: 157-192 kcal.\n💧 Estimated fluid loss: 0.1-0.2L (0.5L/h sweat rate).\n\nTry it now 👉 https://dashboard.enduraw-data.com/",
+  "sport_type": "Run",
+  "start_local": "2026-07-09T19:52:44",
+  "gear_id": "29923154",
+  "summary": {
+   "distance": 1891.4,
+   "moving_time": 1167,
+   "elapsed_time": 1719,
+   "elevation_gain": 12,
+   "avg_speed": 1.6207369323050558,
+   "max_speed": 5.06,
+   "relative_effort": 2,
+   "total_calories": 206,
+   "avg_cadence": 88.9659,
+   "kudos_count": 36,
+   "achievement_count": 0,
+   "pr_count": 0
+  }
+ },
+ {
+  "id": "19252177545",
+  "name": "Boucle du dredi",
+  "description": "📈 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📈\n⚽ You ran across 103 football fields!\nAdjusted Pace: 𝟱:𝟱𝟭/km\n🏝️ Elevation (0.2% avg) cost you 𝟬'𝟬𝟭\"/km.\n😳 Heat (21.5°C) cost you 𝟬'𝟬𝟲\"/km.\n🍃 Wind (6.9km/h) cost you 𝟬'𝟬𝟳\"/km.\n👌 The altitude didn't affect your run.\n⏱ Under standard conditions, you would have gained 𝟮'𝟮𝟴\".\n🔥 Estimated energy cost: 873-1067 kcal.\n💧 Estimated fluid loss: 0.6-1.1L (0.7L/h sweat rate).\n\nTry it now 👉 https://dashboard.enduraw-data.com/",
+  "sport_type": "TrailRun",
+  "start_local": "2026-07-10T07:22:28",
+  "gear_id": "28975365",
+  "summary": {
+   "distance": 10830.3,
+   "moving_time": 3947,
+   "elapsed_time": 5132,
+   "elevation_gain": 21,
+   "avg_speed": 2.743932100329364,
+   "max_speed": 3.5,
+   "relative_effort": 17,
+   "total_calories": 839,
+   "avg_cadence": 86.1685,
+   "kudos_count": 49,
+   "achievement_count": 2,
+   "pr_count": 0
+  }
+ },
+ {
+  "id": "19279532613",
+  "name": "Sortie vélo le matin",
+  "description": "📈 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📈\n\n🇫🇷 That's 26% of Paris–Roubaix!\n🌊 The average altitude was 𝟴𝟬m\n😳 The average temperature was 𝟮𝟮.𝟵°C\n🍃 The average wind was 𝟲.𝟰km/h\nWIP - A group of 4 riders in fair relays would have gone 7' faster than a lone cyclist.\n\nTry it now 👉 https://dashboard.enduraw-data.com/",
+  "sport_type": "Ride",
+  "start_local": "2026-07-12T08:33:39",
+  "summary": {
+   "distance": 66775.9,
+   "moving_time": 10268,
+   "elapsed_time": 12445,
+   "elevation_gain": 456,
+   "avg_speed": 6.50330151928321,
+   "max_speed": 11.8,
+   "relative_effort": 44,
+   "total_calories": 1201,
+   "kudos_count": 55,
+   "achievement_count": 46,
+   "pr_count": 45,
+   "avg_watts": 118.115
+  }
+ }
+]

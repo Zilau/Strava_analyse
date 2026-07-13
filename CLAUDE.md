@@ -6,13 +6,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 | File | Role |
 |---|---|
-| `rapport_performance.html` | Static performance report Jan–Jun 2026 — open directly in browser |
+| `rapport_performance.html` | Static performance report Jan–Jul 2026 — open directly in browser |
 | `rapport_annuel.html` | Static multi-year bilan (2023–2026) — open directly in browser |
-| `extract_calendar.py` | Reads cached Strava data, outputs `calActs` JS array (141 activities) |
-| `extract_extra.py` | Outputs cadence, heatmap, zone, CTL/ATL, temperature and weekly volume data |
+| `activities_store.json` | Source of truth: merged Strava activities from 6 May 2026 onward (id, name, description, sport_type, start_local, summary incl. `total_calories`) |
+| `activities_inbox.json` | Scratch file — paste a fresh `list_activities` MCP JSON dump here before running `update_report.py` |
+| `update_report.py` | **Weekly update pipeline.** Merges `activities_inbox.json` into `activities_store.json`, recomputes every derived stat, and patches both HTML reports directly via regex. See "Weekly update workflow" below. |
 | `update_map.py` | Reads raw GPS stream files, samples to 250–500 pts, writes `mapRoutes` into the HTML |
 | `plan_inject.py` | One-shot script that injected the Plan Échappée Belle tab into the HTML |
 | `marathon_inject.py` | One-shot script that injected the Plan Marathon NC tab into the HTML |
+| `extract_calendar.py` / `extract_extra.py` | **Legacy, superseded by `update_report.py`.** Kept for reference only — do not use for weekly updates (their embedded `P2_JSON` blobs are no longer maintained). |
+| `muscu_store.json` | Source of truth for strength-training detail: one entry per session (sets/reps/weight per exercise), fetched from the **Garmin Connect API** — not from the raw `.fit` file. See note below. |
+| `update_muscu.py` | Fetches new `strength_training` activities via `garminconnect.Garmin.get_activity_exercise_sets()`, upserts them into `muscu_store.json` (keyed by Garmin activity id, skips sessions already `source:'garmin_api'`), and patches `const muscuSessions` in `rapport_performance.html`. Requires a saved session — see `garmin_login.py`. |
+| `garmin_login.py` | Run manually (never by Claude) to authenticate with Garmin Connect — prompts for email/password/MFA via masked terminal input and saves a session token to `~/.garminconnect`. Re-run when the token expires. |
+| `garmin_fetch_sets.py` | Debug utility — lists recent `strength_training` activities, or dumps the raw `exerciseSets` JSON for a given activity id. Not part of the regular pipeline. |
+
+**Why the API, not the raw `.fit`:** the `.fit` exported from the watch (`Export Original`) contains the *pre-correction* auto-detected data — Garmin's on-device exercise/rep recognition is unreliable (confirmed by comparing both sources on a real session: the `.fit` showed vague/wrong exercise guesses and erratic rep counts, while `get_activity_exercise_sets()` returned 4 correctly identified exercises at 100% confidence with clean rep counts). Garmin Connect's server-side reprocessing is authoritative; don't reintroduce `.fit`-based parsing for exercise/rep data.
 
 ---
 
@@ -28,13 +36,15 @@ Open directly in browser — no server needed (no OAuth, no fetch calls at runti
 
 One `<script>` block with all data embedded as JS constants, rendered on `DOMContentLoaded`.
 
-**7 tabs** (toggled by `showTab(name)`):
+**9 tabs** (toggled by `showTab(name)`):
 
 | Tab id | Content |
 |---|---|
 | `global` | KPI cards, weekly volume (km + D+ + temps + temp + zones FC), CTL/ATL/TSB, ACWR, cadence, zones, heatmap, best efforts, W/kg, recommandations, résumé |
 | `courses` | Competition table and FC/power chart per race |
 | `entrainement` | Monthly calendar (6 grids), monthly stats table |
+| `muscu` | Strength-training sessions: per-session sets/reps/weight, parsed from Garmin `.fit` files by `update_muscu.py` |
+| `velo` | Cycling sessions (Ride/VirtualRide): KPI cards + table (distance, D+, durée, vitesse moy., calories), computed client-side from `veloSessions[]`. Deliberately excluded from run+trail volume/ACWR/CTL-ATL — cycling load isn't comparable to running load |
 | `carte` | Leaflet map with 15 GPS traces |
 | `lexique` | Definitions of CTL, ATL, TSB, ACWR, zones, cadence, etc. |
 | `plan` | Plan Maratrail de l'Échappée Belle — 42km D+2500m · 22 août 2026 |
@@ -49,40 +59,41 @@ One `<script>` block with all data embedded as JS constants, rendered on `DOMCon
 
 | Constant | Description |
 |---|---|
-| `calActs[]` | 141 activities `{d, t, km, dur, re, elev, n, race}` — Jan 1 → Jun 28 2026 |
+| `calActs[]` | One entry per activity `{d, t, km, dur, re, elev, n, race}` since Jan 1 2026 — regenerated in full every run by `update_report.py` (renames preserved via `NAME_OVERRIDES`) |
 | `mapRoutes[]` | 15 GPS traces `{name, date, t, km, race, pts}` — written by `update_map.py` (5 decimal places, 250–500 pts each) |
-| `reData[]` | 26 weekly Relative Effort values for CTL/ATL/TSB calculation |
-| `acwr[]` | 26 weekly ACWR values (current week RE / chronic 28j average) |
-| `weeks[]` | 26 ISO week labels (29/12 → 22/06) |
-| `runKmOnly[]` | 26 weekly Run-only km |
-| `trailKmOnly[]` | 26 weekly Trail-only km |
-| `runKm[]` | 26 weekly Run+Trail km combined |
-| `wkTimeH[]` | 26 weekly moving time in hours (Run+Trail only, excl. walks) |
-| `runElev[]` | 26 weekly run elevation gain (m) |
-| `trailElev[]` | 26 weekly trail elevation gain (m) |
+| `muscuSessions[]` | One entry per strength-training session `{id, date, start_local, name, duration_s, calories, avg_hr, max_hr, exercises:[{category_name, sets:[{reps, weight, duration_s}]}], source}` — written by `update_muscu.py` from `muscu_store.json` (source: Garmin Connect API) |
+| `veloSessions[]` | One entry per cycling activity (`Ride`/`VirtualRide`) `{id, date, start_local, name, km, elev, duration_s, avg_speed_kmh, calories, indoor}` (`indoor` = true for `VirtualRide`, e.g. MyWhoosh) — regenerated in full every run by `update_report.py` from `activities_store.json`, rendered in the `velo` tab (table badge + `wkVeloOutKm`/`wkVeloInKm` stacked bars + `wkVeloElev` D+ line on secondary axis, weekly chart) |
+| `reData[]` | Weekly Relative Effort sum (all activity types) — used for CTL/ATL/TSB |
+| `acwr[]` | Weekly ACWR (EWMA ATL/CTL, τ=7j/42j) — history before the last published week is frozen; only the tail is recomputed/calibrated (see `compute_acwr()`) |
+| `weeks[]` | ISO week labels (Monday `dd/mm`), one per week from 29/12/2025 to the latest activity |
+| `runKmOnly[]` / `trailKmOnly[]` / `runKm[]` | Weekly Run-only / Trail-only / Run+Trail km |
+| `wkTimeH[]` | Weekly moving time in hours (Run+Trail only, excl. walks) |
+| `runElev[]` / `trailElev[]` | Weekly run / trail elevation gain (m) |
 | `totalElev[]` | Computed: `runElev.map((v,i) => v+trailElev[i])` |
-| `wkCal[]` | 26 weekly total calories (all activity types) |
-| `wkMaxTemp[]` | 26 weekly max temperature (°C, from Enduraw descriptions — null if unavailable) |
+| `wkCal[]` | Weekly total calories (all activity types, from real `total_calories`) |
+| `wkMaxTemp[]` | Weekly max temperature (°C), auto-extracted from Enduraw description `"Heat (XX°C)"`, falling back to `KNOWN_TEMPS` for weeks predating description capture |
 
-### Adding a new activity (weekly update workflow)
+### Weekly update workflow
 
-When new Strava activities come in, update **all** of the following in `rapport_performance.html`:
+1. Fetch new activities: MCP `list_activities(range_start=<date after last update>)`.
+2. Paste the raw JSON (`{"activities":[...]}`) into `activities_inbox.json`.
+3. Run `python update_report.py` (add `--dry-run` to preview without writing).
+   - Merges the inbox into `activities_store.json`, deduplicated by activity id.
+   - Recomputes every derived stat (weekly arrays, ACWR, zones, heatmap, sports split, `calActs`, `veloSessions`, monthly 2026 breakdown) directly from real per-activity data — no manual arithmetic.
+   - Patches both `rapport_performance.html` and `rapport_annuel.html` in place via regex, and prints a numeric summary (season totals, last 3 weeks, ACWR, J-countdowns to both races).
+4. **The script does not touch narrative text.** Using the printed summary, manually update by hand:
+   - ACWR badge text (`🟠`/`✅` spans near the ACWR chart)
+   - Résumé exécutif (4-section card at the bottom of `global` tab)
+   - Recommandations P1/P2/P3
+5. If a new race happened, add its activity id to `RACES` in `update_report.py`.
+6. If an activity needs a shorter/clearer display name in `calActs`, add it to `NAME_OVERRIDES` (keyed by activity id) rather than editing the HTML directly — the array is regenerated wholesale every run.
 
-1. `calActs[]` — add entry `{d, t, km, dur, re, elev, n, race}` at end
-2. `reData[last]` — add current week's RE to last slot (or append new week)
-3. `acwr[last]` — recompute: current RE / mean(previous 4 weeks RE)
-4. `wkCal[last]` — add calories (total_calories from MCP)
-5. `runKm[last]` / `runKmOnly[last]` / `trailKmOnly[last]` — add distance per type
-6. `wkTimeH[last]` — add moving_time / 3600
-7. `trailElev[last]` or `runElev[last]` — add elevation_gain
-8. Header subtitle (line ~47): update date, activité count, séance count
-9. KPI cards: distance totale (km) and dénivelé cumulé (m)
-10. Kcal total (line ~95)
-11. Donut h2 count (line ~131), heatmap h2 count (line ~239)
-12. ACWR badge (line ~109): date, ACWR value, J-countdown
-13. Résumé paragraph (line ~397): séances, km, D+, J-countdown
-14. Footer (line ~714): activité count, date
-15. Sync `extract_calendar.py` and `extract_extra.py` P2_JSON + `weekly_re`
+Historical weekly figures occasionally shift by small amounts (rounding, or a real correction like a previously under-counted week) when re-derived from source data — this is expected and more trustworthy than the old hand-accumulated numbers.
+
+### Musculation update workflow
+
+1. If the Garmin Connect session has expired (`update_muscu.py` raises an auth error), run `garmin_login.py` — **interactively, in the user's own terminal, never by Claude** (it prompts for the Garmin password).
+2. Run `python update_muscu.py` (add `--dry-run` to preview). It fetches any new `strength_training` activity from Garmin Connect and patches `rapport_performance.html`. No manual file drop needed.
 
 ### Key conventions
 

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -74,7 +75,7 @@
     <button id="yr-btn-2024" class="yr-btn" onclick="showYear(2024)">2024</button>
     <button id="yr-btn-2025" class="yr-btn" onclick="showYear(2025)">2025</button>
     <button id="yr-btn-2026" class="yr-btn" onclick="showYear(2026)">2026 <span style="font-size:10px;opacity:.7">en cours</span></button>
-    <a href="rapport_performance.html" class="yr-btn yr-ext" title="Rapport détaillé Jan–Jun 2026">↗ Rapport 2026</a>
+    <a href="rapport_performance.html" class="yr-btn yr-ext" title="Rapport détaillé Jan–Jul 2026">↗ Rapport 2026</a>
   </div>
 
   <div class="flex gap-2 flex-wrap mb-5">
@@ -292,14 +293,20 @@
   <div id="year-2026" class="hidden yr-section space-y-5">
     <div id="y2026-recap" class="space-y-4">
       <div class="inprogress">
-        <span><span class="dot-live"></span>Année en cours · données Jan – 28 juin 2026</span>
+        <span><span class="dot-live"></span>Année en cours · données Jan – 12 juil. 2026</span>
         <a href="rapport_performance.html">→ Rapport détaillé 2026</a>
       </div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-        <div class="metric-box"><div class="metric-lbl">Distance totale (Jan–Jun)</div><div class="metric-val">1 506 km</div></div>
-        <div class="metric-box"><div class="metric-lbl">Dénivelé cumulé (Jan–Jun)</div><div class="metric-val">16 214 m</div></div>
-        <div class="metric-box"><div class="metric-lbl">Séances run+trail</div><div class="metric-val">109</div></div>
-        <div class="metric-box"><div class="metric-lbl">Temps de mouvement</div><div class="metric-val">~175 h</div></div>
+        <div class="metric-box"><div class="metric-lbl">Distance totale (Jan–Jul)</div><div class="metric-val">1 598 km</div></div>
+        <div class="metric-box"><div class="metric-lbl">Dénivelé cumulé (Jan–Jul)</div><div class="metric-val">16 766 m</div></div>
+        <div class="metric-box"><div class="metric-lbl">Séances run+trail</div><div class="metric-val">120</div></div>
+        <div class="metric-box"><div class="metric-lbl">Temps de mouvement</div><div class="metric-val">~184 h</div></div>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div class="metric-box" style="border-left:4px solid #2563eb"><div class="metric-lbl">Sorties vélo <span class="text-xs font-normal">(complémentaire)</span></div><div class="metric-val">10</div><div class="metric-note">2 extérieur · 8 home-trainer</div></div>
+        <div class="metric-box" style="border-left:4px solid #2563eb"><div class="metric-lbl">Distance vélo</div><div class="metric-val">272 km</div></div>
+        <div class="metric-box" style="border-left:4px solid #2563eb"><div class="metric-lbl">D+ vélo</div><div class="metric-val">1 696 m</div></div>
+        <div class="metric-box" style="border-left:4px solid #2563eb"><div class="metric-lbl">Vitesse moy. vélo</div><div class="metric-val">22.5 km/h</div></div>
       </div>
       <div class="grid grid-cols-3 gap-3">
         <div class="metric-box"><div class="metric-lbl">Courses (Jan–Jun)</div><div class="metric-val orange">5</div><div class="metric-note">0 DNF · 196 km compète</div></div>
@@ -307,11 +314,11 @@
         <div class="metric-box"><div class="metric-lbl">Meilleur mois D+ trail</div><div class="metric-val lg">4 337 m</div><div class="metric-note">Mai · Stage Grand Serre</div></div>
       </div>
       <div class="card">
-        <h2>Volume mensuel (km) + séances — Jan–Jun</h2>
+        <h2>Volume mensuel (km) + séances — Jan–Jul</h2>
         <p class="section-sub">Barres = km Run <span style="color:#16a34a">■</span> + Trail <span style="color:#FC4C02">■</span> · Ligne = nombre de séances <span style="color:#8b5cf6">—</span></p>
         <canvas id="chartMixed_2026" height="110"></canvas>
       </div>
-      <div class="card"><h2>Dénivelé mensuel (m D+) — Jan–Jun</h2><canvas id="chartElev_2026" height="95"></canvas></div>
+      <div class="card"><h2>Dénivelé mensuel (m D+) — Jan–Jul</h2><canvas id="chartElev_2026" height="95"></canvas></div>
       <div class="card">
         <h2>D+ mensuel — répartition polaire</h2>
         <p class="section-sub">Surface proportionnelle au dénivelé cumulé · chaque segment = un mois</p>
@@ -323,7 +330,7 @@
       </div>
       <div class="card"><h2>Temps mensuel (heures)</h2><canvas id="chartTime_2026" height="80"></canvas></div>
       <div class="highlights">
-        <div class="font-bold text-slate-700 text-sm mb-2">Faits marquants 2026 (Jan–Jun)</div>
+        <div class="font-bold text-slate-700 text-sm mb-2">Faits marquants 2026 (Jan–Jul)</div>
         <ul>
           <li><span>🔥</span><span><strong>EcoTrail de Paris 120km — ETP 120 (21/03)</strong> — 120,9 km / 1 853 m D+ en 21h21 · nouveau record de distance</span></li>
           <li><span>🏕️</span><span><strong>Stage Trail (01–02/05)</strong> — Grand Serre (Isère) : 3 sorties, 52 km, 2 979 m D+ en montagne</span></li>
@@ -348,12 +355,12 @@
     </div>
     <div id="y2026-mensuel" class="hidden">
       <div class="card">
-        <h2>Détail mensuel 2026 — Jan–Jun <span class="partial">En cours</span></h2>
+        <h2>Détail mensuel 2026 — Jan–Jul <span class="partial">En cours</span></h2>
         <div class="overflow-x-auto">
           <table class="data-table">
             <thead><tr><th>Mois</th><th class="r" style="color:#16a34a">Run km</th><th class="r" style="color:#ea580c">Trail km</th><th class="r">Total km</th><th class="r" style="color:#2563eb">D+</th><th class="r">Séances</th><th class="r">Temps</th></tr></thead>
             <tbody id="monthly-body-2026"></tbody>
-            <tfoot><tr><td>Total Jan–Jun</td><td class="r" style="color:#16a34a">805</td><td class="r" style="color:#ea580c">701</td><td class="r">1 506 km</td><td class="r" style="color:#2563eb">16 214 m</td><td class="r">109</td><td class="r">~175h</td></tr></tfoot>
+            <tfoot><tr><td>Total Jan–Jul</td><td class="r" style="color:#16a34a">868</td><td class="r" style="color:#ea580c">730</td><td class="r">1 598 km</td><td class="r" style="color:#2563eb">16 766 m</td><td class="r">120</td><td class="r">~184h</td></tr></tfoot>
           </table>
         </div>
       </div>
@@ -388,11 +395,11 @@
         <div class="cmp-row"><span class="lbl">courses</span><span class="val">9</span></div>
       </div>
       <div class="cmp-card" style="border-top:3px solid #d97706">
-        <div class="cmp-year" style="color:#d97706">2026 <span class="partial">Jan–Jun</span></div>
-        <div class="cmp-row"><span class="lbl">km</span><span class="val">1 506</span></div>
-        <div class="cmp-row"><span class="lbl">D+</span><span class="val">16 214 m</span></div>
-        <div class="cmp-row"><span class="lbl">séances</span><span class="val">109</span></div>
-        <div class="cmp-row"><span class="lbl">temps</span><span class="val">~175h</span></div>
+        <div class="cmp-year" style="color:#d97706">2026 <span class="partial">Jan–Jul</span></div>
+        <div class="cmp-row"><span class="lbl">km</span><span class="val">1 598</span></div>
+        <div class="cmp-row"><span class="lbl">D+</span><span class="val">16 766 m</span></div>
+        <div class="cmp-row"><span class="lbl">séances</span><span class="val">120</span></div>
+        <div class="cmp-row"><span class="lbl">temps</span><span class="val">~184h</span></div>
         <div class="cmp-row"><span class="lbl">courses</span><span class="val">5</span></div>
       </div>
     </div>
@@ -400,7 +407,7 @@
     <!-- RADAR -->
     <div class="card">
       <h2>Profil multidimensionnel — <span style="color:#3b82f6">■ 2023</span> &nbsp;<span style="color:#16a34a">■ 2024</span> &nbsp;<span style="color:#FC4C02">■ 2025</span> &nbsp;<span style="color:#d97706">■ 2026</span></h2>
-      <p class="section-sub">Valeurs normalisées 0–100 par rapport au meilleur score sur chaque axe · 2026 = Jan–Jun seulement</p>
+      <p class="section-sub">Valeurs normalisées 0–100 par rapport au meilleur score sur chaque axe · 2026 = Jan–Jul seulement</p>
       <canvas id="synthRadar" height="300"></canvas>
     </div>
 
@@ -510,13 +517,13 @@ const DATA = {
     sub:'174 séances · 2 462 km · 39 314 m D+ · 9 courses · ~299h · 2025', lowSessions:8,
   },
   2026: {
-    runKm:    [224,179,74,112,127,89],
-    trailKm:  [70,129,232,75,129,66],
-    runElev:  [692,443,325,421,418,214],
-    trailElev:[1677,2770,3257,836,4337,824],
-    sessions: [21,21,15,16,20,16],
-    timeH:    [31.5,34.8,41.3,19.4,31.9,15.8],
-    sub:'109 séances · 1 506 km · 16 214 m D+ · 5 courses · Jan–Jun 2026 (en cours)', lowSessions:15, partial:true,
+    runKm:    [224.3,179.4,74.2,112.0,127.1,101.1,49.7],
+    trailKm:  [69.8,129.2,232.1,75.1,129.3,65.6,29.0],
+    runElev:  [692,443,325,421,418,257,236],
+    trailElev:[1677,2770,3257,836,4337,824,273],
+    sessions: [21,21,15,16,20,17,10],
+    timeH:    [31.5,34.8,41.3,19.4,31.9,17.1,8.4],
+    sub:'120 séances · 1 598 km · 16 766 m D+ · 5 courses · Jan–Jul 2026 (en cours)', lowSessions:15, partial:true,
   },
 };
 
@@ -849,7 +856,7 @@ function initSynthese() {
   new Chart(document.getElementById('synthRadar'), {type:'radar',
     data:{labels:['km total','D+ total','Séances','Temps (h)','Courses'],
       datasets:ALL_YEARS.map(y=>({
-        label:y===2026?'2026 (Jan–Jun)':String(y),
+        label:y===2026?'2026 (Jan–Jul)':String(y),
         data:[norm(totKm(y),mxKm),norm(totDp(y),mxDp),norm(totSess(y),mxSess),norm(totTime(y),mxTime),norm(totRaces(y),mxRaces)],
         borderColor:YR_COLORS[y],
         backgroundColor:YR_COLORS[y]+(y===2026?'28':'1a'),
@@ -867,7 +874,7 @@ function initSynthese() {
             const labels=['km total','D+ total','Séances','Temps','Courses'];
             const raw=[totKm,totDp,totSess,totTime,totRaces];
             const i=ctx.dataIndex;
-            const y=ALL_YEARS.find(yr=>(yr===2026?'2026 (Jan–Jun)':String(yr))===ctx.dataset.label);
+            const y=ALL_YEARS.find(yr=>(yr===2026?'2026 (Jan–Jul)':String(yr))===ctx.dataset.label);
             if(y===undefined) return '';
             const v=raw[i](y);
             return ` ${labels[i]} : ${v.toLocaleString('fr')} (${ctx.raw}/100)`;
@@ -885,7 +892,7 @@ function initSynthese() {
   });
 
   // ── BARRES : totaux annuels ───────────────────────────────────────
-  const yrLabels=['2023','2024','2025','2026 (Jan–Jun)'];
+  const yrLabels=['2023','2024','2025','2026 (Jan–Jul)'];
   new Chart(document.getElementById('synthKm'), {type:'bar',
     data:{labels:yrLabels, datasets:[
       {label:'Run',  data:ALL_YEARS.map(y=>DATA[y].runKm.reduce((a,b)=>a+b,0)),
@@ -926,7 +933,7 @@ function initSynthese() {
   // ── LIGNES mensuelles : km, D+, séances ──────────────────────────
   const mkLine = (getArr, unit, id) => new Chart(document.getElementById(id), {type:'line',
     data:{labels:MONTHS, datasets:ALL_YEARS.map(y=>({
-      label:y===2026?'2026 (Jan–Jun)':String(y),
+      label:y===2026?'2026 (Jan–Jul)':String(y),
       data:pad12(DATA[y].runKm.map((_,i)=>getArr(y,i))),
       borderColor:YR_COLORS[y], backgroundColor:YR_COLORS[y]+'12',
       fill:false, tension:.4,

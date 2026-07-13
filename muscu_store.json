@@ -1,0 +1,100 @@
+[
+ {
+  "id": "23515352314",
+  "date": "2026-07-07",
+  "start_local": "2026-07-07T21:35:00",
+  "name": "Renforcement musculaire",
+  "duration_s": 1135,
+  "calories": 93,
+  "avg_hr": 93.0,
+  "max_hr": 109.0,
+  "exercises": [
+   {
+    "category_name": "Squat",
+    "muscles": [
+     "quads",
+     "glutes",
+     "hamstrings"
+    ],
+    "sets": [
+     {
+      "reps": 20,
+      "weight": 0,
+      "duration_s": 61.4
+     },
+     {
+      "reps": 20,
+      "weight": 0,
+      "duration_s": 63.0
+     },
+     {
+      "reps": 20,
+      "weight": 0,
+      "duration_s": 58.6
+     },
+     {
+      "reps": 20,
+      "weight": 0,
+      "duration_s": 62.1
+     }
+    ]
+   },
+   {
+    "category_name": "Ischio-jambiers (élastique)",
+    "muscles": [
+     "hamstrings"
+    ],
+    "sets": [
+     {
+      "reps": 20,
+      "weight": 0,
+      "duration_s": 66.1
+     },
+     {
+      "reps": 20,
+      "weight": 0,
+      "duration_s": 72.9
+     }
+    ]
+   },
+   {
+    "category_name": "Mollets (calf raise)",
+    "muscles": [
+     "calves"
+    ],
+    "sets": [
+     {
+      "reps": 20,
+      "weight": 0,
+      "duration_s": 56.1
+     },
+     {
+      "reps": 20,
+      "weight": 0,
+      "duration_s": 56.1
+     }
+    ]
+   },
+   {
+    "category_name": "Crunch triceps",
+    "muscles": [
+     "abs",
+     "triceps"
+    ],
+    "sets": [
+     {
+      "reps": 10,
+      "weight": 0,
+      "duration_s": 41.4
+     },
+     {
+      "reps": 10,
+      "weight": 0,
+      "duration_s": 37.2
+     }
+    ]
+   }
+  ],
+  "source": "garmin_api"
+ }
+]
