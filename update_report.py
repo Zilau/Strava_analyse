@@ -23,7 +23,7 @@ from pathlib import Path
 sys.stdout.reconfigure(encoding='utf-8')
 
 ROOT = Path(__file__).parent
-P1_PATH   = Path(r'C:\Users\lmiklic\.claude\projects\c--Users-lmiklic-repository-Strava-analyse\dcb8c533-7024-4104-bf32-aa54c045cd61\tool-results\mcp-claude_ai_Strava-list_activities-1781616842343.txt')
+P1_PATH   = ROOT / 'activities_pre_may2026.json'
 STORE_PATH  = ROOT / 'activities_store.json'
 INBOX_PATH  = ROOT / 'activities_inbox.json'
 HTML_PERF   = ROOT / 'rapport_performance.html'

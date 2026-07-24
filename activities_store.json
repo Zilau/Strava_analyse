@@ -995,5 +995,157 @@
    "pr_count": 45,
    "avg_watts": 118.115
   }
+ },
+ {
+  "id": "19304862592",
+  "name": "Run du 14 juillet",
+  "description": "📈 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📈\n⚽ You ran across 118 football fields!\nAdjusted Pace: 𝟱:𝟯𝟯/km\n🏝️ Elevation (0.2% avg) cost you 𝟬'𝟬𝟮\"/km.\n😳 Heat (21.2°C) cost you 𝟬'𝟬𝟱\"/km.\n🍃 Wind (10.1km/h) cost you 𝟬'𝟬𝟴\"/km.\n👌 The altitude didn't affect your run.\n⏱ Under standard conditions, you would have gained 𝟯'𝟬𝟯\".\n🔥 Estimated energy cost: 997-1219 kcal.\n💧 Estimated fluid loss: 0.7-1.3L (0.8L/h sweat rate).\n\nTry it now 👉 https://dashboard.enduraw-data.com/",
+  "sport_type": "Run",
+  "start_local": "2026-07-14T07:44:06",
+  "gear_id": "29923154",
+  "summary": {
+   "distance": 12418.2,
+   "moving_time": 4315,
+   "elapsed_time": 5516,
+   "elevation_gain": 31,
+   "avg_speed": 2.8779142526071846,
+   "max_speed": 3.62,
+   "relative_effort": 24,
+   "total_calories": 953,
+   "avg_cadence": 86.1763,
+   "kudos_count": 43,
+   "achievement_count": 1,
+   "pr_count": 1
+  }
+ },
+ {
+  "id": "19340305756",
+  "name": "P'tit tour du bois",
+  "description": "📈 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📈\n🏅 At this pace, marathon time: 3h51min (52% of Kipchoge's pace)\nAdjusted Pace: 𝟱:𝟬𝟬/km\n🏝️ Elevation (0.3% avg) cost you 𝟬'𝟬𝟭\"/km.\n🥵 Heat (32.3°C) cost you 𝟬'𝟭𝟰\"/km.\n🍃 Wind (14.2km/h) cost you 𝟬'𝟭𝟮\"/km.\n👌 The altitude didn't affect your run.\n⏱ Under standard conditions, you would have gained 𝟰'𝟰𝟮\".\n🔥 Estimated energy cost: 820-1002 kcal.\n💧 Estimated fluid loss: 0.6-1.1L (0.9L/h sweat rate).\n\nTry it now 👉 https://dashboard.enduraw-data.com/",
+  "sport_type": "Run",
+  "start_local": "2026-07-16T19:22:17",
+  "gear_id": "29923154",
+  "summary": {
+   "distance": 10049.2,
+   "moving_time": 3301,
+   "elapsed_time": 3739,
+   "elevation_gain": 35,
+   "avg_speed": 3.0442896092093306,
+   "max_speed": 4.38,
+   "relative_effort": 54,
+   "total_calories": 787,
+   "avg_cadence": 84.8765,
+   "kudos_count": 42,
+   "achievement_count": 6,
+   "pr_count": 4
+  }
+ },
+ {
+  "id": "19345967471",
+  "name": "Boucle du dredi 🔵🟡",
+  "description": "📈 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📈\n🏅 At this pace, marathon time: 4h14min (47% of Kipchoge's pace)\nAdjusted Pace: 𝟱:𝟱𝟬/km\n🏝️ Elevation (0.3% avg) cost you 𝟬'𝟬𝟮\"/km.\n😳 Heat (20.5°C) cost you 𝟬'𝟬𝟱\"/km.\n🍃 Wind (7.0km/h) cost you 𝟬'𝟬𝟱\"/km.\n👌 The altitude didn't affect your run.\n⏱ Under standard conditions, you would have gained 𝟮'𝟭𝟯\".\n🔥 Estimated energy cost: 870-1063 kcal.\n💧 Estimated fluid loss: 0.6-1.1L (0.7L/h sweat rate).\n\nTry it now 👉 https://dashboard.enduraw-data.com/",
+  "sport_type": "TrailRun",
+  "start_local": "2026-07-17T07:24:54",
+  "gear_id": "28975365",
+  "summary": {
+   "distance": 10748.8,
+   "moving_time": 3896,
+   "elapsed_time": 4649,
+   "elevation_gain": 27,
+   "avg_speed": 2.7589322381930184,
+   "max_speed": 3.44,
+   "relative_effort": 18,
+   "total_calories": 841,
+   "avg_cadence": 86.9086,
+   "kudos_count": 0,
+   "achievement_count": 1,
+   "pr_count": 0
+  }
+ },
+ {
+  "id": "19407611196",
+  "name": "Footing du mardi 🔵🟡",
+  "description": "📈 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📈\n🏢 You climbed 38 floors today!\nAdjusted Pace: 𝟱:𝟮𝟭/km\n🏝️ Elevation (0.4% avg) cost you 𝟬'𝟬𝟮\"/km.\n😎 Heat (25.7°C) cost you 𝟬'𝟬𝟵\"/km.\n🍃 Wind (10.9km/h) cost you 𝟬'𝟬𝟴\"/km.\n👌 The altitude didn't affect your run.\n⏱ Under standard conditions, you would have gained 𝟰'𝟬𝟯\".\n🔥 Estimated energy cost: 1039-1270 kcal.\n💧 Estimated fluid loss: 0.6-1.1L (0.7L/h sweat rate).\n\nTry it now 👉 https://dashboard.enduraw-data.com/",
+  "sport_type": "TrailRun",
+  "start_local": "2026-07-21T19:22:38",
+  "gear_id": "28975365",
+  "summary": {
+   "distance": 12748.3,
+   "moving_time": 4332,
+   "elapsed_time": 5209,
+   "elevation_gain": 46,
+   "avg_speed": 2.942820867959372,
+   "max_speed": 3.46,
+   "relative_effort": 61,
+   "total_calories": 994,
+   "avg_cadence": 85.1232,
+   "kudos_count": 47,
+   "achievement_count": 0,
+   "pr_count": 0
+  }
+ },
+ {
+  "id": "19422197548",
+  "name": "Fractionné court 🔵🟡",
+  "description": "4x46-30 + 6x30-30 + 8x20-20\n\n📈 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📈\n🏅 At this pace, marathon time: 4h15min (47% of Kipchoge's pace)\nAdjusted Pace: 𝟱:𝟰𝟯/km\n🏝️ Elevation (0.3% avg) cost you 𝟬'𝟬𝟮\"/km.\n😎 Heat (25.8°C) cost you 𝟬'𝟭𝟬\"/km.\n🍃 Wind (12.5km/h) cost you 𝟬'𝟬𝟵\"/km.\n👌 The altitude didn't affect your run.\n⏱ Under standard conditions, you would have gained 𝟯'𝟰𝟯\".\n🔥 Estimated energy cost: 877-1071 kcal.\n💧 Estimated fluid loss: 0.5-1.0L (0.7L/h sweat rate).\n\nTry it now 👉 https://dashboard.enduraw-data.com/",
+  "sport_type": "Run",
+  "start_local": "2026-07-22T19:24:50",
+  "gear_id": "29923154",
+  "summary": {
+   "distance": 10797,
+   "moving_time": 3925,
+   "elapsed_time": 5360,
+   "elevation_gain": 29,
+   "avg_speed": 2.750828025477707,
+   "max_speed": 5.16,
+   "relative_effort": 29,
+   "total_calories": 847,
+   "avg_cadence": 86.2549,
+   "kudos_count": 45,
+   "achievement_count": 0,
+   "pr_count": 0
+  }
+ },
+ {
+  "id": "19434284356",
+  "name": "Marche retour TAF",
+  "sport_type": "Walk",
+  "start_local": "2026-07-23T17:40:31",
+  "summary": {
+   "distance": 4077.3,
+   "moving_time": 2777,
+   "elapsed_time": 3206,
+   "elevation_gain": 34,
+   "avg_speed": 1.468239106949946,
+   "max_speed": 2.67143,
+   "relative_effort": 6,
+   "total_calories": 282,
+   "avg_cadence": 60.764,
+   "kudos_count": 24,
+   "achievement_count": 0,
+   "pr_count": 0
+  }
+ },
+ {
+  "id": "19444102705",
+  "name": "Boucle du dredi midi 🔵🟡",
+  "description": "📈 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📈\n⚽ You ran across 102 football fields!\nAdjusted Pace: 𝟱:𝟭𝟳/km\n🏝️ Elevation (0.4% avg) cost you 𝟬'𝟬𝟰\"/km.\n😳 Heat (23.1°C) cost you 𝟬'𝟬𝟳\"/km.\n🍃 Wind (10.9km/h) cost you 𝟬'𝟭𝟬\"/km.\n👌 The altitude didn't affect your run.\n⏱ Under standard conditions, you would have gained 𝟯'𝟰𝟴\".\n🔥 Estimated energy cost: 858-1049 kcal.\n💧 Estimated fluid loss: 0.5-1.0L (0.7L/h sweat rate).\n\nTry it now 👉 https://dashboard.enduraw-data.com/",
+  "sport_type": "Run",
+  "start_local": "2026-07-24T12:01:59",
+  "gear_id": "29923154",
+  "summary": {
+   "distance": 10702.1,
+   "moving_time": 3620,
+   "elapsed_time": 5068,
+   "elevation_gain": 39,
+   "avg_speed": 2.956381215469613,
+   "max_speed": 3.84,
+   "relative_effort": 24,
+   "total_calories": 805,
+   "avg_cadence": 86.256,
+   "kudos_count": 11,
+   "achievement_count": 2,
+   "pr_count": 1
+  }
  }
 ]

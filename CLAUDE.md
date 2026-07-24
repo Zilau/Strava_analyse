@@ -9,7 +9,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `rapport_performance.html` | Static performance report Jan–Jul 2026 — open directly in browser |
 | `rapport_annuel.html` | Static multi-year bilan (2023–2026) — open directly in browser |
 | `activities_store.json` | Source of truth: merged Strava activities from 6 May 2026 onward (id, name, description, sport_type, start_local, summary incl. `total_calories`) |
-| `activities_inbox.json` | Scratch file — paste a fresh `list_activities` MCP JSON dump here before running `update_report.py` |
+| `activities_pre_may2026.json` | Frozen `list_activities` dump covering 1 Jan – 3 May 2026 (100 activities). Loaded by `update_report.py` (`P1_PATH`) and merged with `activities_store.json` at report-build time — kept as a committed file, not a session tool-result, so it survives session cleanup. Static; never needs updating. |
+| `activities_inbox.json` | Scratch file (gitignored) — paste a fresh `list_activities` MCP JSON dump here before running `update_report.py` |
 | `update_report.py` | **Weekly update pipeline.** Merges `activities_inbox.json` into `activities_store.json`, recomputes every derived stat, and patches both HTML reports directly via regex. See "Weekly update workflow" below. |
 | `update_map.py` | Reads raw GPS stream files, samples to 250–500 pts, writes `mapRoutes` into the HTML |
 | `plan_inject.py` | One-shot script that injected the Plan Échappée Belle tab into the HTML |
