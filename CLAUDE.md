@@ -65,7 +65,8 @@ One `<script>` block with all data embedded as JS constants, rendered on `DOMCon
 | `muscuSessions[]` | One entry per strength-training session `{id, date, start_local, name, duration_s, calories, avg_hr, max_hr, exercises:[{category_name, sets:[{reps, weight, duration_s}]}], source}` — written by `update_muscu.py` from `muscu_store.json` (source: Garmin Connect API) |
 | `veloSessions[]` | One entry per cycling activity (`Ride`/`VirtualRide`) `{id, date, start_local, name, km, elev, duration_s, avg_speed_kmh, calories, indoor}` (`indoor` = true for `VirtualRide`, e.g. MyWhoosh) — regenerated in full every run by `update_report.py` from `activities_store.json`, rendered in the `velo` tab (table badge + `wkVeloOutKm`/`wkVeloInKm` stacked bars + `wkVeloElev` D+ line on secondary axis, weekly chart) |
 | `reData[]` | Weekly Relative Effort sum (all activity types) — used for CTL/ATL/TSB |
-| `acwr[]` | Weekly ACWR (EWMA ATL/CTL, τ=7j/42j) — history before the last published week is frozen; only the tail is recomputed/calibrated (see `compute_acwr()`) |
+| `acwr[]` | Weekly ACWR (EWMA ATL/CTL, τ=7j/42j) on Relative Effort — history before the last published week is frozen; only the tail is recomputed/calibrated (see `compute_acwr()`) |
+| `acwrDplus[]` | Same EWMA ACWR model as `acwr[]`, but on weekly D+ (`runElev+trailElev`) instead of Relative Effort — approximates eccentric/neuromuscular fatigue that RE-based ACWR misses (slow high-D+ hikes/trail score low RE but high muscular load). Computed by the same `compute_acwr()`, called a second time in `main()`; rendered in its own chart (`chart-acwr-dplus`) right under the RE-based ACWR chart |
 | `weeks[]` | ISO week labels (Monday `dd/mm`), one per week from 29/12/2025 to the latest activity |
 | `runKmOnly[]` / `trailKmOnly[]` / `runKm[]` | Weekly Run-only / Trail-only / Run+Trail km |
 | `wkTimeH[]` | Weekly moving time in hours (Run+Trail only, excl. walks) |
@@ -83,7 +84,7 @@ One `<script>` block with all data embedded as JS constants, rendered on `DOMCon
    - Recomputes every derived stat (weekly arrays, ACWR, zones, heatmap, sports split, `calActs`, `veloSessions`, monthly 2026 breakdown) directly from real per-activity data — no manual arithmetic.
    - Patches both `rapport_performance.html` and `rapport_annuel.html` in place via regex, and prints a numeric summary (season totals, last 3 weeks, ACWR, J-countdowns to both races).
 4. **The script does not touch narrative text.** Using the printed summary, manually update by hand:
-   - ACWR badge text (`🟠`/`✅` spans near the ACWR chart)
+   - ACWR badge text (`🟠`/`✅` spans near the ACWR chart), including the ACWR D+ badge below the second chart
    - Résumé exécutif (4-section card at the bottom of `global` tab)
    - Recommandations P1/P2/P3
 5. If a new race happened, add its activity id to `RACES` in `update_report.py`.
@@ -104,6 +105,7 @@ Historical weekly figures occasionally shift by small amounts (rounding, or a re
 - **Map**: `initMap()` runs once when tab `carte` is first visited. `mapRoutes` colors: `#f59e0b` race · `#16a34a` trail · `#FC4C02` run.
 - **`showTab(name)`** iterates `['global','courses','entrainement','carte','lexique','plan','marathon']`.
 - **Temperature data** (`wkMaxTemp`): sourced from Enduraw description strings `"Heat (XX°C)"` via `extract_extra.py`, supplemented by `known_temps` dict for weeks without descriptions.
+- **Strava `relative_effort` scale shift (2026-06-25)**: the raw `relative_effort` field returned by Strava for each activity dropped by a factor of ~7 starting 2026-06-25, coinciding with manual HR zone activation (FCmax=188bpm, see "Zones FC recalibrées" commit 2026-06-29). Weekly RE/h averaged ~175 before, ~23 after. The RE/hour-based HR-zone-distribution heuristics (`zoneSplit()` in the `chart-zones-week` IIFE, and `compute_zones()` in `update_report.py`) are **date-aware**: they use one threshold set before `RE_SCALE_SHIFT` (`2026-06-25`) and a rescaled set (÷7) after. If this ever needs re-tuning (e.g. after the next race establishes a real post-shift race-effort data point), adjust both `RE_SCALE_SHIFT`/`RE_SCALE_SHIFT_DATE` constants together — they must stay in sync between the HTML and the Python script.
 
 ### GPS data pipeline
 

@@ -46,7 +46,7 @@
     </svg>
     <h1 class="text-xl font-bold text-slate-800">Rapport Performance Strava</h1>
   </div>
-  <p class="text-sm text-slate-500">Laurent Miklic · 1 janv. → 24 juil. 2026 · 161 activités · Run+Trail : 126 séances</p>
+  <p class="text-sm text-slate-500">Laurent Miklic · 1 janv. → 9 août 2026 · 174 activités · Run+Trail : 139 séances</p>
   <p class="text-xs text-slate-400 mt-1">Généré par Claude Code via MCP Strava</p>
 </div>
 
@@ -72,11 +72,11 @@
   <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
     <div class="metric-box">
       <div class="metric-lbl">Distance totale (run+trail)</div>
-      <div class="metric-val">1 665 km</div>
+      <div class="metric-val">1 853 km</div>
     </div>
     <div class="metric-box">
       <div class="metric-lbl">Dénivelé cumulé</div>
-      <div class="metric-val">16 973 m</div>
+      <div class="metric-val">28 117 m</div>
     </div>
     <div class="metric-box">
       <div class="metric-lbl">10km race (14 juin)</div>
@@ -97,9 +97,9 @@
     <canvas id="chart-volume" height="100"></canvas>
     <p class="text-xs text-slate-400 mt-4 mb-2">Barres = km (axe gauche) · Courbe bleue = D+ total (axe droit).</p>
     <canvas id="chart-elev" height="70"></canvas>
-    <p class="text-xs text-slate-400 mt-4 mb-2">Calories dépensées par semaine — toutes activités (total saison : <strong>150 136 kcal</strong>).</p>
+    <p class="text-xs text-slate-400 mt-4 mb-2">Calories dépensées par semaine — toutes activités (total saison : <strong>169 806 kcal</strong>).</p>
     <canvas id="chart-cals" height="70"></canvas>
-    <p class="text-xs text-slate-400 mt-4 mb-2">Distribution estimée des zones FC par semaine (Run + Trail) — proxy RE/heure par séance + flag course. Tendances fiables ; valeurs absolues ±10 pts (sans streams FC complets). <span style="color:#3b82f6">■ Z1</span> · <span style="color:#22c55e">■ Z2</span> · <span style="color:#eab308">■ Z3</span> · <span style="color:#f97316">■ Z4</span> · <span style="color:#ef4444">■ Z5</span></p>
+    <p class="text-xs text-slate-400 mt-4 mb-2">Distribution estimée des zones FC par semaine (Run + Trail) — proxy RE/heure par séance + flag course. Tendances fiables ; valeurs absolues ±10 pts (sans streams FC complets). Seuils recalibrés à partir du 25 juin 2026 (chute d'échelle du relative_effort Strava, ÷7 environ). <span style="color:#3b82f6">■ Z1</span> · <span style="color:#22c55e">■ Z2</span> · <span style="color:#eab308">■ Z3</span> · <span style="color:#f97316">■ Z4</span> · <span style="color:#ef4444">■ Z5</span></p>
     <canvas id="chart-zones-week" height="80"></canvas>
   </div>
 
@@ -111,8 +111,18 @@
     <canvas id="chart-acwr" height="90"></canvas>
     <div class="flex gap-3 mt-3 flex-wrap">
       <span class="badge badge-orange">🟠 16 mars : ACWR 1.41 — ETP 120 (charge planifiée)</span>
-      <span class="badge badge-green">✅ Actuel (24 juil.) : ACWR 0.23 — J-29 Échappée Belle · S4 récup clôturée sous cible (33.2 km / D+ 93 m vs 45 km / D+500 m) · S5 Bloc 2 en cours : 34.2 km / D+ 114 m sur 3 sorties (cible 72 km / D+1500 m)</span>
+      <span class="badge badge-green">✅ Actuel (9 août) : ACWR 0.48 — J-13 Échappée Belle · Semaine 27/07 : 110.7 km / D+ 7041 m (camp montagne Chartreuse, rando incluses) · Semaine 03/08 clôturée : 66.2 km / D+ 3477 m, dont reco de la montée du parcours (6 août, D+ 1417 m)</span>
       <span class="badge badge-orange">🌡️ 15–23 juin : 32–35.7°C — volume réduit + acclimatation intentionnelle</span>
+    </div>
+  </div>
+
+  <!-- CHART 2b : ACWR D+ (fatigue neuromusculaire) -->
+  <div class="card">
+    <h2>ACWR D+ — Charge aiguë 7j / Charge chronique 28j (Dénivelé)</h2>
+    <p class="text-xs text-slate-400 mb-3">Même modèle que l'ACWR ci-dessus, appliqué au D+ hebdo au lieu du Relative Effort. Le RE sous-pondère les longues sorties D+ lentes (rando/trail montagne) — cet indicateur capture la <strong>charge excentrique / fatigue neuromusculaire</strong> que le RE seul ne reflète pas. Zone verte : 0.8–1.3 · Zone rouge : &gt; 1.5.</p>
+    <canvas id="chart-acwr-dplus" height="90"></canvas>
+    <div class="flex gap-3 mt-3 flex-wrap">
+      <span class="badge badge-red">🔴 Actuel (9 août) : ACWR D+ 2.22 (zone rouge) vs ACWR RE 0.48 (zone verte) — le camp montagne Chartreuse (D+ 11 079 m/12j, rando incluses) charge fortement les jambes sans faire monter le Relative Effort</span>
     </div>
   </div>
 
@@ -133,8 +143,8 @@
   <!-- CHART 5 : Sports répartition -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
     <div class="card">
-      <h2>Répartition des activités — 161 activités</h2>
-      <p class="text-xs text-slate-400 mb-3">Chaque barre = 100 % d'une métrique. Le trail pèse moins en nombre de séances (28 %) qu'en temps de mouvement (44 %).</p>
+      <h2>Répartition des activités — 174 activités</h2>
+      <p class="text-xs text-slate-400 mb-3">Chaque barre = 100 % d'une métrique. Le trail pèse moins en nombre de séances (33 %) qu'en temps de mouvement (52 %).</p>
       <canvas id="chart-sports" height="160"></canvas>
     </div>
 
@@ -197,7 +207,7 @@
         <div style="flex:0 0 140px;position:relative">
           <canvas id="chart-zones" width="140" height="140"></canvas>
           <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">
-            <div style="font-size:18px;font-weight:700;color:#1e293b;line-height:1">191h</div>
+            <div style="font-size:18px;font-weight:700;color:#1e293b;line-height:1">234h</div>
             <div style="font-size:10px;color:#94a3b8;margin-top:2px">total</div>
           </div>
         </div>
@@ -205,26 +215,26 @@
           <div>
             <div style="display:flex;justify-content:space-between;margin-bottom:4px">
               <span style="font-size:12px;font-weight:600;color:#15803d">Z1–Z2 Endurance</span>
-              <span style="font-size:12px;color:#64748b">67.4h · <strong>35%</strong></span>
+              <span style="font-size:12px;color:#64748b">96.3h · <strong>41%</strong></span>
             </div>
-            <div style="background:#e2e8f0;border-radius:4px;height:7px"><div style="background:#16a34a;width:35%;height:100%;border-radius:4px"></div></div>
-            <div style="font-size:10px;color:#94a3b8;margin-top:2px">&lt; 130 RE/h · Endurance fondamentale</div>
+            <div style="background:#e2e8f0;border-radius:4px;height:7px"><div style="background:#16a34a;width:41%;height:100%;border-radius:4px"></div></div>
+            <div style="font-size:10px;color:#94a3b8;margin-top:2px">&lt; 130 RE/h (&lt; 19 depuis fin juin*) · Endurance fondamentale</div>
           </div>
           <div>
             <div style="display:flex;justify-content:space-between;margin-bottom:4px">
               <span style="font-size:12px;font-weight:600;color:#1d4ed8">Z2–Z3 Aérobie</span>
-              <span style="font-size:12px;color:#64748b">102.8h · <strong>54%</strong></span>
+              <span style="font-size:12px;color:#64748b">111.3h · <strong>48%</strong></span>
             </div>
-            <div style="background:#e2e8f0;border-radius:4px;height:7px"><div style="background:#2563eb;width:54%;height:100%;border-radius:4px"></div></div>
-            <div style="font-size:10px;color:#94a3b8;margin-top:2px">130–200 RE/h · Aérobie modéré</div>
+            <div style="background:#e2e8f0;border-radius:4px;height:7px"><div style="background:#2563eb;width:48%;height:100%;border-radius:4px"></div></div>
+            <div style="font-size:10px;color:#94a3b8;margin-top:2px">130–200 RE/h (19–29*) · Aérobie modéré</div>
           </div>
           <div>
             <div style="display:flex;justify-content:space-between;margin-bottom:4px">
               <span style="font-size:12px;font-weight:600;color:#ea580c">Z4 Seuil</span>
-              <span style="font-size:12px;color:#64748b">20.8h · <strong>11%</strong></span>
+              <span style="font-size:12px;color:#64748b">24.0h · <strong>10%</strong></span>
             </div>
-            <div style="background:#e2e8f0;border-radius:4px;height:7px"><div style="background:#f97316;width:11%;height:100%;border-radius:4px"></div></div>
-            <div style="font-size:10px;color:#94a3b8;margin-top:2px">200–280 RE/h · Effort seuil / tempo</div>
+            <div style="background:#e2e8f0;border-radius:4px;height:7px"><div style="background:#f97316;width:10%;height:100%;border-radius:4px"></div></div>
+            <div style="font-size:10px;color:#94a3b8;margin-top:2px">200–280 RE/h (29–40*) · Effort seuil / tempo</div>
           </div>
           <div>
             <div style="display:flex;justify-content:space-between;margin-bottom:4px">
@@ -232,17 +242,18 @@
               <span style="font-size:12px;color:#64748b">0h · <strong>0%</strong></span>
             </div>
             <div style="background:#e2e8f0;border-radius:4px;height:7px"><div style="background:#ef4444;width:0%;height:100%;border-radius:4px"></div></div>
-            <div style="font-size:10px;color:#94a3b8;margin-top:2px">&gt; 280 RE/h · Haute intensité / vitesse</div>
+            <div style="font-size:10px;color:#94a3b8;margin-top:2px">&gt; 280 RE/h (&gt; 40*) · Haute intensité / vitesse</div>
           </div>
         </div>
       </div>
+      <p class="text-xs text-slate-400 mt-3">* Le relative_effort brut Strava a chuté d'un facteur ~7 à partir du 25 juin 2026 (coïncide avec l'activation des zones FC manuelles) — seuils recalibrés en conséquence pour les semaines récentes.</p>
     </div>
   </div>
 
   <!-- Heatmap -->
   <div class="card">
-    <h2>Heatmap des entraînements — Jour × Créneau horaire (126 séances Run+Trail)</h2>
-    <p class="text-xs text-slate-400 mb-4">Patterns clés : <strong>Lundi = repos systématique</strong> · Dimanche matin = séance longue principale (24×) · Mercredi soir + Vendredi midi = séances tempo hebdo.</p>
+    <h2>Heatmap des entraînements — Jour × Créneau horaire (139 séances Run+Trail)</h2>
+    <p class="text-xs text-slate-400 mb-4">Patterns clés : <strong>Lundi = repos systématique</strong> · Dimanche matin = séance longue principale (25×) · Mercredi soir + Vendredi midi = séances tempo hebdo.</p>
     <div id="heatmap-container"></div>
   </div>
 
@@ -365,12 +376,12 @@
           </div>
         </div>
       </div>
-      <div class="p-4 rounded-lg bg-red-50 border border-red-200">
+      <div class="p-4 rounded-lg bg-orange-50 border border-orange-200">
         <div class="flex items-start gap-3">
-          <span class="badge badge-red mt-0.5">P1</span>
+          <span class="badge badge-orange mt-0.5">P1</span>
           <div>
-            <p class="font-semibold text-slate-800 text-sm">Reconstituer le D+ trail — J-29 Échappée Belle (42km / ~D+2500m)</p>
-            <p class="text-xs text-slate-600 mt-1">S4 récup (14–20 juil.) clôturée plate et sous cible : 33.2 km / D+ 93 m sur 4 sorties (vs 45 km / D+500 m visés), aucune n'a cherché de D+. S5 Bloc 2 (21–27 juil.) continue dans la même logique : 21 juil trail 12.7 km D+46 m, 22 juil fractionné plat 10.8 km D+29 m, 24 juil footing plat 10.7 km D+39 m — 34.2 km / D+ 114 m sur 3 sorties vs cible 72 km / D+1500 m. Le cumul D+ de juillet est très en retard sur le plan ; il ne reste que 3 semaines (S5 à S7) pour intégrer du dénivelé spécifique avant l'affûtage (S8) et la course (S9, 22 août).</p>
+            <p class="font-semibold text-slate-800 text-sm">Camp montagne Chartreuse (26 juil–6 août) : D+ 11 079 m sur 12 sorties en 12 jours — vrai taper à engager avant J-13</p>
+            <p class="text-xs text-slate-600 mt-1">Enchaînement quasi ininterrompu de trail/rando technique en Chartreuse : Bec de la Scia (626 m), Col des Ayes–Col du Coq (1568 m, 4h58), Le Grand Som (1625 m, 6h24 très technique), puis vallon du Monastère, boucle de la Scia, Le Charmant Som (1431 m), lac Achard/lac Robert, cascade de Saint Même, source du Guiers Mort, Montouvrard, jusqu'à la reco de la grosse montée du parcours de l'Échappée Belle (6 août, 20.3 km / D+ 1417 m). ACWR reste bas (0.48) : la RE ne capture pas la fatigue neuromusculaire et musculaire accumulée sur ce volume de D+ technique répété, contrairement à un pic d'intensité classique. Le retour au plat du 9 août (12.6 km à 5:49/km, négative split) est un bon signal de sortie de bloc — <strong>priorité désormais : décharge réelle (Z1, D+ minimal) jusqu'à J-13, pas de nouvelle sortie technique longue avant le taper final.</strong></p>
           </div>
         </div>
       </div>
@@ -379,7 +390,7 @@
           <span class="badge badge-orange mt-0.5">P2</span>
           <div>
             <p class="font-semibold text-slate-800 text-sm">Structurer un cycle 3:1 explicite (pas subi)</p>
-            <p class="text-xs text-slate-600 mt-1">Aucune semaine de récupération planifiée identifiée sur 25 semaines : les creux sont tous imposés par les courses ou l'agenda. ACWR a dépassé 1.5 à deux reprises sans blessure — la marge se réduit avec l'âge et le volume. <strong>Action : bloquer une semaine à ~33 km toutes les 4 semaines indépendamment du ressenti.</strong></p>
+            <p class="text-xs text-slate-600 mt-1">Aucune semaine de récupération planifiée identifiée sur 32 semaines : les creux sont tous imposés par les courses ou l'agenda — le camp Chartreuse fin juillet en est un nouvel exemple (12 sorties enchaînées, D+ 11 079 m, sans jour de repos formel). ACWR a dépassé 1.5 à deux reprises sans blessure — la marge se réduit avec l'âge et le volume. <strong>Action : bloquer une semaine à ~33 km toutes les 4 semaines indépendamment du ressenti.</strong></p>
           </div>
         </div>
       </div>
@@ -405,15 +416,15 @@
       </div>
       <div class="pt-3 border-t border-slate-700">
         <span class="text-xs font-bold uppercase tracking-wide text-orange-400">📊 Volume saison</span>
-        <p class="text-sm text-slate-300 leading-relaxed mt-1">126 séances run+trail · 1 665 km · D+ 16 973 m sur 30 semaines. Zones FC recalibrées manuellement (Z1 ≤ 136, Z5 ≥ 176 bpm). Vague de chaleur 15–23 juin (32–35.7°C) : volume réduit intentionnellement, acclimatation cardiovasculaire en cours.</p>
+        <p class="text-sm text-slate-300 leading-relaxed mt-1">139 séances run+trail (rando incluses) · 1 853 km · D+ 28 117 m sur 32 semaines. Zones FC recalibrées manuellement (Z1 ≤ 136, Z5 ≥ 176 bpm). Camp montagne Chartreuse fin juillet-début août : D+ 11 079 m sur 12 sorties en 12 jours, principal moteur du bond de D+ cumulé sur la saison.</p>
       </div>
       <div class="pt-3 border-t border-slate-700">
         <span class="text-xs font-bold uppercase tracking-wide text-orange-400">🔥 Forme actuelle — Prépa Échappée Belle</span>
-        <p class="text-sm text-slate-300 leading-relaxed mt-1">Lancée le 28 juin (D+ 407 m, 13 km). S4 récup (14–20 juil.) clôturée sous cible : 33.2 km / D+ 93 m (vs 45 km / D+500 m). S5 Bloc 2 (21–27 juil.) en cours : 34.2 km / D+ 114 m sur 3 sorties plates (21, 22, 24 juillet). ACWR toujours bas (0.23) — marge de charge maximale, mais le retard de D+ spécifique doit être comblé rapidement.</p>
+        <p class="text-sm text-slate-300 leading-relaxed mt-1">Lancée le 28 juin. Après un S4 plat sous cible, S5–S6 ont basculé sur un camp montagne en Chartreuse (26 juil–6 août) : 12 sorties trail/rando quasi ininterrompues, D+ 11 079 m cumulés, jusqu'à la reco de la grosse montée du parcours (6 août, 20.3 km / D+ 1417 m). Semaine 27/07 à 110.7 km / D+ 7041 m, semaine 03/08 clôturée à 66.2 km / D+ 3477 m. Retour au plat le 9 août (12.6 km à 5:49/km, négative split) amorce la décharge. ACWR reste bas (0.48) mais ne capture pas la fatigue neuromusculaire accumulée sur ce volume de D+ technique — priorité désormais au taper jusqu'à J-13.</p>
       </div>
       <div class="pt-3 border-t border-slate-700">
         <span class="text-xs font-bold uppercase tracking-wide text-orange-400">🎯 Prochain objectif</span>
-        <p class="text-sm text-slate-300 leading-relaxed mt-1"><strong class="text-orange-400">Échappée Belle 42km · 22 août · J-29</strong></p>
+        <p class="text-sm text-slate-300 leading-relaxed mt-1"><strong class="text-orange-400">Échappée Belle 42km · 22 août · J-13</strong></p>
       </div>
     </div>
   </div>
@@ -703,6 +714,7 @@
     <span style="background:#ffedd5;color:#c2410c" class="badge text-xs">R&nbsp;Run</span>
     <span style="background:#dcfce7;color:#15803d" class="badge text-xs">T&nbsp;Trail</span>
     <span style="background:#fef9c3;color:#92400e" class="badge text-xs">M&nbsp;Marche</span>
+    <span style="background:#ecfccb;color:#4d7c0f" class="badge text-xs">H&nbsp;Rando</span>
     <span style="background:#dbeafe;color:#1d4ed8" class="badge text-xs">V&nbsp;Vélo</span>
     <span style="background:#f1f5f9;color:#475569" class="badge text-xs">G&nbsp;Muscu</span>
     <span style="background:#faf5ff;color:#6d28d9" class="badge text-xs">Y&nbsp;Yoga</span>
@@ -736,7 +748,7 @@
     <div class="card"><h2 class="text-center text-slate-700 mb-3">Juillet 2026</h2><div id="cal-7"></div></div>
   </div>
 
-  <p class="text-xs text-slate-400 text-center pb-4">161 activités · 1 janv. → 24 juil. 2026 · Données : MCP Strava</p>
+  <p class="text-xs text-slate-400 text-center pb-4">174 activités · 1 janv. → 9 août 2026 · Données : MCP Strava</p>
 
 </div><!-- /pane-entrainement -->
 
@@ -840,6 +852,18 @@
         <span style="color:#dc2626;font-weight:600">&gt; 1.5</span> → Zone rouge (risque blessure élevé)
       </div>
       <div class="lex-example">ACWR = 4.0 en sem. 1 (janvier) car RE chronique = 0 (début de suivi). ACWR = 1.41 sem. 12 (ETP : grosse semaine après récupération).</div>
+    </div>
+
+    <div class="lex-row">
+      <div class="lex-term">ACWR D+ <span class="lex-abbr">Charge excentrique</span></div>
+      <div class="lex-def">Même formule que l'ACWR, mais appliquée au <strong>dénivelé positif hebdo</strong> au lieu du Relative Effort. Le RE Strava est dominé par l'intensité cardio (vitesse, FC) ; une sortie D+ lente en montagne (rando, trail technique) génère un RE modeste mais un fort <strong>stress excentrique / neuromusculaire</strong> (descentes, terrain technique) que le RE seul ne capture pas.</div>
+      <div class="lex-formula">ACWR D+ = D+<sub>semaine</sub> / moyenne(D+<sub>S-1</sub>, D+<sub>S-2</sub>, D+<sub>S-3</sub>, D+<sub>S-4</sub>)</div>
+      <div class="lex-def" style="margin-top:8px">
+        <span style="color:#16a34a;font-weight:600">0.8–1.3</span> → Zone verte ·
+        <span style="color:#f97316;font-weight:600">1.3–1.5</span> → Zone orange ·
+        <span style="color:#dc2626;font-weight:600">&gt; 1.5</span> → Zone rouge
+      </div>
+      <div class="lex-example">Semaine du 3 août : ACWR D+ = 2.22 (zone rouge) alors que l'ACWR classique reste à 0.48 (zone verte) — le camp montagne Chartreuse (D+ 11 079 m sur 12 jours, randonnées incluses) charge fortement les jambes sans faire monter le Relative Effort, car les sorties étaient longues et lentes plutôt qu'intenses.</div>
     </div>
   </div>
 
@@ -1237,6 +1261,7 @@ const LEGEND_TIPS = {
   'Seuil 2.0':                'Seuil critique de monotonie (Foster 1998) au-dessus duquel le risque de surentraînement est significativement accru.',
   'Zone rouge (1.5)':         'ACWR > 1.5 — zone rouge selon la littérature sportive. Le risque de blessure est significativement augmenté au-delà de ce seuil.',
   'Optimal min (0.8)':        'ACWR < 0.8 — sous-charge. La charge récente est trop faible par rapport à la charge de fond ; progression limitée.',
+  'ACWR D+':                  'Acute:Chronic Workload Ratio calculé sur le D+ hebdo au lieu du Relative Effort. Une longue sortie D+ lente (rando, trail montagne) charge peu le RE mais beaucoup les jambes (excentrique) — cet indicateur détecte ce type de surcharge quand l\'ACWR classique reste bas.',
   'FC moy':                   'Fréquence cardiaque moyenne enregistrée durant la séance.',
   'FC max':                   'Fréquence cardiaque maximale atteinte durant la séance.',
   'FC (bpm)':                 'Fréquence cardiaque en battements par minute. Tracé issu des streams Strava (capteur poignet ou ceinture).',
@@ -1307,18 +1332,19 @@ const radarDs = (label, data, color, bw=2) => ({
 });
 
 // ── DONNÉES ──
-const weeks = ['29/12','05/01','12/01','19/01','26/01','02/02','09/02','16/02','23/02','02/03','09/03','16/03','23/03','30/03','06/04','13/04','20/04','27/04','04/05','11/05','18/05','25/05','01/06','08/06','15/06','22/06','29/06','06/07','13/07','20/07'];
-const runKm = [64.4,65.2,46.6,73.9,68.9,78.0,75.6,74.9,85.0,79.7,45.9,132.5,18.3,22.3,54.7,50.1,47.1,65.8,48.0,45.7,59.8,50.0,44.2,48.6,30.6,30.8,71.2,20.0,33.2,34.2];
-const runKmOnly = [38.0,65.2,36.3,40.8,44.0,47.8,38.2,49.0,44.4,26.1,23.2,6.5,18.3,9.3,44.0,23.3,22.5,13.0,25.1,45.7,34.3,22.0,21.8,36.1,30.6,0.0,60.4,1.9,22.5,21.5];
-const trailKmOnly = [26.4,0.0,10.3,33.0,24.9,30.2,37.5,25.9,40.6,53.6,22.7,125.9,0.0,13.1,10.7,26.7,24.6,52.8,23.0,0.0,25.5,28.1,22.4,12.4,0.0,30.8,10.9,18.1,10.7,12.7];
-const wkTimeH = [7.1,6.82,4.99,8.06,7.92,8.44,8.8,8.42,9.32,8.65,4.62,22.57,1.87,2.47,5.68,5.27,4.83,12.45,5.02,4.32,6.31,5.04,4.6,4.81,3.08,3.34,7.38,2.29,3.2,3.3];
-const runElev = [130,188,72,120,182,113,99,134,97,126,122,36,41,18,169,41,156,37,54,189,132,43,62,78,74,0,267,12,66,68];
-const trailElev = [538,0,329,810,760,396,1045,543,666,657,66,1894,0,187,31,372,246,2979,526,0,395,437,333,39,0,452,29,244,27,46];
+const weeks = ['29/12','05/01','12/01','19/01','26/01','02/02','09/02','16/02','23/02','02/03','09/03','16/03','23/03','30/03','06/04','13/04','20/04','27/04','04/05','11/05','18/05','25/05','01/06','08/06','15/06','22/06','29/06','06/07','13/07','20/07','27/07','03/08'];
+const runKm = [64.4,65.2,46.6,73.9,68.9,78.0,75.6,74.9,85.0,79.7,45.9,132.5,18.3,22.3,54.7,50.1,47.1,65.8,48.0,45.7,59.8,50.0,44.2,48.6,30.6,30.8,71.2,20.0,33.2,45.5,110.7,66.2];
+const runKmOnly = [38.0,65.2,36.3,40.8,44.0,47.8,38.2,49.0,44.4,26.1,23.2,6.5,18.3,9.3,44.0,23.3,22.5,13.0,25.1,45.7,34.3,22.0,21.8,36.1,30.6,0.0,60.4,1.9,22.5,21.5,0.0,12.6];
+const trailKmOnly = [26.4,0.0,10.3,33.0,24.9,30.2,37.5,25.9,40.6,53.6,22.7,125.9,0.0,13.1,10.7,26.7,24.6,52.8,23.0,0.0,25.5,28.1,22.4,12.4,0.0,30.8,10.9,18.1,10.7,24.0,110.7,53.6];
+const wkTimeH = [7.1,6.82,4.99,8.06,7.92,8.44,8.8,8.42,9.32,8.65,4.62,22.57,1.87,2.47,5.68,5.27,4.83,12.45,5.02,4.32,6.31,5.04,4.6,4.81,3.08,3.34,7.38,2.29,3.2,5.98,27.11,12.93];
+const runElev = [130,188,72,120,182,113,99,134,97,126,122,36,41,18,169,41,156,37,54,189,132,43,62,78,74,0,267,12,66,68,0,65];
+const trailElev = [538,0,329,810,760,396,1045,543,666,657,66,1894,0,187,31,372,246,2979,526,0,395,437,333,39,0,452,29,244,27,672,7041,3412];
 const totalElev = runElev.map((v,i) => v+trailElev[i]);
-const wkCal = [5940,5691,4826,6287,6524,7093,7413,6552,7496,7151,3922,11731,1439,1858,4706,4140,4455,7215,3923,3473,5376,5676,3611,4086,2454,3011,5568,3010,2581,2928];
-const acwr = [4.0,1.96,1.04,1.14,0.9,0.92,0.85,0.72,0.89,0.8,0.39,1.41,0.19,0.31,0.82,0.8,0.97,1.01,0.79,0.65,0.95,0.75,0.65,0.61,0.66,0.4,0.3,0.22,0.2,0.23];
-const reData = [1289,1238,960,1353,1447,1479,1378,1249,1550,1419,600,2567,297,399,1053,1062,900,1135,1000,788,1195,1038,758,675,471,202,160,96,96,120];
-const wkMaxTemp = [null,20.0,null,null,null,null,null,null,19.7,16.6,null,16.8,null,null,24.6,20.9,22.3,21.0,20.0,20.0,28.9,30.5,20.0,20.1,32.1,35.7,25.7,33.3,32.3,25.8];
+const wkCal = [5940,5691,4826,6287,6524,7093,7413,6552,7496,7151,3922,11731,1439,1858,4706,4140,4455,7215,3923,3473,5376,5676,3611,4086,2454,3011,5568,3010,2581,4087,12184,6327];
+const acwr = [4.0,1.96,1.04,1.14,0.9,0.92,0.85,0.72,0.89,0.8,0.39,1.41,0.19,0.31,0.82,0.8,0.97,1.01,0.79,0.65,0.95,0.75,0.65,0.61,0.66,0.4,0.3,0.22,0.2,0.27,0.55,0.48];
+const acwrDplus = [4.12,2.37,2.22,2.59,2.26,1.6,1.86,1.45,1.34,1.28,0.75,1.81,0.82,0.56,0.47,0.7,0.79,2.34,1.35,0.73,0.75,0.75,0.69,0.43,0.28,0.71,0.7,0.66,0.44,1.24,3.22,2.22];
+const reData = [1289,1238,960,1353,1447,1479,1378,1249,1550,1419,600,2567,297,399,1053,1062,900,1135,1000,788,1195,1038,758,675,471,202,160,96,96,146,335,174];
+const wkMaxTemp = [null,20.0,null,null,null,null,null,null,19.7,16.6,null,16.8,null,null,24.6,20.9,22.3,21.0,20.0,20.0,28.9,30.5,20.0,20.1,32.1,35.7,25.7,33.3,32.3,25.8,28.6,27.5];
 const beLabels = ['17 jan\n(Run 30km)','08 fév\n(Trail 30km)','07 avr\n(Trail frac.)','10 mai\n(Trail 23km)','31 mai\n(Trail 17km)','14 juin\n(Race 10km)'];
 const be400  = [145,135,114,118,113,108];
 const be1k   = [367,345,296,310,291,274];
@@ -1482,11 +1508,41 @@ new Chart(document.getElementById('chart-acwr'), {
   }
 });
 
+// ── chart-acwr-dplus ──
+new Chart(document.getElementById('chart-acwr-dplus'), {
+  type: 'line',
+  data: {
+    labels: weeks,
+    datasets: [
+      {
+        label: 'ACWR D+', data: acwrDplus,
+        borderColor:RED, backgroundColor:RED+'15',
+        tension:0.3, fill:true,
+        pointRadius: acwrDplus.map(v => v>1.3 ? 6 : 3),
+        pointBackgroundColor: acwrDplus.map(v => v>1.5 ? RED : v>1.3 ? '#f97316' : BLUE),
+        pointBorderColor:'white', pointBorderWidth:1.5,
+      },
+      { label:'Zone rouge (1.5)',  data:weeks.map(()=>1.5), borderColor:RED,   borderDash:[6,3], borderWidth:1.5, pointRadius:0, fill:false },
+      { label:'Optimal min (0.8)', data:weeks.map(()=>0.8), borderColor:GREEN, borderDash:[4,4], borderWidth:1,   pointRadius:0, fill:false },
+    ]
+  },
+  options: {
+    plugins: {
+      legend: { position:'bottom', labels:{ font:{size:11}, boxWidth:12 } },
+      tooltip: { callbacks: { label: ctx => ctx.dataset.label+': '+ctx.parsed.y.toFixed(2) } }
+    },
+    scales: {
+      y: { min:0, ticks:{ stepSize:1 } },
+      x: xWks,
+    }
+  }
+});
+
 // ── chart-sports ──
 const sportActuals = [
-  [81,45,18,10,6,1],
-  [911.7,753.6,83.2,272.3,0.0,0.0],
-  [93.1,97.9,16.4,12.1,2.7,1.1],
+  [82,57,18,10,6,1],
+  [924.2,929.2,83.2,272.3,0.0,0.0],
+  [94.4,139.3,16.4,12.1,2.7,1.1],
 ];
 const sportPct   = sportActuals.map(row => { const tot=row.reduce((a,b)=>a+b,0); return row.map(v => +(v/tot*100).toFixed(1)); });
 const sportUnits = [' séances',' km',' h'];
@@ -1756,11 +1812,11 @@ new Chart(document.getElementById('chart-re'), {
 })();
 
 // ── Cadence ──
-const wkCadence = [85.1,87.0,84.7,84.2,84.8,86.0,83.6,82.6,85.0,85.3,86.1,81.5,86.0,81.9,84.9,85.0,85.8,73.3,84.7,85.8,84.7,85.2,85.1,86.0,86.4,83.6,83.1,85.6,86.0,85.9];
-const wkVeloOutKm = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,33.7,0.0,0.0,0.0,0.0,0.0,66.8,0.0,0.0];
-const wkVeloInKm = [0.0,0.0,44.5,0.0,30.7,32.9,12.2,24.1,0.0,14.0,0.0,0.0,0.0,0.0,13.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
-const wkVeloElev = [0,0,163,0,319,197,13,136,0,14,0,0,0,0,245,0,0,0,0,0,0,159,0,0,0,0,0,456,0,0];
-const wkVeloWatts = [null,null,105.1,null,102.5,90.3,115.2,96.4,null,111.4,null,null,null,null,126.7,null,null,null,null,null,null,105.3,null,null,null,null,null,118.1,null,null];
+const wkCadence = [85.1,87.0,84.7,84.2,84.8,86.0,83.6,82.6,85.0,85.3,86.1,81.5,86.0,81.9,84.9,85.0,85.8,73.3,84.7,85.8,84.7,85.2,85.1,86.0,86.4,83.6,83.1,85.6,86.0,79.4,60.3,67.8];
+const wkVeloOutKm = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,33.7,0.0,0.0,0.0,0.0,0.0,66.8,0.0,0.0,0.0,0.0];
+const wkVeloInKm = [0.0,0.0,44.5,0.0,30.7,32.9,12.2,24.1,0.0,14.0,0.0,0.0,0.0,0.0,13.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
+const wkVeloElev = [0,0,163,0,319,197,13,136,0,14,0,0,0,0,245,0,0,0,0,0,0,159,0,0,0,0,0,456,0,0,0,0];
+const wkVeloWatts = [null,null,105.1,null,102.5,90.3,115.2,96.4,null,111.4,null,null,null,null,126.7,null,null,null,null,null,null,105.3,null,null,null,null,null,118.1,null,null,null,null];
 new Chart(document.getElementById('chart-cadence'), {
   type: 'line',
   data: {
@@ -1793,7 +1849,7 @@ new Chart(document.getElementById('chart-zones'), {
   data: {
     labels: ['Z1–Z2 Endurance','Z2–Z3 Aérobie','Z4 Seuil','Z5 Haute Int.'],
     datasets: [{
-      data: [67.4, 102.8, 20.8, 0.0],
+      data: [96.3, 111.3, 24.0, 2.1],
       backgroundColor: [GREEN+'cc', BLUE+'cc', '#f97316cc', RED+'33'],
       borderColor: [GREEN, BLUE, '#f97316', '#ef444433'],
       borderWidth: 1.5,
@@ -1803,7 +1859,7 @@ new Chart(document.getElementById('chart-zones'), {
     maintainAspectRatio: false,
     plugins: {
       legend: { display:false },
-      tooltip: { callbacks:{ label: ctx => ctx.label+' : '+[67.4,102.8,20.8,0.0][ctx.dataIndex].toFixed(1)+'h ('+[35,54,11,0][ctx.dataIndex]+'%)' } }
+      tooltip: { callbacks:{ label: ctx => ctx.label+' : '+[96.3,111.3,24.0,2.1][ctx.dataIndex].toFixed(1)+'h ('+[41,48,10,1][ctx.dataIndex]+'%)' } }
     },
     cutout: '68%',
   }
@@ -1811,7 +1867,7 @@ new Chart(document.getElementById('chart-zones'), {
 
 // ── Heatmap ──
 (function() {
-  const hm = [[0,0,0,0],[1,0,0,16],[1,0,0,23],[1,1,0,4],[9,18,3,15],[5,0,2,2],[24,0,1,0]];
+  const hm = [[1,1,0,0],[3,0,0,16],[1,1,1,23],[3,1,0,4],[9,19,3,15],[6,0,2,2],[25,1,2,0]];
   const jours  = ['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
   const joursL = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
   const slots  = ['Matin','Midi','Après-midi','Soir'];
@@ -1869,7 +1925,7 @@ new Chart(document.getElementById('chart-zones'), {
   colTotals.forEach(ct => {
     html += `<td style="text-align:center;padding-top:8px;font-size:13px;font-weight:700;color:#ea580c">${ct}</td>`;
   });
-  html += '<td style="text-align:center;padding-top:8px;padding-left:10px;font-size:14px;font-weight:800;color:#374151">126</td>';
+  html += '<td style="text-align:center;padding-top:8px;padding-left:10px;font-size:14px;font-weight:800;color:#374151">139</td>';
   html += '</tr></tbody></table>';
 
   // ── Legend
@@ -2068,167 +2124,180 @@ new Chart(document.getElementById('chart-comp-radar'), {
 
 // ══════════ CALENDRIER ENTRAÎNEMENT ══════════
 const calActs = [
-  {d:'2026-01-01',t:'Run',km:16.8,dur:'1h47',re:334,elev:83,n:"Tour du Bois de Vincennes (S-11)",race:false},
-  {d:'2026-01-02',t:'Run',km:11.0,dur:'1h06',re:125,elev:28,n:"Boucle du dredi midi  (S-11)",race:false},
-  {d:'2026-01-02',t:'Run',km:10.2,dur:'1h02',re:183,elev:19,n:"Fractionné long  (S-11)",race:false},
-  {d:'2026-01-03',t:'Marche',km:6.5,dur:'1h27',re:18,elev:96,n:"Marche digestive",race:false},
-  {d:'2026-01-04',t:'Trail',km:26.4,dur:'3h09',re:629,elev:538,n:"Sortie longue du côté de Gravelle (S-11)",race:false},
-  {d:'2026-01-05',t:'Marche',km:4.5,dur:'51min',re:11,elev:31,n:"Marche Retour TAF",race:false},
-  {d:'2026-01-06',t:'Run',km:12.5,dur:'1h16',re:265,elev:40,n:"Boucle du mardi  (S-10)",race:false},
-  {d:'2026-01-07',t:'Run',km:11.1,dur:'1h09',re:197,elev:34,n:"Fractionné remplacé par un footing  (S-10)",race:false},
-  {d:'2026-01-09',t:'Run',km:11.4,dur:'1h10',re:212,elev:23,n:"Fractionné long  (S-10)",race:false},
-  {d:'2026-01-11',t:'Run',km:30.2,dur:'3h11',re:553,elev:91,n:"Boucle de la Marne - Bois de Vincennes (S-10)",race:false},
-  {d:'2026-01-12',t:'Muscu',km:0.0,dur:'30min',re:8,elev:0,n:"Renforcement musculaire (S-9)",race:false},
-  {d:'2026-01-14',t:'Run',km:13.0,dur:'1h20',re:244,elev:23,n:"Fractionné court  (S-9)",race:false},
-  {d:'2026-01-15',t:'Vélo',km:21.9,dur:'54min',re:52,elev:126,n:"MyWhoosh - Area 52 (S-9)",race:false},
-  {d:'2026-01-16',t:'Run',km:10.6,dur:'1h01',re:194,elev:23,n:"Boucle du dredi midi  (S-9)",race:false},
-  {d:'2026-01-16',t:'Run',km:12.7,dur:'1h16',re:259,elev:26,n:"Fractionné long  (S-9)",race:false},
-  {d:'2026-01-17',t:'Vélo',km:22.6,dur:'57min',re:27,elev:36,n:"MyWhoosh - Al Wathba-L (S-9)",race:false},
-  {d:'2026-01-18',t:'Trail',km:10.3,dur:'1h20',re:176,elev:329,n:"Séance Trail Azur  (S-9)",race:false},
-  {d:'2026-01-19',t:'Muscu',km:0.0,dur:'34min',re:6,elev:0,n:"Renforcement musculaire (S-8)",race:false},
-  {d:'2026-01-20',t:'Run',km:12.8,dur:'1h20',re:197,elev:43,n:"Footing du mardi  (S-9)",race:false},
-  {d:'2026-01-21',t:'Run',km:10.9,dur:'1h07',re:169,elev:25,n:"Fractionné court  (S-9)",race:false},
-  {d:'2026-01-23',t:'Run',km:17.1,dur:'1h42',re:323,elev:52,n:"Footing (S-9)",race:false},
-  {d:'2026-01-24',t:'Trail',km:18.5,dur:'2h09',re:348,elev:463,n:"Rando-Trail autour du Cap Blanc Nez (S-9)",race:false},
-  {d:'2026-01-25',t:'Trail',km:14.5,dur:'1h42',re:310,elev:347,n:"Séance Trail au Mont d'Hubert (S-9)",race:false},
-  {d:'2026-01-27',t:'Run',km:12.5,dur:'1h16',re:166,elev:35,n:"Footing du mardi  ( S-8)",race:false},
-  {d:'2026-01-28',t:'Run',km:10.1,dur:'1h03',re:159,elev:105,n:"Fractionné en côte  (S-8)",race:false},
-  {d:'2026-01-30',t:'Run',km:10.8,dur:'1h05',re:182,elev:23,n:"Footing du dredi midi  (S-8)",race:false},
-  {d:'2026-01-30',t:'Run',km:10.6,dur:'1h04',re:202,elev:19,n:"Fractionné long  (S-8)",race:false},
-  {d:'2026-01-31',t:'Vélo',km:30.7,dur:'1h36',re:84,elev:318,n:"MyWhoosh - Ardennes (S-8)",race:false},
-  {d:'2026-02-01',t:'Trail',km:24.9,dur:'3h25',re:654,elev:760,n:"Maxicross 25km (S-8)",race:true},
-  {d:'2026-02-02',t:'Muscu',km:0.0,dur:'21min',re:3,elev:0,n:"Renforcement musculaire (S-7)",race:false},
-  {d:'2026-02-04',t:'Run',km:13.4,dur:'1h25',re:202,elev:36,n:"Fractionné court  (S-7)",race:false},
-  {d:'2026-02-05',t:'Run',km:1.8,dur:'11min',re:23,elev:0,n:"Go to TO",race:false},
-  {d:'2026-02-05',t:'Run',km:9.5,dur:'1h01',re:179,elev:39,n:"Veillée Team Outdoor Paris",race:false},
-  {d:'2026-02-06',t:'Run',km:10.7,dur:'1h03',re:183,elev:20,n:"Footing du dredi midi  (S-7)",race:false},
-  {d:'2026-02-06',t:'Run',km:12.4,dur:'1h16',re:230,elev:18,n:"Fractionné long  (S-7)",race:false},
-  {d:'2026-02-07',t:'Vélo',km:32.9,dur:'1h35',re:46,elev:196,n:"MyWhoosh - The Seven Gems (S-7)",race:false},
-  {d:'2026-02-08',t:'Trail',km:30.2,dur:'3h26',re:613,elev:396,n:"Bois de Vincennes - Bords de Marne - V de Gravelle  (S-7)",race:false},
-  {d:'2026-02-09',t:'Muscu',km:0.0,dur:'31min',re:6,elev:0,n:"Renforcement musculaire (S-6)",race:false},
-  {d:'2026-02-10',t:'Run',km:13.5,dur:'1h27',re:211,elev:45,n:"Footing du mardi   (S-6)",race:false},
-  {d:'2026-02-11',t:'Run',km:13.5,dur:'1h29',re:189,elev:34,n:"Fractionné court   (S-6)",race:false},
-  {d:'2026-02-12',t:'Marche',km:4.6,dur:'52min',re:10,elev:32,n:"Marche Retour TAF",race:false},
-  {d:'2026-02-12',t:'Vélo',km:12.2,dur:'27min',re:19,elev:12,n:"MyWhoosh - Downtown LA (S-6)",race:false},
-  {d:'2026-02-13',t:'Trail',km:10.9,dur:'1h04',re:185,elev:25,n:"Boucle du dredi  (S-6)",race:false},
-  {d:'2026-02-13',t:'Run',km:11.2,dur:'1h09',re:189,elev:20,n:"Fractionné long  (S-6)",race:false},
-  {d:'2026-02-15',t:'Trail',km:26.6,dur:'3h37',re:569,elev:1020,n:"Séance D+ du côté de Gravelle  (S-6)",race:false},
-  {d:'2026-02-17',t:'Run',km:16.7,dur:'1h44',re:247,elev:41,n:"Footing du mardi  (S-5)",race:false},
-  {d:'2026-02-18',t:'Run',km:10.3,dur:'1h08',re:168,elev:26,n:"Fractionné court  (S-5)",race:false},
-  {d:'2026-02-19',t:'Vélo',km:24.1,dur:'1h08',re:40,elev:135,n:"MyWhoosh - Kluisbergen (S-5)",race:false},
-  {d:'2026-02-20',t:'Trail',km:10.9,dur:'1h07',re:183,elev:23,n:"Boucle du dredi  (S-5)",race:false},
-  {d:'2026-02-20',t:'Run',km:22.0,dur:'2h20',re:359,elev:67,n:"Sortie longue  (S-5)",race:false},
-  {d:'2026-02-21',t:'Trail',km:15.0,dur:'2h03',re:252,elev:520,n:"Du côté de Gravelle (S-5)",race:false},
-  {d:'2026-02-23',t:'Muscu',km:0.0,dur:'24min',re:4,elev:0,n:"Renforcement musculaire (S-4)",race:false},
-  {d:'2026-02-24',t:'Run',km:14.1,dur:'1h29',re:179,elev:40,n:"Boucle du mardi soir  (S-4)",race:false},
-  {d:'2026-02-25',t:'Run',km:14.2,dur:'1h29',re:226,elev:21,n:"Fractionné court  (S-4)",race:false},
-  {d:'2026-02-26',t:'Marche',km:4.6,dur:'53min',re:10,elev:28,n:"Marche Retour TAF",race:false},
-  {d:'2026-02-27',t:'Trail',km:10.8,dur:'1h05',re:149,elev:26,n:"Boucle du dredi midi  (S-4)",race:false},
-  {d:'2026-02-27',t:'Run',km:16.0,dur:'1h41',re:271,elev:36,n:"Fractionné long  (S-4)",race:false},
-  {d:'2026-03-01',t:'Trail',km:29.8,dur:'3h34',re:711,elev:640,n:"Sortie à la station trail de Bures sur Yvette :  parcours n6 (J-20)",race:false},
-  {d:'2026-03-02',t:'Marche',km:4.6,dur:'54min',re:10,elev:20,n:"Marche Retour TAF",race:false},
-  {d:'2026-03-02',t:'Vélo',km:14.0,dur:'32min',re:26,elev:13,n:"MyWhoosh - Hudayriyat Octopus Loop (J-19)",race:false},
-  {d:'2026-03-03',t:'Trail',km:15.3,dur:'1h36',re:173,elev:45,n:"Boucle du mardi  (J-18)",race:false},
-  {d:'2026-03-04',t:'Run',km:10.8,dur:'1h10',re:164,elev:108,n:"Fractionné court en côte (J-17)",race:false},
-  {d:'2026-03-06',t:'Trail',km:10.8,dur:'1h05',re:137,elev:24,n:"Boucle du dredi midi  (J-15)",race:false},
-  {d:'2026-03-06',t:'Run',km:15.3,dur:'1h34',re:238,elev:18,n:"Fractionné long  (J-15)",race:false},
-  {d:'2026-03-08',t:'Trail',km:27.5,dur:'3h12',re:671,elev:588,n:"Station de trail de Bures sur Yvette : parcours n7  (J-13)",race:false},
-  {d:'2026-03-10',t:'Trail',km:12.1,dur:'1h16',re:157,elev:39,n:"Boucle du mardi  (J-11)",race:false},
-  {d:'2026-03-11',t:'Marche',km:4.6,dur:'55min',re:10,elev:26,n:"Marche Retour TAF",race:false},
-  {d:'2026-03-12',t:'Run',km:6.5,dur:'38min',re:100,elev:34,n:"Footing avec les collègues sur la coulée verte (J-9)",race:false},
-  {d:'2026-03-13',t:'Trail',km:10.6,dur:'1h04',re:120,elev:27,n:"Footing d'affûtage (J-8)",race:false},
-  {d:'2026-03-15',t:'Run',km:16.7,dur:'1h37',re:213,elev:88,n:"Sortie longue d'affûtage  (J-6)",race:false},
-  {d:'2026-03-17',t:'Marche',km:4.6,dur:'54min',re:10,elev:31,n:"Marche Retour TAF",race:false},
-  {d:'2026-03-18',t:'Run',km:6.5,dur:'42min',re:67,elev:36,n:"Footing d'affûtage  (J-3)",race:false},
-  {d:'2026-03-20',t:'Trail',km:5.0,dur:'30min',re:111,elev:41,n:"Footing de déblocage (J-1) ETP120",race:false},
-  {d:'2026-03-21',t:'Trail',km:120.9,dur:'21h21',re:2379,elev:1853,n:"ETP 120",race:true},
-  {d:'2026-03-27',t:'Run',km:5.3,dur:'32min',re:70,elev:15,n:"P'tit footing de reprise",race:false},
-  {d:'2026-03-29',t:'Run',km:13.0,dur:'1h19',re:227,elev:26,n:"Sortie dominicale tranquille de reprise",race:false},
-  {d:'2026-04-01',t:'Run',km:9.3,dur:'59min',re:160,elev:18,n:"Fractionné court",race:false},
-  {d:'2026-04-05',t:'Trail',km:13.1,dur:'1h28',re:239,elev:187,n:"Terrils de Pinchonvalles - Monument Canadien",race:false},
-  {d:'2026-04-07',t:'Vélo',km:13.5,dur:'41min',re:62,elev:245,n:"MyWhoosh - Montreal",race:false},
-  {d:'2026-04-08',t:'Run',km:11.3,dur:'1h09',re:254,elev:20,n:"Fractionné court",race:false},
-  {d:'2026-04-10',t:'Trail',km:10.7,dur:'1h03',re:189,elev:31,n:"Boucle du dredi midi",race:false},
-  {d:'2026-04-10',t:'Run',km:13.6,dur:'1h20',re:282,elev:51,n:"Fractionné long",race:false},
-  {d:'2026-04-12',t:'Run',km:12.6,dur:'1h18',re:179,elev:58,n:"Accompagnement de Laurence sur une partie du marathon de Paris  (Partie 1)",race:false},
-  {d:'2026-04-12',t:'Run',km:6.5,dur:'48min',re:87,elev:40,n:"Accompagnement de Laurence sur marathon de Paris   (partie 2)",race:false},
-  {d:'2026-04-15',t:'Run',km:10.3,dur:'1h02',re:207,elev:21,n:"Fractionné court",race:false},
-  {d:'2026-04-17',t:'Trail',km:12.1,dur:'1h10',re:233,elev:41,n:"Boucle du dredi midi",race:false},
-  {d:'2026-04-17',t:'Run',km:13.1,dur:'1h17',re:275,elev:20,n:"Fractionné long",race:false},
-  {d:'2026-04-19',t:'Trail',km:14.6,dur:'1h45',re:347,elev:331,n:"Un peu de D+ du côté de Gravelle",race:false},
-  {d:'2026-04-22',t:'Run',km:12.3,dur:'1h13',re:249,elev:130,n:"Fractionné court en côte",race:false},
-  {d:'2026-04-23',t:'Marche',km:4.6,dur:'54min',re:10,elev:32,n:"Marche Retour TAF",race:false},
-  {d:'2026-04-24',t:'Trail',km:10.9,dur:'1h04',re:188,elev:28,n:"Boucle du dredi midi",race:false},
-  {d:'2026-04-24',t:'Run',km:10.2,dur:'59min',re:189,elev:26,n:"Fractionné long",race:false},
-  {d:'2026-04-25',t:'Marche',km:6.0,dur:'1h11',re:14,elev:29,n:"Marche Retour Père Lachaise",race:false},
-  {d:'2026-04-26',t:'Trail',km:13.7,dur:'1h32',re:250,elev:218,n:"Séance Trail",race:false},
-  {d:'2026-04-28',t:'Run',km:13.0,dur:'1h11',re:259,elev:37,n:"Retour de la boucle du mardi",race:false},
-  {d:'2026-05-01',t:'Trail',km:2.9,dur:'23min',re:43,elev:102,n:"Stage Trail  : P'tit footing à jeun",race:false},
-  {d:'2026-05-01',t:'Trail',km:5.5,dur:'1h49',re:83,elev:187,n:"Stage Trail  : footing+renfo+footing",race:false},
-  {d:'2026-05-01',t:'Trail',km:11.5,dur:'2h24',re:358,elev:848,n:"Stage Trail  : travail en descente",race:false},
-  {d:'2026-05-02',t:'Trail',km:32.9,dur:'6h37',re:380,elev:1842,n:"Stage Trail  : sortie longue le grand Serre",race:false},
-  {d:'2026-05-03',t:'Yoga',km:0.0,dur:'1h08',re:12,elev:0,n:"Stage Trail  : Yoga",race:false},
-  {d:'2026-05-06',t:'Run',km:11.0,dur:'1h03',re:191,elev:18,n:"Fractionné court",race:false},
-  {d:'2026-05-08',t:'Run',km:14.1,dur:'1h25',re:255,elev:36,n:"Fractionné long",race:false},
-  {d:'2026-05-10',t:'Trail',km:23.0,dur:'2h32',re:554,elev:526,n:"Trail des Lavoirs",race:true},
-  {d:'2026-05-12',t:'Run',km:12.6,dur:'1h10',re:203,elev:37,n:"Footing du mardi",race:false},
-  {d:'2026-05-13',t:'Run',km:10.7,dur:'1h03',re:167,elev:25,n:"Fractionné court",race:false},
-  {d:'2026-05-15',t:'Run',km:10.0,dur:'56min',re:191,elev:41,n:"Fractionné long",race:false},
-  {d:'2026-05-17',t:'Run',km:12.4,dur:'1h08',re:227,elev:86,n:"Vimy - Farbus - Willerval - Vimy",race:false},
-  {d:'2026-05-19',t:'Marche',km:2.7,dur:'31min',re:7,elev:14,n:"Marche retour garage",race:false},
-  {d:'2026-05-19',t:'Run',km:12.6,dur:'1h15',re:221,elev:35,n:"Footing du mardi",race:false},
-  {d:'2026-05-20',t:'Run',km:11.2,dur:'1h08',re:225,elev:76,n:"Fractionné court",race:false},
-  {d:'2026-05-21',t:'Marche',km:3.7,dur:'37min',re:11,elev:10,n:"Marche Aller Garage",race:false},
-  {d:'2026-05-22',t:'Trail',km:10.4,dur:'1h02',re:182,elev:20,n:"Boucle du dredi midi",race:false},
-  {d:'2026-05-22',t:'Run',km:10.6,dur:'1h02',re:210,elev:21,n:"Fractionné long",race:false},
-  {d:'2026-05-24',t:'Trail',km:15.0,dur:'1h49',re:339,elev:375,n:"Un peu de D+ Gravelle",race:false},
-  {d:'2026-05-25',t:'Vélo',km:33.7,dur:'1h21',re:60,elev:159,n:"Quelques tours au polygone",race:false},
-  {d:'2026-05-25',t:'Marche',km:4.9,dur:'59min',re:11,elev:15,n:"Marche Tour du Lac",race:false},
-  {d:'2026-05-26',t:'Marche',km:4.6,dur:'55min',re:10,elev:27,n:"Marche Retour TAF",race:false},
-  {d:'2026-05-27',t:'Run',km:11.4,dur:'1h10',re:154,elev:21,n:"Fractionné court",race:false},
-  {d:'2026-05-29',t:'Trail',km:10.6,dur:'1h02',re:164,elev:23,n:"Boucle du dredi midi",race:false},
-  {d:'2026-05-29',t:'Marche',km:6.7,dur:'1h20',re:14,elev:45,n:"Marche Bord de Marne",race:false},
-  {d:'2026-05-30',t:'Run',km:10.5,dur:'1h00',re:152,elev:22,n:"Reco Foulées 12 avec Team Outdoor",race:false},
-  {d:'2026-05-31',t:'Trail',km:17.5,dur:'1h49',re:473,elev:414,n:"La foulée verte de Clamart",race:true},
-  {d:'2026-06-03',t:'Run',km:12.0,dur:'1h13',re:193,elev:45,n:"Fractionné court",race:false},
-  {d:'2026-06-05',t:'Trail',km:10.8,dur:'1h03',re:144,elev:19,n:"Boucle du dredi midi",race:false},
-  {d:'2026-06-05',t:'Run',km:9.8,dur:'55min',re:175,elev:17,n:"Fractionné long",race:false},
-  {d:'2026-06-07',t:'Trail',km:11.6,dur:'1h23',re:246,elev:314,n:"Séance Trail Gravelle",race:false},
-  {d:'2026-06-09',t:'Trail',km:12.4,dur:'1h14',re:179,elev:39,n:"Footing du mardi",race:false},
-  {d:'2026-06-10',t:'Run',km:10.1,dur:'1h04',re:110,elev:25,n:"Fractionné court",race:false},
-  {d:'2026-06-11',t:'Marche',km:4.5,dur:'51min',re:9,elev:30,n:"Marche Retour TAF",race:false},
-  {d:'2026-06-12',t:'Run',km:5.3,dur:'32min',re:59,elev:11,n:"Mini footing du dredi midi",race:false},
-  {d:'2026-06-13',t:'Run',km:7.0,dur:'42min',re:80,elev:16,n:"Séance déblocage veille de course",race:false},
-  {d:'2026-06-14',t:'Run',km:3.7,dur:'26min',re:27,elev:6,n:"Échauffement foulées du 12eme",race:false},
-  {d:'2026-06-14',t:'Run',km:10.1,dur:'48min',re:211,elev:20,n:"Les foulées du 12eme",race:true},
-  {d:'2026-06-16',t:'Run',km:11.9,dur:'1h07',re:223,elev:34,n:"Footing du mardi",race:false},
-  {d:'2026-06-17',t:'Run',km:8.0,dur:'52min',re:101,elev:18,n:"Fractionné court",race:false},
-  {d:'2026-06-19',t:'Run',km:10.7,dur:'1h04',re:147,elev:22,n:"Boucle du dredi",race:false},
-  {d:'2026-06-22',t:'Marche',km:3.0,dur:'38min',re:6,elev:8,n:"Marche Tour du Lac",race:false},
-  {d:'2026-06-23',t:'Trail',km:7.0,dur:'42min',re:129,elev:14,n:"P'tit footing d'acclimatation",race:false},
-  {d:'2026-06-25',t:'Marche',km:4.4,dur:'51min',re:7,elev:39,n:"Marche Retour TAF",race:false},
-  {d:'2026-06-26',t:'Trail',km:10.4,dur:'1h05',re:16,elev:31,n:"Boucle du dredi",race:false},
-  {d:'2026-06-28',t:'Trail',km:13.3,dur:'1h32',re:44,elev:407,n:"Un peu de D+ (début prépa Échappée Belle)",race:false},
-  {d:'2026-06-30',t:'Run',km:12.6,dur:'1h15',re:21,elev:43,n:"Footing du mardi",race:false},
-  {d:'2026-07-01',t:'Run',km:11.6,dur:'1h11',re:38,elev:115,n:"Fractionné en côte",race:false},
-  {d:'2026-07-03',t:'Trail',km:10.9,dur:'1h03',re:23,elev:29,n:"Boucle du dredi",race:false},
-  {d:'2026-07-03',t:'Run',km:10.9,dur:'1h07',re:35,elev:28,n:"Fractionné long",race:false},
-  {d:'2026-07-04',t:'Run',km:2.2,dur:'22min',re:3,elev:3,n:"Accompagnement Pierre 100km (1)",race:false},
-  {d:'2026-07-04',t:'Run',km:4.1,dur:'25min',re:5,elev:5,n:"Accompagnement Pierre 100km (2)",race:false},
-  {d:'2026-07-04',t:'Run',km:6.1,dur:'38min',re:10,elev:7,n:"Accompagnement Pierre 100km (3)",race:false},
-  {d:'2026-07-05',t:'Run',km:13.0,dur:'1h18',re:25,elev:66,n:"Petite Baltard",race:false},
-  {d:'2026-07-07',t:'Muscu',km:0.0,dur:'18min',re:2,elev:0,n:"Renforcement musculaire",race:false},
-  {d:'2026-07-08',t:'Trail',km:7.3,dur:'52min',re:31,elev:223,n:"Quelques V à la fraîche",race:false},
-  {d:'2026-07-09',t:'Run',km:1.9,dur:'19min',re:2,elev:12,n:"Veillée Team Outdoor Laser Run",race:false},
-  {d:'2026-07-10',t:'Trail',km:10.8,dur:'1h05',re:17,elev:21,n:"Boucle du dredi",race:false},
-  {d:'2026-07-12',t:'Vélo',km:66.8,dur:'2h51',re:44,elev:456,n:"Sortie vélo le matin",race:false},
-  {d:'2026-07-14',t:'Run',km:12.4,dur:'1h11',re:24,elev:31,n:"Run du 14 juillet",race:false},
-  {d:'2026-07-16',t:'Run',km:10.0,dur:'55min',re:54,elev:35,n:"P'tit tour du bois",race:false},
-  {d:'2026-07-17',t:'Trail',km:10.7,dur:'1h04',re:18,elev:27,n:"Boucle du dredi",race:false},
-  {d:'2026-07-21',t:'Trail',km:12.7,dur:'1h12',re:61,elev:46,n:"Footing du mardi",race:false},
-  {d:'2026-07-22',t:'Run',km:10.8,dur:'1h05',re:29,elev:29,n:"Fractionné court",race:false},
-  {d:'2026-07-23',t:'Marche',km:4.1,dur:'46min',re:6,elev:34,n:"Marche retour TAF",race:false},
-  {d:'2026-07-24',t:'Run',km:10.7,dur:'1h00',re:24,elev:39,n:"Boucle du dredi midi",race:false}
+  {d:'2026-01-01',t:'Run',km:16.8,dur:'1h47',re:334,elev:83,n:"Tour du Bois de Vincennes (S-11)",race:false,hike:false},
+  {d:'2026-01-02',t:'Run',km:11.0,dur:'1h06',re:125,elev:28,n:"Boucle du dredi midi  (S-11)",race:false,hike:false},
+  {d:'2026-01-02',t:'Run',km:10.2,dur:'1h02',re:183,elev:19,n:"Fractionné long  (S-11)",race:false,hike:false},
+  {d:'2026-01-03',t:'Marche',km:6.5,dur:'1h27',re:18,elev:96,n:"Marche digestive",race:false,hike:false},
+  {d:'2026-01-04',t:'Trail',km:26.4,dur:'3h09',re:629,elev:538,n:"Sortie longue du côté de Gravelle (S-11)",race:false,hike:false},
+  {d:'2026-01-05',t:'Marche',km:4.5,dur:'51min',re:11,elev:31,n:"Marche Retour TAF",race:false,hike:false},
+  {d:'2026-01-06',t:'Run',km:12.5,dur:'1h16',re:265,elev:40,n:"Boucle du mardi  (S-10)",race:false,hike:false},
+  {d:'2026-01-07',t:'Run',km:11.1,dur:'1h09',re:197,elev:34,n:"Fractionné remplacé par un footing  (S-10)",race:false,hike:false},
+  {d:'2026-01-09',t:'Run',km:11.4,dur:'1h10',re:212,elev:23,n:"Fractionné long  (S-10)",race:false,hike:false},
+  {d:'2026-01-11',t:'Run',km:30.2,dur:'3h11',re:553,elev:91,n:"Boucle de la Marne - Bois de Vincennes (S-10)",race:false,hike:false},
+  {d:'2026-01-12',t:'Muscu',km:0.0,dur:'30min',re:8,elev:0,n:"Renforcement musculaire (S-9)",race:false,hike:false},
+  {d:'2026-01-14',t:'Run',km:13.0,dur:'1h20',re:244,elev:23,n:"Fractionné court  (S-9)",race:false,hike:false},
+  {d:'2026-01-15',t:'Vélo',km:21.9,dur:'54min',re:52,elev:126,n:"MyWhoosh - Area 52 (S-9)",race:false,hike:false},
+  {d:'2026-01-16',t:'Run',km:10.6,dur:'1h01',re:194,elev:23,n:"Boucle du dredi midi  (S-9)",race:false,hike:false},
+  {d:'2026-01-16',t:'Run',km:12.7,dur:'1h16',re:259,elev:26,n:"Fractionné long  (S-9)",race:false,hike:false},
+  {d:'2026-01-17',t:'Vélo',km:22.6,dur:'57min',re:27,elev:36,n:"MyWhoosh - Al Wathba-L (S-9)",race:false,hike:false},
+  {d:'2026-01-18',t:'Trail',km:10.3,dur:'1h20',re:176,elev:329,n:"Séance Trail Azur  (S-9)",race:false,hike:false},
+  {d:'2026-01-19',t:'Muscu',km:0.0,dur:'34min',re:6,elev:0,n:"Renforcement musculaire (S-8)",race:false,hike:false},
+  {d:'2026-01-20',t:'Run',km:12.8,dur:'1h20',re:197,elev:43,n:"Footing du mardi  (S-9)",race:false,hike:false},
+  {d:'2026-01-21',t:'Run',km:10.9,dur:'1h07',re:169,elev:25,n:"Fractionné court  (S-9)",race:false,hike:false},
+  {d:'2026-01-23',t:'Run',km:17.1,dur:'1h42',re:323,elev:52,n:"Footing (S-9)",race:false,hike:false},
+  {d:'2026-01-24',t:'Trail',km:18.5,dur:'2h09',re:348,elev:463,n:"Rando-Trail autour du Cap Blanc Nez (S-9)",race:false,hike:false},
+  {d:'2026-01-25',t:'Trail',km:14.5,dur:'1h42',re:310,elev:347,n:"Séance Trail au Mont d'Hubert (S-9)",race:false,hike:false},
+  {d:'2026-01-27',t:'Run',km:12.5,dur:'1h16',re:166,elev:35,n:"Footing du mardi  ( S-8)",race:false,hike:false},
+  {d:'2026-01-28',t:'Run',km:10.1,dur:'1h03',re:159,elev:105,n:"Fractionné en côte  (S-8)",race:false,hike:false},
+  {d:'2026-01-30',t:'Run',km:10.8,dur:'1h05',re:182,elev:23,n:"Footing du dredi midi  (S-8)",race:false,hike:false},
+  {d:'2026-01-30',t:'Run',km:10.6,dur:'1h04',re:202,elev:19,n:"Fractionné long  (S-8)",race:false,hike:false},
+  {d:'2026-01-31',t:'Vélo',km:30.7,dur:'1h36',re:84,elev:318,n:"MyWhoosh - Ardennes (S-8)",race:false,hike:false},
+  {d:'2026-02-01',t:'Trail',km:24.9,dur:'3h25',re:654,elev:760,n:"Maxicross 25km (S-8)",race:true,hike:false},
+  {d:'2026-02-02',t:'Muscu',km:0.0,dur:'21min',re:3,elev:0,n:"Renforcement musculaire (S-7)",race:false,hike:false},
+  {d:'2026-02-04',t:'Run',km:13.4,dur:'1h25',re:202,elev:36,n:"Fractionné court  (S-7)",race:false,hike:false},
+  {d:'2026-02-05',t:'Run',km:1.8,dur:'11min',re:23,elev:0,n:"Go to TO",race:false,hike:false},
+  {d:'2026-02-05',t:'Run',km:9.5,dur:'1h01',re:179,elev:39,n:"Veillée Team Outdoor Paris",race:false,hike:false},
+  {d:'2026-02-06',t:'Run',km:10.7,dur:'1h03',re:183,elev:20,n:"Footing du dredi midi  (S-7)",race:false,hike:false},
+  {d:'2026-02-06',t:'Run',km:12.4,dur:'1h16',re:230,elev:18,n:"Fractionné long  (S-7)",race:false,hike:false},
+  {d:'2026-02-07',t:'Vélo',km:32.9,dur:'1h35',re:46,elev:196,n:"MyWhoosh - The Seven Gems (S-7)",race:false,hike:false},
+  {d:'2026-02-08',t:'Trail',km:30.2,dur:'3h26',re:613,elev:396,n:"Bois de Vincennes - Bords de Marne - V de Gravelle  (S-7)",race:false,hike:false},
+  {d:'2026-02-09',t:'Muscu',km:0.0,dur:'31min',re:6,elev:0,n:"Renforcement musculaire (S-6)",race:false,hike:false},
+  {d:'2026-02-10',t:'Run',km:13.5,dur:'1h27',re:211,elev:45,n:"Footing du mardi   (S-6)",race:false,hike:false},
+  {d:'2026-02-11',t:'Run',km:13.5,dur:'1h29',re:189,elev:34,n:"Fractionné court   (S-6)",race:false,hike:false},
+  {d:'2026-02-12',t:'Marche',km:4.6,dur:'52min',re:10,elev:32,n:"Marche Retour TAF",race:false,hike:false},
+  {d:'2026-02-12',t:'Vélo',km:12.2,dur:'27min',re:19,elev:12,n:"MyWhoosh - Downtown LA (S-6)",race:false,hike:false},
+  {d:'2026-02-13',t:'Trail',km:10.9,dur:'1h04',re:185,elev:25,n:"Boucle du dredi  (S-6)",race:false,hike:false},
+  {d:'2026-02-13',t:'Run',km:11.2,dur:'1h09',re:189,elev:20,n:"Fractionné long  (S-6)",race:false,hike:false},
+  {d:'2026-02-15',t:'Trail',km:26.6,dur:'3h37',re:569,elev:1020,n:"Séance D+ du côté de Gravelle  (S-6)",race:false,hike:false},
+  {d:'2026-02-17',t:'Run',km:16.7,dur:'1h44',re:247,elev:41,n:"Footing du mardi  (S-5)",race:false,hike:false},
+  {d:'2026-02-18',t:'Run',km:10.3,dur:'1h08',re:168,elev:26,n:"Fractionné court  (S-5)",race:false,hike:false},
+  {d:'2026-02-19',t:'Vélo',km:24.1,dur:'1h08',re:40,elev:135,n:"MyWhoosh - Kluisbergen (S-5)",race:false,hike:false},
+  {d:'2026-02-20',t:'Trail',km:10.9,dur:'1h07',re:183,elev:23,n:"Boucle du dredi  (S-5)",race:false,hike:false},
+  {d:'2026-02-20',t:'Run',km:22.0,dur:'2h20',re:359,elev:67,n:"Sortie longue  (S-5)",race:false,hike:false},
+  {d:'2026-02-21',t:'Trail',km:15.0,dur:'2h03',re:252,elev:520,n:"Du côté de Gravelle (S-5)",race:false,hike:false},
+  {d:'2026-02-23',t:'Muscu',km:0.0,dur:'24min',re:4,elev:0,n:"Renforcement musculaire (S-4)",race:false,hike:false},
+  {d:'2026-02-24',t:'Run',km:14.1,dur:'1h29',re:179,elev:40,n:"Boucle du mardi soir  (S-4)",race:false,hike:false},
+  {d:'2026-02-25',t:'Run',km:14.2,dur:'1h29',re:226,elev:21,n:"Fractionné court  (S-4)",race:false,hike:false},
+  {d:'2026-02-26',t:'Marche',km:4.6,dur:'53min',re:10,elev:28,n:"Marche Retour TAF",race:false,hike:false},
+  {d:'2026-02-27',t:'Trail',km:10.8,dur:'1h05',re:149,elev:26,n:"Boucle du dredi midi  (S-4)",race:false,hike:false},
+  {d:'2026-02-27',t:'Run',km:16.0,dur:'1h41',re:271,elev:36,n:"Fractionné long  (S-4)",race:false,hike:false},
+  {d:'2026-03-01',t:'Trail',km:29.8,dur:'3h34',re:711,elev:640,n:"Sortie à la station trail de Bures sur Yvette :  parcours n6 (J-20)",race:false,hike:false},
+  {d:'2026-03-02',t:'Marche',km:4.6,dur:'54min',re:10,elev:20,n:"Marche Retour TAF",race:false,hike:false},
+  {d:'2026-03-02',t:'Vélo',km:14.0,dur:'32min',re:26,elev:13,n:"MyWhoosh - Hudayriyat Octopus Loop (J-19)",race:false,hike:false},
+  {d:'2026-03-03',t:'Trail',km:15.3,dur:'1h36',re:173,elev:45,n:"Boucle du mardi  (J-18)",race:false,hike:false},
+  {d:'2026-03-04',t:'Run',km:10.8,dur:'1h10',re:164,elev:108,n:"Fractionné court en côte (J-17)",race:false,hike:false},
+  {d:'2026-03-06',t:'Trail',km:10.8,dur:'1h05',re:137,elev:24,n:"Boucle du dredi midi  (J-15)",race:false,hike:false},
+  {d:'2026-03-06',t:'Run',km:15.3,dur:'1h34',re:238,elev:18,n:"Fractionné long  (J-15)",race:false,hike:false},
+  {d:'2026-03-08',t:'Trail',km:27.5,dur:'3h12',re:671,elev:588,n:"Station de trail de Bures sur Yvette : parcours n7  (J-13)",race:false,hike:false},
+  {d:'2026-03-10',t:'Trail',km:12.1,dur:'1h16',re:157,elev:39,n:"Boucle du mardi  (J-11)",race:false,hike:false},
+  {d:'2026-03-11',t:'Marche',km:4.6,dur:'55min',re:10,elev:26,n:"Marche Retour TAF",race:false,hike:false},
+  {d:'2026-03-12',t:'Run',km:6.5,dur:'38min',re:100,elev:34,n:"Footing avec les collègues sur la coulée verte (J-9)",race:false,hike:false},
+  {d:'2026-03-13',t:'Trail',km:10.6,dur:'1h04',re:120,elev:27,n:"Footing d'affûtage (J-8)",race:false,hike:false},
+  {d:'2026-03-15',t:'Run',km:16.7,dur:'1h37',re:213,elev:88,n:"Sortie longue d'affûtage  (J-6)",race:false,hike:false},
+  {d:'2026-03-17',t:'Marche',km:4.6,dur:'54min',re:10,elev:31,n:"Marche Retour TAF",race:false,hike:false},
+  {d:'2026-03-18',t:'Run',km:6.5,dur:'42min',re:67,elev:36,n:"Footing d'affûtage  (J-3)",race:false,hike:false},
+  {d:'2026-03-20',t:'Trail',km:5.0,dur:'30min',re:111,elev:41,n:"Footing de déblocage (J-1) ETP120",race:false,hike:false},
+  {d:'2026-03-21',t:'Trail',km:120.9,dur:'21h21',re:2379,elev:1853,n:"ETP 120",race:true,hike:false},
+  {d:'2026-03-27',t:'Run',km:5.3,dur:'32min',re:70,elev:15,n:"P'tit footing de reprise",race:false,hike:false},
+  {d:'2026-03-29',t:'Run',km:13.0,dur:'1h19',re:227,elev:26,n:"Sortie dominicale tranquille de reprise",race:false,hike:false},
+  {d:'2026-04-01',t:'Run',km:9.3,dur:'59min',re:160,elev:18,n:"Fractionné court",race:false,hike:false},
+  {d:'2026-04-05',t:'Trail',km:13.1,dur:'1h28',re:239,elev:187,n:"Terrils de Pinchonvalles - Monument Canadien",race:false,hike:false},
+  {d:'2026-04-07',t:'Vélo',km:13.5,dur:'41min',re:62,elev:245,n:"MyWhoosh - Montreal",race:false,hike:false},
+  {d:'2026-04-08',t:'Run',km:11.3,dur:'1h09',re:254,elev:20,n:"Fractionné court",race:false,hike:false},
+  {d:'2026-04-10',t:'Trail',km:10.7,dur:'1h03',re:189,elev:31,n:"Boucle du dredi midi",race:false,hike:false},
+  {d:'2026-04-10',t:'Run',km:13.6,dur:'1h20',re:282,elev:51,n:"Fractionné long",race:false,hike:false},
+  {d:'2026-04-12',t:'Run',km:12.6,dur:'1h18',re:179,elev:58,n:"Accompagnement de Laurence sur une partie du marathon de Paris  (Partie 1)",race:false,hike:false},
+  {d:'2026-04-12',t:'Run',km:6.5,dur:'48min',re:87,elev:40,n:"Accompagnement de Laurence sur marathon de Paris   (partie 2)",race:false,hike:false},
+  {d:'2026-04-15',t:'Run',km:10.3,dur:'1h02',re:207,elev:21,n:"Fractionné court",race:false,hike:false},
+  {d:'2026-04-17',t:'Trail',km:12.1,dur:'1h10',re:233,elev:41,n:"Boucle du dredi midi",race:false,hike:false},
+  {d:'2026-04-17',t:'Run',km:13.1,dur:'1h17',re:275,elev:20,n:"Fractionné long",race:false,hike:false},
+  {d:'2026-04-19',t:'Trail',km:14.6,dur:'1h45',re:347,elev:331,n:"Un peu de D+ du côté de Gravelle",race:false,hike:false},
+  {d:'2026-04-22',t:'Run',km:12.3,dur:'1h13',re:249,elev:130,n:"Fractionné court en côte",race:false,hike:false},
+  {d:'2026-04-23',t:'Marche',km:4.6,dur:'54min',re:10,elev:32,n:"Marche Retour TAF",race:false,hike:false},
+  {d:'2026-04-24',t:'Trail',km:10.9,dur:'1h04',re:188,elev:28,n:"Boucle du dredi midi",race:false,hike:false},
+  {d:'2026-04-24',t:'Run',km:10.2,dur:'59min',re:189,elev:26,n:"Fractionné long",race:false,hike:false},
+  {d:'2026-04-25',t:'Marche',km:6.0,dur:'1h11',re:14,elev:29,n:"Marche Retour Père Lachaise",race:false,hike:false},
+  {d:'2026-04-26',t:'Trail',km:13.7,dur:'1h32',re:250,elev:218,n:"Séance Trail",race:false,hike:false},
+  {d:'2026-04-28',t:'Run',km:13.0,dur:'1h11',re:259,elev:37,n:"Retour de la boucle du mardi",race:false,hike:false},
+  {d:'2026-05-01',t:'Trail',km:2.9,dur:'23min',re:43,elev:102,n:"Stage Trail  : P'tit footing à jeun",race:false,hike:false},
+  {d:'2026-05-01',t:'Trail',km:5.5,dur:'1h49',re:83,elev:187,n:"Stage Trail  : footing+renfo+footing",race:false,hike:false},
+  {d:'2026-05-01',t:'Trail',km:11.5,dur:'2h24',re:358,elev:848,n:"Stage Trail  : travail en descente",race:false,hike:false},
+  {d:'2026-05-02',t:'Trail',km:32.9,dur:'6h37',re:380,elev:1842,n:"Stage Trail  : sortie longue le grand Serre",race:false,hike:false},
+  {d:'2026-05-03',t:'Yoga',km:0.0,dur:'1h08',re:12,elev:0,n:"Stage Trail  : Yoga",race:false,hike:false},
+  {d:'2026-05-06',t:'Run',km:11.0,dur:'1h03',re:191,elev:18,n:"Fractionné court",race:false,hike:false},
+  {d:'2026-05-08',t:'Run',km:14.1,dur:'1h25',re:255,elev:36,n:"Fractionné long",race:false,hike:false},
+  {d:'2026-05-10',t:'Trail',km:23.0,dur:'2h32',re:554,elev:526,n:"Trail des Lavoirs",race:true,hike:false},
+  {d:'2026-05-12',t:'Run',km:12.6,dur:'1h10',re:203,elev:37,n:"Footing du mardi",race:false,hike:false},
+  {d:'2026-05-13',t:'Run',km:10.7,dur:'1h03',re:167,elev:25,n:"Fractionné court",race:false,hike:false},
+  {d:'2026-05-15',t:'Run',km:10.0,dur:'56min',re:191,elev:41,n:"Fractionné long",race:false,hike:false},
+  {d:'2026-05-17',t:'Run',km:12.4,dur:'1h08',re:227,elev:86,n:"Vimy - Farbus - Willerval - Vimy",race:false,hike:false},
+  {d:'2026-05-19',t:'Marche',km:2.7,dur:'31min',re:7,elev:14,n:"Marche retour garage",race:false,hike:false},
+  {d:'2026-05-19',t:'Run',km:12.6,dur:'1h15',re:221,elev:35,n:"Footing du mardi",race:false,hike:false},
+  {d:'2026-05-20',t:'Run',km:11.2,dur:'1h08',re:225,elev:76,n:"Fractionné court",race:false,hike:false},
+  {d:'2026-05-21',t:'Marche',km:3.7,dur:'37min',re:11,elev:10,n:"Marche Aller Garage",race:false,hike:false},
+  {d:'2026-05-22',t:'Trail',km:10.4,dur:'1h02',re:182,elev:20,n:"Boucle du dredi midi",race:false,hike:false},
+  {d:'2026-05-22',t:'Run',km:10.6,dur:'1h02',re:210,elev:21,n:"Fractionné long",race:false,hike:false},
+  {d:'2026-05-24',t:'Trail',km:15.0,dur:'1h49',re:339,elev:375,n:"Un peu de D+ Gravelle",race:false,hike:false},
+  {d:'2026-05-25',t:'Vélo',km:33.7,dur:'1h21',re:60,elev:159,n:"Quelques tours au polygone",race:false,hike:false},
+  {d:'2026-05-25',t:'Marche',km:4.9,dur:'59min',re:11,elev:15,n:"Marche Tour du Lac",race:false,hike:false},
+  {d:'2026-05-26',t:'Marche',km:4.6,dur:'55min',re:10,elev:27,n:"Marche Retour TAF",race:false,hike:false},
+  {d:'2026-05-27',t:'Run',km:11.4,dur:'1h10',re:154,elev:21,n:"Fractionné court",race:false,hike:false},
+  {d:'2026-05-29',t:'Trail',km:10.6,dur:'1h02',re:164,elev:23,n:"Boucle du dredi midi",race:false,hike:false},
+  {d:'2026-05-29',t:'Marche',km:6.7,dur:'1h20',re:14,elev:45,n:"Marche Bord de Marne",race:false,hike:false},
+  {d:'2026-05-30',t:'Run',km:10.5,dur:'1h00',re:152,elev:22,n:"Reco Foulées 12 avec Team Outdoor",race:false,hike:false},
+  {d:'2026-05-31',t:'Trail',km:17.5,dur:'1h49',re:473,elev:414,n:"La foulée verte de Clamart",race:true,hike:false},
+  {d:'2026-06-03',t:'Run',km:12.0,dur:'1h13',re:193,elev:45,n:"Fractionné court",race:false,hike:false},
+  {d:'2026-06-05',t:'Trail',km:10.8,dur:'1h03',re:144,elev:19,n:"Boucle du dredi midi",race:false,hike:false},
+  {d:'2026-06-05',t:'Run',km:9.8,dur:'55min',re:175,elev:17,n:"Fractionné long",race:false,hike:false},
+  {d:'2026-06-07',t:'Trail',km:11.6,dur:'1h23',re:246,elev:314,n:"Séance Trail Gravelle",race:false,hike:false},
+  {d:'2026-06-09',t:'Trail',km:12.4,dur:'1h14',re:179,elev:39,n:"Footing du mardi",race:false,hike:false},
+  {d:'2026-06-10',t:'Run',km:10.1,dur:'1h04',re:110,elev:25,n:"Fractionné court",race:false,hike:false},
+  {d:'2026-06-11',t:'Marche',km:4.5,dur:'51min',re:9,elev:30,n:"Marche Retour TAF",race:false,hike:false},
+  {d:'2026-06-12',t:'Run',km:5.3,dur:'32min',re:59,elev:11,n:"Mini footing du dredi midi",race:false,hike:false},
+  {d:'2026-06-13',t:'Run',km:7.0,dur:'42min',re:80,elev:16,n:"Séance déblocage veille de course",race:false,hike:false},
+  {d:'2026-06-14',t:'Run',km:3.7,dur:'26min',re:27,elev:6,n:"Échauffement foulées du 12eme",race:false,hike:false},
+  {d:'2026-06-14',t:'Run',km:10.1,dur:'48min',re:211,elev:20,n:"Les foulées du 12eme",race:true,hike:false},
+  {d:'2026-06-16',t:'Run',km:11.9,dur:'1h07',re:223,elev:34,n:"Footing du mardi",race:false,hike:false},
+  {d:'2026-06-17',t:'Run',km:8.0,dur:'52min',re:101,elev:18,n:"Fractionné court",race:false,hike:false},
+  {d:'2026-06-19',t:'Run',km:10.7,dur:'1h04',re:147,elev:22,n:"Boucle du dredi",race:false,hike:false},
+  {d:'2026-06-22',t:'Marche',km:3.0,dur:'38min',re:6,elev:8,n:"Marche Tour du Lac",race:false,hike:false},
+  {d:'2026-06-23',t:'Trail',km:7.0,dur:'42min',re:129,elev:14,n:"P'tit footing d'acclimatation",race:false,hike:false},
+  {d:'2026-06-25',t:'Marche',km:4.4,dur:'51min',re:7,elev:39,n:"Marche Retour TAF",race:false,hike:false},
+  {d:'2026-06-26',t:'Trail',km:10.4,dur:'1h05',re:16,elev:31,n:"Boucle du dredi",race:false,hike:false},
+  {d:'2026-06-28',t:'Trail',km:13.3,dur:'1h32',re:44,elev:407,n:"Un peu de D+ (début prépa Échappée Belle)",race:false,hike:false},
+  {d:'2026-06-30',t:'Run',km:12.6,dur:'1h15',re:21,elev:43,n:"Footing du mardi",race:false,hike:false},
+  {d:'2026-07-01',t:'Run',km:11.6,dur:'1h11',re:38,elev:115,n:"Fractionné en côte",race:false,hike:false},
+  {d:'2026-07-03',t:'Trail',km:10.9,dur:'1h03',re:23,elev:29,n:"Boucle du dredi",race:false,hike:false},
+  {d:'2026-07-03',t:'Run',km:10.9,dur:'1h07',re:35,elev:28,n:"Fractionné long",race:false,hike:false},
+  {d:'2026-07-04',t:'Run',km:2.2,dur:'22min',re:3,elev:3,n:"Accompagnement Pierre 100km (1)",race:false,hike:false},
+  {d:'2026-07-04',t:'Run',km:4.1,dur:'25min',re:5,elev:5,n:"Accompagnement Pierre 100km (2)",race:false,hike:false},
+  {d:'2026-07-04',t:'Run',km:6.1,dur:'38min',re:10,elev:7,n:"Accompagnement Pierre 100km (3)",race:false,hike:false},
+  {d:'2026-07-05',t:'Run',km:13.0,dur:'1h18',re:25,elev:66,n:"Petite Baltard",race:false,hike:false},
+  {d:'2026-07-07',t:'Muscu',km:0.0,dur:'18min',re:2,elev:0,n:"Renforcement musculaire",race:false,hike:false},
+  {d:'2026-07-08',t:'Trail',km:7.3,dur:'52min',re:31,elev:223,n:"Quelques V à la fraîche",race:false,hike:false},
+  {d:'2026-07-09',t:'Run',km:1.9,dur:'19min',re:2,elev:12,n:"Veillée Team Outdoor Laser Run",race:false,hike:false},
+  {d:'2026-07-10',t:'Trail',km:10.8,dur:'1h05',re:17,elev:21,n:"Boucle du dredi",race:false,hike:false},
+  {d:'2026-07-12',t:'Vélo',km:66.8,dur:'2h51',re:44,elev:456,n:"Sortie vélo le matin",race:false,hike:false},
+  {d:'2026-07-14',t:'Run',km:12.4,dur:'1h11',re:24,elev:31,n:"Run du 14 juillet",race:false,hike:false},
+  {d:'2026-07-16',t:'Run',km:10.0,dur:'55min',re:54,elev:35,n:"P'tit tour du bois",race:false,hike:false},
+  {d:'2026-07-17',t:'Trail',km:10.7,dur:'1h04',re:18,elev:27,n:"Boucle du dredi",race:false,hike:false},
+  {d:'2026-07-21',t:'Trail',km:12.7,dur:'1h12',re:61,elev:46,n:"Footing du mardi",race:false,hike:false},
+  {d:'2026-07-22',t:'Run',km:10.8,dur:'1h05',re:29,elev:29,n:"Fractionné court",race:false,hike:false},
+  {d:'2026-07-23',t:'Marche',km:4.1,dur:'46min',re:6,elev:34,n:"Marche retour TAF",race:false,hike:false},
+  {d:'2026-07-24',t:'Run',km:10.7,dur:'1h00',re:24,elev:39,n:"Boucle du dredi midi",race:false,hike:false},
+  {d:'2026-07-26',t:'Trail',km:11.2,dur:'2h40',re:26,elev:626,n:"Boucle Bec de la Scia et col de la Saulce",race:false,hike:false},
+  {d:'2026-07-27',t:'Trail',km:21.6,dur:'4h57',re:59,elev:1568,n:"Boucle Col des Ayes - Col du Coq au départ des Essarts",race:false,hike:false},
+  {d:'2026-07-28',t:'Trail',km:19.6,dur:'6h24',re:80,elev:1625,n:"Le grand Som depuis les Essarts",race:false,hike:false},
+  {d:'2026-07-29',t:'Trail',km:4.7,dur:'1h07',re:8,elev:162,n:"Randonnée les granges de Joigny",race:false,hike:true},
+  {d:'2026-07-30',t:'Trail',km:19.7,dur:'3h51',re:47,elev:1090,n:"Boucle dans le vallon du Monastère",race:false,hike:false},
+  {d:'2026-07-31',t:'Trail',km:7.1,dur:'1h47',re:14,elev:396,n:"Randonnée boucle de la Scia",race:false,hike:true},
+  {d:'2026-08-01',t:'Trail',km:22.9,dur:'4h56',re:91,elev:1431,n:"Le Charmant Som",race:false,hike:false},
+  {d:'2026-08-02',t:'Trail',km:15.3,dur:'4h01',re:36,elev:769,n:"Randonnée lac Achard et lac Robert",race:false,hike:true},
+  {d:'2026-08-03',t:'Trail',km:11.1,dur:'2h11',re:38,elev:644,n:"Cascade du cirque de Saint Même",race:false,hike:false},
+  {d:'2026-08-04',t:'Trail',km:15.1,dur:'3h13',re:36,elev:984,n:"Boucle source du Guiers Mort",race:false,hike:false},
+  {d:'2026-08-05',t:'Trail',km:7.2,dur:'1h58',re:13,elev:367,n:"Randonnée à Montouvrard",race:false,hike:true},
+  {d:'2026-08-06',t:'Trail',km:20.3,dur:'4h16',re:61,elev:1417,n:"Reco de la grosse montée de l'échappée belle 42km",race:false,hike:false},
+  {d:'2026-08-09',t:'Run',km:12.6,dur:'1h15',re:26,elev:65,n:"Retour sur le plat",race:false,hike:false}
 ];
 
 // Détail sorties vélo (Ride/VirtualRide), extrait de activities_store.json par update_report.py
@@ -2260,15 +2329,26 @@ const muscuSessions = [{"id":"23515352314","date":"2026-07-07","start_local":"20
   }
 
   // isRace : activité compétition (flag calActs.race) — profil Z4-Z5 uniquement pour
-  // les courses courtes/intenses (re/h > 180), pas pour les ultras (ETP re/h ~111)
-  function zoneSplit(rePerH, isRace) {
-    if ((isRace && rePerH > 180) || rePerH >= 250)
+  // les courses courtes/intenses (re/h > seuil race), pas pour les ultras (ETP re/h ~111)
+  //
+  // RE_SCALE_SHIFT : le relative_effort brut renvoyé par Strava a chuté d'un facteur ~7
+  // à partir du 25/06/2026 (coïncide avec l'activation des zones FC manuelles, FCmax 188 bpm —
+  // cf. commit "Zones FC recalibrées" du 29/06). RE/h hebdo moyen : ~175 avant, ~23 après.
+  // Seuils recalibrés en conséquence (÷7, arrondis) pour cette période ; à réviser après la
+  // prochaine compétition sous le nouveau régime (aucune donnée course pour calibrer le haut
+  // de l'échelle pour l'instant).
+  const RE_SCALE_SHIFT = '2026-06-25';
+  function zoneSplit(rePerH, isRace, dateStr) {
+    const recent = dateStr >= RE_SCALE_SHIFT;
+    const T = recent ? [13, 17, 24, 31, 36] : [90, 120, 165, 215, 250];
+    const raceT = recent ? 26 : 180;
+    if ((isRace && rePerH > raceT) || rePerH >= T[4])
       return [0.02, 0.08, 0.15, 0.50, 0.25]; // course courte / trail race
-    if (rePerH < 90)  return [0.85, 0.12, 0.03, 0.00, 0.00]; // récup / déblocage
-    if (rePerH < 120) return [0.50, 0.42, 0.07, 0.01, 0.00]; // ultra / très facile
-    if (rePerH < 165) return [0.20, 0.55, 0.20, 0.04, 0.01]; // footing Z2
-    if (rePerH < 215) return [0.10, 0.40, 0.35, 0.14, 0.01]; // footing rapide / fractionné
-    return               [0.05, 0.20, 0.35, 0.35, 0.05]; // fractionné intense
+    if (rePerH < T[0]) return [0.85, 0.12, 0.03, 0.00, 0.00]; // récup / déblocage
+    if (rePerH < T[1]) return [0.50, 0.42, 0.07, 0.01, 0.00]; // ultra / très facile
+    if (rePerH < T[2]) return [0.20, 0.55, 0.20, 0.04, 0.01]; // footing Z2
+    if (rePerH < T[3]) return [0.10, 0.40, 0.35, 0.14, 0.01]; // footing rapide / fractionné
+    return                    [0.05, 0.20, 0.35, 0.35, 0.05]; // fractionné intense
   }
 
   function weekIdx(dateStr) {
@@ -2287,7 +2367,7 @@ const muscuSessions = [{"id":"23515352314","date":"2026-07-07","start_local":"20
     if (h <= 0) return;
     const idx = weekIdx(a.d);
     if (idx < 0) return;
-    const split = zoneSplit(a.re / h, a.race === true);
+    const split = zoneSplit(a.re / h, a.race === true, a.d);
     split.forEach((s, z) => { zHours[idx][z] += s * h; });
   });
 
@@ -2386,8 +2466,10 @@ const muscuSessions = [{"id":"23515352314","date":"2026-07-07","start_local":"20
       if (acts.length) {
         html += '<div style="display:flex;flex-wrap:wrap;gap:1px;justify-content:center;margin-top:2px">';
         acts.forEach(a => {
-          const sc = SPORT_COLORS[a.t] || {bg:'#f1f5f9', text:'#475569'};
-          const lbl = SPORT_LABEL[a.t] || a.t[0];
+          // Rando (Hike) compte comme Trail dans tous les agrégats (t==='Trail'), mais garde un
+          // badge visuel distinct ici pour rester repérable dans le calendrier.
+          const sc = a.hike ? {bg:'#ecfccb', text:'#4d7c0f'} : (SPORT_COLORS[a.t] || {bg:'#f1f5f9', text:'#475569'});
+          const lbl = a.hike ? 'H' : (SPORT_LABEL[a.t] || a.t[0]);
           html += `<span style="background:${sc.bg};color:${sc.text};border-radius:3px;font-size:8px;font-weight:800;padding:1px 3px;line-height:1.4">${lbl}</span>`;
         });
         html += '</div>';

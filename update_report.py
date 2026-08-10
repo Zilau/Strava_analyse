@@ -16,7 +16,7 @@ Ce script NE touche PAS :
   - les noms d'activités déjà personnalisés dans NAME_OVERRIDES
 Ces sections restent une rédaction manuelle, informée par le résumé imprimé en fin de script.
 """
-import sys, json, re, math
+import sys, json, re, math, shutil, unicodedata
 from datetime import datetime, timedelta
 from pathlib import Path
 
@@ -28,6 +28,7 @@ STORE_PATH  = ROOT / 'activities_store.json'
 INBOX_PATH  = ROOT / 'activities_inbox.json'
 HTML_PERF   = ROOT / 'rapport_performance.html'
 HTML_ANNUEL = ROOT / 'rapport_annuel.html'
+BACKUP_DIR  = ROOT / 'backup'
 
 RACES = {'18912947563', '18448862987', '18725084836', '17248882168', '17810798563'}
 
@@ -49,12 +50,16 @@ KNOWN_TEMPS = {
 }
 
 SPORT_MAP = {
-    'Run': 'Run', 'TrailRun': 'Trail', 'Walk': 'Marche',
+    'Run': 'Run', 'TrailRun': 'Trail', 'Hike': 'Trail', 'Walk': 'Marche',
     'Ride': 'Vélo', 'VirtualRide': 'Vélo',
     'WeightTraining': 'Muscu', 'Workout': 'Muscu', 'Yoga': 'Yoga',
 }
 SPORT_ORDER = ['Run', 'Trail', 'Marche', 'Vélo', 'Muscu', 'Yoga']
-RUN_TRAIL = ('Run', 'TrailRun')
+# Hike (randonnée) compte comme charge run+trail : en prépa montagne (Chartreuse), les rando
+# génèrent du D+/temps/fatigue neuromusculaire comparables au trail — les exclure sous-estimait
+# le volume et l'ACWR D+ des semaines à forte proportion de rando (ex. semaine du 27/07 : D+ réel
+# 7041 m vs 5714 m compté). Groupées avec TrailRun (terrain, allure) plutôt que Run.
+RUN_TRAIL = ('Run', 'TrailRun', 'Hike')
 
 MONTHS = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc']
 TEMP_RE = re.compile(r'Heat \((\d+\.?\d*)°C\)|temperature was (\d+\.?\d*)°C')
@@ -67,6 +72,15 @@ def load_json(path):
         return json.load(f)
 
 
+def backup_file(path, dest_dir):
+    if path.exists():
+        dest_dir.mkdir(parents=True, exist_ok=True)
+        dest = dest_dir / f"{path.stem}.{datetime.now():%Y%m%d_%H%M%S}{path.suffix}"
+        shutil.copy2(path, dest)
+        return dest
+    return None
+
+
 def merge_inbox():
     """Fusionne activities_inbox.json dans activities_store.json (dédoublonné par id)."""
     store = load_json(STORE_PATH) if STORE_PATH.exists() else []
@@ -75,6 +89,8 @@ def merge_inbox():
     if INBOX_PATH.exists():
         raw = load_json(INBOX_PATH)
         new_acts = raw['activities'] if isinstance(raw, dict) else raw
+        if not isinstance(new_acts, list):
+            raise ValueError('activities_inbox.json doit contenir un tableau ou un objet avec la clé "activities".')
         for a in new_acts:
             if a['id'] not in by_id:
                 by_id[a['id']] = a
@@ -109,8 +125,9 @@ def extract_temp(desc):
 
 
 def clean_name(name):
+    name = unicodedata.normalize('NFC', name)
     name = name.replace('"', "'")
-    return re.sub(r'[^\x00-\x7Féàèùâêîôûçœæëïü\w\s\'\-\(\)\.\,\/]', '', name).strip()
+    return re.sub(r'[^\x00-\x7FÉÀÈÙÂÊÎÔÛÇŒÆËÏÜéàèùâêîôûçœæëïü\w\s\'\-\(\)\.\,\/]', '', name).strip()
 
 
 # ── CALCULS DÉRIVÉS ──────────────────────────────────────────────────
@@ -223,6 +240,12 @@ def compute_acwr(reData_new, old_acwr, old_reData):
     return result
 
 
+# Strava's raw relative_effort dropped ~7x starting 2026-06-25 (coincides with manual HR zone
+# activation, FCmax=188bpm — see "Zones FC recalibrées" commit 2026-06-29). Weekly RE/h averaged
+# ~175 before, ~23 after. Thresholds below are scaled accordingly per period.
+RE_SCALE_SHIFT_DATE = '2026-06-25'
+
+
 def compute_zones(all_acts):
     hours = {'Z1-Z2': 0.0, 'Z2-Z3': 0.0, 'Z4': 0.0, 'Z5': 0.0}
     for a in all_acts:
@@ -234,7 +257,9 @@ def compute_zones(all_acts):
             continue
         h = mt / 3600
         reph = re_ / h
-        z = 'Z1-Z2' if reph < 130 else 'Z2-Z3' if reph < 200 else 'Z4' if reph < 280 else 'Z5'
+        recent = a['start_local'][:10] >= RE_SCALE_SHIFT_DATE
+        t1, t2, t3 = (19, 29, 40) if recent else (130, 200, 280)
+        z = 'Z1-Z2' if reph < t1 else 'Z2-Z3' if reph < t2 else 'Z4' if reph < t3 else 'Z5'
         hours[z] += h
     total = sum(hours.values())
     pct = {k: round(v / total * 100) for k, v in hours.items()} if total else {k: 0 for k in hours}
@@ -287,7 +312,8 @@ def compute_calacts(all_acts):
         dur = f"{h}h{m:02d}" if h else f"{m}min"
         name = NAME_OVERRIDES.get(a['id'], clean_name(a['name']))
         out.append({'d': a['start_local'][:10], 't': t, 'km': km, 'dur': dur,
-                     're': re_, 'elev': elev, 'n': name, 'race': a['id'] in RACES})
+                     're': re_, 'elev': elev, 'n': name, 'race': a['id'] in RACES,
+                     'hike': a['sport_type'] == 'Hike'})
     return out
 
 
@@ -356,8 +382,9 @@ def serialize_calacts(entries):
     for e in entries:
         n_json = json.dumps(e['n'], ensure_ascii=False)
         race = 'true' if e['race'] else 'false'
+        hike = 'true' if e['hike'] else 'false'
         lines.append(f"  {{d:'{e['d']}',t:'{e['t']}',km:{e['km']},dur:'{e['dur']}',"
-                      f"re:{e['re']},elev:{e['elev']},n:{n_json},race:{race}}}")
+                      f"re:{e['re']},elev:{e['elev']},n:{n_json},race:{race},hike:{hike}}}")
     return 'const calActs = [\n' + ',\n'.join(lines) + '\n];'
 
 
@@ -629,22 +656,47 @@ def main():
     old_reData = read_const_array(perf_html, 'reData')
     weekly['acwr'] = compute_acwr(weekly['reData'], old_acwr, old_reData)
 
+    # ACWR D+ : même modèle EWMA aigu(7j)/chronique(42j), appliqué au D+ hebdo au lieu du Relative
+    # Effort — capture la charge excentrique/neuromusculaire que le RE seul ne reflète pas.
+    old_acwr_dplus = read_const_array(perf_html, 'acwrDplus')
+    old_run_elev = read_const_array(perf_html, 'runElev')
+    old_trail_elev = read_const_array(perf_html, 'trailElev')
+    old_total_elev = [r + t for r, t in zip(old_run_elev, old_trail_elev)] if old_run_elev else []
+    total_elev_new = [r + t for r, t in zip(weekly['runElev'], weekly['trailElev'])]
+    weekly['acwrDplus'] = compute_acwr(total_elev_new, old_acwr_dplus, old_total_elev)
+
     new_perf_html, perf_totals = patch_performance_html(
         perf_html, all_acts, weekly, calacts, velo_sessions, zones_hours, zones_pct, zones_total_h,
         heatmap, sports, last_date_str, None)
-    # patch acwr array last (separately, since it's derived from pre-patch old array)
+    # patch acwr/acwrDplus arrays last (séparément, dérivés des anciens arrays pré-patch)
     new_perf_html = sub_or_die(new_perf_html, r'const acwr\s*=\s*\[.*?\];',
         'const acwr = ' + js_array(weekly['acwr']) + ';', 'acwr')
+    new_perf_html = sub_or_die(new_perf_html, r'const acwrDplus\s*=\s*\[.*?\];',
+        'const acwrDplus = ' + js_array(weekly['acwrDplus']) + ';', 'acwrDplus')
 
     annuel_html = HTML_ANNUEL.read_text(encoding='utf-8')
     new_annuel_html, annuel_totals = patch_annuel_html(annuel_html, all_acts, monthly, velo_sessions, last_date_str)
 
-    if '--dry-run' in sys.argv:
+    dry_run = '--dry-run' in sys.argv
+    skip_backup = '--no-backup' in sys.argv
+    clean_inbox = '--clean-inbox' in sys.argv
+
+    if not dry_run and not skip_backup:
+        if BACKUP_DIR.exists() or True:
+            backup_file(STORE_PATH, BACKUP_DIR)
+            backup_file(HTML_PERF, BACKUP_DIR)
+            backup_file(HTML_ANNUEL, BACKUP_DIR)
+            print(f'[backup] sauvegarde créée dans {BACKUP_DIR}')
+
+    if dry_run:
         print('[dry-run] Aucun fichier écrit.')
     else:
         HTML_PERF.write_text(new_perf_html, encoding='utf-8')
         HTML_ANNUEL.write_text(new_annuel_html, encoding='utf-8')
         print(f'[write] {HTML_PERF.name} et {HTML_ANNUEL.name} mis à jour.')
+        if clean_inbox and INBOX_PATH.exists():
+            INBOX_PATH.write_text('[]', encoding='utf-8')
+            print('[clean-inbox] activities_inbox.json vidé.')
 
     # ── Résumé pour rédaction du texte narratif ──
     print('\n' + '=' * 60)
@@ -657,8 +709,8 @@ def main():
     print(f"\nDernières semaines ({w['weeks'][-3]} / {w['weeks'][-2]} / {w['weeks'][-1]}) :")
     for i in range(-3, 0):
         print(f"  {w['weeks'][i]:>6} : {w['runKm'][i]:>5.1f} km · D+ {w['trailElev'][i]+w['runElev'][i]:>4} m · "
-              f"RE {w['reData'][i]:>4} · ACWR {w['acwr'][i]}")
-    print(f"\nACWR actuel : {w['acwr'][-1]}")
+              f"RE {w['reData'][i]:>4} · ACWR {w['acwr'][i]} · ACWR D+ {w['acwrDplus'][i]}")
+    print(f"\nACWR actuel : {w['acwr'][-1]} · ACWR D+ actuel : {w['acwrDplus'][-1]}")
     for label, date_str in [('Échappée Belle (22 août 2026)', '2026-08-22'),
                              ('Marathon Nice-Cannes (25 oct. 2026)', '2026-10-25')]:
         days = (datetime.strptime(date_str, '%Y-%m-%d') - datetime.strptime(last_date, '%Y-%m-%d')).days
