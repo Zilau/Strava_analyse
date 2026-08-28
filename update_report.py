@@ -30,7 +30,7 @@ HTML_PERF   = ROOT / 'rapport_performance.html'
 HTML_ANNUEL = ROOT / 'rapport_annuel.html'
 BACKUP_DIR  = ROOT / 'backup'
 
-RACES = {'18912947563', '18448862987', '18725084836', '17248882168', '17810798563'}
+RACES = {'18912947563', '18448862987', '18725084836', '17248882168', '17810798563', '19854851888'}
 
 # Renommages manuels conservés lors de la régénération de calActs (désambiguïsation / clarté)
 NAME_OVERRIDES = {

@@ -46,7 +46,7 @@
     </svg>
     <h1 class="text-xl font-bold text-slate-800">Rapport Performance Strava</h1>
   </div>
-  <p class="text-sm text-slate-500">Laurent Miklic · 1 janv. → 9 août 2026 · 174 activités · Run+Trail : 139 séances</p>
+  <p class="text-sm text-slate-500">Laurent Miklic · 1 janv. → 26 août 2026 · 182 activités · Run+Trail : 147 séances</p>
   <p class="text-xs text-slate-400 mt-1">Généré par Claude Code via MCP Strava</p>
 </div>
 
@@ -60,7 +60,6 @@
     <button id="btn-velo" class="tab-btn" onclick="showTab('velo')">Vélo</button>
     <button id="btn-carte" class="tab-btn" onclick="showTab('carte')">Carte</button>
     <button id="btn-lexique" class="tab-btn" onclick="showTab('lexique')">Lexique</button>
-    <button id="btn-plan" class="tab-btn" onclick="showTab('plan')">Plan Échappée Belle</button>
     <button id="btn-marathon" class="tab-btn" onclick="showTab('marathon')">Plan Marathon NC</button>
     <a href="rapport_annuel.html" class="tab-btn tab-ext" title="Bilan annuel 2023–2026">↗ Bilan annuel</a>
   </div>
@@ -72,11 +71,11 @@
   <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
     <div class="metric-box">
       <div class="metric-lbl">Distance totale (run+trail)</div>
-      <div class="metric-val">1 853 km</div>
+      <div class="metric-val">1 940 km</div>
     </div>
     <div class="metric-box">
       <div class="metric-lbl">Dénivelé cumulé</div>
-      <div class="metric-val">28 117 m</div>
+      <div class="metric-val">31 170 m</div>
     </div>
     <div class="metric-box">
       <div class="metric-lbl">10km race (14 juin)</div>
@@ -97,7 +96,7 @@
     <canvas id="chart-volume" height="100"></canvas>
     <p class="text-xs text-slate-400 mt-4 mb-2">Barres = km (axe gauche) · Courbe bleue = D+ total (axe droit).</p>
     <canvas id="chart-elev" height="70"></canvas>
-    <p class="text-xs text-slate-400 mt-4 mb-2">Calories dépensées par semaine — toutes activités (total saison : <strong>169 806 kcal</strong>).</p>
+    <p class="text-xs text-slate-400 mt-4 mb-2">Calories dépensées par semaine — toutes activités (total saison : <strong>177 928 kcal</strong>).</p>
     <canvas id="chart-cals" height="70"></canvas>
     <p class="text-xs text-slate-400 mt-4 mb-2">Distribution estimée des zones FC par semaine (Run + Trail) — proxy RE/heure par séance + flag course. Tendances fiables ; valeurs absolues ±10 pts (sans streams FC complets). Seuils recalibrés à partir du 25 juin 2026 (chute d'échelle du relative_effort Strava, ÷7 environ). <span style="color:#3b82f6">■ Z1</span> · <span style="color:#22c55e">■ Z2</span> · <span style="color:#eab308">■ Z3</span> · <span style="color:#f97316">■ Z4</span> · <span style="color:#ef4444">■ Z5</span></p>
     <canvas id="chart-zones-week" height="80"></canvas>
@@ -111,7 +110,7 @@
     <canvas id="chart-acwr" height="90"></canvas>
     <div class="flex gap-3 mt-3 flex-wrap">
       <span class="badge badge-orange">🟠 16 mars : ACWR 1.41 — ETP 120 (charge planifiée)</span>
-      <span class="badge badge-green">✅ Actuel (9 août) : ACWR 0.48 — J-13 Échappée Belle · Semaine 27/07 : 110.7 km / D+ 7041 m (camp montagne Chartreuse, rando incluses) · Semaine 03/08 clôturée : 66.2 km / D+ 3477 m, dont reco de la montée du parcours (6 août, D+ 1417 m)</span>
+      <span class="badge badge-green">✅ Actuel (26 août) : ACWR 0.23 — Échappée Belle 42km courue le 22/08 (finisher ✅), semaine 24/08 réduite à 4.5 km (repos post-course) après le pic de charge de la semaine 17/08 (49.1 km / D+ 2912 m, RE 210)</span>
       <span class="badge badge-orange">🌡️ 15–23 juin : 32–35.7°C — volume réduit + acclimatation intentionnelle</span>
     </div>
   </div>
@@ -122,7 +121,7 @@
     <p class="text-xs text-slate-400 mb-3">Même modèle que l'ACWR ci-dessus, appliqué au D+ hebdo au lieu du Relative Effort. Le RE sous-pondère les longues sorties D+ lentes (rando/trail montagne) — cet indicateur capture la <strong>charge excentrique / fatigue neuromusculaire</strong> que le RE seul ne reflète pas. Zone verte : 0.8–1.3 · Zone rouge : &gt; 1.5.</p>
     <canvas id="chart-acwr-dplus" height="90"></canvas>
     <div class="flex gap-3 mt-3 flex-wrap">
-      <span class="badge badge-red">🔴 Actuel (9 août) : ACWR D+ 2.22 (zone rouge) vs ACWR RE 0.48 (zone verte) — le camp montagne Chartreuse (D+ 11 079 m/12j, rando incluses) charge fortement les jambes sans faire monter le Relative Effort</span>
+      <span class="badge badge-green">✅ Actuel (26 août) : ACWR D+ 0.62 (zone verte) — pic à 1.4 la semaine de l'Échappée Belle (17/08, D+ 2912 m), puis quasi-repos la semaine 24/08 (D+ 46 m) pour absorber la fatigue excentrique de l'ultra-trail</span>
     </div>
   </div>
 
@@ -143,8 +142,8 @@
   <!-- CHART 5 : Sports répartition -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
     <div class="card">
-      <h2>Répartition des activités — 174 activités</h2>
-      <p class="text-xs text-slate-400 mb-3">Chaque barre = 100 % d'une métrique. Le trail pèse moins en nombre de séances (33 %) qu'en temps de mouvement (52 %).</p>
+      <h2>Répartition des activités — 182 activités</h2>
+      <p class="text-xs text-slate-400 mb-3">Chaque barre = 100 % d'une métrique. Le trail pèse moins en nombre de séances (34 %) qu'en temps de mouvement (53 %).</p>
       <canvas id="chart-sports" height="160"></canvas>
     </div>
 
@@ -207,7 +206,7 @@
         <div style="flex:0 0 140px;position:relative">
           <canvas id="chart-zones" width="140" height="140"></canvas>
           <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">
-            <div style="font-size:18px;font-weight:700;color:#1e293b;line-height:1">234h</div>
+            <div style="font-size:18px;font-weight:700;color:#1e293b;line-height:1">248h</div>
             <div style="font-size:10px;color:#94a3b8;margin-top:2px">total</div>
           </div>
         </div>
@@ -215,17 +214,17 @@
           <div>
             <div style="display:flex;justify-content:space-between;margin-bottom:4px">
               <span style="font-size:12px;font-weight:600;color:#15803d">Z1–Z2 Endurance</span>
-              <span style="font-size:12px;color:#64748b">96.3h · <strong>41%</strong></span>
+              <span style="font-size:12px;color:#64748b">98.6h · <strong>40%</strong></span>
             </div>
-            <div style="background:#e2e8f0;border-radius:4px;height:7px"><div style="background:#16a34a;width:41%;height:100%;border-radius:4px"></div></div>
+            <div style="background:#e2e8f0;border-radius:4px;height:7px"><div style="background:#16a34a;width:40%;height:100%;border-radius:4px"></div></div>
             <div style="font-size:10px;color:#94a3b8;margin-top:2px">&lt; 130 RE/h (&lt; 19 depuis fin juin*) · Endurance fondamentale</div>
           </div>
           <div>
             <div style="display:flex;justify-content:space-between;margin-bottom:4px">
               <span style="font-size:12px;font-weight:600;color:#1d4ed8">Z2–Z3 Aérobie</span>
-              <span style="font-size:12px;color:#64748b">111.3h · <strong>48%</strong></span>
+              <span style="font-size:12px;color:#64748b">123.1h · <strong>50%</strong></span>
             </div>
-            <div style="background:#e2e8f0;border-radius:4px;height:7px"><div style="background:#2563eb;width:48%;height:100%;border-radius:4px"></div></div>
+            <div style="background:#e2e8f0;border-radius:4px;height:7px"><div style="background:#2563eb;width:50%;height:100%;border-radius:4px"></div></div>
             <div style="font-size:10px;color:#94a3b8;margin-top:2px">130–200 RE/h (19–29*) · Aérobie modéré</div>
           </div>
           <div>
@@ -252,8 +251,8 @@
 
   <!-- Heatmap -->
   <div class="card">
-    <h2>Heatmap des entraînements — Jour × Créneau horaire (139 séances Run+Trail)</h2>
-    <p class="text-xs text-slate-400 mb-4">Patterns clés : <strong>Lundi = repos systématique</strong> · Dimanche matin = séance longue principale (25×) · Mercredi soir + Vendredi midi = séances tempo hebdo.</p>
+    <h2>Heatmap des entraînements — Jour × Créneau horaire (147 séances Run+Trail)</h2>
+    <p class="text-xs text-slate-400 mb-4">Patterns clés : <strong>Lundi = repos systématique</strong> · Dimanche matin = séance longue principale (26×) · Mercredi soir + Vendredi midi = séances tempo hebdo.</p>
     <div id="heatmap-container"></div>
   </div>
 
@@ -376,12 +375,12 @@
           </div>
         </div>
       </div>
-      <div class="p-4 rounded-lg bg-orange-50 border border-orange-200">
+      <div class="p-4 rounded-lg bg-green-50 border border-green-200">
         <div class="flex items-start gap-3">
-          <span class="badge badge-orange mt-0.5">P1</span>
+          <span class="badge badge-green mt-0.5">✅</span>
           <div>
-            <p class="font-semibold text-slate-800 text-sm">Camp montagne Chartreuse (26 juil–6 août) : D+ 11 079 m sur 12 sorties en 12 jours — vrai taper à engager avant J-13</p>
-            <p class="text-xs text-slate-600 mt-1">Enchaînement quasi ininterrompu de trail/rando technique en Chartreuse : Bec de la Scia (626 m), Col des Ayes–Col du Coq (1568 m, 4h58), Le Grand Som (1625 m, 6h24 très technique), puis vallon du Monastère, boucle de la Scia, Le Charmant Som (1431 m), lac Achard/lac Robert, cascade de Saint Même, source du Guiers Mort, Montouvrard, jusqu'à la reco de la grosse montée du parcours de l'Échappée Belle (6 août, 20.3 km / D+ 1417 m). ACWR reste bas (0.48) : la RE ne capture pas la fatigue neuromusculaire et musculaire accumulée sur ce volume de D+ technique répété, contrairement à un pic d'intensité classique. Le retour au plat du 9 août (12.6 km à 5:49/km, négative split) est un bon signal de sortie de bloc — <strong>priorité désormais : décharge réelle (Z1, D+ minimal) jusqu'à J-13, pas de nouvelle sortie technique longue avant le taper final.</strong></p>
+            <p class="font-semibold text-slate-800 text-sm">Échappée Belle 42km bouclée (22 août, finisher ✅) — récupération post-ultra en cours</p>
+            <p class="text-xs text-slate-600 mt-1">9h27 sur 43 km / D+ 2831 m, FC moy 141 bpm, 9 PRs de segments. Semaine du 24/08 volontairement réduite à 4.5 km (2 randos courtes) — ACWR retombé à 0.23 et ACWR D+ à 0.62 (zone verte), cohérent avec une décharge post-effort long. <strong>Priorité : reprise progressive sur 2 semaines avant de relancer le bloc marathon (Nice-Cannes, 25 octobre, J-60) — pas de séance de qualité avant S+2.</strong></p>
           </div>
         </div>
       </div>
@@ -411,20 +410,20 @@
     <h2 style="color:#94a3b8">Résumé exécutif</h2>
     <div class="space-y-3 mt-1">
       <div>
-        <span class="text-xs font-bold uppercase tracking-wide text-orange-400">🏁 Compétitions (5)</span>
-        <p class="text-sm text-slate-300 leading-relaxed mt-1">Maxicross 25km trail (1er fév, 3h25) · ETP 120km ultra-trail (21 mars, 21h21, pic 132 km/sem, ACWR 1.41) · Trail des Lavoirs 23km (10 mai, 2h32) · Foulée Verte Clamart 17.5km (31 mai, 1h50, FC max 188 bpm) · <strong class="text-white">10km en 47:49 (14 juin, 2e all-time, split négatif parfait, 4.68 W/kg)</strong>.</p>
+        <span class="text-xs font-bold uppercase tracking-wide text-orange-400">🏁 Compétitions (6)</span>
+        <p class="text-sm text-slate-300 leading-relaxed mt-1">Maxicross 25km trail (1er fév, 3h25) · ETP 120km ultra-trail (21 mars, 21h21, pic 132 km/sem, ACWR 1.41) · Trail des Lavoirs 23km (10 mai, 2h32) · Foulée Verte Clamart 17.5km (31 mai, 1h50, FC max 188 bpm) · 10km en 47:49 (14 juin, 2e all-time, split négatif parfait, 4.68 W/kg) · <strong class="text-white">Échappée Belle 43km / D+2831m (22 août, 9h27, finisher ✅, 9 PRs)</strong>.</p>
       </div>
       <div class="pt-3 border-t border-slate-700">
         <span class="text-xs font-bold uppercase tracking-wide text-orange-400">📊 Volume saison</span>
-        <p class="text-sm text-slate-300 leading-relaxed mt-1">139 séances run+trail (rando incluses) · 1 853 km · D+ 28 117 m sur 32 semaines. Zones FC recalibrées manuellement (Z1 ≤ 136, Z5 ≥ 176 bpm). Camp montagne Chartreuse fin juillet-début août : D+ 11 079 m sur 12 sorties en 12 jours, principal moteur du bond de D+ cumulé sur la saison.</p>
+        <p class="text-sm text-slate-300 leading-relaxed mt-1">147 séances run+trail (rando incluses) · 1 940 km · D+ 31 170 m sur 35 semaines. Zones FC recalibrées manuellement (Z1 ≤ 136, Z5 ≥ 176 bpm). Camp montagne Chartreuse fin juillet-début août (D+ 11 079 m/12j) puis Échappée Belle 42km (22 août, D+ 2 831 m) ont porté l'essentiel du D+ cumulé sur la saison ; semaine du 24 août revenue à un volume minimal (4.5 km) pour la récupération post-course.</p>
       </div>
       <div class="pt-3 border-t border-slate-700">
-        <span class="text-xs font-bold uppercase tracking-wide text-orange-400">🔥 Forme actuelle — Prépa Échappée Belle</span>
-        <p class="text-sm text-slate-300 leading-relaxed mt-1">Lancée le 28 juin. Après un S4 plat sous cible, S5–S6 ont basculé sur un camp montagne en Chartreuse (26 juil–6 août) : 12 sorties trail/rando quasi ininterrompues, D+ 11 079 m cumulés, jusqu'à la reco de la grosse montée du parcours (6 août, 20.3 km / D+ 1417 m). Semaine 27/07 à 110.7 km / D+ 7041 m, semaine 03/08 clôturée à 66.2 km / D+ 3477 m. Retour au plat le 9 août (12.6 km à 5:49/km, négative split) amorce la décharge. ACWR reste bas (0.48) mais ne capture pas la fatigue neuromusculaire accumulée sur ce volume de D+ technique — priorité désormais au taper jusqu'à J-13.</p>
+        <span class="text-xs font-bold uppercase tracking-wide text-orange-400">🔥 Forme actuelle — Récupération post-Échappée Belle</span>
+        <p class="text-sm text-slate-300 leading-relaxed mt-1">Prépa lancée le 28 juin, taper propre engagé mi-août (semaine 10/08 : 33.4 km / D+ 95 m, 3 footings plats). Course couru le 22 août : 43 km / D+ 2831 m en 9h27, FC moy 141 bpm, finisher ✅ avec 9 PRs de segments. Semaine du 24/08 réduite à 4.5 km (2 randos, aucune sortie technique) pour absorber la fatigue neuromusculaire de l'ultra-trail. ACWR 0.23 et ACWR D+ 0.62 — décharge cohérente, reprise progressive à prévoir sur 2 semaines avant de relancer le bloc marathon.</p>
       </div>
       <div class="pt-3 border-t border-slate-700">
         <span class="text-xs font-bold uppercase tracking-wide text-orange-400">🎯 Prochain objectif</span>
-        <p class="text-sm text-slate-300 leading-relaxed mt-1"><strong class="text-orange-400">Échappée Belle 42km · 22 août · J-13</strong></p>
+        <p class="text-sm text-slate-300 leading-relaxed mt-1"><strong class="text-orange-400">Marathon Nice-Cannes · 25 octobre · J-60</strong></p>
       </div>
     </div>
   </div>
@@ -446,8 +445,8 @@
   <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
     <div class="metric-box" style="border-left:4px solid #64748b">
       <div class="metric-lbl">Compétitions 2026</div>
-      <div class="metric-val">5</div>
-      <div class="flex gap-1 mt-1 flex-wrap"><span class="badge badge-route" style="font-size:10px">1 route</span><span class="badge badge-trail" style="font-size:10px">4 trail</span></div>
+      <div class="metric-val">6</div>
+      <div class="flex gap-1 mt-1 flex-wrap"><span class="badge badge-route" style="font-size:10px">1 route</span><span class="badge badge-trail" style="font-size:10px">5 trail</span></div>
     </div>
     <div class="metric-box card-route">
       <div class="metric-lbl">10km route (14 juin)</div>
@@ -560,6 +559,24 @@
               <span class="badge badge-green">Split négatif ✅</span>
               <span class="badge badge-blue">4.68 W/kg</span>
               <span class="badge badge-red">FC max 188 bpm</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ULTRA-TRAIL 5 : Échappée Belle -->
+        <div class="relative">
+          <div class="absolute -left-6 w-4 h-4 rounded-full border-2 border-white shadow" style="background:#16a34a"></div>
+          <div class="card card-trail p-3">
+            <div class="flex items-center gap-2 flex-wrap mb-1">
+              <span class="badge badge-trail">MARATRAIL</span>
+              <span class="text-xs text-slate-400">22 août 2026</span>
+            </div>
+            <div class="font-bold text-slate-800 text-sm">Maratrail de l'Échappée Belle — 43 km (Massif de Belledonne)</div>
+            <div class="text-xs text-slate-500 mt-1">9h27 (8h34 temps de mouvement) · FC moy 141 bpm · FC max 163 bpm · 117 W (1.36 W/kg) · 4 759 kcal · D+ 2 831 m · Objectif A de la prépa post-Chartreuse</div>
+            <div class="flex gap-2 mt-2 flex-wrap">
+              <span class="badge badge-trail">43.0 km · 9h27</span>
+              <span class="badge badge-blue">1.36 W/kg</span>
+              <span class="badge badge-green">Finisher ✅ 9 PRs</span>
             </div>
           </div>
         </div>
@@ -696,6 +713,14 @@
           <td class="p-2 text-slate-500">ETP 120, 21 mars</td>
           <td class="p-2"><span class="badge badge-blue">Finisher ✅</span></td>
         </tr>
+        <tr>
+          <td class="p-2 font-semibold">Maratrail 43 km</td>
+          <td class="p-2"><span class="badge badge-trail">Trail</span></td>
+          <td class="p-2 font-bold" style="color:#15803d">9h27</td>
+          <td class="p-2">13:11/km</td>
+          <td class="p-2 text-slate-500">Échappée Belle, 22 août</td>
+          <td class="p-2"><span class="badge badge-green">Best 2026 ✅</span></td>
+        </tr>
       </tbody>
     </table>
     <p class="text-xs text-slate-400 mt-2">† Best efforts trail mesurés par Strava sur segment continu en course. Route : performance en compétition dédiée. Ultra-trail : performance de finisseur.</p>
@@ -748,7 +773,7 @@
     <div class="card"><h2 class="text-center text-slate-700 mb-3">Juillet 2026</h2><div id="cal-7"></div></div>
   </div>
 
-  <p class="text-xs text-slate-400 text-center pb-4">174 activités · 1 janv. → 9 août 2026 · Données : MCP Strava</p>
+  <p class="text-xs text-slate-400 text-center pb-4">182 activités · 1 janv. → 26 août 2026 · Données : MCP Strava</p>
 
 </div><!-- /pane-entrainement -->
 
@@ -976,130 +1001,6 @@
 </div><!-- /pane-carte -->
 
 <!-- Tooltip flottant pour les légendes des graphes -->
-
-<div id="pane-plan" class="max-w-5xl mx-auto space-y-5" style="display:none">
-
-  <div class="bg-gradient-to-r from-orange-600 to-amber-500 rounded-2xl p-5 text-white shadow-lg">
-    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-      <div>
-        <h1 class="text-2xl font-bold tracking-tight">&#127956; Plan — Maratrail de l'Échappée Belle</h1>
-        <p class="text-orange-100 mt-1">~43 km · ~2 500 m D+ · Massif de Belledonne · <strong>Samedi 22 août 2026</strong></p>
-      </div>
-      <div class="text-center bg-white/20 rounded-xl px-5 py-3">
-        <div id="plan-countdown" class="text-3xl font-black tabular-nums">—</div>
-        <div class="text-xs text-orange-100 uppercase tracking-wider mt-1">jours restants</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-    <div class="bg-slate-800 rounded-xl p-4">
-      <div class="text-xs text-slate-400 uppercase tracking-wider mb-1">Objectif A</div>
-      <div class="text-2xl font-bold text-orange-400">sub 6h30</div>
-      <div class="text-xs text-slate-400 mt-1">~9:04/km · 75–80% FCmax</div>
-    </div>
-    <div class="bg-slate-800 rounded-xl p-4">
-      <div class="text-xs text-slate-400 uppercase tracking-wider mb-1">Objectif B</div>
-      <div class="text-2xl font-bold text-amber-400">sub 7h00</div>
-      <div class="text-xs text-slate-400 mt-1">~9:46/km · 70–75% FCmax</div>
-    </div>
-    <div class="bg-slate-800 rounded-xl p-4">
-      <div class="text-xs text-slate-400 uppercase tracking-wider mb-1">Allure D+ cible</div>
-      <div class="text-2xl font-bold text-green-400">~7 min/100m</div>
-      <div class="text-xs text-slate-400 mt-1">+2 500m → +175 min vs plat</div>
-    </div>
-  </div>
-
-  <div class="bg-slate-800 rounded-xl p-4">
-    <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-3">Bilan de forme au départ du plan (18 juin)</h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
-      <div><div class="text-xl font-bold text-orange-400">0,82</div><div class="text-xs text-slate-400">ACWR · zone optimale</div></div>
-      <div><div class="text-xl font-bold text-green-400">48:06</div><div class="text-xs text-slate-400">PR 10km (14 juin)</div></div>
-      <div><div class="text-xl font-bold text-blue-400">50 km/sem</div><div class="text-xs text-slate-400">Volume actuel</div></div>
-      <div><div class="text-xl font-bold text-purple-400">85 km/sem</div><div class="text-xs text-slate-400">Capacité prouvée jan–mars</div></div>
-    </div>
-  </div>
-
-  <div class="bg-slate-800 rounded-xl p-4">
-    <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-4">Plan semaine par semaine</h2>
-    <div class="overflow-x-auto">
-      <table class="w-full text-sm border-collapse">
-        <thead>
-          <tr class="text-xs text-slate-400 uppercase tracking-wider border-b border-slate-700">
-            <th class="text-left py-2 pr-3 font-medium">Semaine</th>
-            <th class="text-center py-2 px-2 font-medium">Km</th>
-            <th class="text-center py-2 px-2 font-medium">D+</th>
-            <th class="text-center py-2 px-2 font-medium">RE cible</th>
-            <th class="text-left py-2 px-2 font-medium">Séances clés</th>
-            <th class="text-left py-2 pl-2 font-medium">Focus</th>
-          </tr>
-        </thead>
-        <tbody id="plan-tbody"></tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="bg-slate-800 rounded-xl p-4">
-    <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-3">Séances types</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-      <div class="bg-slate-700/50 rounded-lg p-3">
-        <div class="flex items-center gap-2 mb-1">
-          <span class="text-xs font-bold bg-orange-500 text-white rounded px-1.5 py-0.5">FC+</span>
-          <span class="text-sm font-semibold text-slate-200">Fractionné côte</span>
-        </div>
-        <p class="text-xs text-slate-400">3×(8×100m&#8599;50m&#8600;) ou 4×(5×150m&#8599;) · FC Z4–Z5 · cadence ↑ · simulation D+</p>
-      </div>
-      <div class="bg-slate-700/50 rounded-lg p-3">
-        <div class="flex items-center gap-2 mb-1">
-          <span class="text-xs font-bold bg-blue-500 text-white rounded px-1.5 py-0.5">FL</span>
-          <span class="text-sm font-semibold text-slate-200">Fractionné long seuil</span>
-        </div>
-        <p class="text-xs text-slate-400">3×3 000m ou 2×4 000m à 5:00–5:15/km · FC Z4 (155–170 bpm) · puissance aérobie</p>
-      </div>
-      <div class="bg-slate-700/50 rounded-lg p-3">
-        <div class="flex items-center gap-2 mb-1">
-          <span class="text-xs font-bold bg-green-600 text-white rounded px-1.5 py-0.5">SLT</span>
-          <span class="text-sm font-semibold text-slate-200">Sortie longue trail</span>
-        </div>
-        <p class="text-xs text-slate-400">25–38 km avec D+ ciblé · FC Z2–Z3 (128–155 bpm) · gestion descentes · nutrition</p>
-      </div>
-      <div class="bg-slate-700/50 rounded-lg p-3">
-        <div class="flex items-center gap-2 mb-1">
-          <span class="text-xs font-bold bg-purple-500 text-white rounded px-1.5 py-0.5">B2B</span>
-          <span class="text-sm font-semibold text-slate-200">Back-to-back weekend</span>
-        </div>
-        <p class="text-xs text-slate-400">Sam trail long D+ · Dim footing récupération 10–12 km Z2 · simulation fatigue race</p>
-      </div>
-      <div class="bg-slate-700/50 rounded-lg p-3">
-        <div class="flex items-center gap-2 mb-1">
-          <span class="text-xs font-bold bg-red-500 text-white rounded px-1.5 py-0.5">SIM</span>
-          <span class="text-sm font-semibold text-slate-200">Simulation race</span>
-        </div>
-        <p class="text-xs text-slate-400">30–35 km trail ~1 500 m D+, effort contrôlé 75–80% FCmax · protocole nutrition et hydratation race-day</p>
-      </div>
-      <div class="bg-slate-700/50 rounded-lg p-3">
-        <div class="flex items-center gap-2 mb-1">
-          <span class="text-xs font-bold bg-slate-500 text-white rounded px-1.5 py-0.5">Z2</span>
-          <span class="text-sm font-semibold text-slate-200">Footing endurance</span>
-        </div>
-        <p class="text-xs text-slate-400">10–14 km · FC &lt;145 bpm · récupération active · boucles habituelles</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="bg-slate-800 rounded-xl p-4">
-    <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-3">Points de vigilance</h2>
-    <ul class="space-y-2 text-sm text-slate-300">
-      <li class="flex gap-2"><span class="text-orange-400 font-bold shrink-0">&#9888;</span><span><strong>Volume D+ :</strong> Prépa ETP120 très orientée plat/route. Augmenter le D+ progressivement max +300 m/sem pour prévenir les douleurs tendineuses.</span></li>
-      <li class="flex gap-2"><span class="text-orange-400 font-bold shrink-0">&#9888;</span><span><strong>Chaleur estivale :</strong> Juil–août en IDF, températures souvent &gt;25°C. Réduire l'allure de 10–15 s/km par 5°C au-dessus de 15°C. Hydratation +0,5 L/h vs standard.</span></li>
-      <li class="flex gap-2"><span class="text-orange-400 font-bold shrink-0">&#9888;</span><span><strong>Descente technique :</strong> 2 500 m de D+ implique autant de D−. Intégrer des séances descente rapide (cf. stage trail mai). FC basse mais quadriceps très sollicités.</span></li>
-      <li class="flex gap-2"><span class="text-green-400 font-bold shrink-0">&#10003;</span><span><strong>Point fort :</strong> 21h en mouvement à l'ETP120 — l'endurance de base est là. L'enjeu est la spécificité D+ et la gestion de l'effort sur 6h.</span></li>
-      <li class="flex gap-2"><span class="text-green-400 font-bold shrink-0">&#10003;</span><span><strong>Cycle 3:1 :</strong> La semaine de récupération S4 (14–20 juil.) est obligatoire — leçon de la prépa ETP120 où les récups étaient trop rares sur 8 semaines consécutives.</span></li>
-    </ul>
-  </div>
-
-</div>
-
 
 <div id="pane-marathon" class="max-w-5xl mx-auto space-y-5" style="display:none">
 
@@ -1332,19 +1233,19 @@ const radarDs = (label, data, color, bw=2) => ({
 });
 
 // ── DONNÉES ──
-const weeks = ['29/12','05/01','12/01','19/01','26/01','02/02','09/02','16/02','23/02','02/03','09/03','16/03','23/03','30/03','06/04','13/04','20/04','27/04','04/05','11/05','18/05','25/05','01/06','08/06','15/06','22/06','29/06','06/07','13/07','20/07','27/07','03/08'];
-const runKm = [64.4,65.2,46.6,73.9,68.9,78.0,75.6,74.9,85.0,79.7,45.9,132.5,18.3,22.3,54.7,50.1,47.1,65.8,48.0,45.7,59.8,50.0,44.2,48.6,30.6,30.8,71.2,20.0,33.2,45.5,110.7,66.2];
-const runKmOnly = [38.0,65.2,36.3,40.8,44.0,47.8,38.2,49.0,44.4,26.1,23.2,6.5,18.3,9.3,44.0,23.3,22.5,13.0,25.1,45.7,34.3,22.0,21.8,36.1,30.6,0.0,60.4,1.9,22.5,21.5,0.0,12.6];
-const trailKmOnly = [26.4,0.0,10.3,33.0,24.9,30.2,37.5,25.9,40.6,53.6,22.7,125.9,0.0,13.1,10.7,26.7,24.6,52.8,23.0,0.0,25.5,28.1,22.4,12.4,0.0,30.8,10.9,18.1,10.7,24.0,110.7,53.6];
-const wkTimeH = [7.1,6.82,4.99,8.06,7.92,8.44,8.8,8.42,9.32,8.65,4.62,22.57,1.87,2.47,5.68,5.27,4.83,12.45,5.02,4.32,6.31,5.04,4.6,4.81,3.08,3.34,7.38,2.29,3.2,5.98,27.11,12.93];
-const runElev = [130,188,72,120,182,113,99,134,97,126,122,36,41,18,169,41,156,37,54,189,132,43,62,78,74,0,267,12,66,68,0,65];
-const trailElev = [538,0,329,810,760,396,1045,543,666,657,66,1894,0,187,31,372,246,2979,526,0,395,437,333,39,0,452,29,244,27,672,7041,3412];
+const weeks = ['29/12','05/01','12/01','19/01','26/01','02/02','09/02','16/02','23/02','02/03','09/03','16/03','23/03','30/03','06/04','13/04','20/04','27/04','04/05','11/05','18/05','25/05','01/06','08/06','15/06','22/06','29/06','06/07','13/07','20/07','27/07','03/08','10/08','17/08','24/08'];
+const runKm = [64.4,65.2,46.6,73.9,68.9,78.0,75.6,74.9,85.0,79.7,45.9,132.5,18.3,22.3,54.7,50.1,47.1,65.8,48.0,45.7,59.8,50.0,44.2,48.6,30.6,30.8,71.2,20.0,33.2,45.5,110.7,66.2,33.4,49.1,4.5];
+const runKmOnly = [38.0,65.2,36.3,40.8,44.0,47.8,38.2,49.0,44.4,26.1,23.2,6.5,18.3,9.3,44.0,23.3,22.5,13.0,25.1,45.7,34.3,22.0,21.8,36.1,30.6,0.0,60.4,1.9,22.5,21.5,0.0,12.6,33.4,5.1,0.0];
+const trailKmOnly = [26.4,0.0,10.3,33.0,24.9,30.2,37.5,25.9,40.6,53.6,22.7,125.9,0.0,13.1,10.7,26.7,24.6,52.8,23.0,0.0,25.5,28.1,22.4,12.4,0.0,30.8,10.9,18.1,10.7,24.0,110.7,53.6,0.0,44.0,4.5];
+const wkTimeH = [7.1,6.82,4.99,8.06,7.92,8.44,8.8,8.42,9.32,8.65,4.62,22.57,1.87,2.47,5.68,5.27,4.83,12.45,5.02,4.32,6.31,5.04,4.6,4.81,3.08,3.34,7.38,2.29,3.2,5.98,27.11,12.93,3.28,9.5,1.37];
+const runElev = [130,188,72,120,182,113,99,134,97,126,122,36,41,18,169,41,156,37,54,189,132,43,62,78,74,0,267,12,66,68,0,65,95,10,0];
+const trailElev = [538,0,329,810,760,396,1045,543,666,657,66,1894,0,187,31,372,246,2979,526,0,395,437,333,39,0,452,29,244,27,672,7041,3412,0,2902,46];
 const totalElev = runElev.map((v,i) => v+trailElev[i]);
-const wkCal = [5940,5691,4826,6287,6524,7093,7413,6552,7496,7151,3922,11731,1439,1858,4706,4140,4455,7215,3923,3473,5376,5676,3611,4086,2454,3011,5568,3010,2581,4087,12184,6327];
-const acwr = [4.0,1.96,1.04,1.14,0.9,0.92,0.85,0.72,0.89,0.8,0.39,1.41,0.19,0.31,0.82,0.8,0.97,1.01,0.79,0.65,0.95,0.75,0.65,0.61,0.66,0.4,0.3,0.22,0.2,0.27,0.55,0.48];
-const acwrDplus = [4.12,2.37,2.22,2.59,2.26,1.6,1.86,1.45,1.34,1.28,0.75,1.81,0.82,0.56,0.47,0.7,0.79,2.34,1.35,0.73,0.75,0.75,0.69,0.43,0.28,0.71,0.7,0.66,0.44,1.24,3.22,2.22];
-const reData = [1289,1238,960,1353,1447,1479,1378,1249,1550,1419,600,2567,297,399,1053,1062,900,1135,1000,788,1195,1038,758,675,471,202,160,96,96,146,335,174];
-const wkMaxTemp = [null,20.0,null,null,null,null,null,null,19.7,16.6,null,16.8,null,null,24.6,20.9,22.3,21.0,20.0,20.0,28.9,30.5,20.0,20.1,32.1,35.7,25.7,33.3,32.3,25.8,28.6,27.5];
+const wkCal = [5940,5691,4826,6287,6524,7093,7413,6552,7496,7151,3922,11731,1439,1858,4706,4140,4455,7215,3923,3473,5376,5676,3611,4086,2454,3011,5568,3010,2581,4087,12184,6327,2613,5291,218];
+const acwr = [4.0,1.96,1.04,1.14,0.9,0.92,0.85,0.72,0.89,0.8,0.39,1.41,0.19,0.31,0.82,0.8,0.97,1.01,0.79,0.65,0.95,0.75,0.65,0.61,0.66,0.4,0.3,0.22,0.2,0.27,0.55,0.48,0.33,0.5,0.23];
+const acwrDplus = [4.12,2.37,2.22,2.59,2.26,1.6,1.86,1.45,1.34,1.28,0.75,1.81,0.82,0.56,0.47,0.7,0.79,2.34,1.35,0.73,0.75,0.75,0.69,0.43,0.28,0.71,0.7,0.66,0.44,1.24,3.22,2.22,1.0,1.4,0.62];
+const reData = [1289,1238,960,1353,1447,1479,1378,1249,1550,1419,600,2567,297,399,1053,1062,900,1135,1000,788,1195,1038,758,675,471,202,160,96,96,146,335,174,78,210,5];
+const wkMaxTemp = [null,20.0,null,null,null,null,null,null,19.7,16.6,null,16.8,null,null,24.6,20.9,22.3,21.0,20.0,20.0,28.9,30.5,20.0,20.1,32.1,35.7,25.7,33.3,32.3,25.8,28.6,27.5,23.9,23.5,21.3];
 const beLabels = ['17 jan\n(Run 30km)','08 fév\n(Trail 30km)','07 avr\n(Trail frac.)','10 mai\n(Trail 23km)','31 mai\n(Trail 17km)','14 juin\n(Race 10km)'];
 const be400  = [145,135,114,118,113,108];
 const be1k   = [367,345,296,310,291,274];
@@ -1540,9 +1441,9 @@ new Chart(document.getElementById('chart-acwr-dplus'), {
 
 // ── chart-sports ──
 const sportActuals = [
-  [82,57,18,10,6,1],
-  [924.2,929.2,83.2,272.3,0.0,0.0],
-  [94.4,139.3,16.4,12.1,2.7,1.1],
+  [86,61,18,10,6,1],
+  [962.7,977.7,83.2,272.3,0.0,0.0],
+  [98.2,149.7,16.4,12.1,2.7,1.1],
 ];
 const sportPct   = sportActuals.map(row => { const tot=row.reduce((a,b)=>a+b,0); return row.map(v => +(v/tot*100).toFixed(1)); });
 const sportUnits = [' séances',' km',' h'];
@@ -1812,11 +1713,11 @@ new Chart(document.getElementById('chart-re'), {
 })();
 
 // ── Cadence ──
-const wkCadence = [85.1,87.0,84.7,84.2,84.8,86.0,83.6,82.6,85.0,85.3,86.1,81.5,86.0,81.9,84.9,85.0,85.8,73.3,84.7,85.8,84.7,85.2,85.1,86.0,86.4,83.6,83.1,85.6,86.0,79.4,60.3,67.8];
-const wkVeloOutKm = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,33.7,0.0,0.0,0.0,0.0,0.0,66.8,0.0,0.0,0.0,0.0];
-const wkVeloInKm = [0.0,0.0,44.5,0.0,30.7,32.9,12.2,24.1,0.0,14.0,0.0,0.0,0.0,0.0,13.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
-const wkVeloElev = [0,0,163,0,319,197,13,136,0,14,0,0,0,0,245,0,0,0,0,0,0,159,0,0,0,0,0,456,0,0,0,0];
-const wkVeloWatts = [null,null,105.1,null,102.5,90.3,115.2,96.4,null,111.4,null,null,null,null,126.7,null,null,null,null,null,null,105.3,null,null,null,null,null,118.1,null,null,null,null];
+const wkCadence = [85.1,87.0,84.7,84.2,84.8,86.0,83.6,82.6,85.0,85.3,86.1,81.5,86.0,81.9,84.9,85.0,85.8,73.3,84.7,85.8,84.7,85.2,85.1,86.0,86.4,83.6,83.1,85.6,86.0,79.4,60.3,67.8,85.7,70.3,51.3];
+const wkVeloOutKm = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,33.7,0.0,0.0,0.0,0.0,0.0,66.8,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
+const wkVeloInKm = [0.0,0.0,44.5,0.0,30.7,32.9,12.2,24.1,0.0,14.0,0.0,0.0,0.0,0.0,13.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
+const wkVeloElev = [0,0,163,0,319,197,13,136,0,14,0,0,0,0,245,0,0,0,0,0,0,159,0,0,0,0,0,456,0,0,0,0,0,0,0];
+const wkVeloWatts = [null,null,105.1,null,102.5,90.3,115.2,96.4,null,111.4,null,null,null,null,126.7,null,null,null,null,null,null,105.3,null,null,null,null,null,118.1,null,null,null,null,null,null,null];
 new Chart(document.getElementById('chart-cadence'), {
   type: 'line',
   data: {
@@ -1849,7 +1750,7 @@ new Chart(document.getElementById('chart-zones'), {
   data: {
     labels: ['Z1–Z2 Endurance','Z2–Z3 Aérobie','Z4 Seuil','Z5 Haute Int.'],
     datasets: [{
-      data: [96.3, 111.3, 24.0, 2.1],
+      data: [98.6, 123.1, 24.0, 2.1],
       backgroundColor: [GREEN+'cc', BLUE+'cc', '#f97316cc', RED+'33'],
       borderColor: [GREEN, BLUE, '#f97316', '#ef444433'],
       borderWidth: 1.5,
@@ -1859,7 +1760,7 @@ new Chart(document.getElementById('chart-zones'), {
     maintainAspectRatio: false,
     plugins: {
       legend: { display:false },
-      tooltip: { callbacks:{ label: ctx => ctx.label+' : '+[96.3,111.3,24.0,2.1][ctx.dataIndex].toFixed(1)+'h ('+[41,48,10,1][ctx.dataIndex]+'%)' } }
+      tooltip: { callbacks:{ label: ctx => ctx.label+' : '+[98.6,123.1,24.0,2.1][ctx.dataIndex].toFixed(1)+'h ('+[40,50,10,1][ctx.dataIndex]+'%)' } }
     },
     cutout: '68%',
   }
@@ -1867,7 +1768,7 @@ new Chart(document.getElementById('chart-zones'), {
 
 // ── Heatmap ──
 (function() {
-  const hm = [[1,1,0,0],[3,0,0,16],[1,1,1,23],[3,1,0,4],[9,19,3,15],[6,0,2,2],[25,1,2,0]];
+  const hm = [[1,2,0,0],[3,0,0,16],[2,2,1,24],[3,1,0,4],[10,19,3,15],[6,1,2,2],[26,1,3,0]];
   const jours  = ['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
   const joursL = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
   const slots  = ['Matin','Midi','Après-midi','Soir'];
@@ -1925,7 +1826,7 @@ new Chart(document.getElementById('chart-zones'), {
   colTotals.forEach(ct => {
     html += `<td style="text-align:center;padding-top:8px;font-size:13px;font-weight:700;color:#ea580c">${ct}</td>`;
   });
-  html += '<td style="text-align:center;padding-top:8px;padding-left:10px;font-size:14px;font-weight:800;color:#374151">139</td>';
+  html += '<td style="text-align:center;padding-top:8px;padding-left:10px;font-size:14px;font-weight:800;color:#374151">147</td>';
   html += '</tr></tbody></table>';
 
   // ── Legend
@@ -1943,7 +1844,7 @@ new Chart(document.getElementById('chart-zones'), {
 // ══════════ TAB SWITCH ══════════
 let _mapInited = false;
 function showTab(name) {
-  ['global','courses','entrainement','muscu','velo','carte','lexique','plan','marathon'].forEach(tab => {
+  ['global','courses','entrainement','muscu','velo','carte','lexique','marathon'].forEach(tab => {
     document.getElementById('pane-'+tab).style.display = name===tab ? '' : 'none';
     document.getElementById('btn-'+tab).className = 'tab-btn'+(name===tab ? ' tab-active' : '');
   });
@@ -2297,7 +2198,15 @@ const calActs = [
   {d:'2026-08-04',t:'Trail',km:15.1,dur:'3h13',re:36,elev:984,n:"Boucle source du Guiers Mort",race:false,hike:false},
   {d:'2026-08-05',t:'Trail',km:7.2,dur:'1h58',re:13,elev:367,n:"Randonnée à Montouvrard",race:false,hike:true},
   {d:'2026-08-06',t:'Trail',km:20.3,dur:'4h16',re:61,elev:1417,n:"Reco de la grosse montée de l'échappée belle 42km",race:false,hike:false},
-  {d:'2026-08-09',t:'Run',km:12.6,dur:'1h15',re:26,elev:65,n:"Retour sur le plat",race:false,hike:false}
+  {d:'2026-08-09',t:'Run',km:12.6,dur:'1h15',re:26,elev:65,n:"Retour sur le plat",race:false,hike:false},
+  {d:'2026-08-12',t:'Run',km:9.7,dur:'57min',re:26,elev:30,n:"Footing à la fraîche",race:false,hike:false},
+  {d:'2026-08-14',t:'Run',km:10.2,dur:'1h00',re:26,elev:26,n:"Footing à la fraîche",race:false,hike:false},
+  {d:'2026-08-16',t:'Run',km:13.5,dur:'1h18',re:26,elev:39,n:"Sortie Endurance",race:false,hike:false},
+  {d:'2026-08-19',t:'Run',km:5.1,dur:'32min',re:7,elev:10,n:"Mini footing",race:false,hike:false},
+  {d:'2026-08-22',t:'Trail',km:43.0,dur:'8h34',re:200,elev:2831,n:"Échappée Belle 42km",race:true,hike:false},
+  {d:'2026-08-23',t:'Trail',km:1.0,dur:'23min',re:3,elev:71,n:"Randonnée Sentier botanique",race:false,hike:true},
+  {d:'2026-08-24',t:'Trail',km:3.5,dur:'1h00',re:4,elev:27,n:"Randonnée lacs de Lescheraines",race:false,hike:true},
+  {d:'2026-08-26',t:'Trail',km:1.0,dur:'22min',re:1,elev:19,n:"Randonnée Belvédère du Revard",race:false,hike:true}
 ];
 
 // Détail sorties vélo (Ride/VirtualRide), extrait de activities_store.json par update_report.py
@@ -2725,79 +2634,6 @@ function bodySvg(view, muscleSets) {
   });
   html += '</tbody></table></div>';
   tableEl.innerHTML = html;
-})();
-
-// ── PLAN ÉCHAPPÉE BELLE ──
-(function() {
-  var race = new Date('2026-08-22');
-  var today = new Date(); today.setHours(0,0,0,0);
-  var days = Math.round((race - today) / 86400000);
-  var el = document.getElementById('plan-countdown');
-  if (el) el.textContent = days;
-
-  var weeks = [
-    { label:'S0  16–22 juin', phase:'En cours',     km:20,  dp:100,  re:350,  sessions:['Z2','FC+ côte'],                        focus:"Semaine partielle · conserver l'élan post-course" },
-    { label:'S1  23–29 juin', phase:'Bloc 1',        km:55,  dp:600,  re:950,  sessions:['FC+','Z2','Z2','SLT 22km D+400'],        focus:'Réintroduire D+ · +10 km vs sem. précédente' },
-    { label:'S2  30–6 juil.', phase:'Bloc 1',        km:62,  dp:900,  re:1080, sessions:['FL 3×3km','Z2','Z2','SLT 28km D+700'],   focus:'Volume trail ↑ · surveiller tendons' },
-    { label:'S3  7–13 juil.', phase:'Bloc 1',        km:70,  dp:1200, re:1250, sessions:['FC+','FL 2×4km','Z2','SLT 32km D+1000'], focus:'Sortie longue >3h · gestion alimentation' },
-    { label:'S4  14–20 juil.',phase:'Récupération',  km:45,  dp:500,  re:750,  sessions:['Z2','Z2','Z2','FC+ léger'],              focus:'Décharge obligatoire · ACWR cible <0,85' },
-    { label:'S5  21–27 juil.',phase:'Bloc 2',        km:72,  dp:1500, re:1280, sessions:['FC+','FL 3×3km','B2B Sam+Dim'],          focus:'Back-to-back · simulation fatigue j+1' },
-    { label:'S6  28–3 août',  phase:'Bloc 2',        km:78,  dp:1800, re:1420, sessions:['FC+','Z2','SIM 35km D+1500'],            focus:'Simulation race complète · nutrition' },
-    { label:'S7  4–10 août',  phase:'Bloc 2',        km:65,  dp:1200, re:1150, sessions:['FL 2×3km','Z2','Z2','SLT 28km D+900'],  focus:'Maintenir qualité · réduire volume' },
-    { label:'S8  11–17 août', phase:'Affûtage',      km:40,  dp:600,  re:700,  sessions:['FC+ court','FL 2×2km','Z2','Z2'],        focus:'-40% volume · conserver 2 séances qualité' },
-    { label:'S9  18–22 août', phase:'Race week',     km:12,  dp:100,  re:200,  sessions:['Z2 30min','J-1 déblocage','RACE !!!'],   focus:'Repos actif · protocole pré-course' },
-  ];
-
-  var phaseColors = {
-    'En cours'    :'text-slate-300 bg-slate-700',
-    'Bloc 1'      :'text-blue-300 bg-blue-900/50',
-    'Récupération':'text-amber-300 bg-amber-900/50',
-    'Bloc 2'      :'text-orange-300 bg-orange-900/50',
-    'Affûtage'    :'text-purple-300 bg-purple-900/50',
-    'Race week'   :'text-red-300 bg-red-900/50'
-  };
-
-  var sessionColors = {
-    'FC+':'bg-orange-800 text-orange-200',
-    'FL' :'bg-blue-800 text-blue-200',
-    'SLT':'bg-green-800 text-green-200',
-    'B2B':'bg-green-700 text-green-100',
-    'SIM':'bg-red-800 text-red-200',
-    'Z2' :'bg-slate-700 text-slate-300',
-    'RAC':'bg-yellow-600 text-yellow-100'
-  };
-
-  function sessionClass(s) {
-    if (s.startsWith('FC+'))  return sessionColors['FC+'];
-    if (s.startsWith('FL'))   return sessionColors['FL'];
-    if (s.startsWith('SLT'))  return sessionColors['SLT'];
-    if (s.startsWith('B2B'))  return sessionColors['B2B'];
-    if (s.startsWith('SIM'))  return sessionColors['SIM'];
-    if (s.startsWith('RACE')) return sessionColors['RAC'] + ' font-bold';
-    return sessionColors['Z2'];
-  }
-
-  var tbody = document.getElementById('plan-tbody');
-  if (!tbody) return;
-  weeks.forEach(function(w) {
-    var tr = document.createElement('tr');
-    tr.className = 'border-b border-slate-700/50 hover:bg-slate-700/30 transition-colors';
-    var phaseCls = phaseColors[w.phase] || 'text-slate-300 bg-slate-700';
-    var badges = w.sessions.map(function(s) {
-      return '<span class="inline-block text-xs rounded px-1.5 py-0.5 mr-1 mb-0.5 ' + sessionClass(s) + '">' + s + '</span>';
-    }).join('');
-    tr.innerHTML =
-      '<td class="py-2.5 pr-3 font-medium text-slate-200 whitespace-nowrap">' +
-        '<div>' + w.label + '</div>' +
-        '<div class="mt-0.5"><span class="text-xs rounded px-1.5 py-0.5 ' + phaseCls + '">' + w.phase + '</span></div>' +
-      '</td>' +
-      '<td class="text-center py-2.5 px-2 font-bold text-orange-400">' + w.km + '</td>' +
-      '<td class="text-center py-2.5 px-2 font-bold text-green-400">+' + w.dp + '</td>' +
-      '<td class="text-center py-2.5 px-2 text-blue-300">' + w.re + '</td>' +
-      '<td class="py-2.5 px-2">' + badges + '</td>' +
-      '<td class="py-2.5 pl-2 text-xs text-slate-400">' + w.focus + '</td>';
-    tbody.appendChild(tr);
-  });
 })();
 
 // ── PLAN MARATHON NICE-CANNES ──
