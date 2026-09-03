@@ -1605,5 +1605,97 @@
    "achievement_count": 0,
    "pr_count": 0
   }
+ },
+ {
+  "id": "19939788054",
+  "name": "Fractionné long 🔵🟡",
+  "description": "Reprise tranquille et début préparation marathon Nice-Cannes \n\n2x12' à 5'30\n\n\n📈 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📈\n🏅 At this pace, marathon time: 4h21min (46% of Kipchoge's pace)\nAdjusted Pace: 𝟲:𝟬𝟴/km\n😳 Heat (20°C) cost you 𝟬'𝟬𝟰\"/km.\n👌 The elevation, altitude, wind didn't affect your run.\n⏱ Under standard conditions, you would have gained 𝟬'𝟱𝟳\".\n🔥 Estimated energy cost: 982-1200 kcal.\n💧 Estimated fluid loss: 0.7-1.3L (0.8L/h sweat rate).\n🙂 Air quality: Fair · still a great day to be outside.\n\nTry it now 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-08-28T19:23:25",
+  "location_summary": "Paris, France",
+  "gear_id": "29923154",
+  "summary": {
+   "distance": 12064.2,
+   "moving_time": 4493,
+   "elapsed_time": 6210,
+   "elevation_gain": 14,
+   "avg_speed": 2.6851101713776986,
+   "max_speed": 4.5,
+   "relative_effort": 28,
+   "total_calories": 969,
+   "avg_cadence": 85.0537,
+   "kudos_count": 60,
+   "achievement_count": 0,
+   "pr_count": 0
+  }
+ },
+ {
+  "id": "19959802255",
+  "name": "Sortie longue (prépa marathon Nice-Cannes) 🔵🟡",
+  "description": "\n40' footing + 30' allure marathon + retour au calme \n\nPR sur la Baltard \n\n\n\n📈 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📈\n🏢 You climbed 54 floors today!\nAdjusted Pace: 𝟱:𝟰𝟳/km\n🏝️ Elevation (0.5% avg) cost you 𝟬'𝟬𝟯\"/km.\n😳 Heat (20°C) cost you 𝟬'𝟬𝟰\"/km.\n👌 The altitude, wind didn't affect your run.\n⏱ Under standard conditions, you would have gained 𝟮'𝟬𝟰\".\n🔥 Estimated energy cost: 1352-1653 kcal.\n💧 Estimated fluid loss: 1.0-1.8L (0.8L/h sweat rate).\n🙂 Air quality: Fair · still a great day to be outside.\n\nTry it now 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-08-30T09:23:35",
+  "location_summary": "Paris, France",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 16450,
+   "moving_time": 5837,
+   "elapsed_time": 7108,
+   "elevation_gain": 83,
+   "avg_speed": 2.818228542059277,
+   "max_speed": 4.04,
+   "relative_effort": 71,
+   "total_calories": 1365,
+   "avg_cadence": 86.054,
+   "kudos_count": 69,
+   "achievement_count": 9,
+   "pr_count": 9
+  }
+ },
+ {
+  "id": "19995205858",
+  "name": "Footing du mardi 🔵🟡",
+  "description": "📈 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📈\n⚽ You ran across 121 football fields!\nAdjusted Pace: 𝟱:𝟯𝟳/km\n🏝️ Elevation (0.3% avg) cost you 𝟬'𝟬𝟭\"/km.\n😳 Heat (23.5°C) cost you 𝟬'𝟬𝟳\"/km.\n🍃 Wind (6.4km/h) cost you 𝟬'𝟬𝟲\"/km.\n👌 The altitude didn't affect your run.\n⏱ Under standard conditions, you would have gained 𝟮'𝟱𝟵\".\n🔥 Estimated energy cost: 1035-1265 kcal.\n💧 Estimated fluid loss: 0.6-1.2L (0.7L/h sweat rate).\n🙂 Air quality: Fair · still a great day to be outside.\n\nTry it now 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-09-01T19:26:26",
+  "location_summary": "Paris, France",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 12749.8,
+   "moving_time": 4474,
+   "elapsed_time": 5532,
+   "elevation_gain": 38,
+   "avg_speed": 2.849754135002235,
+   "max_speed": 3.52,
+   "relative_effort": 40,
+   "total_calories": 1025,
+   "avg_cadence": 85.8618,
+   "kudos_count": 45,
+   "achievement_count": 6,
+   "pr_count": 0
+  }
+ },
+ {
+  "id": "20010169570",
+  "name": "Fractionné court 🔵🟡",
+  "description": "2x(6x45-45)\n\n\n📈 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📈\n🏅 At this pace, marathon time: 4h16min (47% of Kipchoge's pace)\nAdjusted Pace: 𝟱:𝟰𝟲/km\n🏝️ Elevation (0.2% avg) cost you 𝟬'𝟬𝟭\"/km.\n😎 Heat (25.3°C) cost you 𝟬'𝟬𝟵\"/km.\n🍃 Wind (11.3km/h) cost you 𝟬'𝟬𝟵\"/km.\n👌 The altitude didn't affect your run.\n⏱ Under standard conditions, you would have gained 𝟮'𝟱𝟴\".\n🔥 Estimated energy cost: 766-937 kcal.\n💧 Estimated fluid loss: 0.5-0.9L (0.7L/h sweat rate).\n🙂 Air quality: Fair · still a great day to be outside.\n\nTry it now 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-09-02T19:36:03",
+  "location_summary": "Charenton-le-Pont, France",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 9342.3,
+   "moving_time": 3410,
+   "elapsed_time": 4639,
+   "elevation_gain": 17,
+   "avg_speed": 2.7396774193548383,
+   "max_speed": 4.92,
+   "relative_effort": 35,
+   "total_calories": 786,
+   "avg_cadence": 86.6136,
+   "kudos_count": 35,
+   "achievement_count": 1,
+   "pr_count": 1
+  }
  }
 ]

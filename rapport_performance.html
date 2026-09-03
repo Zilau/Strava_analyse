@@ -46,7 +46,7 @@
     </svg>
     <h1 class="text-xl font-bold text-slate-800">Rapport Performance Strava</h1>
   </div>
-  <p class="text-sm text-slate-500">Laurent Miklic · 1 janv. → 26 août 2026 · 182 activités · Run+Trail : 147 séances</p>
+  <p class="text-sm text-slate-500">Laurent Miklic · 1 janv. → 2 sep. 2026 · 186 activités · Run+Trail : 151 séances</p>
   <p class="text-xs text-slate-400 mt-1">Généré par Claude Code via MCP Strava</p>
 </div>
 
@@ -71,11 +71,11 @@
   <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
     <div class="metric-box">
       <div class="metric-lbl">Distance totale (run+trail)</div>
-      <div class="metric-val">1 940 km</div>
+      <div class="metric-val">1 991 km</div>
     </div>
     <div class="metric-box">
       <div class="metric-lbl">Dénivelé cumulé</div>
-      <div class="metric-val">31 170 m</div>
+      <div class="metric-val">31 322 m</div>
     </div>
     <div class="metric-box">
       <div class="metric-lbl">10km race (14 juin)</div>
@@ -96,7 +96,7 @@
     <canvas id="chart-volume" height="100"></canvas>
     <p class="text-xs text-slate-400 mt-4 mb-2">Barres = km (axe gauche) · Courbe bleue = D+ total (axe droit).</p>
     <canvas id="chart-elev" height="70"></canvas>
-    <p class="text-xs text-slate-400 mt-4 mb-2">Calories dépensées par semaine — toutes activités (total saison : <strong>177 928 kcal</strong>).</p>
+    <p class="text-xs text-slate-400 mt-4 mb-2">Calories dépensées par semaine — toutes activités (total saison : <strong>182 073 kcal</strong>).</p>
     <canvas id="chart-cals" height="70"></canvas>
     <p class="text-xs text-slate-400 mt-4 mb-2">Distribution estimée des zones FC par semaine (Run + Trail) — proxy RE/heure par séance + flag course. Tendances fiables ; valeurs absolues ±10 pts (sans streams FC complets). Seuils recalibrés à partir du 25 juin 2026 (chute d'échelle du relative_effort Strava, ÷7 environ). <span style="color:#3b82f6">■ Z1</span> · <span style="color:#22c55e">■ Z2</span> · <span style="color:#eab308">■ Z3</span> · <span style="color:#f97316">■ Z4</span> · <span style="color:#ef4444">■ Z5</span></p>
     <canvas id="chart-zones-week" height="80"></canvas>
@@ -110,7 +110,7 @@
     <canvas id="chart-acwr" height="90"></canvas>
     <div class="flex gap-3 mt-3 flex-wrap">
       <span class="badge badge-orange">🟠 16 mars : ACWR 1.41 — ETP 120 (charge planifiée)</span>
-      <span class="badge badge-green">✅ Actuel (26 août) : ACWR 0.23 — Échappée Belle 42km courue le 22/08 (finisher ✅), semaine 24/08 réduite à 4.5 km (repos post-course) après le pic de charge de la semaine 17/08 (49.1 km / D+ 2912 m, RE 210)</span>
+      <span class="badge badge-green">✅ Actuel (31 août) : ACWR 0.34 — reprise progressive post-Échappée Belle engagée (semaine 24/08 remontée à 33 km avec la relance du bloc marathon, semaine 31/08 à 22.1 km) après le pic de charge de la semaine 17/08 (49.1 km / D+ 2912 m, RE 210)</span>
       <span class="badge badge-orange">🌡️ 15–23 juin : 32–35.7°C — volume réduit + acclimatation intentionnelle</span>
     </div>
   </div>
@@ -121,7 +121,7 @@
     <p class="text-xs text-slate-400 mb-3">Même modèle que l'ACWR ci-dessus, appliqué au D+ hebdo au lieu du Relative Effort. Le RE sous-pondère les longues sorties D+ lentes (rando/trail montagne) — cet indicateur capture la <strong>charge excentrique / fatigue neuromusculaire</strong> que le RE seul ne reflète pas. Zone verte : 0.8–1.3 · Zone rouge : &gt; 1.5.</p>
     <canvas id="chart-acwr-dplus" height="90"></canvas>
     <div class="flex gap-3 mt-3 flex-wrap">
-      <span class="badge badge-green">✅ Actuel (26 août) : ACWR D+ 0.62 (zone verte) — pic à 1.4 la semaine de l'Échappée Belle (17/08, D+ 2912 m), puis quasi-repos la semaine 24/08 (D+ 46 m) pour absorber la fatigue excentrique de l'ultra-trail</span>
+      <span class="badge badge-green">✅ Actuel (31 août) : ACWR D+ 0.31 (zone verte) — pic à 1.4 la semaine de l'Échappée Belle (17/08, D+ 2912 m), décharge la semaine 24/08 (D+ 143 m) puis D+ encore minimal la semaine 31/08 (D+ 55 m), reprise en cours mais bloc marathon route donc D+ volontairement bas</span>
     </div>
   </div>
 
@@ -142,8 +142,8 @@
   <!-- CHART 5 : Sports répartition -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
     <div class="card">
-      <h2>Répartition des activités — 182 activités</h2>
-      <p class="text-xs text-slate-400 mb-3">Chaque barre = 100 % d'une métrique. Le trail pèse moins en nombre de séances (34 %) qu'en temps de mouvement (53 %).</p>
+      <h2>Répartition des activités — 186 activités</h2>
+      <p class="text-xs text-slate-400 mb-3">Chaque barre = 100 % d'une métrique. Le trail pèse moins en nombre de séances (33 %) qu'en temps de mouvement (52 %).</p>
       <canvas id="chart-sports" height="160"></canvas>
     </div>
 
@@ -206,7 +206,7 @@
         <div style="flex:0 0 140px;position:relative">
           <canvas id="chart-zones" width="140" height="140"></canvas>
           <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">
-            <div style="font-size:18px;font-weight:700;color:#1e293b;line-height:1">248h</div>
+            <div style="font-size:18px;font-weight:700;color:#1e293b;line-height:1">253h</div>
             <div style="font-size:10px;color:#94a3b8;margin-top:2px">total</div>
           </div>
         </div>
@@ -214,23 +214,23 @@
           <div>
             <div style="display:flex;justify-content:space-between;margin-bottom:4px">
               <span style="font-size:12px;font-weight:600;color:#15803d">Z1–Z2 Endurance</span>
-              <span style="font-size:12px;color:#64748b">98.6h · <strong>40%</strong></span>
+              <span style="font-size:12px;color:#64748b">98.6h · <strong>39%</strong></span>
             </div>
-            <div style="background:#e2e8f0;border-radius:4px;height:7px"><div style="background:#16a34a;width:40%;height:100%;border-radius:4px"></div></div>
+            <div style="background:#e2e8f0;border-radius:4px;height:7px"><div style="background:#16a34a;width:39%;height:100%;border-radius:4px"></div></div>
             <div style="font-size:10px;color:#94a3b8;margin-top:2px">&lt; 130 RE/h (&lt; 19 depuis fin juin*) · Endurance fondamentale</div>
           </div>
           <div>
             <div style="display:flex;justify-content:space-between;margin-bottom:4px">
               <span style="font-size:12px;font-weight:600;color:#1d4ed8">Z2–Z3 Aérobie</span>
-              <span style="font-size:12px;color:#64748b">123.1h · <strong>50%</strong></span>
+              <span style="font-size:12px;color:#64748b">124.4h · <strong>49%</strong></span>
             </div>
-            <div style="background:#e2e8f0;border-radius:4px;height:7px"><div style="background:#2563eb;width:50%;height:100%;border-radius:4px"></div></div>
+            <div style="background:#e2e8f0;border-radius:4px;height:7px"><div style="background:#2563eb;width:49%;height:100%;border-radius:4px"></div></div>
             <div style="font-size:10px;color:#94a3b8;margin-top:2px">130–200 RE/h (19–29*) · Aérobie modéré</div>
           </div>
           <div>
             <div style="display:flex;justify-content:space-between;margin-bottom:4px">
               <span style="font-size:12px;font-weight:600;color:#ea580c">Z4 Seuil</span>
-              <span style="font-size:12px;color:#64748b">24.0h · <strong>10%</strong></span>
+              <span style="font-size:12px;color:#64748b">26.2h · <strong>10%</strong></span>
             </div>
             <div style="background:#e2e8f0;border-radius:4px;height:7px"><div style="background:#f97316;width:10%;height:100%;border-radius:4px"></div></div>
             <div style="font-size:10px;color:#94a3b8;margin-top:2px">200–280 RE/h (29–40*) · Effort seuil / tempo</div>
@@ -251,8 +251,8 @@
 
   <!-- Heatmap -->
   <div class="card">
-    <h2>Heatmap des entraînements — Jour × Créneau horaire (147 séances Run+Trail)</h2>
-    <p class="text-xs text-slate-400 mb-4">Patterns clés : <strong>Lundi = repos systématique</strong> · Dimanche matin = séance longue principale (26×) · Mercredi soir + Vendredi midi = séances tempo hebdo.</p>
+    <h2>Heatmap des entraînements — Jour × Créneau horaire (151 séances Run+Trail)</h2>
+    <p class="text-xs text-slate-400 mb-4">Patterns clés : <strong>Lundi = repos systématique</strong> · Dimanche matin = séance longue principale (27×) · Mercredi soir + Vendredi midi = séances tempo hebdo.</p>
     <div id="heatmap-container"></div>
   </div>
 
@@ -379,8 +379,8 @@
         <div class="flex items-start gap-3">
           <span class="badge badge-green mt-0.5">✅</span>
           <div>
-            <p class="font-semibold text-slate-800 text-sm">Échappée Belle 42km bouclée (22 août, finisher ✅) — récupération post-ultra en cours</p>
-            <p class="text-xs text-slate-600 mt-1">9h27 sur 43 km / D+ 2831 m, FC moy 141 bpm, 9 PRs de segments. Semaine du 24/08 volontairement réduite à 4.5 km (2 randos courtes) — ACWR retombé à 0.23 et ACWR D+ à 0.62 (zone verte), cohérent avec une décharge post-effort long. <strong>Priorité : reprise progressive sur 2 semaines avant de relancer le bloc marathon (Nice-Cannes, 25 octobre, J-60) — pas de séance de qualité avant S+2.</strong></p>
+            <p class="font-semibold text-slate-800 text-sm">Échappée Belle 42km bouclée (22 août, finisher ✅) — bloc marathon Nice-Cannes relancé</p>
+            <p class="text-xs text-slate-600 mt-1">9h27 sur 43 km / D+ 2831 m, FC moy 141 bpm, 9 PRs de segments. Reprise plus rapide que prévu : fractionné dès le 28/08 (J+6, 2x12' à 5'30) puis sortie longue avec 30' à allure marathon le 30/08 — plus court que les 2 semaines de repos initialement recommandées, mais charge encore modérée (ACWR 0.34, ACWR D+ 0.31, zone verte) et aucune gêne rapportée. <strong>Priorité : monter en charge progressivement sur les 7 semaines restantes avant Nice-Cannes (25 octobre, J-53), en resurveillant l'ACWR à chaque relance d'intensité.</strong></p>
           </div>
         </div>
       </div>
@@ -389,7 +389,7 @@
           <span class="badge badge-orange mt-0.5">P2</span>
           <div>
             <p class="font-semibold text-slate-800 text-sm">Structurer un cycle 3:1 explicite (pas subi)</p>
-            <p class="text-xs text-slate-600 mt-1">Aucune semaine de récupération planifiée identifiée sur 32 semaines : les creux sont tous imposés par les courses ou l'agenda — le camp Chartreuse fin juillet en est un nouvel exemple (12 sorties enchaînées, D+ 11 079 m, sans jour de repos formel). ACWR a dépassé 1.5 à deux reprises sans blessure — la marge se réduit avec l'âge et le volume. <strong>Action : bloquer une semaine à ~33 km toutes les 4 semaines indépendamment du ressenti.</strong></p>
+            <p class="text-xs text-slate-600 mt-1">Aucune semaine de récupération planifiée identifiée sur 36 semaines : les creux sont tous imposés par les courses ou l'agenda — le camp Chartreuse fin juillet en est un nouvel exemple (12 sorties enchaînées, D+ 11 079 m, sans jour de repos formel). ACWR a dépassé 1.5 à deux reprises sans blessure — la marge se réduit avec l'âge et le volume. <strong>Action : bloquer une semaine à ~33 km toutes les 4 semaines indépendamment du ressenti.</strong></p>
           </div>
         </div>
       </div>
@@ -398,7 +398,7 @@
           <span class="badge badge-blue mt-0.5">P3</span>
           <div>
             <p class="font-semibold text-slate-800 text-sm">Combler le gap 10km → marathon (+18 min vs potentiel)</p>
-            <p class="text-xs text-slate-600 mt-1">10km en 47:49 → marathon théorique Riegel ≈ 3:43. Marathon PR Strava = 4:01 = écart de 18 min. Profil orienté trail/ultra = moins d'allure spécifique longue distance route. <strong>Si objectif marathon/semi, ajouter 1 sortie longue/sem à 5:15–5:30/km et vérifier le PR.</strong></p>
+            <p class="text-xs text-slate-600 mt-1">10km en 47:49 → marathon théorique Riegel ≈ 3:43. Marathon PR Strava = 4:01 = écart de 18 min. Profil orienté trail/ultra = moins d'allure spécifique longue distance route. Premier bloc d'allure marathon posé le 30/08 (30' dédiées en fin de sortie longue) — bon point de départ pour le cycle Nice-Cannes. <strong>Poursuivre 1 sortie longue/sem avec segment à allure cible 5:15–5:30/km et vérifier le PR.</strong></p>
           </div>
         </div>
       </div>
@@ -415,15 +415,15 @@
       </div>
       <div class="pt-3 border-t border-slate-700">
         <span class="text-xs font-bold uppercase tracking-wide text-orange-400">📊 Volume saison</span>
-        <p class="text-sm text-slate-300 leading-relaxed mt-1">147 séances run+trail (rando incluses) · 1 940 km · D+ 31 170 m sur 35 semaines. Zones FC recalibrées manuellement (Z1 ≤ 136, Z5 ≥ 176 bpm). Camp montagne Chartreuse fin juillet-début août (D+ 11 079 m/12j) puis Échappée Belle 42km (22 août, D+ 2 831 m) ont porté l'essentiel du D+ cumulé sur la saison ; semaine du 24 août revenue à un volume minimal (4.5 km) pour la récupération post-course.</p>
+        <p class="text-sm text-slate-300 leading-relaxed mt-1">151 séances run+trail (rando incluses) · 1 991 km · D+ 31 322 m sur 36 semaines. Zones FC recalibrées manuellement (Z1 ≤ 136, Z5 ≥ 176 bpm). Camp montagne Chartreuse fin juillet-début août (D+ 11 079 m/12j) puis Échappée Belle 42km (22 août, D+ 2 831 m) ont porté l'essentiel du D+ cumulé sur la saison ; semaine du 24 août remontée à 33 km avec la relance du bloc marathon, semaine du 31 août à 22.1 km (D+ minimal, travail sur route).</p>
       </div>
       <div class="pt-3 border-t border-slate-700">
-        <span class="text-xs font-bold uppercase tracking-wide text-orange-400">🔥 Forme actuelle — Récupération post-Échappée Belle</span>
-        <p class="text-sm text-slate-300 leading-relaxed mt-1">Prépa lancée le 28 juin, taper propre engagé mi-août (semaine 10/08 : 33.4 km / D+ 95 m, 3 footings plats). Course couru le 22 août : 43 km / D+ 2831 m en 9h27, FC moy 141 bpm, finisher ✅ avec 9 PRs de segments. Semaine du 24/08 réduite à 4.5 km (2 randos, aucune sortie technique) pour absorber la fatigue neuromusculaire de l'ultra-trail. ACWR 0.23 et ACWR D+ 0.62 — décharge cohérente, reprise progressive à prévoir sur 2 semaines avant de relancer le bloc marathon.</p>
+        <span class="text-xs font-bold uppercase tracking-wide text-orange-400">🔥 Forme actuelle — Bloc marathon Nice-Cannes relancé</span>
+        <p class="text-sm text-slate-300 leading-relaxed mt-1">Échappée Belle courue le 22 août : 43 km / D+ 2831 m en 9h27, FC moy 141 bpm, finisher ✅ avec 9 PRs de segments. Reprise plus rapide que prévu : fractionné dès le 28/08 (J+6, 2x12' à 5'30), sortie longue avec 30' à allure marathon le 30/08, puis footings classiques les 01/09 et 02/09. ACWR 0.34 et ACWR D+ 0.31 (zone verte) — charge encore contenue, aucune gêne rapportée, montée en puissance à poursuivre progressivement sur les 7 semaines restantes.</p>
       </div>
       <div class="pt-3 border-t border-slate-700">
         <span class="text-xs font-bold uppercase tracking-wide text-orange-400">🎯 Prochain objectif</span>
-        <p class="text-sm text-slate-300 leading-relaxed mt-1"><strong class="text-orange-400">Marathon Nice-Cannes · 25 octobre · J-60</strong></p>
+        <p class="text-sm text-slate-300 leading-relaxed mt-1"><strong class="text-orange-400">Marathon Nice-Cannes · 25 octobre · J-53</strong></p>
       </div>
     </div>
   </div>
@@ -768,12 +768,14 @@
     <div class="card"><h2 class="text-center text-slate-700 mb-3">Juin 2026</h2><div id="cal-6"></div></div>
   </div>
 
-  <!-- Calendrier Jul (en cours) -->
+  <!-- Calendriers Jul–Sep -->
   <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
     <div class="card"><h2 class="text-center text-slate-700 mb-3">Juillet 2026</h2><div id="cal-7"></div></div>
+    <div class="card"><h2 class="text-center text-slate-700 mb-3">Août 2026</h2><div id="cal-8"></div></div>
+    <div class="card"><h2 class="text-center text-slate-700 mb-3">Septembre 2026 (en cours)</h2><div id="cal-9"></div></div>
   </div>
 
-  <p class="text-xs text-slate-400 text-center pb-4">182 activités · 1 janv. → 26 août 2026 · Données : MCP Strava</p>
+  <p class="text-xs text-slate-400 text-center pb-4">186 activités · 1 janv. → 2 sep. 2026 · Données : MCP Strava</p>
 
 </div><!-- /pane-entrainement -->
 
@@ -1233,19 +1235,19 @@ const radarDs = (label, data, color, bw=2) => ({
 });
 
 // ── DONNÉES ──
-const weeks = ['29/12','05/01','12/01','19/01','26/01','02/02','09/02','16/02','23/02','02/03','09/03','16/03','23/03','30/03','06/04','13/04','20/04','27/04','04/05','11/05','18/05','25/05','01/06','08/06','15/06','22/06','29/06','06/07','13/07','20/07','27/07','03/08','10/08','17/08','24/08'];
-const runKm = [64.4,65.2,46.6,73.9,68.9,78.0,75.6,74.9,85.0,79.7,45.9,132.5,18.3,22.3,54.7,50.1,47.1,65.8,48.0,45.7,59.8,50.0,44.2,48.6,30.6,30.8,71.2,20.0,33.2,45.5,110.7,66.2,33.4,49.1,4.5];
-const runKmOnly = [38.0,65.2,36.3,40.8,44.0,47.8,38.2,49.0,44.4,26.1,23.2,6.5,18.3,9.3,44.0,23.3,22.5,13.0,25.1,45.7,34.3,22.0,21.8,36.1,30.6,0.0,60.4,1.9,22.5,21.5,0.0,12.6,33.4,5.1,0.0];
-const trailKmOnly = [26.4,0.0,10.3,33.0,24.9,30.2,37.5,25.9,40.6,53.6,22.7,125.9,0.0,13.1,10.7,26.7,24.6,52.8,23.0,0.0,25.5,28.1,22.4,12.4,0.0,30.8,10.9,18.1,10.7,24.0,110.7,53.6,0.0,44.0,4.5];
-const wkTimeH = [7.1,6.82,4.99,8.06,7.92,8.44,8.8,8.42,9.32,8.65,4.62,22.57,1.87,2.47,5.68,5.27,4.83,12.45,5.02,4.32,6.31,5.04,4.6,4.81,3.08,3.34,7.38,2.29,3.2,5.98,27.11,12.93,3.28,9.5,1.37];
-const runElev = [130,188,72,120,182,113,99,134,97,126,122,36,41,18,169,41,156,37,54,189,132,43,62,78,74,0,267,12,66,68,0,65,95,10,0];
-const trailElev = [538,0,329,810,760,396,1045,543,666,657,66,1894,0,187,31,372,246,2979,526,0,395,437,333,39,0,452,29,244,27,672,7041,3412,0,2902,46];
+const weeks = ['29/12','05/01','12/01','19/01','26/01','02/02','09/02','16/02','23/02','02/03','09/03','16/03','23/03','30/03','06/04','13/04','20/04','27/04','04/05','11/05','18/05','25/05','01/06','08/06','15/06','22/06','29/06','06/07','13/07','20/07','27/07','03/08','10/08','17/08','24/08','31/08'];
+const runKm = [64.4,65.2,46.6,73.9,68.9,78.0,75.6,74.9,85.0,79.7,45.9,132.5,18.3,22.3,54.7,50.1,47.1,65.8,48.0,45.7,59.8,50.0,44.2,48.6,30.6,30.8,71.2,20.0,33.2,45.5,110.7,66.2,33.4,49.1,33.0,22.1];
+const runKmOnly = [38.0,65.2,36.3,40.8,44.0,47.8,38.2,49.0,44.4,26.1,23.2,6.5,18.3,9.3,44.0,23.3,22.5,13.0,25.1,45.7,34.3,22.0,21.8,36.1,30.6,0.0,60.4,1.9,22.5,21.5,0.0,12.6,33.4,5.1,28.5,22.1];
+const trailKmOnly = [26.4,0.0,10.3,33.0,24.9,30.2,37.5,25.9,40.6,53.6,22.7,125.9,0.0,13.1,10.7,26.7,24.6,52.8,23.0,0.0,25.5,28.1,22.4,12.4,0.0,30.8,10.9,18.1,10.7,24.0,110.7,53.6,0.0,44.0,4.5,0.0];
+const wkTimeH = [7.1,6.82,4.99,8.06,7.92,8.44,8.8,8.42,9.32,8.65,4.62,22.57,1.87,2.47,5.68,5.27,4.83,12.45,5.02,4.32,6.31,5.04,4.6,4.81,3.08,3.34,7.38,2.29,3.2,5.98,27.11,12.93,3.28,9.5,4.24,2.19];
+const runElev = [130,188,72,120,182,113,99,134,97,126,122,36,41,18,169,41,156,37,54,189,132,43,62,78,74,0,267,12,66,68,0,65,95,10,97,55];
+const trailElev = [538,0,329,810,760,396,1045,543,666,657,66,1894,0,187,31,372,246,2979,526,0,395,437,333,39,0,452,29,244,27,672,7041,3412,0,2902,46,0];
 const totalElev = runElev.map((v,i) => v+trailElev[i]);
-const wkCal = [5940,5691,4826,6287,6524,7093,7413,6552,7496,7151,3922,11731,1439,1858,4706,4140,4455,7215,3923,3473,5376,5676,3611,4086,2454,3011,5568,3010,2581,4087,12184,6327,2613,5291,218];
-const acwr = [4.0,1.96,1.04,1.14,0.9,0.92,0.85,0.72,0.89,0.8,0.39,1.41,0.19,0.31,0.82,0.8,0.97,1.01,0.79,0.65,0.95,0.75,0.65,0.61,0.66,0.4,0.3,0.22,0.2,0.27,0.55,0.48,0.33,0.5,0.23];
-const acwrDplus = [4.12,2.37,2.22,2.59,2.26,1.6,1.86,1.45,1.34,1.28,0.75,1.81,0.82,0.56,0.47,0.7,0.79,2.34,1.35,0.73,0.75,0.75,0.69,0.43,0.28,0.71,0.7,0.66,0.44,1.24,3.22,2.22,1.0,1.4,0.62];
-const reData = [1289,1238,960,1353,1447,1479,1378,1249,1550,1419,600,2567,297,399,1053,1062,900,1135,1000,788,1195,1038,758,675,471,202,160,96,96,146,335,174,78,210,5];
-const wkMaxTemp = [null,20.0,null,null,null,null,null,null,19.7,16.6,null,16.8,null,null,24.6,20.9,22.3,21.0,20.0,20.0,28.9,30.5,20.0,20.1,32.1,35.7,25.7,33.3,32.3,25.8,28.6,27.5,23.9,23.5,21.3];
+const wkCal = [5940,5691,4826,6287,6524,7093,7413,6552,7496,7151,3922,11731,1439,1858,4706,4140,4455,7215,3923,3473,5376,5676,3611,4086,2454,3011,5568,3010,2581,4087,12184,6327,2613,5291,2552,1811];
+const acwr = [4.0,1.96,1.04,1.14,0.9,0.92,0.85,0.72,0.89,0.8,0.39,1.41,0.19,0.31,0.82,0.8,0.97,1.01,0.79,0.65,0.95,0.75,0.65,0.61,0.66,0.4,0.3,0.22,0.2,0.27,0.55,0.48,0.33,0.5,0.41,0.34];
+const acwrDplus = [4.12,2.37,2.22,2.59,2.26,1.6,1.86,1.45,1.34,1.28,0.75,1.81,0.82,0.56,0.47,0.7,0.79,2.34,1.35,0.73,0.75,0.75,0.69,0.43,0.28,0.71,0.7,0.66,0.44,1.24,3.22,2.22,1.0,1.4,0.66,0.31];
+const reData = [1289,1238,960,1353,1447,1479,1378,1249,1550,1419,600,2567,297,399,1053,1062,900,1135,1000,788,1195,1038,758,675,471,202,160,96,96,146,335,174,78,210,104,75];
+const wkMaxTemp = [null,20.0,null,null,null,null,null,null,19.7,16.6,null,16.8,null,null,24.6,20.9,22.3,21.0,20.0,20.0,28.9,30.5,20.0,20.1,32.1,35.7,25.7,33.3,32.3,25.8,28.6,27.5,23.9,23.5,21.3,25.3];
 const beLabels = ['17 jan\n(Run 30km)','08 fév\n(Trail 30km)','07 avr\n(Trail frac.)','10 mai\n(Trail 23km)','31 mai\n(Trail 17km)','14 juin\n(Race 10km)'];
 const be400  = [145,135,114,118,113,108];
 const be1k   = [367,345,296,310,291,274];
@@ -1441,9 +1443,9 @@ new Chart(document.getElementById('chart-acwr-dplus'), {
 
 // ── chart-sports ──
 const sportActuals = [
-  [86,61,18,10,6,1],
-  [962.7,977.7,83.2,272.3,0.0,0.0],
-  [98.2,149.7,16.4,12.1,2.7,1.1],
+  [90,61,18,10,6,1],
+  [1013.3,977.7,83.2,272.3,0.0,0.0],
+  [103.2,149.7,16.4,12.1,2.7,1.1],
 ];
 const sportPct   = sportActuals.map(row => { const tot=row.reduce((a,b)=>a+b,0); return row.map(v => +(v/tot*100).toFixed(1)); });
 const sportUnits = [' séances',' km',' h'];
@@ -1713,11 +1715,11 @@ new Chart(document.getElementById('chart-re'), {
 })();
 
 // ── Cadence ──
-const wkCadence = [85.1,87.0,84.7,84.2,84.8,86.0,83.6,82.6,85.0,85.3,86.1,81.5,86.0,81.9,84.9,85.0,85.8,73.3,84.7,85.8,84.7,85.2,85.1,86.0,86.4,83.6,83.1,85.6,86.0,79.4,60.3,67.8,85.7,70.3,51.3];
-const wkVeloOutKm = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,33.7,0.0,0.0,0.0,0.0,0.0,66.8,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
-const wkVeloInKm = [0.0,0.0,44.5,0.0,30.7,32.9,12.2,24.1,0.0,14.0,0.0,0.0,0.0,0.0,13.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
-const wkVeloElev = [0,0,163,0,319,197,13,136,0,14,0,0,0,0,245,0,0,0,0,0,0,159,0,0,0,0,0,456,0,0,0,0,0,0,0];
-const wkVeloWatts = [null,null,105.1,null,102.5,90.3,115.2,96.4,null,111.4,null,null,null,null,126.7,null,null,null,null,null,null,105.3,null,null,null,null,null,118.1,null,null,null,null,null,null,null];
+const wkCadence = [85.1,87.0,84.7,84.2,84.8,86.0,83.6,82.6,85.0,85.3,86.1,81.5,86.0,81.9,84.9,85.0,85.8,73.3,84.7,85.8,84.7,85.2,85.1,86.0,86.4,83.6,83.1,85.6,86.0,79.4,60.3,67.8,85.7,70.3,68.5,86.2];
+const wkVeloOutKm = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,33.7,0.0,0.0,0.0,0.0,0.0,66.8,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
+const wkVeloInKm = [0.0,0.0,44.5,0.0,30.7,32.9,12.2,24.1,0.0,14.0,0.0,0.0,0.0,0.0,13.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
+const wkVeloElev = [0,0,163,0,319,197,13,136,0,14,0,0,0,0,245,0,0,0,0,0,0,159,0,0,0,0,0,456,0,0,0,0,0,0,0,0];
+const wkVeloWatts = [null,null,105.1,null,102.5,90.3,115.2,96.4,null,111.4,null,null,null,null,126.7,null,null,null,null,null,null,105.3,null,null,null,null,null,118.1,null,null,null,null,null,null,null,null];
 new Chart(document.getElementById('chart-cadence'), {
   type: 'line',
   data: {
@@ -1750,7 +1752,7 @@ new Chart(document.getElementById('chart-zones'), {
   data: {
     labels: ['Z1–Z2 Endurance','Z2–Z3 Aérobie','Z4 Seuil','Z5 Haute Int.'],
     datasets: [{
-      data: [98.6, 123.1, 24.0, 2.1],
+      data: [98.6, 124.4, 26.2, 3.7],
       backgroundColor: [GREEN+'cc', BLUE+'cc', '#f97316cc', RED+'33'],
       borderColor: [GREEN, BLUE, '#f97316', '#ef444433'],
       borderWidth: 1.5,
@@ -1760,7 +1762,7 @@ new Chart(document.getElementById('chart-zones'), {
     maintainAspectRatio: false,
     plugins: {
       legend: { display:false },
-      tooltip: { callbacks:{ label: ctx => ctx.label+' : '+[98.6,123.1,24.0,2.1][ctx.dataIndex].toFixed(1)+'h ('+[40,50,10,1][ctx.dataIndex]+'%)' } }
+      tooltip: { callbacks:{ label: ctx => ctx.label+' : '+[98.6,124.4,26.2,3.7][ctx.dataIndex].toFixed(1)+'h ('+[39,49,10,1][ctx.dataIndex]+'%)' } }
     },
     cutout: '68%',
   }
@@ -1768,7 +1770,7 @@ new Chart(document.getElementById('chart-zones'), {
 
 // ── Heatmap ──
 (function() {
-  const hm = [[1,2,0,0],[3,0,0,16],[2,2,1,24],[3,1,0,4],[10,19,3,15],[6,1,2,2],[26,1,3,0]];
+  const hm = [[1,2,0,0],[3,0,0,17],[2,2,1,25],[3,1,0,4],[10,19,3,16],[6,1,2,2],[27,1,3,0]];
   const jours  = ['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
   const joursL = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
   const slots  = ['Matin','Midi','Après-midi','Soir'];
@@ -1826,7 +1828,7 @@ new Chart(document.getElementById('chart-zones'), {
   colTotals.forEach(ct => {
     html += `<td style="text-align:center;padding-top:8px;font-size:13px;font-weight:700;color:#ea580c">${ct}</td>`;
   });
-  html += '<td style="text-align:center;padding-top:8px;padding-left:10px;font-size:14px;font-weight:800;color:#374151">147</td>';
+  html += '<td style="text-align:center;padding-top:8px;padding-left:10px;font-size:14px;font-weight:800;color:#374151">151</td>';
   html += '</tr></tbody></table>';
 
   // ── Legend
@@ -2206,7 +2208,11 @@ const calActs = [
   {d:'2026-08-22',t:'Trail',km:43.0,dur:'8h34',re:200,elev:2831,n:"Échappée Belle 42km",race:true,hike:false},
   {d:'2026-08-23',t:'Trail',km:1.0,dur:'23min',re:3,elev:71,n:"Randonnée Sentier botanique",race:false,hike:true},
   {d:'2026-08-24',t:'Trail',km:3.5,dur:'1h00',re:4,elev:27,n:"Randonnée lacs de Lescheraines",race:false,hike:true},
-  {d:'2026-08-26',t:'Trail',km:1.0,dur:'22min',re:1,elev:19,n:"Randonnée Belvédère du Revard",race:false,hike:true}
+  {d:'2026-08-26',t:'Trail',km:1.0,dur:'22min',re:1,elev:19,n:"Randonnée Belvédère du Revard",race:false,hike:true},
+  {d:'2026-08-28',t:'Run',km:12.1,dur:'1h14',re:28,elev:14,n:"Fractionné long",race:false,hike:false},
+  {d:'2026-08-30',t:'Run',km:16.4,dur:'1h37',re:71,elev:83,n:"Sortie longue (prépa marathon Nice-Cannes)",race:false,hike:false},
+  {d:'2026-09-01',t:'Run',km:12.7,dur:'1h14',re:40,elev:38,n:"Footing du mardi",race:false,hike:false},
+  {d:'2026-09-02',t:'Run',km:9.3,dur:'56min',re:35,elev:17,n:"Fractionné court",race:false,hike:false}
 ];
 
 // Détail sorties vélo (Ride/VirtualRide), extrait de activities_store.json par update_report.py
@@ -2341,7 +2347,7 @@ const muscuSessions = [{"id":"23515352314","date":"2026-07-07","start_local":"20
   calActs.forEach(a => { (byDate[a.d] || (byDate[a.d] = [])).push(a); });
 
   // Render each monthly grid
-  [1,2,3,4,5,6,7].forEach(m => {
+  [1,2,3,4,5,6,7,8,9].forEach(m => {
     const el = document.getElementById('cal-'+m);
     if (!el) return;
     const daysInMonth = new Date(2026, m, 0).getDate();
@@ -2393,7 +2399,7 @@ const muscuSessions = [{"id":"23515352314","date":"2026-07-07","start_local":"20
   });
 
   // Monthly stats table
-  const MONTHS = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet'];
+  const MONTHS = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre'];
   let tbl = '<thead><tr style="border-bottom:2px solid #e2e8f0;text-align:left">';
   ['Mois','Run+Trail','Run (km)','Trail (km)','Total km','Vélo (km)','Muscu','RE total','J repos'].forEach(h => {
     tbl += `<th style="padding:6px 10px;font-size:11px;color:#64748b;font-weight:600;white-space:nowrap">${h}</th>`;
@@ -2401,7 +2407,7 @@ const muscuSessions = [{"id":"23515352314","date":"2026-07-07","start_local":"20
   tbl += '</tr></thead><tbody>';
 
   let totalRunKm=0, totalTrailKm=0, totalVeloKm=0, totalMuscu=0, totalRe=0, totalSeances=0, totalRest=0;
-  [1,2,3,4,5,6,7].forEach((m,i) => {
+  [1,2,3,4,5,6,7,8,9].forEach((m,i) => {
     const daysInMonth = new Date(2026, m, 0).getDate();
     const prefix = `2026-${String(m).padStart(2,'0')}-`;
     const acts = calActs.filter(a => a.d.startsWith(prefix));
