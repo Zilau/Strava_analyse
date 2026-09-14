@@ -11,7 +11,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `activities_store.json` | Source of truth: merged Strava activities from 6 May 2026 onward (id, name, description, sport_type, start_local, summary incl. `total_calories`) |
 | `activities_pre_may2026.json` | Frozen `list_activities` dump covering 1 Jan – 3 May 2026 (100 activities). Loaded by `update_report.py` (`P1_PATH`) and merged with `activities_store.json` at report-build time — kept as a committed file, not a session tool-result, so it survives session cleanup. Static; never needs updating. |
 | `activities_inbox.json` | Scratch file (gitignored) — paste a fresh `list_activities` MCP JSON dump here before running `update_report.py` |
-| `update_report.py` | **Weekly update pipeline.** Merges `activities_inbox.json` into `activities_store.json`, recomputes every derived stat, and patches both HTML reports directly via regex. See "Weekly update workflow" below. |
+| `update_report.py` | **Weekly update pipeline.** Merges `activities_inbox.json` into `activities_store.json`, recomputes every derived stat, and patches both HTML reports directly via regex. See "Weekly update workflow" below. Also holds `MARATHON_PACE_KM`, a manual dict (same spirit as `NAME_OVERRIDES`/`RACES`) mapping activity id → km identified at marathon-goal pace or faster. |
 | `update_map.py` | Reads raw GPS stream files, samples to 250–500 pts, writes `mapRoutes` into the HTML |
 | `plan_inject.py` | One-shot script that injected the Plan Échappée Belle tab into the HTML |
 | `marathon_inject.py` | One-shot script that injected the Plan Marathon NC tab into the HTML |
@@ -49,7 +49,7 @@ One `<script>` block with all data embedded as JS constants, rendered on `DOMCon
 | `carte` | Leaflet map with 15 GPS traces |
 | `lexique` | Definitions of CTL, ATL, TSB, ACWR, zones, cadence, etc. |
 | `plan` | Plan Maratrail de l'Échappée Belle — 42km D+2500m · 22 août 2026 |
-| `marathon` | Plan Marathon Nice-Cannes — 42.195km · 25 octobre 2026 |
+| `marathon` | Plan Marathon Nice-Cannes — 42.195km · 8 novembre 2026 |
 
 **CDN dependencies:**
 - Tailwind CSS (utility styling)
@@ -74,6 +74,8 @@ One `<script>` block with all data embedded as JS constants, rendered on `DOMCon
 | `totalElev[]` | Computed: `runElev.map((v,i) => v+trailElev[i])` |
 | `wkCal[]` | Weekly total calories (all activity types, from real `total_calories`) |
 | `wkMaxTemp[]` | Weekly max temperature (°C), auto-extracted from Enduraw description `"Heat (XX°C)"`, falling back to `KNOWN_TEMPS` for weeks predating description capture |
+| `wkEfficiency[]` | Weekly km run per unit of RE-adjusted Relative Effort (`runKm / reAdjSum`, `null` if no RE that week) — a fully-automatic "course economy" proxy (more km for the same physiological cost = improving). RE is rescaled ×7 for activities after `RE_SCALE_SHIFT_DATE` so the ratio stays comparable across the whole season (see scale-shift note below) — this rescaled sum is separate from `reData[]` and never touches the ACWR anchor logic. Rendered in the `global` tab (`chart-course-economy`, right under the RE trend chart) |
+| `wkMarathonPaceKm[]` | Weekly km identified in activity descriptions as run at marathon-goal pace or faster, from the manual `MARATHON_PACE_KM` dict in `update_report.py` — 0 for any week not manually tagged. Tracking starts at the current marathon block (post-Échappée Belle, 24 Aug 2026 onward); the rest of the season is deliberately left at 0, not retro-tagged. Rendered in the `marathon` tab (`chart-marathon-pace`, last 12 weeks only) |
 
 ### Weekly update workflow
 
@@ -89,6 +91,7 @@ One `<script>` block with all data embedded as JS constants, rendered on `DOMCon
    - Recommandations P1/P2/P3
 5. If a new race happened, add its activity id to `RACES` in `update_report.py`.
 6. If an activity needs a shorter/clearer display name in `calActs`, add it to `NAME_OVERRIDES` (keyed by activity id) rather than editing the HTML directly — the array is regenerated wholesale every run.
+7. For each new activity, check whether its description mentions a segment run at the current marathon-goal pace (5:41/km as of Sep 2026) or faster (an explicitly named semi/10km-pace segment counts too). If so, estimate the km and add an entry to `MARATHON_PACE_KM` before running the script. Ambiguous segments (short intervals without a stated pace) don't count. This feeds `wkMarathonPaceKm[]` — see "Key data constants" above.
 
 Historical weekly figures occasionally shift by small amounts (rounding, or a real correction like a previously under-counted week) when re-derived from source data — this is expected and more trustworthy than the old hand-accumulated numbers.
 

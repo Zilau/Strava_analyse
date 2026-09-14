@@ -30,7 +30,7 @@ HTML_PERF   = ROOT / 'rapport_performance.html'
 HTML_ANNUEL = ROOT / 'rapport_annuel.html'
 BACKUP_DIR  = ROOT / 'backup'
 
-RACES = {'18912947563', '18448862987', '18725084836', '17248882168', '17810798563', '19854851888'}
+RACES = {'18912947563', '18448862987', '18725084836', '17248882168', '17810798563', '19854851888', '20148273211'}
 
 # Renommages manuels conservés lors de la régénération de calActs (désambiguïsation / clarté)
 NAME_OVERRIDES = {
@@ -44,6 +44,15 @@ NAME_OVERRIDES = {
 }
 
 # Températures connues pour les semaines sans description Enduraw exploitable (avant mai 2026)
+# Km courus à allure marathon (objectif sub-4h, 5:41/km) ou plus rapide, identifiés
+# manuellement dans la description de chaque activité. Démarre au bloc marathon actuel
+# (28/08/2026, post-Échappée Belle) — pas de rétro-tagging de la saison antérieure.
+MARATHON_PACE_KM = {
+    '19939788054': 4.4,   # 28/08 Fractionné long — 2x12' à 5'30 (plus rapide que 5:41 cible)
+    '19959802255': 5.3,   # 30/08 Sortie longue — 30' à allure marathon
+    '20037252948': 6.0,   # 04/09 Fractionné long — 3000m marathon + 2000m semi + 1000m 10km
+}
+
 KNOWN_TEMPS = {
     '04/05': 20.0, '11/05': 20.0, '18/05': 28.9, '25/05': 30.5,
     '01/06': 19.4, '08/06': 20.1, '15/06': 32.1, '22/06': 35.7, '29/06': 25.7,
@@ -143,7 +152,7 @@ def compute_weekly(all_acts):
 
     B = {w: dict(runKm=0.0, runKmOnly=0.0, trailKmOnly=0.0, wkTimeH=0.0, runElev=0, trailElev=0,
                  wkCal=0, reData=0, cadSum=0.0, cadN=0, temp=None, veloOutKm=0.0, veloInKm=0.0, veloElev=0,
-                 veloWattsSum=0.0, veloWattsN=0) for w in week_list}
+                 veloWattsSum=0.0, veloWattsN=0, mpKm=0.0, reAdjSum=0.0) for w in week_list}
 
     for a in all_acts:
         dt = datetime.fromisoformat(a['start_local'])
@@ -178,6 +187,9 @@ def compute_weekly(all_acts):
             t = extract_temp(a.get('description'))
             if t is not None:
                 b['temp'] = max(b['temp'] or 0, t)
+            b['mpKm'] += MARATHON_PACE_KM.get(a['id'], 0)
+            re_adj = re_ * (7 if a['start_local'][:10] >= RE_SCALE_SHIFT_DATE else 1)
+            b['reAdjSum'] += re_adj
         elif st == 'Ride':
             b['veloOutKm'] += km
             b['veloElev'] += elev
@@ -212,6 +224,8 @@ def compute_weekly(all_acts):
         'wkVeloInKm':   [round(B[w]['veloInKm'], 1) for w in week_list],
         'wkVeloElev':   [int(round(B[w]['veloElev'])) for w in week_list],
         'wkVeloWatts':  [round(B[w]['veloWattsSum'] / B[w]['veloWattsN'], 1) if B[w]['veloWattsN'] else None for w in week_list],
+        'wkMarathonPaceKm': [round(B[w]['mpKm'], 1) for w in week_list],
+        'wkEfficiency': [round(B[w]['runKm'] / B[w]['reAdjSum'], 3) if B[w]['reAdjSum'] else None for w in week_list],
     }
 
 
@@ -505,7 +519,8 @@ def patch_performance_html(html, all_acts, weekly, calacts, velo_sessions, zones
 
     # 7. Arrays hebdomadaires
     for name in ['weeks', 'runKm', 'runKmOnly', 'trailKmOnly', 'wkTimeH', 'runElev',
-                 'trailElev', 'wkCal', 'reData', 'wkMaxTemp', 'wkVeloOutKm', 'wkVeloInKm', 'wkVeloElev', 'wkVeloWatts']:
+                 'trailElev', 'wkCal', 'reData', 'wkMaxTemp', 'wkVeloOutKm', 'wkVeloInKm', 'wkVeloElev', 'wkVeloWatts',
+                 'wkMarathonPaceKm', 'wkEfficiency']:
         html = sub_or_die(html, rf'const {name}\s*=\s*\[.*?\];',
             f'const {name} = ' + js_array(weekly[name]) + ';', name)
     html = sub_or_die(html, r'const wkCadence = \[.*?\];',
@@ -711,8 +726,10 @@ def main():
         print(f"  {w['weeks'][i]:>6} : {w['runKm'][i]:>5.1f} km · D+ {w['trailElev'][i]+w['runElev'][i]:>4} m · "
               f"RE {w['reData'][i]:>4} · ACWR {w['acwr'][i]} · ACWR D+ {w['acwrDplus'][i]}")
     print(f"\nACWR actuel : {w['acwr'][-1]} · ACWR D+ actuel : {w['acwrDplus'][-1]}")
+    print(f"Économie de course (km/RE ajusté) : {w['wkEfficiency'][-1]} · "
+          f"Allure marathon cette semaine : {w['wkMarathonPaceKm'][-1]} km")
     for label, date_str in [('Échappée Belle (22 août 2026)', '2026-08-22'),
-                             ('Marathon Nice-Cannes (25 oct. 2026)', '2026-10-25')]:
+                             ('Marathon Nice-Cannes (8 nov. 2026)', '2026-11-08')]:
         days = (datetime.strptime(date_str, '%Y-%m-%d') - datetime.strptime(last_date, '%Y-%m-%d')).days
         print(f"  J-{days} · {label}")
     print(f"\nBilan annuel 2026 (Jan–{MONTHS[len(monthly['sessions'])-1]}) : "

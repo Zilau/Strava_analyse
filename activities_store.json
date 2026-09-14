@@ -1697,5 +1697,165 @@
    "achievement_count": 1,
    "pr_count": 1
   }
+ },
+ {
+  "id": "20032032240",
+  "name": "Boucle du dredi midi 🔵🟡",
+  "description": "Principalement dégagé, 26°C, Ressenti 27°C, Humidité 59%, Vent 3m/s du OSO - KlimatApp\n\n📈 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📈\n🏢 You climbed 36 floors today!\nAdjusted Pace: 𝟱:𝟯𝟵/km\n🏝️ Elevation (0.3% avg) cost you 𝟬'𝟬𝟯\"/km.\n😎 Heat (25.9°C) cost you 𝟬'𝟭𝟬\"/km.\n🍃 Wind (11.2km/h) cost you 𝟬'𝟭𝟯\"/km.\n👌 The altitude didn't affect your run.\n⏱ Under standard conditions, you would have gained 𝟰'𝟰𝟯\".\n🔥 Estimated energy cost: 881-1077 kcal.\n💧 Estimated fluid loss: 0.5-1.0L (0.6L/h sweat rate).\n😃 Air quality: Good · no impact expected on your effort.\n\nTry it now 👉 https://app.enduraw.co/",
+  "sport_type": "TrailRun",
+  "start_local": "2026-09-04T12:03:21",
+  "location_summary": "Paris, France",
+  "gear_id": "28975365",
+  "summary": {
+   "distance": 10753.1,
+   "moving_time": 3926,
+   "elapsed_time": 4906,
+   "elevation_gain": 35,
+   "avg_speed": 2.738945491594498,
+   "max_speed": 3.48,
+   "relative_effort": 28,
+   "total_calories": 880,
+   "avg_cadence": 86.3644,
+   "kudos_count": 43,
+   "achievement_count": 1,
+   "pr_count": 0
+  }
+ },
+ {
+  "id": "20037252948",
+  "name": "Fractionné long 🔵 🟡",
+  "description": "3000m à allure marathon \n2000m à allure semi\n1000m à allure 10km\n\nCouvert, 25°C, Ressenti 25°C, Humidité 56%, Vent 4m/s du ONO - KlimatApp\n\n📈 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📈\n⚽ You ran across 104 football fields!\nAdjusted Pace: 𝟱:𝟯𝟬/km\n🏝️ Elevation (0.2% avg) cost you 𝟬'𝟬𝟯\"/km.\n😎 Heat (26.5°C) cost you 𝟬'𝟭𝟬\"/km.\n🍃 Wind (14.8km/h) cost you 𝟬'𝟭𝟴\"/km.\n👌 The altitude didn't affect your run.\n⏱ Under standard conditions, you would have gained 𝟱'𝟯𝟲\".\n🔥 Estimated energy cost: 896-1095 kcal.\n💧 Estimated fluid loss: 0.6-1.0L (0.7L/h sweat rate).\n😃 Air quality: Good · no impact expected on your effort.\n\nTry it now 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-09-04T19:35:54",
+  "location_summary": "Paris, France",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 10901.4,
+   "moving_time": 3931,
+   "elapsed_time": 4660,
+   "elevation_gain": 23,
+   "avg_speed": 2.773187484100738,
+   "max_speed": 3.76,
+   "relative_effort": 43,
+   "total_calories": 909,
+   "avg_cadence": 86.0089,
+   "kudos_count": 57,
+   "achievement_count": 5,
+   "pr_count": 5
+  }
+ },
+ {
+  "id": "20092755040",
+  "name": "Footing du mardi 🔵🟡",
+  "description": "📈 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📈\n⚽ You ran across 124 football fields!\nAdjusted Pace: 𝟰:𝟱𝟱/km\n🏝️ Elevation (0.4% avg) cost you 𝟬'𝟬𝟯\"/km.\n😳 Heat (21.5°C) cost you 𝟬'𝟬𝟱\"/km.\n💨 Wind (31.0km/h) cost you 𝟬'𝟯𝟵\"/km.\n👌 The altitude didn't affect your run.\n⏱ Under standard conditions, you would have gained 𝟭𝟬'𝟭𝟰\".\n🔥 Estimated energy cost: 1055-1289 kcal.\n💧 Estimated fluid loss: 0.7-1.2L (0.7L/h sweat rate).\n🙂 Air quality: Fair · still a great day to be outside.\n\nTry it now 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-09-08T19:25:53",
+  "location_summary": "Paris, France",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 12999.3,
+   "moving_time": 4449,
+   "elapsed_time": 5183,
+   "elevation_gain": 49,
+   "avg_speed": 2.921847606203641,
+   "max_speed": 3.66,
+   "relative_effort": 50,
+   "total_calories": 1047,
+   "avg_cadence": 85.6233,
+   "kudos_count": 39,
+   "achievement_count": 0,
+   "pr_count": 0
+  }
+ },
+ {
+  "id": "20107292666",
+  "name": "Fractionné court 🔵🟡",
+  "description": "3 séries de 2'/1'30/1'/30''\n\n📈 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📈\n🏅 At this pace, marathon time: 4h18min (46% of Kipchoge's pace)\nAdjusted Pace: 𝟱:𝟰𝟴/km\n🏝️ Elevation (0.1% avg) cost you 𝟬'𝟬𝟭\"/km.\n😳 Heat (20.8°C) cost you 𝟬'𝟬𝟱\"/km.\n🍃 Wind (11.8km/h) cost you 𝟬'𝟭𝟰\"/km.\n👌 The altitude didn't affect your run.\n⏱ Under standard conditions, you would have gained 𝟯'𝟰𝟭\".\n🔥 Estimated energy cost: 937-1145 kcal.\n💧 Estimated fluid loss: 0.6-1.1L (0.7L/h sweat rate).\n🙂 Air quality: Fair · still a great day to be outside.\n\nTry it now 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-09-09T19:21:04",
+  "location_summary": "Paris, France",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 11405,
+   "moving_time": 4195,
+   "elapsed_time": 5579,
+   "elevation_gain": 17,
+   "avg_speed": 2.718712753277712,
+   "max_speed": 5.12,
+   "relative_effort": 44,
+   "total_calories": 941,
+   "avg_cadence": 85.9665,
+   "kudos_count": 35,
+   "achievement_count": 1,
+   "pr_count": 1
+  }
+ },
+ {
+  "id": "20119111830",
+  "name": "Marche Retour TAF",
+  "description": "Partiellement nuageux, 21°C, Ressenti 19°C, Humidité 38%, Vent 2m/s du OSO - KlimatApp",
+  "sport_type": "Walk",
+  "start_local": "2026-09-10T17:27:17",
+  "location_summary": "Paris, France",
+  "summary": {
+   "distance": 4575.3,
+   "moving_time": 3296,
+   "elapsed_time": 4601,
+   "elevation_gain": 31,
+   "avg_speed": 1.3881371359223302,
+   "max_speed": 1.75,
+   "relative_effort": 5,
+   "total_calories": 311,
+   "avg_cadence": 59.3906,
+   "kudos_count": 28,
+   "achievement_count": 0,
+   "pr_count": 0
+  }
+ },
+ {
+  "id": "20128762210",
+  "name": "Boucle du dredi midi 🔵🟡",
+  "description": "Principalement dégagé, 21°C, Ressenti 21°C, Humidité 43%, Vent 1m/s du SO - KlimatApp\n\n📈 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📈\n🏅 At this pace, marathon time: 4h07min (48% of Kipchoge's pace)\nAdjusted Pace: 𝟱:𝟰𝟭/km\n🏝️ Elevation (0.3% avg) cost you 𝟬'𝟬𝟮\"/km.\n😳 Heat (21.3°C) cost you 𝟬'𝟬𝟱\"/km.\n🍃 Wind (4.1km/h) cost you 𝟬'𝟬𝟯\"/km.\n👌 The altitude didn't affect your run.\n⏱ Under standard conditions, you would have gained 𝟭'𝟱𝟮\".\n🔥 Estimated energy cost: 865-1057 kcal.\n💧 Estimated fluid loss: 0.5-1.0L (0.7L/h sweat rate).\n🙂 Air quality: Fair · still a great day to be outside.\n\nTry it now 👉 https://app.enduraw.co/",
+  "sport_type": "TrailRun",
+  "start_local": "2026-09-11T12:04:42",
+  "location_summary": "Saint-Maurice, France",
+  "gear_id": "28975365",
+  "summary": {
+   "distance": 10673.8,
+   "moving_time": 3752,
+   "elapsed_time": 4955,
+   "elevation_gain": 27,
+   "avg_speed": 2.844829424307036,
+   "max_speed": 4.08,
+   "relative_effort": 28,
+   "total_calories": 852,
+   "avg_cadence": 86.4582,
+   "kudos_count": 36,
+   "achievement_count": 2,
+   "pr_count": 1
+  }
+ },
+ {
+  "id": "20148273211",
+  "name": "Trail Canadian race Vimy",
+  "description": "Super bonne sensation.\nObjectif sub 2h ✅\n\n\n📈 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📈\n🏅 At this pace, marathon time: 4h01min (49% of Kipchoge's pace)\nAdjusted Pace: 𝟱:𝟭𝟮/km\n🏕️ Elevation (1.2% avg) cost you 𝟬'𝟭𝟭\"/km.\n😳 Heat (21.5°C) cost you 𝟬'𝟬𝟱\"/km.\n🌬️ Wind (17.6km/h) cost you 𝟬'𝟭𝟱\"/km.\n👌 The altitude didn't affect your run.\n⏱ Under standard conditions, you would have gained 𝟭𝟬'𝟯𝟲\".\n🔥 Estimated energy cost: 1674-2046 kcal.\n💧 Estimated fluid loss: 1.0-1.9L (0.8L/h sweat rate).\n🙂 Air quality: Fair · still a great day to be outside.\n\nTry it now 👉 https://app.enduraw.co/",
+  "sport_type": "TrailRun",
+  "start_local": "2026-09-12T18:35:20",
+  "location_summary": "Vimy, France",
+  "gear_id": "28975365",
+  "summary": {
+   "distance": 20229.4,
+   "moving_time": 6948,
+   "elapsed_time": 6963,
+   "elevation_gain": 252,
+   "avg_speed": 2.9115428900402995,
+   "max_speed": 4.06,
+   "relative_effort": 201,
+   "total_calories": 1780,
+   "avg_cadence": 86.5464,
+   "kudos_count": 61,
+   "achievement_count": 7,
+   "pr_count": 6
+  }
  }
 ]
