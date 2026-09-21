@@ -1857,5 +1857,96 @@
    "achievement_count": 7,
    "pr_count": 6
   }
+ },
+ {
+  "id": "20187525677",
+  "name": "Marche Retour TAF",
+  "description": "Principalement dégagé, 33°C, Ressenti 31°C, Humidité 24%, Vent 3m/s du OSO - KlimatApp",
+  "sport_type": "Walk",
+  "start_local": "2026-09-15T17:46:34",
+  "location_summary": "Paris, France",
+  "summary": {
+   "distance": 4498.2,
+   "moving_time": 3042,
+   "elapsed_time": 3123,
+   "elevation_gain": 25,
+   "avg_speed": 1.478698224852071,
+   "max_speed": 2.28333,
+   "relative_effort": 7,
+   "total_calories": 310,
+   "avg_cadence": 61.8154,
+   "kudos_count": 32,
+   "achievement_count": 0,
+   "pr_count": 0
+  }
+ },
+ {
+  "id": "20189936692",
+  "name": "Footing du mardi 🔵🟡",
+  "description": "Avec 15' à allure 5'30\n\n📈 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📈\n⚽ You ran across 120 football fields!\nAdjusted Pace: 𝟱:𝟯𝟮/km\n🏝️ Elevation (0.3% avg) cost you 𝟬'𝟬𝟯\"/km.\n😎 Heat (25.3°C) cost you 𝟬'𝟬𝟵\"/km.\n🌬️ Wind (20.4km/h) cost you 𝟬'𝟮𝟮\"/km.\n👌 The altitude didn't affect your run.\n⏱ Under standard conditions, you would have gained 𝟳'𝟬𝟳\".\n🔥 Estimated energy cost: 1025-1253 kcal.\n💧 Estimated fluid loss: 0.6-1.1L (0.6L/h sweat rate).\n🙂 Air quality: Fair · still a great day to be outside.\n\nTry it now 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-09-15T19:20:51",
+  "location_summary": "Nogent-sur-Marne, France",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 12648.7,
+   "moving_time": 4625,
+   "elapsed_time": 5647,
+   "elevation_gain": 44,
+   "avg_speed": 2.734854054054054,
+   "max_speed": 3.72,
+   "relative_effort": 23,
+   "total_calories": 1008,
+   "avg_cadence": 86.0325,
+   "kudos_count": 51,
+   "achievement_count": 2,
+   "pr_count": 0
+  }
+ },
+ {
+  "id": "20230956005",
+  "name": "Fractionné long 🔵🟡",
+  "description": "2000m à 5'20 + 3000m à 5'30\n\n\nCouvert, 21°C, Ressenti 19°C, Humidité 40%, Vent 3m/s du O - KlimatApp\n\n📈 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📈\nAdjusted Pace: 𝟱:𝟰𝟮/km\n😳 Heat (21.2°C) cost you 𝟬'𝟬𝟱\"/km.\n🍃 Wind (11.2km/h) cost you 𝟬'𝟭𝟬\"/km.\n👌 The elevation, altitude didn't affect your run.\n⏱ Under standard conditions, you would have gained 𝟯'𝟭𝟳\".\n🔥 Estimated energy cost: 1018-1244 kcal.\n💧 Estimated fluid loss: 0.6-1.2L (0.7L/h sweat rate).\n🙂 Air quality: Fair · still a great day to be outside.\n\nTry it now 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-09-18T19:18:28",
+  "location_summary": "Nogent-sur-Marne, France",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 12512.4,
+   "moving_time": 4472,
+   "elapsed_time": 5740,
+   "elevation_gain": 21,
+   "avg_speed": 2.797942754919499,
+   "max_speed": 4.2,
+   "relative_effort": 39,
+   "total_calories": 1007,
+   "avg_cadence": 84.9634,
+   "kudos_count": 49,
+   "achievement_count": 1,
+   "pr_count": 0
+  }
+ },
+ {
+  "id": "20251292124",
+  "name": "Sortie longue (prépa marathon) 🔵🟡",
+  "description": "40' AS42 (5'30)\n\n📈 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📈\n🏢 You climbed 60 floors today!\nAdjusted Pace: 𝟱:𝟰𝟮/km\n🏝️ Elevation (0.4% avg) cost you 𝟬'𝟬𝟯\"/km.\n🍃 Wind (4.2km/h) cost you 𝟬'𝟬𝟯\"/km.\n👌 The altitude, temperature didn't affect your run.\n⏱ Under standard conditions, you would have gained 𝟭'𝟱𝟮\".\n🔥 Estimated energy cost: 1403-1715 kcal.\n💧 Estimated fluid loss: 0.8-1.5L (0.6L/h sweat rate).\n🙂 Air quality: Fair · still a great day to be outside.\n\nTry it now 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-09-20T09:37:18",
+  "location_summary": "Charenton-le-Pont, France",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 17012.6,
+   "moving_time": 5931,
+   "elapsed_time": 6666,
+   "elevation_gain": 74,
+   "avg_speed": 2.8684201652335184,
+   "max_speed": 4.62,
+   "relative_effort": 92,
+   "total_calories": 1400,
+   "avg_cadence": 86.7816,
+   "kudos_count": 58,
+   "achievement_count": 12,
+   "pr_count": 11
+  }
  }
 ]

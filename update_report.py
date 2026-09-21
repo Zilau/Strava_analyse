@@ -51,6 +51,9 @@ MARATHON_PACE_KM = {
     '19939788054': 4.4,   # 28/08 Fractionné long — 2x12' à 5'30 (plus rapide que 5:41 cible)
     '19959802255': 5.3,   # 30/08 Sortie longue — 30' à allure marathon
     '20037252948': 6.0,   # 04/09 Fractionné long — 3000m marathon + 2000m semi + 1000m 10km
+    '20189936692': 2.7,   # 15/09 Footing du mardi — 15' à 5'30 (plus rapide que 5:41 cible)
+    '20230956005': 5.0,   # 18/09 Fractionné long — 2000m à 5'20 + 3000m à 5'30
+    '20251292124': 7.3,   # 20/09 Sortie longue — 40' AS42 à 5'30
 }
 
 KNOWN_TEMPS = {
