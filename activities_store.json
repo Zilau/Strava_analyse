@@ -1948,5 +1948,120 @@
    "achievement_count": 12,
    "pr_count": 11
   }
+ },
+ {
+  "id": "20286228758",
+  "name": "Footing du mardi 🔵🟡",
+  "description": "15' AS42 (5'30)\n\nCiel dégagé, 23°C, Ressenti 21°C, Humidité 31%, Vent 3m/s du NE - KlimatApp\n\n📈 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📈\n🏅 At this pace, marathon time: 4h14min (47% of Kipchoge's pace)\nAdjusted Pace: 𝟱:𝟰𝟯/km\n🏝️ Elevation (0.3% avg) cost you 𝟬'𝟬𝟭\"/km.\n😳 Heat (23.6°C) cost you 𝟬'𝟬𝟴\"/km.\n🍃 Wind (10.7km/h) cost you 𝟬'𝟭𝟬\"/km.\n👌 The altitude didn't affect your run.\n⏱ Under standard conditions, you would have gained 𝟯'𝟬𝟲\".\n🔥 Estimated energy cost: 810-990 kcal.\n💧 Estimated fluid loss: 0.5-0.9L (0.7L/h sweat rate).\n🙂 Air quality: Fair · still a great day to be outside.\n\nTry it now 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-09-22T19:11:40",
+  "location_summary": "Paris, France",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 9954.2,
+   "moving_time": 3600,
+   "elapsed_time": 5091,
+   "elevation_gain": 28,
+   "avg_speed": 2.7650555555555556,
+   "max_speed": 3.44,
+   "relative_effort": 26,
+   "total_calories": 803,
+   "avg_cadence": 85.1138,
+   "kudos_count": 57,
+   "achievement_count": 1,
+   "pr_count": 1
+  }
+ },
+ {
+  "id": "20301198969",
+  "name": "Fractionné court 🔵🟡",
+  "description": "Ciel dégagé, 25°C, Ressenti 23°C, Humidité 36%, Vent 2m/s du NO - KlimatApp\n\n8x1'/1' + 8x30''/30''\n\n\n📈 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📈\n⚽ You ran across 101 football fields!\nAdjusted Pace: 𝟲:𝟬𝟮/km\n🏝️ Elevation (0.2% avg) cost you 𝟬'𝟬𝟭\"/km.\n😳 Heat (20°C) cost you 𝟬'𝟬𝟰\"/km.\n👌 The altitude, wind didn't affect your run.\n⏱ Under standard conditions, you would have gained 𝟬'𝟱𝟯\".\n🔥 Estimated energy cost: 872-1066 kcal.\n💧 Estimated fluid loss: 0.6-1.2L (0.8L/h sweat rate).\n🙂 Air quality: Fair · still a great day to be outside.\n\nTry it now 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-09-23T19:36:24",
+  "location_summary": "Charenton-le-Pont, France",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 10581.7,
+   "moving_time": 3887,
+   "elapsed_time": 4825,
+   "elevation_gain": 18,
+   "avg_speed": 2.722330846411114,
+   "max_speed": 4.78,
+   "relative_effort": 40,
+   "total_calories": 874,
+   "avg_cadence": 85.3505,
+   "kudos_count": 61,
+   "achievement_count": 0,
+   "pr_count": 0
+  }
+ },
+ {
+  "id": "20322274439",
+  "name": "Footing du dredi midi 🔵🟡",
+  "description": "📈 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📈\n⚽ You ran across 76 football fields!\nAdjusted Pace: 𝟱:𝟰𝟯/km\n🏝️ Elevation (0.6% avg) cost you 𝟬'𝟬𝟰\"/km.\n😀 Heat (19.9°C) cost you 𝟬'𝟬𝟰\"/km.\n🍃 Wind (7.5km/h) cost you 𝟬'𝟬𝟳\"/km.\n👌 The altitude didn't affect your run.\n⏱ Under standard conditions, you would have gained 𝟮'𝟬𝟲\".\n🔥 Estimated energy cost: 649-793 kcal.\n💧 Estimated fluid loss: 0.3-0.5L (0.5L/h sweat rate).\n🙂 Air quality: Fair · still a great day to be outside.\n\nTry it now 👉 https://app.enduraw.co/",
+  "sport_type": "TrailRun",
+  "start_local": "2026-09-25T12:12:33",
+  "location_summary": "Charenton-le-Pont, France",
+  "gear_id": "28975365",
+  "summary": {
+   "distance": 8008.5,
+   "moving_time": 2871,
+   "elapsed_time": 3390,
+   "elevation_gain": 52,
+   "avg_speed": 2.7894461859979103,
+   "max_speed": 3.48,
+   "relative_effort": 15,
+   "total_calories": 642,
+   "avg_cadence": 86.4604,
+   "kudos_count": 46,
+   "achievement_count": 0,
+   "pr_count": 0
+  }
+ },
+ {
+  "id": "20327694997",
+  "name": "Fractionné long 🔵🟡",
+  "description": "2x3000m AS42\n\n📈 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📈\n🏅 At this pace, marathon time: 4h21min (46% of Kipchoge's pace)\nAdjusted Pace: 𝟱:𝟱𝟯/km\n😎 Heat (27.0°C) cost you 𝟬'𝟭𝟭\"/km.\n🍃 Wind (8.2km/h) cost you 𝟬'𝟬𝟳\"/km.\n👌 The elevation, altitude didn't affect your run.\n⏱ Under standard conditions, you would have gained 𝟯'𝟰𝟲\".\n🔥 Estimated energy cost: 1004-1227 kcal.\n💧 Estimated fluid loss: 0.6-1.1L (0.7L/h sweat rate).\n🙂 Air quality: Fair · still a great day to be outside.\n\nTry it now 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-09-25T19:36:24",
+  "location_summary": "Charenton-le-Pont, France",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 12176.8,
+   "moving_time": 4523,
+   "elapsed_time": 4965,
+   "elevation_gain": 22,
+   "avg_speed": 2.6921954455007735,
+   "max_speed": 3.78,
+   "relative_effort": 47,
+   "total_calories": 1030,
+   "avg_cadence": 85.608,
+   "kudos_count": 55,
+   "achievement_count": 2,
+   "pr_count": 1
+  }
+ },
+ {
+  "id": "20347752384",
+  "name": "Paris-Versailles 2026",
+  "description": "📈 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📈\n🏅 At this pace, marathon time: 3h50min (52% of Kipchoge's pace)\nAdjusted Pace: 𝟱:𝟭𝟱/km\n🏕️ Elevation (1.5% avg) cost you 𝟬'𝟭𝟯\"/km.\n👌 The altitude, temperature, wind didn't affect your run.\n⏱ Under standard conditions, you would have gained 𝟯'𝟰𝟬\".\n🔥 Estimated energy cost: 1324-1619 kcal.\n💧 Estimated fluid loss: 0.7-1.4L (0.7L/h sweat rate).\n😶‍🌫️ Air quality: Moderate · sensitive athletes may notice it.\n\nTry it now 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-09-27T10:05:04",
+  "location_summary": "Paris, France",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 16170.3,
+   "moving_time": 5305,
+   "elapsed_time": 5308,
+   "elevation_gain": 235,
+   "avg_speed": 3.0464016578749056,
+   "max_speed": 7.48,
+   "relative_effort": 141,
+   "total_calories": 1377,
+   "avg_cadence": 86.5936,
+   "kudos_count": 78,
+   "achievement_count": 53,
+   "pr_count": 53
+  }
  }
 ]

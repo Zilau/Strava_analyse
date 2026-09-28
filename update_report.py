@@ -30,7 +30,7 @@ HTML_PERF   = ROOT / 'rapport_performance.html'
 HTML_ANNUEL = ROOT / 'rapport_annuel.html'
 BACKUP_DIR  = ROOT / 'backup'
 
-RACES = {'18912947563', '18448862987', '18725084836', '17248882168', '17810798563', '19854851888', '20148273211'}
+RACES = {'18912947563', '18448862987', '18725084836', '17248882168', '17810798563', '19854851888', '20148273211', '20347752384'}
 
 # Renommages manuels conservés lors de la régénération de calActs (désambiguïsation / clarté)
 NAME_OVERRIDES = {
@@ -54,6 +54,9 @@ MARATHON_PACE_KM = {
     '20189936692': 2.7,   # 15/09 Footing du mardi — 15' à 5'30 (plus rapide que 5:41 cible)
     '20230956005': 5.0,   # 18/09 Fractionné long — 2000m à 5'20 + 3000m à 5'30
     '20251292124': 7.3,   # 20/09 Sortie longue — 40' AS42 à 5'30
+    '20286228758': 2.7,   # 22/09 Footing du mardi — 15' AS42 à 5'30
+    '20327694997': 6.0,   # 25/09 Fractionné long — 2x3000m AS42
+    '20347752384': 16.2,  # 27/09 Paris-Versailles — course entière à 5:28/km (plus rapide que 5:41 cible)
 }
 
 KNOWN_TEMPS = {
