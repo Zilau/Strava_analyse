@@ -57,6 +57,9 @@ MARATHON_PACE_KM = {
     '20286228758': 2.7,   # 22/09 Footing du mardi — 15' AS42 à 5'30
     '20327694997': 6.0,   # 25/09 Fractionné long — 2x3000m AS42
     '20347752384': 16.2,  # 27/09 Paris-Versailles — course entière à 5:28/km (plus rapide que 5:41 cible)
+    '20410168891': 3.0,   # 01/10 Mini-séance de rattrapage — 3x1000m AS42
+    '20423895242': 9.0,   # 02/10 Fractionné long — 3x3000m AS42
+    '20444575726': 7.3,   # 04/10 Sortie longue — 20' AS42+ + 20' AS42
 }
 
 KNOWN_TEMPS = {
@@ -631,7 +634,7 @@ def patch_annuel_html(html, all_acts, monthly, velo_sessions, last_date_str):
 
     km_str = f'{total_km:,}'.replace(',', ' ')
     elev_str = f'{total_elev:,}'.replace(',', ' ')
-    sub_text = (f"{total_sessions} séances · {km_str} km · {elev_str} m D+ · 5 courses · "
+    sub_text = (f"{total_sessions} séances · {km_str} km · {elev_str} m D+ · {len(RACES)} courses · "
                 f"Jan–{month_lbl} 2026 (en cours)")
     data2026_block = (f"2026: {{\n    runKm:    {js_array(monthly['runKm'])},\n    trailKm:  {js_array(monthly['trailKm'])},\n"
                        f"    runElev:  {js_array(monthly['runElev'])},\n    trailElev:{js_array(monthly['trailElev'])},\n"

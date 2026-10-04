@@ -2063,5 +2063,142 @@
    "achievement_count": 53,
    "pr_count": 53
   }
+ },
+ {
+  "id": "20383000346",
+  "name": "Footing du mardi soir 🔵🟡",
+  "description": "Partiellement nuageux, 27°C, Ressenti 26°C, Humidité 42%, Vent 3m/s du SE - KlimatApp\n\n📈 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📈\nAdjusted Pace: 𝟱:𝟯𝟯/km\n🏝️ Elevation (0.3% avg) cost you 𝟬'𝟬𝟭\"/km.\n😎 Heat (27.4°C) cost you 𝟬'𝟭𝟭\"/km.\n🍃 Wind (11.4km/h) cost you 𝟬'𝟭𝟭\"/km.\n👌 The altitude didn't affect your run.\n⏱ Under standard conditions, you would have gained 𝟰'𝟰𝟱\".\n🔥 Estimated energy cost: 1025-1253 kcal.\n💧 Estimated fluid loss: 0.6-1.2L (0.7L/h sweat rate).\n🙂 Air quality: Fair · still a great day to be outside.\n\nTry it now 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-09-29T19:16:38",
+  "location_summary": "Paris, France",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 12521.6,
+   "moving_time": 4461,
+   "elapsed_time": 5849,
+   "elevation_gain": 36,
+   "avg_speed": 2.8069042815512217,
+   "max_speed": 3.36,
+   "relative_effort": 39,
+   "total_calories": 1015,
+   "avg_cadence": 85.3928,
+   "kudos_count": 49,
+   "achievement_count": 0,
+   "pr_count": 0
+  }
+ },
+ {
+  "id": "20409092744",
+  "name": "Marche retour TAF",
+  "description": "Principalement dégagé, 21°C, Ressenti 20°C, Humidité 47%, Vent 3m/s du ONO - KlimatApp",
+  "sport_type": "Walk",
+  "start_local": "2026-10-01T17:19:07",
+  "location_summary": "Paris, France",
+  "summary": {
+   "distance": 4535.6,
+   "moving_time": 3010,
+   "elapsed_time": 3672,
+   "elevation_gain": 27,
+   "avg_speed": 1.5068438538205982,
+   "max_speed": 2.6,
+   "relative_effort": 5,
+   "total_calories": 312,
+   "avg_cadence": 61.6198,
+   "kudos_count": 28,
+   "achievement_count": 0,
+   "pr_count": 0
+  }
+ },
+ {
+  "id": "20410168891",
+  "name": "Mini-séance de rattrapage",
+  "description": "3x1000m AS42\n\n🚀 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 💪\nWithout the wind, you would have gained about 1%. So it's not just your legs that are to blame.\nAdjusted Pace: 𝟱:𝟱𝟳/km\n🌤️ Conditions: 😳 Heat (20.2°C) +𝟬'𝟬𝟰\"/km · 🍃 Wind (9.3km/h) +𝟬'𝟬𝟰\"/km\n👌 The elevation, altitude didn't affect your run.\n⏱️ Net effect: conditions cost you 𝟬'𝟱𝟮\" today!\n🔥 536-655 kcal (🍕 ~2.1 pizza slices) · 💧 0.3-0.6L fluid loss (0.7L/h)\n🙂 Air quality: Fair · still a great day to be outside.\n\nMore info 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-10-01T19:05:45",
+  "location_summary": "Paris, France",
+  "gear_id": "28975365",
+  "summary": {
+   "distance": 6510.2,
+   "moving_time": 2379,
+   "elapsed_time": 2642,
+   "elevation_gain": 7,
+   "avg_speed": 2.7365279529213953,
+   "max_speed": 3.7,
+   "relative_effort": 28,
+   "total_calories": 560,
+   "avg_cadence": 85.7683,
+   "kudos_count": 46,
+   "achievement_count": 1,
+   "pr_count": 0
+  }
+ },
+ {
+  "id": "20418634742",
+  "name": "Boucle du dredi midi 🔵🟡",
+  "description": "🎯 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 ✅\nAt this pace, the GR20 would take 18 hours. The model notes that it didn't account for the mountains. 🤭🤣\nAdjusted Pace: 𝟱:𝟱𝟮/km\n🌤️ Conditions: 🏝️ Elevation (0.2%) +𝟬'𝟬𝟮\"/km · 😀 Heat (17.0°C) +𝟬'𝟬𝟭\"/km · 🍃 Wind (3.4km/h) +𝟬'𝟬𝟯\"/km\n👌 The altitude didn't affect your run.\n⏱️ Net effect: conditions cost you 𝟭'𝟭𝟭\" today!\n🔥 876-1070 kcal (🍕 ~3.4 pizza slices) · 💧 0.4-0.8L fluid loss (0.6L/h)\n😶‍🌫️ Air quality: Moderate · sensitive athletes may notice it.\n\nLearn more 👉 https://app.enduraw.co/",
+  "sport_type": "TrailRun",
+  "start_local": "2026-10-02T12:02:42",
+  "location_summary": "Saint-Maurice, France",
+  "gear_id": "28975365",
+  "summary": {
+   "distance": 10877.5,
+   "moving_time": 3898,
+   "elapsed_time": 5233,
+   "elevation_gain": 22,
+   "avg_speed": 2.7905336069779376,
+   "max_speed": 3.83333,
+   "relative_effort": 17,
+   "total_calories": 859,
+   "avg_cadence": 86.4592,
+   "kudos_count": 47,
+   "achievement_count": 2,
+   "pr_count": 0
+  }
+ },
+ {
+  "id": "20423895242",
+  "name": "Fractionné long 🔵🟡",
+  "description": "3x3000m AS42\n\n\n🧮 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 🤓\n🗼 That's 4.7x the distance from the Eiffel Tower to Concorde!\nAdjusted Pace: 𝟱:𝟰𝟳/km\n🌤️ Conditions: 🏝️ Elevation (0.1%) +𝟬'𝟬𝟭\"/km · 😳 Heat (21.0°C) +𝟬'𝟬𝟱\"/km · 🍃 Wind (8.2km/h) +𝟬'𝟬𝟲\"/km\n👌 The altitude didn't affect your run.\n⏱️ Net effect: conditions cost you 𝟮'𝟱𝟮\" today!\n🔥 1158-1415 kcal (🍕 ~4.5 pizza slices) · 💧 0.7-1.3L fluid loss (0.7L/h)\n🙂 Air quality: Fair · still a great day to be outside.\n\nLearn more 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-10-02T19:38:16",
+  "location_summary": "Paris, France",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 14107.7,
+   "moving_time": 5074,
+   "elapsed_time": 5377,
+   "elevation_gain": 21,
+   "avg_speed": 2.780390224674813,
+   "max_speed": 3.62,
+   "relative_effort": 61,
+   "total_calories": 1160,
+   "avg_cadence": 85.9848,
+   "kudos_count": 41,
+   "achievement_count": 1,
+   "pr_count": 0
+  }
+ },
+ {
+  "id": "20444575726",
+  "name": "Boucle de la Marne 🔵🟡",
+  "description": "40' footing\n20' AS42+\n30' footing+\n20' AS42\nRAC\n\n\n📊 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 🏃\n🏰 That's 1.2x the distance from Paris to Versailles!\nAdjusted Pace: 𝟱:𝟯𝟳/km\n🌤️ Conditions: 🏝️ Elevation (0.3%) +𝟬'𝟬𝟯\"/km · 🍃 Wind (10.7km/h) +𝟬'𝟬𝟳\"/km\n👌 The altitude, temperature didn't affect your run.\n⏱️ Net effect: conditions cost you 𝟯'𝟰𝟮\" today!\n🔥 1905-2329 kcal (🍔 ~3.8 burgers) · 💧 1.0-1.8L fluid loss (0.6L/h)\n🙂 Air quality: Fair · still a great day to be outside.\n\nLearn more 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-10-04T09:35:53",
+  "location_summary": "Charenton-le-Pont, France",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 23431.7,
+   "moving_time": 8114,
+   "elapsed_time": 8563,
+   "elevation_gain": 81,
+   "avg_speed": 2.8878111905348782,
+   "max_speed": 3.86,
+   "relative_effort": 75,
+   "total_calories": 1867,
+   "avg_cadence": 87.3322,
+   "kudos_count": 47,
+   "achievement_count": 15,
+   "pr_count": 13
+  }
  }
 ]
