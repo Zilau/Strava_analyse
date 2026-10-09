@@ -2200,5 +2200,74 @@
    "achievement_count": 15,
    "pr_count": 13
   }
+ },
+ {
+  "id": "20479086184",
+  "name": "Footing du mardi 🔵🟡",
+  "description": "3000m AS42+\n\n\nCouvert, 23°C, Ressenti 23°C, Humidité 44%, Vent 2m/s du ENE - KlimatApp\n--\n\n🎯 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 ✅\n🌊 That's 41% of the distance from Nice to Cannes!\nAdjusted Pace: 𝟱:𝟰𝟮/km\n🌤️ Conditions: 🏝️ Elevation (0.3%) +𝟬'𝟬𝟭\"/km · 😳 Heat (21.0°C) +𝟬'𝟬𝟱\"/km · 🍃 Wind (8.1km/h) +𝟬'𝟬𝟴\"/km\n👌 The altitude didn't affect your run.\n⏱️ Net effect: conditions cost you 𝟯'𝟬𝟯\" today!\n🔥 1030-1259 kcal (🍕 ~4.0 pizza slices) · 💧 0.6-1.2L fluid loss (0.7L/h)\n😶‍🌫️ Air quality: Moderate · sensitive athletes may notice it.\n\nMore info 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-10-06T19:17:24",
+  "location_summary": "Charenton-le-Pont, France",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 12747.6,
+   "moving_time": 4548,
+   "elapsed_time": 5725,
+   "elevation_gain": 40,
+   "avg_speed": 2.8029023746701847,
+   "max_speed": 3.6,
+   "relative_effort": 25,
+   "total_calories": 1010,
+   "avg_cadence": 85.5497,
+   "kudos_count": 62,
+   "achievement_count": 0,
+   "pr_count": 0
+  }
+ },
+ {
+  "id": "20493345193",
+  "name": "Fractionné court 🔵🟡",
+  "description": "2 séries de 4x2' 🌧️\n\n🧠 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📍\nWithout the wind, you would have gained about 2%. So it's not just your legs that are to blame.\nAdjusted Pace: 𝟲:𝟬𝟭/km\n🌤️ Conditions: 😀 Heat (17.7°C) +𝟬'𝟬𝟮\"/km · 🍃 Wind (7.2km/h) +𝟬'𝟬𝟳\"/km\n👌 The elevation, altitude didn't affect your run.\n⏱️ Net effect: conditions cost you 𝟭'𝟱𝟭\" today!\n🔥 950-1161 kcal (🍔 ~1.9 burgers) · 💧 0.5-1.0L fluid loss (0.6L/h)\n😶‍🌫️ Air quality: Moderate · sensitive athletes may notice it.\n\nMore info 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-10-07T19:36:15",
+  "location_summary": "Charenton-le-Pont, France",
+  "gear_id": "28975365",
+  "summary": {
+   "distance": 11565.3,
+   "moving_time": 4285,
+   "elapsed_time": 5108,
+   "elevation_gain": 27,
+   "avg_speed": 2.69901983663944,
+   "max_speed": 4.36,
+   "relative_effort": 43,
+   "total_calories": 957,
+   "avg_cadence": 85.9763,
+   "kudos_count": 54,
+   "achievement_count": 1,
+   "pr_count": 1
+  }
+ },
+ {
+  "id": "20513857036",
+  "name": "Boucle du dredi midi 🔵🟡",
+  "description": "Couvert, 12°C, Ressenti 10°C, Humidité 77%, Vent 4m/s du SO - KlimatApp\n\n🚀 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 💪\n🏁 At this pace, your marathon would take 4 hours and 15 minutes.\nAdjusted Pace: 𝟱:𝟰𝟵/km\n🏝️ Elevation (0.2% avg) cost you 𝟬'𝟬𝟮\"/km.\n🍃 Wind (13.2km/h) cost you 𝟬'𝟭𝟯\"/km.\n⏱️ Net effect: conditions cost you 𝟮'𝟰𝟮\" today!\n🔥 867-1060 kcal (🍕 ~3.4 pizza slices) · 💧 0.4-0.8L fluid loss (0.5L/h)\n🙂 Air quality: Fair · still a great day to be outside.\n\nMore info 👉 https://app.enduraw.co/",
+  "sport_type": "TrailRun",
+  "start_local": "2026-10-09T12:00:17",
+  "location_summary": "Charenton-le-Pont, France",
+  "gear_id": "28975365",
+  "summary": {
+   "distance": 10759.1,
+   "moving_time": 3914,
+   "elapsed_time": 4537,
+   "elevation_gain": 24,
+   "avg_speed": 2.7488758303525804,
+   "max_speed": 3.3,
+   "relative_effort": 16,
+   "total_calories": 859,
+   "avg_cadence": 86.6086,
+   "kudos_count": 13,
+   "achievement_count": 1,
+   "pr_count": 0
+  }
  }
 ]

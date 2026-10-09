@@ -29,6 +29,7 @@ INBOX_PATH  = ROOT / 'activities_inbox.json'
 HTML_PERF   = ROOT / 'rapport_performance.html'
 HTML_ANNUEL = ROOT / 'rapport_annuel.html'
 BACKUP_DIR  = ROOT / 'backup'
+HR_PATH     = ROOT / 'hr_store.json'
 
 RACES = {'18912947563', '18448862987', '18725084836', '17248882168', '17810798563', '19854851888', '20148273211', '20347752384'}
 
@@ -60,6 +61,7 @@ MARATHON_PACE_KM = {
     '20410168891': 3.0,   # 01/10 Mini-séance de rattrapage — 3x1000m AS42
     '20423895242': 9.0,   # 02/10 Fractionné long — 3x3000m AS42
     '20444575726': 7.3,   # 04/10 Sortie longue — 20' AS42+ + 20' AS42
+    '20479086184': 3.0,   # 06/10 Footing du mardi — 3000m AS42+
 }
 
 KNOWN_TEMPS = {
@@ -160,8 +162,8 @@ def compute_weekly(all_acts):
         d += timedelta(days=7)
 
     B = {w: dict(runKm=0.0, runKmOnly=0.0, trailKmOnly=0.0, wkTimeH=0.0, runElev=0, trailElev=0,
-                 wkCal=0, reData=0, cadSum=0.0, cadN=0, temp=None, veloOutKm=0.0, veloInKm=0.0, veloElev=0,
-                 veloWattsSum=0.0, veloWattsN=0, mpKm=0.0, reAdjSum=0.0) for w in week_list}
+                 wkCal=0, reData=0, reAdj=0.0, cadSum=0.0, cadN=0, temp=None, veloOutKm=0.0, veloInKm=0.0, veloElev=0,
+                 veloWattsSum=0.0, veloWattsN=0, mpKm=0.0, flatKm=0.0, flatReAdj=0.0) for w in week_list}
 
     for a in all_acts:
         dt = datetime.fromisoformat(a['start_local'])
@@ -180,6 +182,7 @@ def compute_weekly(all_acts):
 
         b['wkCal'] += cal
         b['reData'] += re_
+        b['reAdj'] += re_ * (7 if a['start_local'][:10] >= RE_SCALE_SHIFT_DATE else 1)
 
         if st in RUN_TRAIL:
             b['runKm'] += km
@@ -190,15 +193,22 @@ def compute_weekly(all_acts):
             else:
                 b['trailKmOnly'] += km
                 b['trailElev'] += elev
-            if cad:
-                b['cadSum'] += cad
-                b['cadN'] += 1
+            # Cadence : course à plat uniquement (< 15 m D+/km, rando exclue), pondérée par la durée.
+            # En montagne on marche en côte → cadence ~55-69 sans rapport avec la foulée de course.
+            if cad and st in ('Run', 'TrailRun') and km > 0 and elev / km < 15 and mt:
+                b['cadSum'] += cad * mt
+                b['cadN'] += mt
             t = extract_temp(a.get('description'))
             if t is not None:
                 b['temp'] = max(b['temp'] or 0, t)
             b['mpKm'] += MARATHON_PACE_KM.get(a['id'], 0)
             re_adj = re_ * (7 if a['start_local'][:10] >= RE_SCALE_SHIFT_DATE else 1)
-            b['reAdjSum'] += re_adj
+            # Économie de course : course sur terrain plat uniquement (< 15 m D+/km), quel que soit le
+            # sport_type — le trail/rando gonfle le RE au km et ferait croire à une régression.
+            # Courses exclues : effort maximal, RE/km ~3x celui d'un footing.
+            if st in ('Run', 'TrailRun') and km > 0 and elev / km < 15 and a['id'] not in RACES:
+                b['flatKm'] += km
+                b['flatReAdj'] += re_adj
         elif st == 'Ride':
             b['veloOutKm'] += km
             b['veloElev'] += elev
@@ -227,40 +237,31 @@ def compute_weekly(all_acts):
         'trailElev':    [int(round(B[w]['trailElev'])) for w in week_list],
         'wkCal':        [int(round(B[w]['wkCal'])) for w in week_list],
         'reData':       [int(round(B[w]['reData'])) for w in week_list],
+        'reAdj':        [B[w]['reAdj'] for w in week_list],
         'wkMaxTemp':    [B[w]['temp'] for w in week_list],
-        'wkCadence':    [round(B[w]['cadSum'] / B[w]['cadN'], 1) if B[w]['cadN'] else None for w in week_list],
+        'wkCadence':    [round(2 * B[w]['cadSum'] / B[w]['cadN'], 1) if B[w]['cadN'] else None for w in week_list],  # Strava = par pied → ×2 = pas/min
         'wkVeloOutKm':  [round(B[w]['veloOutKm'], 1) for w in week_list],
         'wkVeloInKm':   [round(B[w]['veloInKm'], 1) for w in week_list],
         'wkVeloElev':   [int(round(B[w]['veloElev'])) for w in week_list],
         'wkVeloWatts':  [round(B[w]['veloWattsSum'] / B[w]['veloWattsN'], 1) if B[w]['veloWattsN'] else None for w in week_list],
         'wkMarathonPaceKm': [round(B[w]['mpKm'], 1) for w in week_list],
-        'wkEfficiency': [round(B[w]['runKm'] / B[w]['reAdjSum'], 3) if B[w]['reAdjSum'] else None for w in week_list],
+        'wkEfficiency': [round(B[w]['flatKm'] / B[w]['flatReAdj'], 3) if B[w]['flatReAdj'] else None for w in week_list],
     }
 
 
-def compute_acwr(reData_new, old_acwr, old_reData):
-    """Continuation calibrée : fige l'historique déjà publié, ne recalcule/ajuste que la queue."""
+def compute_acwr(series):
+    """ACWR = EWMA aiguë (τ 7 j) / EWMA chronique (τ 42 j) sur une série hebdo.
+    Amorcé sur la moyenne des 4 premières semaines (sinon ratio aberrant en janvier : 4.0, 1.96).
+    Pour le RE, passer la série corrigée ×7 après RE_SCALE_SHIFT_DATE (reAdj) : sur le RE brut,
+    la chute d'échelle Strava du 25/06 écrasait l'ACWR à 0.2–0.5 tout l'été."""
     kATL, kCTL = math.exp(-7 / 7), math.exp(-7 / 42)
-    ATL = CTL = 0.0
-    raw = []
-    for re_ in reData_new:
-        ATL = ATL * kATL + re_ * (1 - kATL)
-        CTL = CTL * kCTL + re_ * (1 - kCTL)
-        raw.append(ATL / CTL if CTL else 0.0)
-
-    n_old = len(old_acwr)
-    if n_old == 0 or n_old > len(reData_new):
-        return [round(x, 2) for x in raw]
-
-    anchor = n_old - 1
-    while anchor > 0 and (anchor >= len(reData_new) or reData_new[anchor] != old_reData[anchor]):
-        anchor -= 1
-    scale = (old_acwr[anchor] / raw[anchor]) if raw[anchor] else 1.0
-
-    result = list(old_acwr[:anchor])
-    for i in range(anchor, len(reData_new)):
-        result.append(round(raw[i] * scale, 2))
-    return result
+    ATL = CTL = sum(series[:4]) / max(1, len(series[:4]))
+    out = []
+    for v in series:
+        ATL = ATL * kATL + v * (1 - kATL)
+        CTL = CTL * kCTL + v * (1 - kCTL)
+        out.append(round(ATL / CTL, 2) if CTL else 0.0)
+    return out
 
 
 # Strava's raw relative_effort dropped ~7x starting 2026-06-25 (coincides with manual HR zone
@@ -398,6 +399,99 @@ def js_array(values):
         elif isinstance(v, str): parts.append(f"'{v}'")
         else: parts.append(str(v))
     return '[' + ','.join(parts) + ']'
+
+
+# ── EFFICACITÉ AÉROBIE (FC) ─────────────────────────────────────────
+# list_activities ne renvoie pas la FC : elle vient de get_activity_performance (MCP), stockée
+# à la main dans hr_store.json ({id: {avg_hr, max_hr, avg_watts}}). Le résumé imprime les ids
+# de footings éligibles encore absents du store, à récupérer avant le prochain run.
+EASY_EXCLUDE = re.compile(r"fractionn|s[ée]ance|accompagn|veill[ée]e|laser|c[ôo]te|seuil|vma|tempo|race|course|10 ?km|semi|marathon|AS42", re.I)
+
+
+def is_easy_flat_run(a):
+    """Footing facile à plat : base comparable d'une semaine à l'autre pour vitesse/FC."""
+    s = a.get('summary', {})
+    km = s.get('distance', 0) / 1000
+    if a['sport_type'] not in ('Run', 'TrailRun') or km < 6:
+        return False
+    if (s.get('elevation_gain', 0) or 0) / km >= 15:
+        return False
+    if a['id'] in RACES or a['id'] in MARATHON_PACE_KM:
+        return False
+    return not EASY_EXCLUDE.search(a['name'] + ' ' + (a.get('description') or '')[:60])
+
+
+def compute_eff_runs(all_acts):
+    """Efficiency Factor (Friel) = vitesse (m/min) / FC moy, footings faciles à plat uniquement.
+    Séances avec FC max ≥ 165 exclues : accélérations cachées dans un « footing »."""
+    hr = load_json(HR_PATH) if HR_PATH.exists() else {}
+    out, missing = [], []
+    for a in all_acts:
+        if not is_easy_flat_run(a):
+            continue
+        h = hr.get(a['id'])
+        if h is None:
+            missing.append(a['id'])
+            continue
+        if h['max_hr'] >= 165:
+            continue
+        s = a['summary']
+        mt = s.get('moving_time', 0) or 0
+        if not mt:
+            continue
+        speed_mmin = s['distance'] / (mt / 60)
+        out.append({'d': a['start_local'][:10], 'n': NAME_OVERRIDES.get(a['id'], clean_name(a['name'])),
+                    'ef': round(speed_mmin / h['avg_hr'], 3), 'hr': round(h['avg_hr']),
+                    'pace': round(1000 / speed_mmin * 60)})
+    return out, missing
+
+
+# Rattrapage fait jusqu'au 09/10/2026 (ETP 120 et Échappée Belle volontairement exclus) : seules les
+# séances postérieures sont signalées comme manquantes.
+PERF_TRACK_FROM = '2026-10-05'
+
+
+def compute_perf_runs(all_acts):
+    """Séances avec données de performance (hr_store.json) : best efforts Strava (400 m → 10 km),
+    puissance moyenne et flag course — alimente les graphes Best Efforts, W/kg et le tableau des records."""
+    hr = load_json(HR_PATH) if HR_PATH.exists() else {}
+    out, missing = [], []
+    for a in all_acts:
+        if a['sport_type'] not in ('Run', 'TrailRun'):
+            continue
+        h = hr.get(a['id'])
+        if h is None:
+            s = a['summary']
+            km = s.get('distance', 0) / 1000
+            # séances utiles aux best efforts : ≥ 5 km, pas en montagne (sauf courses)
+            if a['start_local'][:10] >= PERF_TRACK_FROM and km >= 5 and (
+                    a['id'] in RACES or (s.get('elevation_gain', 0) or 0) / km < 25):
+                missing.append(a['id'])
+            continue
+        b = h.get('best', {})
+        if not b and a['id'] not in RACES:
+            continue
+        s = a['summary']
+        out.append({'d': a['start_local'][:10], 'n': NAME_OVERRIDES.get(a['id'], clean_name(a['name'])),
+                    'race': a['id'] in RACES, 'trail': a['sport_type'] == 'TrailRun',
+                    'km': round(s.get('distance', 0) / 1000, 1), 'elev': int(s.get('elevation_gain', 0) or 0),
+                    'w': round(h['avg_watts']) if h.get('avg_watts') else None, 'hr': round(h['avg_hr']),
+                    'b400': b.get('400m'), 'b1k': b.get('1k'), 'b5k': b.get('5k'), 'b10k': b.get('10k')})
+    return out, missing
+
+
+def serialize_perf_runs(entries):
+    js = lambda v: 'null' if v is None else ('true' if v is True else 'false' if v is False else v)
+    lines = [f"  {{d:'{e['d']}',n:{json.dumps(e['n'], ensure_ascii=False)},race:{js(e['race'])},trail:{js(e['trail'])},"
+             f"km:{e['km']},elev:{e['elev']},w:{js(e['w'])},hr:{e['hr']},"
+             f"b400:{js(e['b400'])},b1k:{js(e['b1k'])},b5k:{js(e['b5k'])},b10k:{js(e['b10k'])}}}" for e in entries]
+    return 'const perfRuns = [\n' + ',\n'.join(lines) + '\n];'
+
+
+def serialize_eff_runs(entries):
+    lines = [f"  {{d:'{e['d']}',n:{json.dumps(e['n'], ensure_ascii=False)},ef:{e['ef']},hr:{e['hr']},pace:{e['pace']}}}"
+             for e in entries]
+    return 'const effRuns = [\n' + ',\n'.join(lines) + '\n];'
 
 
 def serialize_calacts(entries):
@@ -543,18 +637,13 @@ def patch_performance_html(html, all_acts, weekly, calacts, velo_sessions, zones
     html = sub_or_die(html, r'const veloSessions = \[.*?\];', lambda m: serialize_velo(velo_sessions),
         'veloSessions', flags=re.DOTALL)
 
-    # 9. Footer
-    html = sub_or_die(html,
-        r'<p class="text-xs text-slate-400 text-center pb-4">\d+ activités · 1 janv\. → [^<]+</p>',
-        f'<p class="text-xs text-slate-400 text-center pb-4">{total_acts} activités · '
-        f'1 janv. → {last_date_str} 2026 · Données : MCP Strava</p>',
-        'footer')
+    # 9. Footer de l'onglet entrainement : calculé au runtime depuis calActs (#cal-foot), plus rien à patcher.
 
     return html, dict(total_acts=total_acts, rt_sessions=rt_sessions, total_km=total_km,
                        total_elev=total_elev, total_kcal=total_kcal)
 
 
-def patch_annuel_html(html, all_acts, monthly, velo_sessions, last_date_str):
+def patch_annuel_html(html, all_acts, monthly, velo_sessions, last_date_str, last_date):
     n_months = len(monthly['sessions'])
     month_lbl = MONTHS[n_months - 1]
     old_month_match = re.search(r'Jan–(\w{3})', html)
@@ -622,15 +711,8 @@ def patch_annuel_html(html, all_acts, monthly, velo_sessions, last_date_str):
                    f'{total_elev:,}'.replace(',', ' ') + m.group(6) + f'{total_sessions}{m.group(7)}{total_time}{m.group(8)}'),
         'annuel-tfoot')
 
-    html = sub_or_die(html,
-        r'(<div class="cmp-year" style="color:#d97706">2026 <span class="partial">Jan–)\w+(</span></div>\s*'
-        r'<div class="cmp-row"><span class="lbl">km</span><span class="val">)[\d\s]+(</span></div>\s*'
-        r'<div class="cmp-row"><span class="lbl">D\+</span><span class="val">)[\d\s]+( m</span></div>\s*'
-        r'<div class="cmp-row"><span class="lbl">séances</span><span class="val">)\d+(</span></div>\s*'
-        r'<div class="cmp-row"><span class="lbl">temps</span><span class="val">~)\d+(h</span></div>)',
-        lambda m: (f'{m.group(1)}{month_lbl}{m.group(2)}{total_km:,}'.replace(',', ' ') + m.group(3) +
-                   f'{total_elev:,}'.replace(',', ' ') + m.group(4) + f'{total_sessions}{m.group(5)}{total_time}{m.group(6)}'),
-        'annuel-cmp-card', flags=re.S)
+    # Date de référence de la synthèse « à date » (comparaison au même jour des années passées)
+    html = sub_or_die(html, r"const AS_OF = '[\d-]+';", f"const AS_OF = '{last_date}';", 'annuel-AS_OF')
 
     km_str = f'{total_km:,}'.replace(',', ' ')
     elev_str = f'{total_elev:,}'.replace(',', ' ')
@@ -673,21 +755,16 @@ def main():
     sports = compute_sports(all_acts)
     calacts = compute_calacts(all_acts)
     velo_sessions = compute_velo_sessions(all_acts)
+    eff_runs, eff_missing = compute_eff_runs(all_acts)
+    perf_runs, perf_missing = compute_perf_runs(all_acts)
     monthly = compute_monthly_2026(all_acts)
 
     perf_html = HTML_PERF.read_text(encoding='utf-8')
-    old_acwr = read_const_array(perf_html, 'acwr')
-    old_reData = read_const_array(perf_html, 'reData')
-    weekly['acwr'] = compute_acwr(weekly['reData'], old_acwr, old_reData)
+    weekly['acwr'] = compute_acwr(weekly['reAdj'])
 
     # ACWR D+ : même modèle EWMA aigu(7j)/chronique(42j), appliqué au D+ hebdo au lieu du Relative
     # Effort — capture la charge excentrique/neuromusculaire que le RE seul ne reflète pas.
-    old_acwr_dplus = read_const_array(perf_html, 'acwrDplus')
-    old_run_elev = read_const_array(perf_html, 'runElev')
-    old_trail_elev = read_const_array(perf_html, 'trailElev')
-    old_total_elev = [r + t for r, t in zip(old_run_elev, old_trail_elev)] if old_run_elev else []
-    total_elev_new = [r + t for r, t in zip(weekly['runElev'], weekly['trailElev'])]
-    weekly['acwrDplus'] = compute_acwr(total_elev_new, old_acwr_dplus, old_total_elev)
+    weekly['acwrDplus'] = compute_acwr([r + t for r, t in zip(weekly['runElev'], weekly['trailElev'])])
 
     new_perf_html, perf_totals = patch_performance_html(
         perf_html, all_acts, weekly, calacts, velo_sessions, zones_hours, zones_pct, zones_total_h,
@@ -697,9 +774,13 @@ def main():
         'const acwr = ' + js_array(weekly['acwr']) + ';', 'acwr')
     new_perf_html = sub_or_die(new_perf_html, r'const acwrDplus\s*=\s*\[.*?\];',
         'const acwrDplus = ' + js_array(weekly['acwrDplus']) + ';', 'acwrDplus')
+    new_perf_html = sub_or_die(new_perf_html, r'const effRuns = \[.*?\];',
+        lambda m: serialize_eff_runs(eff_runs), 'effRuns', flags=re.DOTALL)
+    new_perf_html = sub_or_die(new_perf_html, r'const perfRuns = \[.*?\];',
+        lambda m: serialize_perf_runs(perf_runs), 'perfRuns', flags=re.DOTALL)
 
     annuel_html = HTML_ANNUEL.read_text(encoding='utf-8')
-    new_annuel_html, annuel_totals = patch_annuel_html(annuel_html, all_acts, monthly, velo_sessions, last_date_str)
+    new_annuel_html, annuel_totals = patch_annuel_html(annuel_html, all_acts, monthly, velo_sessions, last_date_str, last_date)
 
     dry_run = '--dry-run' in sys.argv
     skip_backup = '--no-backup' in sys.argv
@@ -737,6 +818,17 @@ def main():
     print(f"\nACWR actuel : {w['acwr'][-1]} · ACWR D+ actuel : {w['acwrDplus'][-1]}")
     print(f"Économie de course (km/RE ajusté) : {w['wkEfficiency'][-1]} · "
           f"Allure marathon cette semaine : {w['wkMarathonPaceKm'][-1]} km")
+    if eff_runs:
+        last5 = eff_runs[-5:]
+        print(f"Efficacité aérobie (EF, 5 derniers footings) : {sum(e['ef'] for e in last5)/len(last5):.3f} "
+              f"({len(eff_runs)} footings à plat avec FC)")
+    perf_missing = [i for i in perf_missing if i not in eff_missing]
+    if perf_missing:
+        print(f"⚠ Best efforts manquants pour {len(perf_missing)} séance(s) : get_activity_performance puis hr_store.json → "
+              + ', '.join(perf_missing))
+    if eff_missing:
+        print(f"⚠ FC manquante pour {len(eff_missing)} footing(s) : get_activity_performance puis hr_store.json → "
+              + ', '.join(eff_missing))
     for label, date_str in [('Échappée Belle (22 août 2026)', '2026-08-22'),
                              ('Marathon Nice-Cannes (8 nov. 2026)', '2026-11-08')]:
         days = (datetime.strptime(date_str, '%Y-%m-%d') - datetime.strptime(last_date, '%Y-%m-%d')).days

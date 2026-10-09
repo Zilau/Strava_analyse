@@ -46,7 +46,7 @@
     </svg>
     <h1 class="text-xl font-bold text-slate-800">Rapport Performance Strava</h1>
   </div>
-  <p class="text-sm text-slate-500">Laurent Miklic · 1 janv. → 4 oct. 2026 · 208 activités · Run+Trail : 170 séances</p>
+  <p class="text-sm text-slate-500">Laurent Miklic · 1 janv. → 9 oct. 2026 · 211 activités · Run+Trail : 173 séances</p>
   <p class="text-xs text-slate-400 mt-1">Généré par Claude Code via MCP Strava</p>
 </div>
 
@@ -67,15 +67,81 @@
 
 <div id="pane-global" class="max-w-5xl mx-auto space-y-5">
 
+  <div class="pt-4">
+    <h3 class="text-sm font-bold uppercase tracking-wide text-slate-500">1 · Où j'en suis</h3>
+    <p class="text-xs text-slate-400">Lecture en 10 secondes : statut, synthèse, priorités.</p>
+  </div>
+
+  <div class="card">
+    <h2>Tableau de bord</h2>
+    <p class="text-xs text-slate-400 mb-3">Verdicts calculés automatiquement par chaque graphe ci-dessous (dernière semaine complète).</p>
+    <div id="status-strip" class="grid grid-cols-2 md:grid-cols-4 gap-2"></div>
+  </div>
+
+  <div class="card bg-slate-800 text-white" style="background:#1e293b;">
+    <h2 style="color:#94a3b8">Résumé exécutif</h2>
+    <div class="space-y-3 mt-1">
+      <div>
+        <span class="text-xs font-bold uppercase tracking-wide text-orange-400">🏁 Compétitions (8)</span>
+        <p class="text-sm text-slate-300 leading-relaxed mt-1">Maxicross 25km trail (1er fév, 3h25) · ETP 120km ultra-trail (21 mars, 21h21, pic 132 km/sem, ACWR 1.36) · Trail des Lavoirs 23km (10 mai, 2h32) · Foulée Verte Clamart 17.5km (31 mai, 1h50, FC max 188 bpm) · 10km en 47:49 (14 juin, 2e all-time, split négatif parfait, 4.68 W/kg) · Échappée Belle 43km / D+2831m (22 août, 9h27, finisher ✅, 9 PRs) · <strong class="text-white">Trail Canadian de Vimy 20.2km / D+252m (12 sept, 1h56, objectif sub-2h validé ✅)</strong> · <strong class="text-white">Paris-Versailles 16.2km / D+235m (27 sept, 1h28, 5:28/km, 53 PRs)</strong>.</p>
+      </div>
+      <div class="pt-3 border-t border-slate-700">
+        <span class="text-xs font-bold uppercase tracking-wide text-orange-400">📊 Volume saison</span>
+        <p class="text-sm text-slate-300 leading-relaxed mt-1">173 séances run+trail (rando incluses) · 2 270 km · D+ 32 477 m sur 41 semaines. Deux phases : trail/montagne jusqu'à l'Échappée Belle (camp Chartreuse D+ 11 079 m en 12 j), puis bloc route marathon depuis fin août (42 → 57 → 67 km/sem).</p>
+      </div>
+      <div class="pt-3 border-t border-slate-700">
+        <span class="text-xs font-bold uppercase tracking-wide text-orange-400">🔥 Forme actuelle</span>
+        <p class="text-sm text-slate-300 leading-relaxed mt-1"><strong class="text-white">Charge</strong> : 56.9 puis 67.4 km les deux dernières semaines complètes (record du bloc), ACWR 1.20 → progression maîtrisée, aucune gêne rapportée. Semaine en cours 35.1 km au vendredi, sortie longue à venir.<br><strong class="text-white">Spécificité</strong> : 19–25 km/sem à allure marathon ou plus vite depuis fin septembre ; Paris-Versailles à 5:28/km (équivalent marathon ~3h50 selon Enduraw).<br><strong class="text-white">Moteur</strong> : efficacité aérobie (EF) en hausse sur les footings faciles, cadence stable ~172 spm, forme dans la zone « Optimal » (fatigue de construction normale).</p>
+      </div>
+      <div class="pt-3 border-t border-slate-700">
+        <span class="text-xs font-bold uppercase tracking-wide text-orange-400">🎯 Prochain objectif</span>
+        <p class="text-sm text-slate-300 leading-relaxed mt-1"><strong class="text-orange-400">Marathon Nice-Cannes · 8 novembre · J-30</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>3 Recommandations priorisées</h2>
+    <div class="space-y-3">
+      <div class="p-4 rounded-lg bg-red-50 border border-red-200">
+        <div class="flex items-start gap-3">
+          <span class="badge badge-red mt-0.5">P1</span>
+          <div>
+            <p class="font-semibold text-slate-800 text-sm">Caser les 2 dernières sorties longues, puis affûter</p>
+            <p class="text-xs text-slate-600 mt-1">La plus longue sortie du bloc fait 23.4 km : il manque le passage des 30 km. <strong>11/10 et 18/10 : 28–32 km dont 45–60' à allure marathon en fin de sortie.</strong> Puis réduire le volume de ~30 % semaine du 26/10 et ~50 % semaine du 2/11 en gardant 2 rappels courts d'allure. Cible le jour J : forme « Frais » (+5 à +25 %) sur le tableau de bord.</p>
+          </div>
+        </div>
+      </div>
+      <div class="p-4 rounded-lg bg-orange-50 border border-orange-200">
+        <div class="flex items-start gap-3">
+          <span class="badge badge-orange mt-0.5">P2</span>
+          <div>
+            <p class="font-semibold text-slate-800 text-sm">Ne pas dépasser ACWR 1.3 d'ici l'affûtage</p>
+            <p class="text-xs text-slate-600 mt-1">Trois pics au-dessus de 1.3 cette saison (ETP 1.36, Chartreuse 1.68, Vimy 1.48) sont passés sans blessure, mais à J-30 une gêne coûterait la course. <strong>Ajouter les km des sorties longues en retirant un footing, pas en empilant</strong> : viser 60–70 km/sem max, et lever le pied au moindre signal (douleur, FC de repos anormale, EF qui chute).</p>
+          </div>
+        </div>
+      </div>
+      <div class="p-4 rounded-lg bg-blue-50 border border-blue-200">
+        <div class="flex items-start gap-3">
+          <span class="badge badge-blue mt-0.5">P3</span>
+          <div>
+            <p class="font-semibold text-slate-800 text-sm">Fixer l'allure cible et la valider en sortie longue</p>
+            <p class="text-xs text-slate-600 mt-1">Repères : Riegel depuis le 10 km (47:49) ≈ 3h40, Paris-Versailles ≈ 3h50, PR marathon 4:01. <strong>Plan de base 5:35/km (≈ 3h56), option 5:30 (≈ 3h52) si les 45–60' finaux des sorties longues passent sans dérive cardiaque.</strong> Profiter de ces deux sorties pour répéter le ravitaillement (gels toutes les 30–40', boisson) et la tenue de course.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- KPI ROW -->
   <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
     <div class="metric-box">
       <div class="metric-lbl">Distance totale (run+trail)</div>
-      <div class="metric-val">2 234 km</div>
+      <div class="metric-val">2 270 km</div>
     </div>
     <div class="metric-box">
       <div class="metric-lbl">Dénivelé cumulé</div>
-      <div class="metric-val">32 386 m</div>
+      <div class="metric-val">32 477 m</div>
     </div>
     <div class="metric-box">
       <div class="metric-lbl">10km race (14 juin)</div>
@@ -89,65 +155,130 @@
     </div>
   </div>
 
-  <!-- CHART 1 : Volume hebdo -->
+  <div class="pt-4">
+    <h3 class="text-sm font-bold uppercase tracking-wide text-slate-500">2 · Charge &amp; risque de blessure</h3>
+    <p class="text-xs text-slate-400">Est-ce que je charge trop ou pas assez ? Priorité à J-30.</p>
+  </div>
+
+  <div class="card">
+    <h2>Fitness · Fatigue · Forme — CTL / ATL / TSB (modèle TrainingPeaks, unités RE)</h2>
+    <p class="text-xs text-slate-500 mb-2"><strong style="color:#2563eb">Ligne bleue = Fitness (CTL)</strong> : ta forme de fond sur ~6 semaines, <strong>plus elle monte, mieux c'est</strong>. <strong style="color:#dc2626">Ligne rouge = Fatigue (ATL)</strong> : ta charge des 7 derniers jours. <strong>Barres = Forme</strong> = Fitness − Fatigue, en % de la Fitness : lis leur couleur.</p>
+    <div class="flex gap-2 flex-wrap mb-3 text-xs">
+      <span class="badge" style="background:#ef444422;color:#dc2626">🔴 &lt; −30 % Risque : surcharge</span>
+      <span class="badge" style="background:#16a34a22;color:#15803d">🟢 −30 à −10 % Optimal : tu progresses (cible en bloc)</span>
+      <span class="badge" style="background:#94a3b833;color:#475569">⚪ −10 à +5 % Neutre : maintien</span>
+      <span class="badge" style="background:#0ea5e922;color:#0369a1">🔵 +5 à +25 % Frais : prêt à courir (cible jour J)</span>
+      <span class="badge" style="background:#a78bfa22;color:#7c3aed">🟣 &gt; +25 % Transition : la forme se perd</span>
+    </div>
+    <div id="ctl-status" class="flex gap-2 flex-wrap mb-3"></div>
+    <canvas id="chart-ctl" height="90"></canvas>
+    <div class="flex gap-3 mt-3 flex-wrap">
+      <span class="badge badge-red">🔴 S12 (16 mars) : forme −36 % — ETP 120 (22h57 de course)</span>
+      <span class="badge badge-blue">🔵 S24 (8 juin) : forme +22 % — frais · 10km couru le 14/06 en 47:49 (2e all-time)</span>
+      <span class="badge badge-red">🔴 S31 (27 juil) : forme −68 % — camp Chartreuse (D+ 11 079 m), plus forte surcharge de la saison</span>
+      <span class="badge badge-orange">🎯 Nice-Cannes (8 nov) : viser +5 à +25 % la semaine de course → affûtage à partir du 26/10</span>
+    </div>
+    <p class="text-xs text-slate-400 mt-4 mb-2">Monotonie = régularité des charges (risque blessure si &gt; 2.0) · Contrainte = RE × monotonie (Foster et al. 2001).</p>
+    <canvas id="chart-monotonie" height="70"></canvas>
+  </div>
+
+  <div class="card">
+    <h2>Charge hebdomadaire &amp; ACWR — risque de surcharge</h2>
+    <p class="text-xs text-slate-500 mb-2"><strong>Barres = charge de la semaine</strong> (Relative Effort, ajusté ×7 après le 25/06 pour rester comparable). <strong style="color:#2563eb">Pointillé bleu = charge habituelle</strong> (moyenne ~6 semaines). <strong>Couleur = ACWR</strong> (charge aiguë 7 j ÷ charge chronique 28 j) : c'est elle qui dit si la semaine est raisonnable.</p>
+    <div class="flex gap-2 flex-wrap mb-3 text-xs">
+      <span class="badge" style="background:#94a3b833;color:#475569">⚪ ACWR &lt; 0.8 Allègement : récup / coupure</span>
+      <span class="badge" style="background:#16a34a22;color:#15803d">🟢 0.8 à 1.3 Progression : charge productive</span>
+      <span class="badge" style="background:#f59e0b22;color:#b45309">🟠 1.3 à 1.5 Attention : à ne pas enchaîner</span>
+      <span class="badge" style="background:#ef444422;color:#dc2626">🔴 &gt; 1.5 Pic : risque de blessure</span>
+    </div>
+    <div id="re-status" class="flex gap-2 flex-wrap mb-3"></div>
+    <canvas id="chart-re" height="80"></canvas>
+    <div class="flex gap-3 mt-3 flex-wrap">
+      <span class="badge badge-orange">🟠 16 mars : ACWR 1.36 — ETP 120 (charge planifiée)</span>
+      <span class="badge badge-red">🔴 27 juil : ACWR 1.68 — camp Chartreuse (12 sorties enchaînées), seul vrai pic de la saison</span>
+      <span class="badge badge-orange">🟠 7 sept : ACWR 1.48 — semaine du Trail de Vimy, juste sous le seuil</span>
+      <span class="badge badge-orange">🟠 Actuel (9 oct) : ACWR 0.78 provisoire — semaine partielle : la semaine du 05/10 ne compte que 3 séances du lundi au vendredi (35.1 km, RE 84) : footing 12.7 km avec 3000m AS42+ (06/10), fractionné court 2x4x2' (07/10) et boucle 10.8 km (09/10 midi). La sortie longue du week-end n'est pas encore comptée — à réévaluer après le 11/10. Semaine précédente (28/09) : 67.4 km, ACWR 1.20 (zone de progression), record du bloc</span>
+      <span class="badge badge-orange">🌡️ 15–23 juin : 32–35.7°C — volume réduit + acclimatation intentionnelle</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>ACWR D+ — Charge aiguë 7j / Charge chronique 28j (Dénivelé)</h2>
+    <p class="text-xs text-slate-400 mb-3">Même modèle que l'ACWR ci-dessus, appliqué au D+ hebdo au lieu du Relative Effort. Le RE sous-pondère les longues sorties D+ lentes (rando/trail montagne) — cet indicateur capture la <strong>charge excentrique / fatigue neuromusculaire</strong> que le RE seul ne reflète pas. Zone verte : 0.8–1.3 · Zone rouge : &gt; 1.5.</p>
+    <canvas id="chart-acwr-dplus" height="90"></canvas>
+    <div class="flex gap-3 mt-3 flex-wrap">
+      <span class="badge badge-green">✅ Actuel (9 oct) : ACWR D+ 0.21 (faible) — semaine du 05/10 entièrement plate pour l'instant (91 m de D+ sur 3 sorties à Charenton et bords de Marne), dans la continuité du 28/09 (167 m) : charge excentrique minimale, cohérente avec un bloc marathon route à J-30</span>
+    </div>
+  </div>
+
+  <div class="pt-4">
+    <h3 class="text-sm font-bold uppercase tracking-wide text-slate-500">3 · Progression</h3>
+    <p class="text-xs text-slate-400">Est-ce que je deviens plus fort ?</p>
+  </div>
+
+  <div class="card">
+      <h2>Efficacité running — Vitesse / FC moy (proxy forme aérobie)</h2>
+      <p class="text-xs text-slate-500 mb-2"><strong>Plus haut = mieux</strong> : tu cours plus vite pour le même nombre de battements cardiaques, signe que ton moteur aérobie progresse. Mesuré uniquement sur tes <strong>footings faciles à plat</strong> (hors fractionnés, courses, séances avec allure marathon ou FC max ≥ 165) pour comparer des séances comparables.</p>
+      <p class="text-xs text-slate-400 mb-2">Efficiency Factor (Friel) = vitesse (m/min) ÷ FC moyenne. Regarde la ligne violette (moyenne des 5 derniers footings) par rapport à la médiane : un écart de ±2 % est significatif. ⚠️ La chaleur fait monter la FC et baisse l'EF en été sans perte de forme.</p>
+      <div id="eff-status" class="flex gap-2 flex-wrap mb-3"></div>
+      <canvas id="chart-efficiency" height="80"></canvas>
+    </div>
+
+  <div class="card">
+    <h2>Économie de course — km parcourus par point de Relative Effort</h2>
+    <p class="text-xs text-slate-500 mb-2"><strong>Plus haut = mieux</strong> : plus de kilomètres pour le même coût cardiaque. Calculé uniquement sur la course à plat (&lt; 15 m D+/km), hors compétitions, RE ajusté ×7 après le 25/06. <strong>Regarde la ligne verte (moyenne 4 semaines) par rapport au pointillé gris (médiane de la saison)</strong> plutôt que les points isolés.</p>
+    <p class="text-xs text-slate-400 mb-3">⚠️ Limite : ce ratio baisse aussi quand la semaine contient plus de fractionnés (≈ 4 RE/km contre 2–3 en footing) — une baisse pendant un bloc de qualité n'est pas forcément une régression.</p>
+    <div id="eco-status" class="flex gap-2 flex-wrap mb-3"></div>
+    <canvas id="chart-course-economy" height="70"></canvas>
+  </div>
+
+  <div class="card">
+    <h2>Best efforts — Vitesse pure (400 m &amp; 1 km)</h2>
+    <p class="text-xs text-slate-500 mb-2"><strong>Plus bas = mieux.</strong> Meilleur temps de chaque mois, mesuré par Strava sur le meilleur passage continu de n'importe quelle séance (fractionné, sortie longue, course). Point orange = réalisé en compétition.</p>
+    <canvas id="chart-be-speed" height="90"></canvas>
+  </div>
+
+  <div class="card">
+    <h2>Best efforts — Endurance (5 km &amp; 10 km)</h2>
+    <p class="text-xs text-slate-500 mb-2"><strong>Plus bas = mieux.</strong> Même principe, sur 5 et 10 km. Hors course, ces temps sont souvent pris au milieu d'une séance (effort non maximal) : c'est la tendance qui compte, et les points orange (courses) montrent ton vrai niveau.</p>
+    <canvas id="chart-be-endurance" height="90"></canvas>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div class="card">
+    <h2>Puissance/Poids (W/kg) — Compétitions</h2>
+    <p class="text-xs text-slate-500 mb-2">Puissance moyenne de course (capteur) ÷ 86 kg, sur chaque compétition. <strong>Plus haut = mieux</strong>, à comparer à terrain égal : le trail (D+, technique) donne mécaniquement moins de W/kg que la route.</p>
+    <div class="flex gap-2 flex-wrap mb-2 text-xs">
+      <span class="badge" style="background:#FC4C0222;color:#c2410c">Route</span>
+      <span class="badge" style="background:#16a34a22;color:#15803d">Trail</span>
+    </div>
+    <canvas id="chart-wkg" height="180"></canvas>
+  </div>
+    <div class="card overflow-x-auto">
+    <h2>Records de la saison</h2>
+    <p class="text-xs text-slate-500 mb-2">Meilleur temps 2026 par distance, comparé au meilleur des 60 derniers jours : un écart faible ou nul = tu es au niveau de ton record.</p>
+    <div id="be-table"></div>
+  </div>
+  </div>
+
+  <div class="pt-4">
+    <h3 class="text-sm font-bold uppercase tracking-wide text-slate-500">4 · Comment je m'entraîne</h3>
+    <p class="text-xs text-slate-400">Volume, intensité et habitudes.</p>
+  </div>
+
   <div class="card">
     <h2>Volume hebdomadaire — Run + Trail</h2>
     <p class="text-xs text-slate-400 mb-2">Barres = km (axe gauche, empilés Run + Trail) · Courbe violette = temps (axe droit) · Points 🌡️ = température max hebdo : <span style="color:#f59e0b">●</span> &lt;25°C · <span style="color:#f97316">●</span> 25–29°C · <span style="color:#ef4444">●</span> ≥30°C (vague de chaleur 15–23 juin). Marches et VirtualRide exclus.</p>
     <canvas id="chart-volume" height="100"></canvas>
     <p class="text-xs text-slate-400 mt-4 mb-2">Barres = km (axe gauche) · Courbe bleue = D+ total (axe droit).</p>
     <canvas id="chart-elev" height="70"></canvas>
-    <p class="text-xs text-slate-400 mt-4 mb-2">Calories dépensées par semaine — toutes activités (total saison : <strong>203 017 kcal</strong>).</p>
+    <p class="text-xs text-slate-400 mt-4 mb-2">Calories dépensées par semaine — toutes activités (total saison : <strong>205 843 kcal</strong>).</p>
     <canvas id="chart-cals" height="70"></canvas>
     <p class="text-xs text-slate-400 mt-4 mb-2">Distribution estimée des zones FC par semaine (Run + Trail) — proxy RE/heure par séance + flag course. Tendances fiables ; valeurs absolues ±10 pts (sans streams FC complets). Seuils recalibrés à partir du 25 juin 2026 (chute d'échelle du relative_effort Strava, ÷7 environ). <span style="color:#3b82f6">■ Z1</span> · <span style="color:#22c55e">■ Z2</span> · <span style="color:#eab308">■ Z3</span> · <span style="color:#f97316">■ Z4</span> · <span style="color:#ef4444">■ Z5</span></p>
     <canvas id="chart-zones-week" height="80"></canvas>
   </div>
 
-
-  <!-- CHART 2 : ACWR -->
-  <div class="card">
-    <h2>ACWR — Charge aiguë 7j / Charge chronique 28j (Relative Effort)</h2>
-    <p class="text-xs text-slate-400 mb-3">Zone verte : 0.8–1.3 · Zone rouge : &gt; 1.5 (risque de blessure élevé)</p>
-    <canvas id="chart-acwr" height="90"></canvas>
-    <div class="flex gap-3 mt-3 flex-wrap">
-      <span class="badge badge-orange">🟠 16 mars : ACWR 1.41 — ETP 120 (charge planifiée)</span>
-      <span class="badge badge-green">✅ Actuel (4 oct) : ACWR 0.81 — retour dans la zone optimale (0.8–1.3) avec la semaine du 28/09, la plus volumineuse du bloc marathon (67.4 km, RE 225) : footing 12.5 km (29/09), mini-séance 3x1000m AS42 (01/10), boucle trail 10.9 km (02/10 midi), fractionné long 3x3000m AS42 (02/10 soir) et sortie longue 23.4 km avec 2x20' AS42 (04/10) — 19.3 km à allure marathon. Progression 42 → 57 → 67 km sur 3 semaines, sans pic brutal</span>
-      <span class="badge badge-orange">🌡️ 15–23 juin : 32–35.7°C — volume réduit + acclimatation intentionnelle</span>
-    </div>
-  </div>
-
-  <!-- CHART 2b : ACWR D+ (fatigue neuromusculaire) -->
-  <div class="card">
-    <h2>ACWR D+ — Charge aiguë 7j / Charge chronique 28j (Dénivelé)</h2>
-    <p class="text-xs text-slate-400 mb-3">Même modèle que l'ACWR ci-dessus, appliqué au D+ hebdo au lieu du Relative Effort. Le RE sous-pondère les longues sorties D+ lentes (rando/trail montagne) — cet indicateur capture la <strong>charge excentrique / fatigue neuromusculaire</strong> que le RE seul ne reflète pas. Zone verte : 0.8–1.3 · Zone rouge : &gt; 1.5.</p>
-    <canvas id="chart-acwr-dplus" height="90"></canvas>
-    <div class="flex gap-3 mt-3 flex-wrap">
-      <span class="badge badge-green">✅ Actuel (4 oct) : ACWR D+ 0.29 (zone verte) — semaine du 28/09 quasi plate (167 m de D+, que des sorties sur le plat parisien et les bords de Marne) après le petit rebond de Paris-Versailles (21/09 : 355 m) : charge excentrique basse, cohérente avec un bloc marathon route, et très loin du pic de l'Échappée Belle (17/08, D+ 2912 m)</span>
-    </div>
-  </div>
-
-
-  <!-- CTL / ATL / TSB + Monotonie -->
-  <div class="card">
-    <h2>Fitness · Fatigue · Forme — CTL / ATL / TSB (modèle TrainingPeaks, unités RE)</h2>
-    <p class="text-xs text-slate-400 mb-3">Bleu = CTL forme chronique (τ 42j) · Rouge = ATL fatigue aiguë (τ 7j) · Barres = TSB (vert = frais, rouge = fatigué). Calculé depuis le Relative Effort Strava.</p>
-    <canvas id="chart-ctl" height="90"></canvas>
-    <div class="flex gap-3 mt-3 flex-wrap">
-      <span class="badge badge-red">🔴 S12 (16 mars) : TSB −686 — pic de fatigue post-ETP 120 (22h57 de course)</span>
-      <span class="badge badge-green">✅ S24 (8 juin) : TSB +187 — forme optimale · 10km couru 6 jours plus tard en 47:49</span>
-    </div>
-    <p class="text-xs text-slate-400 mt-4 mb-2">Monotonie = régularité des charges (risque blessure si &gt; 2.0) · Contrainte = RE × monotonie (Foster et al. 2001).</p>
-    <canvas id="chart-monotonie" height="70"></canvas>
-  </div>
-
-  <!-- CHART 5 : Sports répartition -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-    <div class="card">
-      <h2>Répartition des activités — 208 activités</h2>
-      <p class="text-xs text-slate-400 mb-3">Chaque barre = 100 % d'une métrique. Le trail pèse moins en nombre de séances (32 %) qu'en temps de mouvement (50 %).</p>
-      <canvas id="chart-sports" height="160"></canvas>
-    </div>
-
-    <!-- Zones FC -->
     <div class="card">
       <h2>Zones FC — Strava Manuel (FCmax réelle = 188 bpm)</h2>
       <p class="text-xs text-green-600 font-semibold mb-3">✅ Zones manuelles Strava actives — source : Manual · FCmax observée = 188 bpm (Foulée Verte, 31 mai)</p>
@@ -183,29 +314,6 @@
         <canvas id="chart-fc-zones" height="130"></canvas>
       </div>
     </div>
-  </div>
-
-  <!-- CHART 6 : RE tendance -->
-  <div class="card">
-    <h2>Relative Effort hebdomadaire — Évolution de la charge</h2>
-    <p class="text-xs text-slate-400 mb-3">Phase de prépa ultra : RE 960–1550/sem · Récupération post-ETP : RE 297–399 · Phase actuelle : RE 675–758</p>
-    <canvas id="chart-re" height="80"></canvas>
-  </div>
-
-  <!-- CHART : Économie de course -->
-  <div class="card">
-    <h2>Économie de course — km parcourus par point de Relative Effort</h2>
-    <p class="text-xs text-slate-400 mb-3">RE ajusté ×7 sur les semaines après le 25 juin 2026 pour rester comparable au changement d'échelle Strava (voir badge zones plus haut). Une valeur croissante = plus de kilomètres pour le même coût physiologique — signe d'amélioration de l'économie de course, utile pour juger la préparation marathon indépendamment du volume brut.</p>
-    <canvas id="chart-course-economy" height="70"></canvas>
-  </div>
-
-  <!-- Cadence + Zones d'intensité -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-    <div class="card">
-      <h2>Cadence hebdomadaire — Run + Trail (spm)</h2>
-      <p class="text-xs text-slate-400 mb-3">Cadence moyenne par semaine (pas/min). Cible optimale : 170–180 spm = 85–90 paires. Semaine 18 (27 avr) = 73.3 spm anomalie probable liée à une séance avec D+ exceptionnel.</p>
-      <canvas id="chart-cadence" height="160"></canvas>
-    </div>
     <div class="card">
       <h2>Distribution d'intensité — Saison entière (168h)</h2>
       <p class="text-xs text-slate-400 mb-4">Estimation via densité RE/h (proxy FC). Règle 80/20 : idéalement ≥ 80% en endurance/aérobie. Résultat : <strong class="text-green-700">88% facile–modéré + 11% seuil</strong> ≈ conforme.</p>
@@ -213,7 +321,7 @@
         <div style="flex:0 0 140px;position:relative">
           <canvas id="chart-zones" width="140" height="140"></canvas>
           <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">
-            <div style="font-size:18px;font-weight:700;color:#1e293b;line-height:1">277h</div>
+            <div style="font-size:18px;font-weight:700;color:#1e293b;line-height:1">280h</div>
             <div style="font-size:10px;color:#94a3b8;margin-top:2px">total</div>
           </div>
         </div>
@@ -221,7 +329,7 @@
           <div>
             <div style="display:flex;justify-content:space-between;margin-bottom:4px">
               <span style="font-size:12px;font-weight:600;color:#15803d">Z1–Z2 Endurance</span>
-              <span style="font-size:12px;color:#64748b">101.8h · <strong>37%</strong></span>
+              <span style="font-size:12px;color:#64748b">102.9h · <strong>37%</strong></span>
             </div>
             <div style="background:#e2e8f0;border-radius:4px;height:7px"><div style="background:#16a34a;width:37%;height:100%;border-radius:4px"></div></div>
             <div style="font-size:10px;color:#94a3b8;margin-top:2px">&lt; 130 RE/h (&lt; 19 depuis fin juin*) · Endurance fondamentale</div>
@@ -229,7 +337,7 @@
           <div>
             <div style="display:flex;justify-content:space-between;margin-bottom:4px">
               <span style="font-size:12px;font-weight:600;color:#1d4ed8">Z2–Z3 Aérobie</span>
-              <span style="font-size:12px;color:#64748b">127.5h · <strong>46%</strong></span>
+              <span style="font-size:12px;color:#64748b">128.8h · <strong>46%</strong></span>
             </div>
             <div style="background:#e2e8f0;border-radius:4px;height:7px"><div style="background:#2563eb;width:46%;height:100%;border-radius:4px"></div></div>
             <div style="font-size:10px;color:#94a3b8;margin-top:2px">130–200 RE/h (19–29*) · Aérobie modéré</div>
@@ -237,7 +345,7 @@
           <div>
             <div style="display:flex;justify-content:space-between;margin-bottom:4px">
               <span style="font-size:12px;font-weight:600;color:#ea580c">Z4 Seuil</span>
-              <span style="font-size:12px;color:#64748b">35.5h · <strong>13%</strong></span>
+              <span style="font-size:12px;color:#64748b">36.7h · <strong>13%</strong></span>
             </div>
             <div style="background:#e2e8f0;border-radius:4px;height:7px"><div style="background:#f97316;width:13%;height:100%;border-radius:4px"></div></div>
             <div style="font-size:10px;color:#94a3b8;margin-top:2px">200–280 RE/h (29–40*) · Effort seuil / tempo</div>
@@ -256,184 +364,37 @@
     </div>
   </div>
 
-  <!-- Heatmap -->
-  <div class="card">
-    <h2>Heatmap des entraînements — Jour × Créneau horaire (170 séances Run+Trail)</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div class="card">
+      <h2>Cadence hebdomadaire — course à plat (pas/min)</h2>
+      <p class="text-xs text-slate-500 mb-2">Pas par minute, moyenne pondérée par la durée, <strong>course à plat uniquement</strong> (&lt; 15 m D+/km, rando exclue : en montagne on marche en côte, la cadence n'y reflète pas la foulée). Un point par semaine, couleur = zone.</p>
+      <div class="flex gap-2 flex-wrap mb-2 text-xs">
+        <span class="badge" style="background:#ef444422;color:#dc2626">🔴 &lt; 160 basse</span>
+        <span class="badge" style="background:#f59e0b22;color:#b45309">🟠 160–170 moyenne</span>
+        <span class="badge" style="background:#16a34a22;color:#15803d">🟢 170–180 bonne</span>
+        <span class="badge" style="background:#0ea5e922;color:#0369a1">🔵 &gt; 180 très élevée</span>
+      </div>
+      <p class="text-xs text-slate-400 mb-2">Repère indicatif : la cadence idéale dépend de ta taille et de l'allure (elle monte quand tu accélères). Le plus utile est sa <strong>stabilité</strong> : une baisse durable peut signaler de la fatigue.</p>
+      <div id="cad-status" class="flex gap-2 flex-wrap mb-3"></div>
+      <canvas id="chart-cadence" height="160"></canvas>
+    </div>
+    <div class="card">
+      <h2>Répartition des activités — 211 activités</h2>
+      <p class="text-xs text-slate-400 mb-3">Chaque barre = 100 % d'une métrique. Le trail pèse moins en nombre de séances (32 %) qu'en temps de mouvement (50 %).</p>
+      <canvas id="chart-sports" height="160"></canvas>
+    </div>
+  </div>
+
+  <details class="card">
+    <summary class="cursor-pointer text-sm font-semibold text-slate-600">Voir plus : heatmap des créneaux d'entraînement</summary>
+    <div class="mt-3">
+      <div>
+    <h2>Heatmap des entraînements — Jour × Créneau horaire (173 séances Run+Trail)</h2>
     <p class="text-xs text-slate-400 mb-4">Patterns clés : <strong>Lundi = repos systématique</strong> · Dimanche matin = séance longue principale (29×) · Mercredi soir + Vendredi midi = séances tempo hebdo.</p>
     <div id="heatmap-container"></div>
   </div>
-
-  <!-- BEST EFFORTS PROGRESSION -->
-  <div class="card">
-    <h2>Progression des Best Efforts — Vitesse pure (400 m &amp; 1 km)</h2>
-    <p class="text-xs text-slate-400 mb-3">Ces temps sont mesurés par Strava sur le meilleur segment continu dans chaque activité — valables même sur les sorties longues ou les entraînements fractionné. La progression est linéaire et significative : <strong>-25 % sur 5 mois</strong>.</p>
-    <canvas id="chart-be-speed" height="90"></canvas>
-    <div class="flex gap-3 mt-3 flex-wrap text-xs text-slate-500">
-      <span>● Jan 17 : Run 30km endurance</span>
-      <span>● Fév 08 : Trail 30km endurance</span>
-      <span>● Avr 07 : Trail fractionné (Gravelle)</span>
-      <span>● Mai 10 : Trail des Lavoirs 22km</span>
-      <span>● Mai 31 : Foulée Verte Clamart 17km</span>
-      <span class="font-semibold text-orange-600">● Jun 14 : Race 10km (effort max)</span>
     </div>
-  </div>
-
-  <div class="card">
-    <h2>Progression des Best Efforts — 5 km &amp; 10 km</h2>
-    <p class="text-xs text-slate-400 mb-1">Les temps de jan à mai sont réalisés <em>en cours de séances longues</em> (effort distribué, non maximal). Seul le 14 juin est un effort race. La barre en orange marque le passage à l'effort maximal.</p>
-    <div class="flex gap-2 mb-3 flex-wrap">
-      <span class="badge badge-blue">Effort distribué (sortie longue)</span>
-      <span class="badge badge-orange">Effort max (course)</span>
-    </div>
-    <canvas id="chart-be-endurance" height="100"></canvas>
-  </div>
-
-  <!-- W/KG & EFFICACITE -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-    <div class="card">
-      <h2>Puissance/Poids (W/kg) — Séances clés</h2>
-      <p class="text-xs text-slate-400 mb-3">Calculé sur la puissance moyenne de running (capteur). Poids : 86 kg. La course 10km est l'effort maximal — toutes les autres séances sont en endurance ou trail technique.</p>
-      <canvas id="chart-wkg" height="180"></canvas>
-    </div>
-    <div class="card">
-      <h2>Efficacité running — Vitesse / FC moy (proxy forme aérobie)</h2>
-      <p class="text-xs text-slate-400 mb-3">Ratio m/s ÷ bpm × 1000. Plus il est élevé, plus tu vas vite à FC égale. Indicateur de progression de la forme aérobie entre séances comparables.</p>
-      <canvas id="chart-efficiency" height="180"></canvas>
-      <p class="text-xs text-slate-400 mt-2">⚠️ Comparaison limitée : les séances trail incluent du dénivelé qui baisse la vitesse à FC identique. Confiance : Moyen.</p>
-    </div>
-  </div>
-
-  <!-- TABLE RECAPITULATIVE BEST EFFORTS -->
-  <div class="card overflow-x-auto">
-    <h2>Tableau comparatif Best Efforts</h2>
-    <table class="w-full text-xs">
-      <thead>
-        <tr class="bg-slate-50 text-left">
-          <th class="p-2 font-semibold text-slate-600">Date</th>
-          <th class="p-2 font-semibold text-slate-600">Activité</th>
-          <th class="p-2 font-semibold text-slate-600">400 m</th>
-          <th class="p-2 font-semibold text-slate-600">1 km</th>
-          <th class="p-2 font-semibold text-slate-600">5 km</th>
-          <th class="p-2 font-semibold text-slate-600">10 km</th>
-          <th class="p-2 font-semibold text-slate-600">FC moy</th>
-          <th class="p-2 font-semibold text-slate-600">W moy</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="border-t border-slate-100">
-          <td class="p-2 text-slate-500">17 jan</td>
-          <td class="p-2 text-slate-700">Boucle Marne 30km (Run)</td>
-          <td class="p-2">2:25</td><td class="p-2">6:07</td><td class="p-2 text-slate-400">31:17 †</td><td class="p-2 text-slate-400">63:11 †</td>
-          <td class="p-2">147</td><td class="p-2">313</td>
-        </tr>
-
-        <tr class="border-t border-slate-100 bg-slate-50/50">
-          <td class="p-2 text-slate-500">08 fév</td>
-          <td class="p-2 text-slate-700">Vincennes 30km (Trail)</td>
-          <td class="p-2">2:15</td><td class="p-2">5:45</td><td class="p-2 text-slate-400">30:28 †</td><td class="p-2 text-slate-400">63:07 †</td>
-          <td class="p-2">148</td><td class="p-2">293</td>
-        </tr>
-        <tr class="border-t border-slate-100">
-          <td class="p-2 text-slate-500">07 avr</td>
-          <td class="p-2 text-slate-700">Fractionné Trail Gravelle</td>
-          <td class="p-2">1:54</td><td class="p-2">4:56</td><td class="p-2 text-slate-400">38:08 †</td><td class="p-2 text-slate-400">—</td>
-          <td class="p-2">156</td><td class="p-2">303</td>
-        </tr>
-        <tr class="border-t border-slate-100 bg-slate-50/50">
-          <td class="p-2 text-slate-500">10 mai</td>
-          <td class="p-2 text-slate-700">Trail des Lavoirs 23km</td>
-          <td class="p-2">1:58</td><td class="p-2">5:10</td><td class="p-2 text-slate-400">31:12 †</td><td class="p-2 text-slate-400">63:26 †</td>
-          <td class="p-2">154</td><td class="p-2">306</td>
-        </tr>
-        <tr class="border-t border-slate-100">
-          <td class="p-2 text-slate-500">31 mai</td>
-          <td class="p-2 text-slate-700">Foulée Verte Clamart 17km</td>
-          <td class="p-2">1:53</td><td class="p-2">4:51</td><td class="p-2 text-slate-400">30:49 †</td><td class="p-2 text-slate-400">62:38 †</td>
-          <td class="p-2">163</td><td class="p-2">318</td>
-        </tr>
-        <tr class="border-t border-slate-100 bg-orange-50 font-semibold">
-          <td class="p-2 text-orange-700">14 juin</td>
-          <td class="p-2 text-orange-700">Race 10km ★ EFFORT MAX</td>
-          <td class="p-2 text-orange-700">1:48</td><td class="p-2 text-orange-700">4:34</td><td class="p-2 text-orange-700">23:32</td><td class="p-2 text-orange-700">47:49</td>
-          <td class="p-2 text-orange-700">166</td><td class="p-2 text-orange-700">402</td>
-        </tr>
-        <tr class="border-t border-slate-100 bg-green-50 text-green-700 text-xs">
-          <td class="p-2 font-semibold" colspan="2">Progression totale (jan → juin)</td>
-          <td class="p-2 font-semibold">−37 s (−25%)</td>
-          <td class="p-2 font-semibold">−1:33 (−25%)</td>
-          <td class="p-2" colspan="2">Non comparable (contextes différents)</td>
-          <td class="p-2">+19 bpm</td><td class="p-2">+89 W</td>
-        </tr>
-      </tbody>
-    </table>
-    <p class="text-xs text-slate-400 mt-2">† Effort distribué en cours de sortie longue — non comparable au 14 juin (effort maximal dédié).</p>
-  </div>
-
-  <!-- RECOMMANDATIONS -->
-  <div class="card">
-    <h2>3 Recommandations priorisées</h2>
-    <div class="space-y-3">
-      <div class="p-4 rounded-lg bg-green-50 border border-green-200">
-        <div class="flex items-start gap-3">
-          <span class="badge badge-green mt-0.5">✅</span>
-          <div>
-            <p class="font-semibold text-slate-800 text-sm">Zones FC recalibrées — manuelles Strava actives (FCmax = 188 bpm)</p>
-            <p class="text-xs text-slate-600 mt-1">Z1 ≤ 136 · Z2 137–149 · Z3 150–161 · Z4 162–175 · Z5 ≥ 176 bpm. Source : Manual (Strava). La classification est désormais fiable pour planifier l'intensité.</p>
-          </div>
-        </div>
-      </div>
-      <div class="p-4 rounded-lg bg-green-50 border border-green-200">
-        <div class="flex items-start gap-3">
-          <span class="badge badge-green mt-0.5">✅</span>
-          <div>
-            <p class="font-semibold text-slate-800 text-sm">Échappée Belle 42km bouclée (22 août, finisher ✅), Trail de Vimy validé (12 sept), Paris-Versailles en 1h28 (27 sept) — bloc marathon Nice-Cannes lancé</p>
-            <p class="text-xs text-slate-600 mt-1">9h27 sur 43 km / D+ 2831 m, FC moy 141 bpm, 9 PRs de segments à l'Échappée Belle. Reprise plus rapide que prévu (fractionné dès J+6), et le travail spécifique s'affine semaine après semaine : sortie longue avec segment allure marathon le 30/08, séance dégressive complète le 04/09 (3km allure marathon / 2km allure semi / 1km allure 10km), Trail Canadian de Vimy le 12/09 (20.2 km, D+252 m, objectif sub-2h validé), fractionné long le 18/09 et sortie longue le 20/09 (17 km dont 40' AS42), puis semaine du 21/09 la plus spécifique du bloc : 2x3000m AS42 le 25/09 et Paris-Versailles le 27/09 (16.2 km / D+235 m en 1h28, 5:28/km, 53 PRs de segments, équivalent marathon ~3h50 selon Enduraw) — 24.9 km courus à allure marathon ou plus vite. Récupération courte (repos le 28/09, footing 12.5 km dès le 29/09) puis semaine du 28/09 la plus volumineuse du bloc (67.4 km) : 3x1000m AS42 le 01/10, 3x3000m AS42 le 02/10 et sortie longue de 23.4 km le 04/10 (2x20' AS42, 13 PRs de segments) — 19.3 km à allure marathon. ACWR remonté à 0.81 (zone optimale) et ACWR D+ 0.29, aucune gêne rapportée. <strong>Priorité : allonger la sortie longue à 28–32 km (avec 45–60' AS42) sur les 2 prochains week-ends, puis affûtage à partir du 26/10 pour Nice-Cannes (8 novembre, J-35).</strong></p>
-          </div>
-        </div>
-      </div>
-      <div class="p-4 rounded-lg bg-orange-50 border border-orange-200">
-        <div class="flex items-start gap-3">
-          <span class="badge badge-orange mt-0.5">P2</span>
-          <div>
-            <p class="font-semibold text-slate-800 text-sm">Structurer un cycle 3:1 explicite (pas subi)</p>
-            <p class="text-xs text-slate-600 mt-1">Aucune semaine de récupération planifiée identifiée sur 37 semaines : les creux sont tous imposés par les courses ou l'agenda — le camp Chartreuse fin juillet en est un nouvel exemple (12 sorties enchaînées, D+ 11 079 m, sans jour de repos formel). ACWR a dépassé 1.5 à deux reprises sans blessure — la marge se réduit avec l'âge et le volume. <strong>Action : bloquer une semaine à ~33 km toutes les 4 semaines indépendamment du ressenti.</strong></p>
-          </div>
-        </div>
-      </div>
-      <div class="p-4 rounded-lg bg-blue-50 border border-blue-200">
-        <div class="flex items-start gap-3">
-          <span class="badge badge-blue mt-0.5">P3</span>
-          <div>
-            <p class="font-semibold text-slate-800 text-sm">Combler le gap 10km → marathon (+18 min vs potentiel)</p>
-            <p class="text-xs text-slate-600 mt-1">10km en 47:49 → marathon théorique Riegel ≈ 3:43. Marathon PR Strava = 4:01 = écart de 18 min. Profil orienté trail/ultra = moins d'allure spécifique longue distance route. Travail engagé : segment allure marathon le 30/08, puis séance dégressive marathon/semi/10km le 04/09, 24.9 km à allure marathon ou plus vite la semaine du 21/09 et Paris-Versailles à 5:28/km malgré D+235 m (équivalent marathon ~3h50 selon Enduraw), puis 3x3000m AS42 le 02/10 et 2x20' AS42 en fin de sortie longue de 23.4 km le 04/10 — l'écart se comble, le sub-4h est crédible. <strong>Poursuivre 1 sortie longue/sem avec segment à allure cible 5:15–5:30/km et vérifier le PR à l'approche de Nice-Cannes.</strong></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- RESUME -->
-  <div class="card bg-slate-800 text-white" style="background:#1e293b;">
-    <h2 style="color:#94a3b8">Résumé exécutif</h2>
-    <div class="space-y-3 mt-1">
-      <div>
-        <span class="text-xs font-bold uppercase tracking-wide text-orange-400">🏁 Compétitions (8)</span>
-        <p class="text-sm text-slate-300 leading-relaxed mt-1">Maxicross 25km trail (1er fév, 3h25) · ETP 120km ultra-trail (21 mars, 21h21, pic 132 km/sem, ACWR 1.41) · Trail des Lavoirs 23km (10 mai, 2h32) · Foulée Verte Clamart 17.5km (31 mai, 1h50, FC max 188 bpm) · 10km en 47:49 (14 juin, 2e all-time, split négatif parfait, 4.68 W/kg) · Échappée Belle 43km / D+2831m (22 août, 9h27, finisher ✅, 9 PRs) · <strong class="text-white">Trail Canadian de Vimy 20.2km / D+252m (12 sept, 1h56, objectif sub-2h validé ✅)</strong> · <strong class="text-white">Paris-Versailles 16.2km / D+235m (27 sept, 1h28, 5:28/km, 53 PRs)</strong>.</p>
-      </div>
-      <div class="pt-3 border-t border-slate-700">
-        <span class="text-xs font-bold uppercase tracking-wide text-orange-400">📊 Volume saison</span>
-        <p class="text-sm text-slate-300 leading-relaxed mt-1">170 séances run+trail (rando incluses) · 2 234 km · D+ 32 386 m sur 40 semaines. Zones FC recalibrées manuellement (Z1 ≤ 136, Z5 ≥ 176 bpm). Camp montagne Chartreuse fin juillet-début août (D+ 11 079 m/12j) puis Échappée Belle 42km (22 août, D+ 2 831 m) ont porté l'essentiel du D+ cumulé sur la saison ; depuis, volume hebdo en hausse régulière (42 → 57 → 67 km/sem) porté par le travail d'allure spécifique marathon, le Trail de Vimy (D+252 m) le 12 septembre et Paris-Versailles le 27 septembre.</p>
-      </div>
-      <div class="pt-3 border-t border-slate-700">
-        <span class="text-xs font-bold uppercase tracking-wide text-orange-400">🔥 Forme actuelle — Bloc marathon Nice-Cannes lancé</span>
-        <p class="text-sm text-slate-300 leading-relaxed mt-1">Échappée Belle courue le 22 août : 43 km / D+ 2831 m en 9h27, FC moy 141 bpm, finisher ✅ avec 9 PRs de segments. Reprise rapide (fractionné dès J+6) suivie d'une montée en spécificité : segment allure marathon le 30/08, séance dégressive complète marathon/semi/10km le 04/09, footings et fractionnés réguliers, Trail Canadian de Vimy le 12/09 (20.2 km, D+252 m, objectif sub-2h validé ✅), fractionné long le 18/09 et sortie longue le 20/09 (17 km dont 40' à allure marathon), puis semaine du 21/09 à 56.9 km : 2x3000m AS42 le 25/09 et Paris-Versailles le 27/09 (16.2 km / D+235 m en 1h28, 5:28/km, équivalent marathon ~3h50 selon Enduraw) — 24.9 km à allure marathon ou plus vite, record du bloc. Semaine du 28/09 : footing 12.5 km dès J+2, 3x1000m AS42 le 01/10, 3x3000m AS42 le 02/10 et sortie longue de 23.4 km le 04/10 (2x20' AS42) — 67.4 km et 19.3 km à allure marathon, plus grosse semaine du bloc. ACWR 0.81 (zone optimale) et ACWR D+ 0.29, aucune gêne rapportée : l'objectif sub-4h à Nice-Cannes reste crédible.</p>
-      </div>
-      <div class="pt-3 border-t border-slate-700">
-        <span class="text-xs font-bold uppercase tracking-wide text-orange-400">🎯 Prochain objectif</span>
-        <p class="text-sm text-slate-300 leading-relaxed mt-1"><strong class="text-orange-400">Marathon Nice-Cannes · 8 novembre · J-35</strong></p>
-      </div>
-    </div>
-  </div>
+  </details>
 
   <p class="text-xs text-slate-400 text-center pb-4">Données : MCP Strava · Analyse : Claude Code · Confiance : Élevé sur données race, Moyen sur volumes et zones FC (zones manuelles actives, distribution estimée sans streams complets)</p>
 
@@ -442,407 +403,94 @@
 <!-- ══════════ ONGLET COMPÉTITIONS ══════════ -->
 <div id="pane-courses" class="max-w-5xl mx-auto space-y-5" style="display:none">
 
-  <!-- LÉGENDE TYPE -->
-  <div class="flex gap-3 flex-wrap no-print">
-    <span class="badge badge-route text-xs px-3 py-1">⬛ Course sur route</span>
-    <span class="badge badge-trail text-xs px-3 py-1">⬛ Trail / Ultra-trail</span>
-  </div>
+  <!-- KPI COMPÉT (remplis par le JS) -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="comp-kpi"></div>
 
-  <!-- KPI COMPÉT -->
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-    <div class="metric-box" style="border-left:4px solid #64748b">
-      <div class="metric-lbl">Compétitions 2026</div>
-      <div class="metric-val">8</div>
-      <div class="flex gap-1 mt-1 flex-wrap"><span class="badge badge-route" style="font-size:10px">2 route</span><span class="badge badge-trail" style="font-size:10px">6 trail</span></div>
-    </div>
-    <div class="metric-box card-route">
-      <div class="metric-lbl">10km route (14 juin)</div>
-      <div class="metric-val" style="color:#FC4C02">47:49</div>
-      <div class="text-xs text-slate-400">2e all-time · 4.68 W/kg · FC max 188</div>
-    </div>
-    <div class="metric-box card-trail">
-      <div class="metric-lbl">Meilleure perf trail</div>
-      <div class="metric-val" style="color:#16a34a">4.25 W/kg</div>
-      <div class="text-xs text-slate-400">Trail Vimy · FC max 179</div>
-    </div>
-    <div class="metric-box card-trail">
-      <div class="metric-lbl">Ultra-trail (21 mars)</div>
-      <div class="metric-val" style="color:#16a34a">120.9 km</div>
-      <div class="text-xs text-slate-400">21h21 · 10 469 kcal · ETP 120</div>
-    </div>
-  </div>
-
-  <!-- TIMELINE COMPÉT -->
+  <!-- TABLEAU COMPARATIF -->
   <div class="card">
-    <h2>Calendrier des compétitions — 2026</h2>
-    <div class="relative mt-2">
-      <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-slate-200"></div>
-      <div class="space-y-5 pl-10">
+    <h2>Toutes les compétitions 2026</h2>
+    <p class="text-xs text-slate-500 mb-2">Une ligne par course, généré à partir des données Strava (une nouvelle course ajoutée à <code>RACES</code> apparaît automatiquement). <strong>Intensité</strong> = FC moyenne en % de ta FC max (188 bpm) : c'est ce qui permet de comparer un 10 km et un trail de 3 h.</p>
+    <div class="flex gap-2 flex-wrap mb-3 text-xs">
+      <span class="badge badge-route">Route</span>
+      <span class="badge badge-trail">Trail / Ultra</span>
+      <span class="badge" style="background:#dc262622;color:#b91c1c">≥ 88 % : effort max (≤ 2 h)</span>
+      <span class="badge" style="background:#f59e0b22;color:#b45309">80–88 % : seuil / semi</span>
+      <span class="badge" style="background:#16a34a22;color:#15803d">&lt; 80 % : endurance (marathon, ultra)</span>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-xs" id="comp-table"></table>
+    </div>
+    <p class="text-xs text-slate-400 mt-2">Allure = temps officiel ÷ distance. Sur trail, l'allure dépend surtout du D+/km : compare plutôt l'intensité et la puissance. ETP 120 et Échappée Belle : pas de FC/puissance récupérées (ultras en montagne).</p>
+  </div>
 
-        <!-- TRAIL 1 : Maxicross -->
-        <div class="relative">
-          <div class="absolute -left-6 w-4 h-4 rounded-full border-2 border-white shadow" style="background:#16a34a"></div>
-          <div class="card card-trail p-3">
-            <div class="flex items-center gap-2 flex-wrap mb-1">
-              <span class="badge badge-trail">TRAIL</span>
-              <span class="text-xs text-slate-400">1er février 2026</span>
-            </div>
-            <div class="font-bold text-slate-800 text-sm">Maxicross 25 km — Montlignon (95)</div>
-            <div class="text-xs text-slate-500 mt-1">3h25m · FC moy 149.5 bpm · FC max 165 bpm · 242.6 W (2.82 W/kg) · 2 367 kcal · D+ 760 m</div>
-            <div class="flex gap-2 mt-2 flex-wrap">
-              <span class="badge badge-trail">24.9 km · 3h25</span>
-              <span class="badge badge-blue">2.82 W/kg</span>
-              <span class="badge badge-green">Finisher ✅</span>
-            </div>
-          </div>
-        </div>
+  <!-- PUISSANCE / DURÉE -->
+  <div class="card">
+    <h2>Puissance tenue selon la durée de course — et projection marathon</h2>
+    <p class="text-xs text-slate-500 mb-2"><strong>Plus long = moins de watts</strong> : c'est normal, la question est de combien. La courbe est ajustée sur tes courses <strong>roulantes</strong> (&lt; 15 m D+/km : 10 km, Vimy, Paris-Versailles) et prolongée jusqu'à la durée d'un marathon : l'étoile donne la puissance que tu devrais pouvoir tenir à Nice-Cannes (parcours plat, donc watts ≈ allure).</p>
+    <div id="pw-status" class="flex gap-2 flex-wrap mb-3"></div>
+    <canvas id="chart-comp-power" height="130"></canvas>
+    <p class="text-xs text-slate-400 mt-2">Indicatif : extrapolation de 3 courses ≤ 2 h vers ~4 h. Utilise-la en sortie longue : si les 45–60' à allure marathon se font sous cette puissance avec une FC qui ne dérive pas, l'allure est tenable. Puissance = estimation de la montre (Strava avg_watts) ÷ 86 kg.</p>
+  </div>
 
-        <!-- TRAIL 2 : ETP -->
-        <div class="relative">
-          <div class="absolute -left-6 w-4 h-4 rounded-full border-2 border-white shadow" style="background:#16a34a"></div>
-          <div class="card card-trail p-3">
-            <div class="flex items-center gap-2 flex-wrap mb-1">
-              <span class="badge badge-trail">ULTRA-TRAIL</span>
-              <span class="text-xs text-slate-400">21 mars 2026</span>
-            </div>
-            <div class="font-bold text-slate-800 text-sm">ETP 120 — EcoTrail de Paris (120.9 km)</div>
-            <div class="text-xs text-slate-500 mt-1">21h21m · 10 469 kcal · ACWR 1.41 la semaine précédente (charge planifiée) · Objectif A de la saison</div>
-            <div class="flex gap-2 mt-2 flex-wrap">
-              <span class="badge badge-trail">120.9 km · 21h21</span>
-              <span class="badge" style="background:#f0fdf4;color:#166534;border:1px solid #bbf7d0">D+ ~10 000 m</span>
-              <span class="badge badge-green">Finisher ✅</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- TRAIL 3 : Lavoirs -->
-        <div class="relative">
-          <div class="absolute -left-6 w-4 h-4 rounded-full border-2 border-white shadow" style="background:#16a34a"></div>
-          <div class="card card-trail p-3">
-            <div class="flex items-center gap-2 flex-wrap mb-1">
-              <span class="badge badge-trail">TRAIL</span>
-              <span class="text-xs text-slate-400">10 mai 2026</span>
-            </div>
-            <div class="font-bold text-slate-800 text-sm">Trail des Lavoirs — 23 km (Saint-Forget)</div>
-            <div class="text-xs text-slate-500 mt-1">2h32m · FC moy 154.2 bpm · FC max 169 bpm · 306.3 W (3.56 W/kg) · 1 970 kcal · D+ 526 m</div>
-            <div class="flex gap-2 mt-2 flex-wrap">
-              <span class="badge badge-trail">22.9 km · 2h32</span>
-              <span class="badge badge-blue">3.56 W/kg</span>
-              <span class="badge badge-green">21 PRs ✅</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- TRAIL 4 : Foulée Verte Clamart -->
-        <div class="relative">
-          <div class="absolute -left-6 w-4 h-4 rounded-full border-2 border-white shadow" style="background:#16a34a"></div>
-          <div class="card card-trail p-3">
-            <div class="flex items-center gap-2 flex-wrap mb-1">
-              <span class="badge badge-trail">TRAIL</span>
-              <span class="text-xs text-slate-400">31 mai 2026</span>
-            </div>
-            <div class="font-bold text-slate-800 text-sm">Foulée Verte de Clamart — 17.5 km (CCR92)</div>
-            <div class="text-xs text-slate-500 mt-1">1h50m · FC moy 163.0 bpm · FC max 188 bpm · 318.5 W (3.70 W/kg) · 1 575 kcal · D+ 414 m</div>
-            <div class="flex gap-2 mt-2 flex-wrap">
-              <span class="badge badge-trail">17.5 km · 1h50</span>
-              <span class="badge badge-blue">3.70 W/kg</span>
-              <span class="badge badge-red">FC max 188 bpm 🔥</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- ROUTE -->
-        <div class="relative">
-          <div class="absolute -left-6 w-4 h-4 rounded-full border-2 border-white shadow" style="background:#FC4C02"></div>
-          <div class="card card-route p-3">
-            <div class="flex items-center gap-2 flex-wrap mb-1">
-              <span class="badge badge-route">ROUTE</span>
-              <span class="text-xs text-slate-400">14 juin 2026</span>
-            </div>
-            <div class="font-bold text-slate-800 text-sm">Foulées du 12ème — 10 km (Paris)</div>
-            <div class="text-xs text-slate-500 mt-1">47:49 · 2e meilleur temps all-time · Split négatif (24:26 / 23:30) · FC max 188 bpm · 402 W moy.</div>
-            <div class="flex gap-2 mt-2 flex-wrap">
-              <span class="badge badge-route">10.06 km · 47:49</span>
-              <span class="badge badge-green">Split négatif ✅</span>
-              <span class="badge badge-blue">4.68 W/kg</span>
-              <span class="badge badge-red">FC max 188 bpm</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- ULTRA-TRAIL 5 : Échappée Belle -->
-        <div class="relative">
-          <div class="absolute -left-6 w-4 h-4 rounded-full border-2 border-white shadow" style="background:#16a34a"></div>
-          <div class="card card-trail p-3">
-            <div class="flex items-center gap-2 flex-wrap mb-1">
-              <span class="badge badge-trail">MARATRAIL</span>
-              <span class="text-xs text-slate-400">22 août 2026</span>
-            </div>
-            <div class="font-bold text-slate-800 text-sm">Maratrail de l'Échappée Belle — 43 km (Massif de Belledonne)</div>
-            <div class="text-xs text-slate-500 mt-1">9h27 (8h34 temps de mouvement) · FC moy 141 bpm · FC max 163 bpm · 117 W (1.36 W/kg) · 4 759 kcal · D+ 2 831 m · Objectif A de la prépa post-Chartreuse</div>
-            <div class="flex gap-2 mt-2 flex-wrap">
-              <span class="badge badge-trail">43.0 km · 9h27</span>
-              <span class="badge badge-blue">1.36 W/kg</span>
-              <span class="badge badge-green">Finisher ✅ 9 PRs</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- TRAIL 6 : Vimy -->
-        <div class="relative">
-          <div class="absolute -left-6 w-4 h-4 rounded-full border-2 border-white shadow" style="background:#16a34a"></div>
-          <div class="card card-trail p-3">
-            <div class="flex items-center gap-2 flex-wrap mb-1">
-              <span class="badge badge-trail">TRAIL</span>
-              <span class="text-xs text-slate-400">12 septembre 2026</span>
-            </div>
-            <div class="font-bold text-slate-800 text-sm">Trail Canadian de Vimy — 20.2 km (Vimy)</div>
-            <div class="text-xs text-slate-500 mt-1">1h56m · FC moy 168 bpm · FC max 179 bpm · 365 W (4.25 W/kg) · 1 780 kcal · D+ 252 m · Objectif sub-2h validé</div>
-            <div class="flex gap-2 mt-2 flex-wrap">
-              <span class="badge badge-trail">20.2 km · 1h56</span>
-              <span class="badge badge-blue">4.25 W/kg</span>
-              <span class="badge badge-green">Sub-2h ✅ 6 PRs</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- ROUTE 2 : Paris-Versailles -->
-        <div class="relative">
-          <div class="absolute -left-6 w-4 h-4 rounded-full border-2 border-white shadow" style="background:#FC4C02"></div>
-          <div class="card card-route p-3">
-            <div class="flex items-center gap-2 flex-wrap mb-1">
-              <span class="badge badge-route">ROUTE</span>
-              <span class="text-xs text-slate-400">27 septembre 2026</span>
-            </div>
-            <div class="font-bold text-slate-800 text-sm">Paris-Versailles — 16.2 km (Paris → Versailles)</div>
-            <div class="text-xs text-slate-500 mt-1">1h28m (5:28/km) · FC moy 166 bpm · FC max 182 bpm · 388 W (4.52 W/kg) · 1 377 kcal · D+ 235 m · Côte des Gardes (km 7–8) à 177 bpm · Équivalent marathon ~3h50 (Enduraw)</div>
-            <div class="flex gap-2 mt-2 flex-wrap">
-              <span class="badge badge-route">16.2 km · 1h28</span>
-              <span class="badge badge-blue">4.52 W/kg</span>
-              <span class="badge badge-green">Finisher ✅ 53 PRs</span>
-            </div>
-          </div>
-        </div>
-
+  <!-- 10 KM : GESTION DE COURSE -->
+  <div class="card card-route">
+    <div class="flex items-center gap-2 mb-2"><span class="badge badge-route">ROUTE</span><h2 class="mb-0">Gestion de course — Foulées du 12ème (10 km, 47:49)</h2></div>
+    <p class="text-xs text-slate-500 mb-2">Ta meilleure course de la saison, et le modèle à reproduire : <strong>départ prudent, accélération en 2e moitié</strong>.</p>
+    <div class="flex gap-2 flex-wrap mb-3">
+      <span class="badge" style="background:#16a34a22;color:#15803d;border:1px solid #16a34a">✅ Split négatif : 24:26 puis 23:30 (−56 s)</span>
+      <span class="badge" style="background:#16a34a22;color:#15803d;border:1px solid #16a34a">✅ Puissance régulière (±2.8 %)</span>
+      <span class="badge" style="background:#64748b22;color:#475569;border:1px solid #64748b">FC 140 → 181 bpm : normal sur 10 km</span>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <p class="text-xs font-semibold text-slate-600 mb-1">Allure par km — plus haut = plus rapide, vert = plus vite que la moyenne</p>
+        <canvas id="chart-comp-splits" height="170"></canvas>
+      </div>
+      <div>
+        <p class="text-xs font-semibold text-slate-600 mb-1">FC et puissance par km</p>
+        <canvas id="chart-comp-fcwatts" height="170"></canvas>
       </div>
     </div>
+    <p class="text-xs text-slate-400 mt-2"><strong>Pour Nice-Cannes</strong> : sur 42 km la FC ne peut pas monter comme sur un 10 km. Pars 5–10 s/km plus lent que l'allure cible sur les 5 premiers km, puis cale-toi sur l'allure (ou la puissance ci-dessus) : une FC qui grimpe de plus de ~10 bpm à allure constante avant le km 30 signale un départ trop rapide.</p>
   </div>
 
-  <!-- SPLITS 10km -->
-  <div class="card card-route">
-    <div class="flex items-center gap-2 mb-2"><span class="badge badge-route">ROUTE</span><h2 class="mb-0">Splits au kilomètre — Foulées du 12ème (10 km, 14 juin)</h2></div>
-    <p class="text-xs text-slate-400 mb-3">Barres orange foncé = deuxième moitié (km 6–10). Split négatif : 1re moitié 24:26 · 2e moitié 23:30 (−56 sec).</p>
-    <canvas id="chart-comp-splits" height="110"></canvas>
-  </div>
-
-  <!-- FC + WATTS 10km -->
-  <div class="card card-route">
-    <div class="flex items-center gap-2 mb-2"><span class="badge badge-route">ROUTE</span><h2 class="mb-0">FC & Puissance par km — Foulées du 12ème</h2></div>
-    <p class="text-xs text-slate-400 mb-3">Dérive FC : +41.1 bpm sur 48 min (+0.85 bpm/min). Puissance très stable (±2.8%). FC max 188 bpm atteinte km 10.</p>
-    <canvas id="chart-comp-fcwatts" height="110"></canvas>
-  </div>
-
-  <!-- RADAR COMPÉT -->
-  <div class="card">
-    <h2>Profil de performance — 6 compétitions (radar normalisé 0–100)</h2>
-    <p class="text-xs text-slate-400 mb-3">Axes centrés sur la performance athlétique, pas sur la taille de l'épreuve. ETP 120km et Échappée Belle 43km exclus (échelle D+/km et km écraserait les autres). Normalisé par le max observé parmi les 6 épreuves.</p>
-    <div class="grid grid-cols-5 text-center text-xs text-slate-400 mb-1 px-4">
-      <span>Effort FC<br><span class="text-slate-600 font-medium">% FCmax</span></span>
-      <span>Puissance<br><span class="text-slate-600 font-medium">W/kg</span></span>
-      <span>Vitesse<br><span class="text-slate-600 font-medium">km/h</span></span>
-      <span>Terrain<br><span class="text-slate-600 font-medium">D+/km</span></span>
-      <span>Distance<br><span class="text-slate-600 font-medium">km</span></span>
-    </div>
-    <div class="max-w-sm mx-auto">
-      <canvas id="chart-comp-radar" height="220"></canvas>
-    </div>
-    <div class="mt-3 grid grid-cols-1 gap-1 text-xs text-slate-500 px-2">
-      <div class="flex gap-2 flex-wrap">
-        <span>Références max :</span>
-        <span class="font-medium text-slate-600">Effort FC → 89.5% (Vimy)</span>
-        <span class="font-medium text-slate-600">W/kg → 4.68 (10km)</span>
-        <span class="font-medium text-slate-600">Vitesse → 12.7 km/h (10km)</span>
-        <span class="font-medium text-slate-600">Terrain → 30.5 m D+/km (Maxicross)</span>
-        <span class="font-medium text-slate-600">Distance → 24.9 km (Maxicross)</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- TABLE RECORDS PERSONNELS -->
-  <div class="card">
-    <h2>Records personnels — État au 27 septembre 2026</h2>
-    <table class="w-full text-xs mt-2">
-      <thead>
-        <tr class="bg-slate-50">
-          <th class="p-2 text-left text-slate-600">Distance</th>
-          <th class="p-2 text-left text-slate-600">Type</th>
-          <th class="p-2 text-left text-slate-600">Record</th>
-          <th class="p-2 text-left text-slate-600">Allure</th>
-          <th class="p-2 text-left text-slate-600">Contexte</th>
-          <th class="p-2 text-left text-slate-600">Statut</th>
-        </tr>
-      </thead>
-      <tbody class="divide-y divide-slate-100">
-        <tr>
-          <td class="p-2 font-semibold">400 m</td>
-          <td class="p-2"><span class="badge badge-route">Route</span></td>
-          <td class="p-2 font-bold" style="color:#c2410c">1:48</td>
-          <td class="p-2">4:30/km</td>
-          <td class="p-2 text-slate-500">14 juin 2026</td>
-          <td class="p-2"><span class="badge badge-green">Best 2026 ✅</span></td>
-        </tr>
-        <tr class="bg-slate-50">
-          <td class="p-2 font-semibold">1 km</td>
-          <td class="p-2"><span class="badge badge-route">Route</span></td>
-          <td class="p-2 font-bold" style="color:#c2410c">4:34</td>
-          <td class="p-2">4:34/km</td>
-          <td class="p-2 text-slate-500">14 juin 2026</td>
-          <td class="p-2"><span class="badge badge-green">Best 2026 ✅</span></td>
-        </tr>
-        <tr>
-          <td class="p-2 font-semibold">5 km</td>
-          <td class="p-2"><span class="badge badge-route">Route</span></td>
-          <td class="p-2 font-bold" style="color:#c2410c">23:32</td>
-          <td class="p-2">4:42/km</td>
-          <td class="p-2 text-slate-500">14 juin 2026</td>
-          <td class="p-2"><span class="badge badge-green">Best 2026 ✅</span></td>
-        </tr>
-        <tr class="bg-slate-50">
-          <td class="p-2 font-semibold">10 km</td>
-          <td class="p-2"><span class="badge badge-route">Route</span></td>
-          <td class="p-2 font-bold" style="color:#c2410c">47:49</td>
-          <td class="p-2">4:46/km</td>
-          <td class="p-2 text-slate-500">Foulées du 12ème, 14 juin</td>
-          <td class="p-2"><span class="badge badge-orange">2e all-time 🥈</span></td>
-        </tr>
-        <tr>
-          <td class="p-2 font-semibold">15 km</td>
-          <td class="p-2"><span class="badge badge-route">Route</span></td>
-          <td class="p-2 font-bold" style="color:#c2410c">1:22:07</td>
-          <td class="p-2">5:28/km</td>
-          <td class="p-2 text-slate-500">Paris-Versailles, 27 sept (D+235 m)</td>
-          <td class="p-2"><span class="badge badge-green">Best 2026 ✅</span></td>
-        </tr>
-        <tr class="bg-slate-50">
-          <td class="p-2 font-semibold">16 km</td>
-          <td class="p-2"><span class="badge badge-route">Route</span></td>
-          <td class="p-2 font-bold" style="color:#c2410c">1h28</td>
-          <td class="p-2">5:28/km</td>
-          <td class="p-2 text-slate-500">Paris-Versailles, 27 sept (D+235 m)</td>
-          <td class="p-2"><span class="badge badge-green">Best 2026 ✅</span></td>
-        </tr>
-        <tr>
-          <td class="p-2 font-semibold">5 km trail †</td>
-          <td class="p-2"><span class="badge badge-trail">Trail</span></td>
-          <td class="p-2 font-bold" style="color:#15803d">30:49</td>
-          <td class="p-2">6:10/km</td>
-          <td class="p-2 text-slate-500">Foulée Verte, 31 mai</td>
-          <td class="p-2"><span class="badge badge-green">Best 2026 ✅</span></td>
-        </tr>
-        <tr class="bg-slate-50">
-          <td class="p-2 font-semibold">10 km trail †</td>
-          <td class="p-2"><span class="badge badge-trail">Trail</span></td>
-          <td class="p-2 font-bold" style="color:#15803d">1:02:38</td>
-          <td class="p-2">6:16/km</td>
-          <td class="p-2 text-slate-500">Foulée Verte, 31 mai</td>
-          <td class="p-2"><span class="badge badge-green">Best 2026 ✅</span></td>
-        </tr>
-        <tr>
-          <td class="p-2 font-semibold">20 km trail</td>
-          <td class="p-2"><span class="badge badge-trail">Trail</span></td>
-          <td class="p-2 font-bold" style="color:#15803d">1h56</td>
-          <td class="p-2">5:44/km</td>
-          <td class="p-2 text-slate-500">Trail Vimy, 12 sept</td>
-          <td class="p-2"><span class="badge badge-green">Best 2026 ✅</span></td>
-        </tr>
-
-        <tr class="bg-slate-50">
-          <td class="p-2 font-semibold">23 km trail</td>
-          <td class="p-2"><span class="badge badge-trail">Trail</span></td>
-          <td class="p-2 font-bold" style="color:#15803d">2h32</td>
-          <td class="p-2">6:38/km</td>
-          <td class="p-2 text-slate-500">Trail Lavoirs, 10 mai</td>
-          <td class="p-2"><span class="badge badge-green">Best 2026 ✅</span></td>
-        </tr>
-        <tr>
-          <td class="p-2 font-semibold">25 km trail</td>
-          <td class="p-2"><span class="badge badge-trail">Trail</span></td>
-          <td class="p-2 font-bold" style="color:#15803d">3h25</td>
-          <td class="p-2">8:15/km</td>
-          <td class="p-2 text-slate-500">Maxicross, 1er fév</td>
-          <td class="p-2"><span class="badge badge-blue">Finisher ✅</span></td>
-        </tr>
-        <tr class="bg-slate-50">
-          <td class="p-2 font-semibold">Ultra 120 km</td>
-          <td class="p-2"><span class="badge badge-trail">Ultra-trail</span></td>
-          <td class="p-2 font-bold" style="color:#15803d">21h21</td>
-          <td class="p-2">10:35/km</td>
-          <td class="p-2 text-slate-500">ETP 120, 21 mars</td>
-          <td class="p-2"><span class="badge badge-blue">Finisher ✅</span></td>
-        </tr>
-        <tr>
-          <td class="p-2 font-semibold">Maratrail 43 km</td>
-          <td class="p-2"><span class="badge badge-trail">Trail</span></td>
-          <td class="p-2 font-bold" style="color:#15803d">9h27</td>
-          <td class="p-2">13:11/km</td>
-          <td class="p-2 text-slate-500">Échappée Belle, 22 août</td>
-          <td class="p-2"><span class="badge badge-green">Best 2026 ✅</span></td>
-        </tr>
-      </tbody>
-    </table>
-    <p class="text-xs text-slate-400 mt-2">† Best efforts trail mesurés par Strava sur segment continu en course. Route : performance en compétition dédiée. Ultra-trail : performance de finisseur.</p>
-  </div>
-
-  <p class="text-xs text-slate-400 text-center pb-4">Données compétitions · MCP Strava · Analyse : Claude Code</p>
+  <p class="text-xs text-slate-400 text-center pb-4">Données compétitions · MCP Strava · Records 400 m–10 km : voir vue globale, section Progression</p>
 
 </div><!-- /pane-courses -->
 
 <!-- ══════════ ONGLET ENTRAÎNEMENT ══════════ -->
 <div id="pane-entrainement" class="max-w-5xl mx-auto space-y-5" style="display:none">
 
-  <!-- Légende -->
-  <div class="card flex gap-2 flex-wrap items-center">
-    <span class="text-xs font-semibold text-slate-500 uppercase tracking-wide mr-1">Légende :</span>
-    <span style="background:#ffedd5;color:#c2410c" class="badge text-xs">R&nbsp;Run</span>
-    <span style="background:#dcfce7;color:#15803d" class="badge text-xs">T&nbsp;Trail</span>
-    <span style="background:#fef9c3;color:#92400e" class="badge text-xs">M&nbsp;Marche</span>
-    <span style="background:#ecfccb;color:#4d7c0f" class="badge text-xs">H&nbsp;Rando</span>
-    <span style="background:#dbeafe;color:#1d4ed8" class="badge text-xs">V&nbsp;Vélo</span>
-    <span style="background:#f1f5f9;color:#475569" class="badge text-xs">G&nbsp;Muscu</span>
-    <span style="background:#faf5ff;color:#6d28d9" class="badge text-xs">Y&nbsp;Yoga</span>
-    <span style="background:#fce7f3;color:#be185d;font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px" class="badge text-xs">★&nbsp;Course</span>
+  <!-- COMPOSITION DES SÉANCES -->
+  <div class="card">
+    <h2>Composition de l'entraînement — km par type de séance</h2>
+    <p class="text-xs text-slate-500 mb-2">Chaque séance de course est classée d'après son nom et son profil : <strong>footing</strong> (endurance facile), <strong>qualité</strong> (fractionné, côtes, allure spécifique), <strong>sortie longue</strong> (≥ 20 km), <strong>D+ / montagne</strong> (trail ≥ 25 m D+/km), <strong>rando</strong>, <strong>course</strong>. Un bon bloc marathon = une base de footings, 2 séances de qualité et 1 sortie longue par semaine.</p>
+    <div id="mix-status" class="flex gap-2 flex-wrap mb-3"></div>
+    <canvas id="chart-session-mix" height="120"></canvas>
   </div>
 
   <!-- Récapitulatif mensuel -->
   <div class="card">
     <h2>Récapitulatif mensuel</h2>
+    <p class="text-xs text-slate-500 mb-2">Course à pied = run + trail + rando. La barre grise compare le volume du mois au mois le plus chargé de la saison ; <strong>km/sem</strong> ramène chaque mois à une semaine pour comparer des mois de longueurs différentes (et le mois en cours).</p>
     <div class="overflow-x-auto">
-      <table id="cal-stats" class="w-full text-sm min-w-[680px]"></table>
+      <table id="cal-stats" class="w-full text-xs min-w-[760px]"></table>
     </div>
   </div>
 
-  <!-- Calendriers Jan–Mar -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-    <div class="card"><h2 class="text-center text-slate-700 mb-3">Janvier 2026</h2><div id="cal-1"></div></div>
-    <div class="card"><h2 class="text-center text-slate-700 mb-3">Février 2026</h2><div id="cal-2"></div></div>
-    <div class="card"><h2 class="text-center text-slate-700 mb-3">Mars 2026</h2><div id="cal-3"></div></div>
+  <!-- Calendriers (générés) -->
+  <div class="card">
+    <h2>Calendrier</h2>
+    <div class="flex gap-2 flex-wrap mb-3 text-xs" id="cal-legend"></div>
+    <div id="cal-recent" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+    <details class="mt-4">
+      <summary class="text-sm font-semibold text-slate-600 cursor-pointer">Mois précédents</summary>
+      <div id="cal-older" class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-3"></div>
+    </details>
+    <p class="text-xs text-slate-400 mt-3">Couleur de la case = séance de course principale du jour, chiffre = km courus. Colonne <strong>Σ</strong> = km de la semaine complète (lundi–dimanche). Petits badges : V vélo · G muscu · M marche · Y yoga. Survole une case pour le détail.</p>
   </div>
 
-  <!-- Calendriers Avr–Jun -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-    <div class="card"><h2 class="text-center text-slate-700 mb-3">Avril 2026</h2><div id="cal-4"></div></div>
-    <div class="card"><h2 class="text-center text-slate-700 mb-3">Mai 2026</h2><div id="cal-5"></div></div>
-    <div class="card"><h2 class="text-center text-slate-700 mb-3">Juin 2026</h2><div id="cal-6"></div></div>
-  </div>
-
-  <!-- Calendriers Jul–Sep -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-    <div class="card"><h2 class="text-center text-slate-700 mb-3">Juillet 2026</h2><div id="cal-7"></div></div>
-    <div class="card"><h2 class="text-center text-slate-700 mb-3">Août 2026</h2><div id="cal-8"></div></div>
-    <div class="card"><h2 class="text-center text-slate-700 mb-3">Septembre 2026 (en cours)</h2><div id="cal-9"></div></div>
-  </div>
-
-  <p class="text-xs text-slate-400 text-center pb-4">208 activités · 1 janv. → 4 oct. 2026 · Données : MCP Strava</p>
+  <p class="text-xs text-slate-400 text-center pb-4" id="cal-foot"></p>
 
 </div><!-- /pane-entrainement -->
 
@@ -924,8 +572,8 @@
       <div class="lex-def">Différence entre forme de fond et fatigue récente. Indique si tu es <strong>en forme ou fatigué</strong> au moment de compétir.<br>
         <span style="color:#16a34a;font-weight:600">TSB positif</span> = tu es frais, récupéré, prêt à performer.<br>
         <span style="color:#dc2626;font-weight:600">TSB négatif</span> = tu accumules de la fatigue, normal en phase de charge.</div>
-      <div class="lex-formula">TSB = CTL − ATL</div>
-      <div class="lex-example">TSB = −686 la semaine de l'ETP (pic de fatigue) · TSB = +187 la semaine du 10km (pic de forme) → 47:49 record.</div>
+      <div class="lex-formula">TSB = CTL − ATL · Forme % = TSB / CTL × 100</div>
+      <div class="lex-example">Lecture en % : &lt; −30 % risque · −30 à −10 % optimal (charge productive) · −10 à +5 % neutre · +5 à +25 % frais (idéal le jour de course) · &gt; +25 % transition (perte de forme). Forme −36 % la semaine de l'ETP · +22 % la semaine du 10km → 47:49.</div>
     </div>
   </div>
 
@@ -945,7 +593,7 @@
         <span style="color:#f97316;font-weight:600">1.3–1.5</span> → Zone orange (prudence) ·
         <span style="color:#dc2626;font-weight:600">&gt; 1.5</span> → Zone rouge (risque blessure élevé)
       </div>
-      <div class="lex-example">ACWR = 4.0 en sem. 1 (janvier) car RE chronique = 0 (début de suivi). ACWR = 1.41 sem. 12 (ETP : grosse semaine après récupération).</div>
+      <div class="lex-example">Calcul amorcé sur la moyenne des 4 premières semaines, et sur le RE corrigé ×7 après le 25/06 (changement d'échelle Strava). ACWR = 1.36 sem. 12 (ETP) · 1.68 fin juillet (camp Chartreuse) · 1.48 début septembre (Trail de Vimy).</div>
     </div>
 
     <div class="lex-row">
@@ -957,7 +605,7 @@
         <span style="color:#f97316;font-weight:600">1.3–1.5</span> → Zone orange ·
         <span style="color:#dc2626;font-weight:600">&gt; 1.5</span> → Zone rouge
       </div>
-      <div class="lex-example">Semaine du 3 août : ACWR D+ = 2.22 (zone rouge) alors que l'ACWR classique reste à 0.48 (zone verte) — le camp montagne Chartreuse (D+ 11 079 m sur 12 jours, randonnées incluses) charge fortement les jambes sans faire monter le Relative Effort, car les sorties étaient longues et lentes plutôt qu'intenses.</div>
+      <div class="lex-example">Semaine du 3 août : ACWR D+ = 2.22 (zone rouge) alors que l'ACWR classique n'est qu'à 1.30 (limite orange) — le camp montagne Chartreuse (D+ 11 079 m sur 12 jours, randonnées incluses) charge fortement les jambes sans faire monter le Relative Effort, car les sorties étaient longues et lentes plutôt qu'intenses.</div>
     </div>
   </div>
 
@@ -970,8 +618,8 @@
 
     <div class="lex-row">
       <div class="lex-term">Monotonie</div>
-      <div class="lex-def">Régularité de la charge sur une fenêtre de 4 semaines. Une monotonie élevée signifie que tu t'entraînes toujours avec la même intensité, sans variation — ce qui augmente le risque de surentraînement.</div>
-      <div class="lex-formula">Monotonie = moyenne(RE<sub>4 sem.</sub>) / écart-type(RE<sub>4 sem.</sub>)</div>
+      <div class="lex-def">Régularité de la charge jour après jour au sein d'une semaine (jours de repos comptés à 0). Une monotonie élevée signifie que tu t'entraînes toujours avec la même intensité, sans variation — ce qui augmente le risque de surentraînement.</div>
+      <div class="lex-formula">Monotonie = moyenne(RE<sub>jour</sub>) / écart-type(RE<sub>jour</sub>) sur les 7 jours de la semaine</div>
       <div class="lex-example">Valeur idéale &lt; 2.0. Une alternance charge/récupération maintient la monotonie basse.</div>
     </div>
 
@@ -979,7 +627,7 @@
       <div class="lex-term">Contrainte <span class="lex-abbr">Strain</span></div>
       <div class="lex-def">Produit de la charge hebdomadaire par la monotonie. Représente la <strong>charge réelle ressentie</strong> par l'organisme, amplifiée par le manque de variation.</div>
       <div class="lex-formula">Contrainte = RE<sub>semaine</sub> × Monotonie</div>
-      <div class="lex-example">Pic de contrainte semaine ETP : RE 2567 × monotonie élevée → corps très sollicité.</div>
+      <div class="lex-example">Semaine ETP (16/03) : RE 2567 mais monotonie 0.45 (toute la charge concentrée sur un jour de course) → contrainte ≈ 1150. Une semaine chargée et uniforme pèse davantage qu'un gros pic isolé suivi de repos.</div>
     </div>
   </div>
 
@@ -1027,7 +675,7 @@
     <div class="lex-row">
       <div class="lex-term">Cadence <span class="lex-abbr">SPM</span></div>
       <div class="lex-def">Nombre de pas par minute (Steps Per Minute). Métrique d'efficacité de foulée. Une cadence élevée (≥ 180 spm) est associée à moins d'impact et un meilleur rendement. Strava mesure les foulées bilatérales (chaque pied), donc 85 spm = 170 pas/min.</div>
-      <div class="lex-example">Ta cadence moyenne : 84–87 spm tout au long de la saison. Anomalie semaine 18 (73.3 spm) : stage trail avec sections de randonnée.</div>
+      <div class="lex-example">Ta cadence sur le plat : 170–174 spm toute la saison (Strava affiche la cadence par pied, ~85–87 : il faut ×2). Seul creux : 163 spm la semaine du 30/03, en récupération post-ETP. En montagne elle tombe à 110–140 spm parce qu'on marche en côte — d'où le filtre « course à plat ».</div>
     </div>
 
     <div class="lex-row">
@@ -1231,13 +879,19 @@
 // ── COULEURS ──
 const ORANGE = '#FC4C02', GREEN = '#16a34a', BLUE = '#2563eb';
 const RED = '#dc2626', PURPLE = '#7c3aed', SLATE = '#64748b';
+// Verdicts de chaque graphe, rassemblés dans le tableau de bord en tête de page
+const STATUS = {};
 const SKY = '#0ea5e9';
 
 // ── TOOLTIPS DE LÉGENDE ──
 const LEGEND_TIPS = {
   'CTL (Fitness)':            'Chronic Training Load — moyenne exponentielle du Relative Effort sur 42 jours (τ = 42 j). Mesure ta base aérobie. Monte lentement, descend lentement.',
   'ATL (Fatigue)':            'Acute Training Load — moyenne exponentielle sur 7 jours (τ = 7 j). Reflète la fatigue récente. Réagit vite aux charges élevées.',
-  'TSB (Forme)':              'Training Stress Balance = CTL − ATL. Positif → tu es frais et prêt à performer. Négatif → tu accumules de la fatigue (normal en phase de charge).',
+  'Charge habituelle (CTL)':  'Moyenne exponentielle de ta charge sur ~6 semaines (τ = 42 j). Sert de référence : une semaine à plus de ×1.5 cette valeur est un bond de charge risqué.',
+  'Relative Effort de la semaine': 'Somme des Relative Effort Strava de la semaine (toutes activités), ajustée ×7 après le 25/06 (changement d\'échelle Strava). Couleur = rapport à la charge habituelle.',
+  'Moyenne 4 semaines':       'Moyenne glissante sur 4 semaines du ratio km / RE (course à plat, hors compétitions). C\'est la courbe à suivre : elle lisse l\'effet des semaines plus ou moins intenses.',
+  'Médiane saison':           'Valeur médiane du ratio km / RE sur toute la saison. Au-dessus = économie meilleure que d\'habitude.',
+  'Forme (% CTL)':            'TSB = CTL − ATL, exprimé en % de CTL. < −30 % risque · −30 à −10 % optimal (tu progresses) · −10 à +5 % neutre · +5 à +25 % frais (prêt à courir) · > +25 % transition (la forme se perd).',
   'Monotonie (risque > 2.0)': 'Rapport charge moyenne / écart-type journalier. Au-dessus de 2.0 la charge est trop répétitive, ce qui augmente le risque de surentraînement (Foster 1998).',
   'Contrainte (RE×mono)':     'Indice de contrainte = charge hebdomadaire × monotonie. Combine volume et variabilité pour estimer le risque de blessure.',
   'Seuil 2.0':                'Seuil critique de monotonie (Foster 1998) au-dessus duquel le risque de surentraînement est significativement accru.',
@@ -1314,31 +968,148 @@ const radarDs = (label, data, color, bw=2) => ({
 });
 
 // ── DONNÉES ──
-const weeks = ['29/12','05/01','12/01','19/01','26/01','02/02','09/02','16/02','23/02','02/03','09/03','16/03','23/03','30/03','06/04','13/04','20/04','27/04','04/05','11/05','18/05','25/05','01/06','08/06','15/06','22/06','29/06','06/07','13/07','20/07','27/07','03/08','10/08','17/08','24/08','31/08','07/09','14/09','21/09','28/09'];
-const runKm = [64.4,65.2,46.6,73.9,68.9,78.0,75.6,74.9,85.0,79.7,45.9,132.5,18.3,22.3,54.7,50.1,47.1,65.8,48.0,45.7,59.8,50.0,44.2,48.6,30.6,30.8,71.2,20.0,33.2,45.5,110.7,66.2,33.4,49.1,33.0,43.7,55.3,42.2,56.9,67.4];
-const runKmOnly = [38.0,65.2,36.3,40.8,44.0,47.8,38.2,49.0,44.4,26.1,23.2,6.5,18.3,9.3,44.0,23.3,22.5,13.0,25.1,45.7,34.3,22.0,21.8,36.1,30.6,0.0,60.4,1.9,22.5,21.5,0.0,12.6,33.4,5.1,28.5,33.0,24.4,42.2,48.9,56.6];
-const trailKmOnly = [26.4,0.0,10.3,33.0,24.9,30.2,37.5,25.9,40.6,53.6,22.7,125.9,0.0,13.1,10.7,26.7,24.6,52.8,23.0,0.0,25.5,28.1,22.4,12.4,0.0,30.8,10.9,18.1,10.7,24.0,110.7,53.6,0.0,44.0,4.5,10.8,30.9,0.0,8.0,10.9];
-const wkTimeH = [7.1,6.82,4.99,8.06,7.92,8.44,8.8,8.42,9.32,8.65,4.62,22.57,1.87,2.47,5.68,5.27,4.83,12.45,5.02,4.32,6.31,5.04,4.6,4.81,3.08,3.34,7.38,2.29,3.2,5.98,27.11,12.93,3.28,9.5,4.24,4.37,5.37,4.17,5.61,6.65];
-const runElev = [130,188,72,120,182,113,99,134,97,126,122,36,41,18,169,41,156,37,54,189,132,43,62,78,74,0,267,12,66,68,0,65,95,10,97,78,66,139,303,145];
-const trailElev = [538,0,329,810,760,396,1045,543,666,657,66,1894,0,187,31,372,246,2979,526,0,395,437,333,39,0,452,29,244,27,672,7041,3412,0,2902,46,35,279,0,52,22];
+const weeks = ['29/12','05/01','12/01','19/01','26/01','02/02','09/02','16/02','23/02','02/03','09/03','16/03','23/03','30/03','06/04','13/04','20/04','27/04','04/05','11/05','18/05','25/05','01/06','08/06','15/06','22/06','29/06','06/07','13/07','20/07','27/07','03/08','10/08','17/08','24/08','31/08','07/09','14/09','21/09','28/09','05/10'];
+const runKm = [64.4,65.2,46.6,73.9,68.9,78.0,75.6,74.9,85.0,79.7,45.9,132.5,18.3,22.3,54.7,50.1,47.1,65.8,48.0,45.7,59.8,50.0,44.2,48.6,30.6,30.8,71.2,20.0,33.2,45.5,110.7,66.2,33.4,49.1,33.0,43.7,55.3,42.2,56.9,67.4,35.1];
+const runKmOnly = [38.0,65.2,36.3,40.8,44.0,47.8,38.2,49.0,44.4,26.1,23.2,6.5,18.3,9.3,44.0,23.3,22.5,13.0,25.1,45.7,34.3,22.0,21.8,36.1,30.6,0.0,60.4,1.9,22.5,21.5,0.0,12.6,33.4,5.1,28.5,33.0,24.4,42.2,48.9,56.6,24.3];
+const trailKmOnly = [26.4,0.0,10.3,33.0,24.9,30.2,37.5,25.9,40.6,53.6,22.7,125.9,0.0,13.1,10.7,26.7,24.6,52.8,23.0,0.0,25.5,28.1,22.4,12.4,0.0,30.8,10.9,18.1,10.7,24.0,110.7,53.6,0.0,44.0,4.5,10.8,30.9,0.0,8.0,10.9,10.8];
+const wkTimeH = [7.1,6.82,4.99,8.06,7.92,8.44,8.8,8.42,9.32,8.65,4.62,22.57,1.87,2.47,5.68,5.27,4.83,12.45,5.02,4.32,6.31,5.04,4.6,4.81,3.08,3.34,7.38,2.29,3.2,5.98,27.11,12.93,3.28,9.5,4.24,4.37,5.37,4.17,5.61,6.65,3.54];
+const runElev = [130,188,72,120,182,113,99,134,97,126,122,36,41,18,169,41,156,37,54,189,132,43,62,78,74,0,267,12,66,68,0,65,95,10,97,78,66,139,303,145,67];
+const trailElev = [538,0,329,810,760,396,1045,543,666,657,66,1894,0,187,31,372,246,2979,526,0,395,437,333,39,0,452,29,244,27,672,7041,3412,0,2902,46,35,279,0,52,22,24];
 const totalElev = runElev.map((v,i) => v+trailElev[i]);
-const wkCal = [5940,5691,4826,6287,6524,7093,7413,6552,7496,7151,3922,11731,1439,1858,4706,4140,4455,7215,3923,3473,5376,5676,3611,4086,2454,3011,5568,3010,2581,4087,12184,6327,2613,5291,2552,3600,4931,3725,4726,5773];
-const acwr = [4.0,1.96,1.04,1.14,0.9,0.92,0.85,0.72,0.89,0.8,0.39,1.41,0.19,0.31,0.82,0.8,0.97,1.01,0.79,0.65,0.95,0.75,0.65,0.61,0.66,0.4,0.3,0.22,0.2,0.27,0.55,0.48,0.33,0.5,0.41,0.47,0.84,0.68,0.83,0.81];
-const acwrDplus = [4.12,2.37,2.22,2.59,2.26,1.6,1.86,1.45,1.34,1.28,0.75,1.81,0.82,0.56,0.47,0.7,0.79,2.34,1.35,0.73,0.75,0.75,0.69,0.43,0.28,0.71,0.7,0.66,0.44,1.24,3.22,2.22,1.0,1.4,0.66,0.34,0.34,0.24,0.36,0.29];
-const reData = [1289,1238,960,1353,1447,1479,1378,1249,1550,1419,600,2567,297,399,1053,1062,900,1135,1000,788,1195,1038,758,675,471,202,160,96,96,146,335,174,78,210,104,146,328,161,269,225];
-const wkMaxTemp = [null,20.0,null,null,null,null,null,null,19.7,16.6,null,16.8,null,null,24.6,20.9,22.3,21.0,20.0,20.0,28.9,30.5,20.0,20.1,32.1,35.7,25.7,33.3,32.3,25.8,28.6,27.5,23.9,23.5,21.3,26.5,21.5,25.3,27.0,27.4];
-const wkEfficiency = [0.051,0.053,0.053,0.055,0.051,0.055,0.056,0.062,0.055,0.058,0.078,0.052,0.062,0.056,0.055,0.047,0.054,0.059,0.048,0.058,0.051,0.053,0.058,0.073,0.065,0.056,0.064,0.057,0.049,0.046,0.047,0.054,0.061,0.033,0.045,0.043,0.024,0.039,0.03,0.044];
-const wkMarathonPaceKm = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,9.7,6.0,0.0,15.0,24.9,19.3];
-const beLabels = ['17 jan\n(Run 30km)','08 fév\n(Trail 30km)','07 avr\n(Trail frac.)','10 mai\n(Trail 23km)','31 mai\n(Trail 17km)','14 juin\n(Race 10km)'];
-const be400  = [145,135,114,118,113,108];
-const be1k   = [367,345,296,310,291,274];
-const be5k   = [1877,1828,null,1872,1849,1412];
-const be10k  = [3791,3787,null,3806,3758,2869];
-const isRace = be400.map((_,i) => i===5);
-const effLabels = ['Jan 17\nRun','Fév 08\nTrail','Mai 10\nTrail','Mai 31\nTrail','Jun 14\nRace'];
-const effSpeed  = [2.608,2.610,2.511,2.656,3.486];
-const effFC     = [147.1,147.8,154.2,163.0,166.1];
-const effRatio  = effSpeed.map((v,i) => v/effFC[i]*1000);
+const wkCal = [5940,5691,4826,6287,6524,7093,7413,6552,7496,7151,3922,11731,1439,1858,4706,4140,4455,7215,3923,3473,5376,5676,3611,4086,2454,3011,5568,3010,2581,4087,12184,6327,2613,5291,2552,3600,4931,3725,4726,5773,2826];
+const acwr = [1.03,1.02,0.9,1.03,1.1,1.12,1.08,1.01,1.1,1.07,0.74,1.36,0.72,0.52,0.79,0.9,0.87,0.98,0.95,0.85,1.02,1.0,0.86,0.78,0.65,0.71,1.05,0.9,0.86,1.06,1.68,1.3,0.86,1.15,0.89,0.96,1.48,1.14,1.29,1.2,0.78];
+const acwrDplus = [1.1,0.69,0.78,1.3,1.4,1.06,1.4,1.14,1.11,1.1,0.64,1.65,0.75,0.51,0.44,0.65,0.74,2.27,1.31,0.71,0.74,0.73,0.68,0.42,0.27,0.7,0.69,0.66,0.43,1.23,3.22,2.23,1.0,1.39,0.66,0.34,0.33,0.23,0.35,0.28,0.21];
+const reData = [1289,1238,960,1353,1447,1479,1378,1249,1550,1419,600,2567,297,399,1053,1062,900,1135,1000,788,1195,1038,758,675,471,202,160,96,96,146,335,174,78,210,104,146,328,161,269,225,84];
+const wkMaxTemp = [null,20.0,null,null,null,null,null,null,19.7,16.6,null,16.8,null,null,24.6,20.9,22.3,21.0,20.0,20.0,28.9,30.5,20.0,20.1,32.1,35.7,25.7,33.3,32.3,25.8,28.6,27.5,23.9,23.5,21.3,26.5,21.5,25.3,27.0,27.4,21.0];
+const wkEfficiency = [0.059,0.053,0.052,0.059,0.062,0.055,0.063,0.063,0.067,0.073,0.078,0.065,0.062,0.056,0.055,0.05,0.053,0.05,0.056,0.058,0.053,0.069,0.064,0.085,0.065,0.072,0.064,0.096,0.049,0.043,null,0.069,0.061,0.104,0.041,0.043,0.041,0.039,0.045,0.044,0.06];
+const wkMarathonPaceKm = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,9.7,6.0,0.0,15.0,24.9,19.3,3.0];
+// Séances avec best efforts / puissance (hr_store.json) — généré par update_report.py
+const perfRuns = [
+  {d:'2026-01-02',n:"Fractionné long  (S-11)",race:false,trail:false,km:10.2,elev:19,w:330,hr:149,b400:125,b1k:319,b5k:1802,b10k:4244},
+  {d:'2026-01-04',n:"Sortie longue du côté de Gravelle (S-11)",race:false,trail:true,km:26.4,elev:538,w:291,hr:151,b400:141,b1k:358,b5k:2001,b10k:4272},
+  {d:'2026-01-06',n:"Boucle du mardi  (S-10)",race:false,trail:false,km:12.5,elev:40,w:326,hr:151,b400:137,b1k:346,b5k:1781,b10k:3877},
+  {d:'2026-01-07',n:"Fractionné remplacé par un footing  (S-10)",race:false,trail:false,km:11.1,elev:34,w:320,hr:147,b400:140,b1k:353,b5k:2106,b10k:4545},
+  {d:'2026-01-09',n:"Fractionné long  (S-10)",race:false,trail:false,km:11.4,elev:23,w:346,hr:151,b400:117,b1k:298,b5k:1816,b10k:4760},
+  {d:'2026-01-14',n:"Fractionné court  (S-9)",race:false,trail:false,km:13.0,elev:23,w:325,hr:150,b400:122,b1k:329,b5k:1851,b10k:5003},
+  {d:'2026-01-16',n:"Boucle du dredi midi  (S-9)",race:false,trail:false,km:10.6,elev:23,w:342,hr:149,b400:131,b1k:333,b5k:1810,b10k:3895},
+  {d:'2026-01-16',n:"Fractionné long  (S-9)",race:false,trail:false,km:12.7,elev:26,w:342,hr:155,b400:125,b1k:314,b5k:1751,b10k:4366},
+  {d:'2026-01-21',n:"Fractionné court  (S-9)",race:false,trail:false,km:10.9,elev:25,w:332,hr:145,b400:124,b1k:315,b5k:1692,b10k:4598},
+  {d:'2026-01-25',n:"Séance Trail au Mont d'Hubert (S-9)",race:false,trail:true,km:14.5,elev:347,w:300,hr:149,b400:124,b1k:325,b5k:1845,b10k:4305},
+  {d:'2026-01-27',n:"Footing du mardi  ( S-8)",race:false,trail:false,km:12.5,elev:35,w:323,hr:140,b400:132,b1k:336,b5k:1897,b10k:3928},
+  {d:'2026-01-28',n:"Fractionné en côte  (S-8)",race:false,trail:false,km:10.1,elev:105,w:328,hr:145,b400:133,b1k:335,b5k:2067,b10k:4916},
+  {d:'2026-01-30',n:"Footing du dredi midi  (S-8)",race:false,trail:false,km:10.8,elev:23,w:330,hr:146,b400:136,b1k:350,b5k:1954,b10k:4019},
+  {d:'2026-01-30',n:"Fractionné long  (S-8)",race:false,trail:false,km:10.6,elev:19,w:336,hr:153,b400:122,b1k:310,b5k:1797,b10k:4094},
+  {d:'2026-02-01',n:"Maxicross 25km (S-8)",race:true,trail:true,km:24.9,elev:760,w:243,hr:149,b400:135,b1k:380,b5k:2235,b10k:5003},
+  {d:'2026-02-04',n:"Fractionné court  (S-7)",race:false,trail:false,km:13.4,elev:36,w:320,hr:143,b400:106,b1k:325,b5k:1943,b10k:4664},
+  {d:'2026-02-06',n:"Fractionné long  (S-7)",race:false,trail:false,km:12.4,elev:18,w:329,hr:150,b400:128,b1k:323,b5k:1756,b10k:4025},
+  {d:'2026-02-11',n:"Fractionné court   (S-6)",race:false,trail:false,km:13.5,elev:34,w:null,hr:140,b400:118,b1k:355,b5k:2031,b10k:4697},
+  {d:'2026-02-13',n:"Fractionné long  (S-6)",race:false,trail:false,km:11.2,elev:20,w:316,hr:147,b400:117,b1k:294,b5k:1689,b10k:4134},
+  {d:'2026-02-18',n:"Fractionné court  (S-5)",race:false,trail:false,km:10.3,elev:26,w:306,hr:143,b400:133,b1k:356,b5k:2037,b10k:5125},
+  {d:'2026-02-20',n:"Boucle du dredi  (S-5)",race:false,trail:true,km:10.9,elev:23,w:323,hr:146,b400:143,b1k:361,b5k:1978,b10k:3980},
+  {d:'2026-02-20',n:"Sortie longue  (S-5)",race:false,trail:false,km:22.0,elev:67,w:314,hr:144,b400:129,b1k:327,b5k:1791,b10k:3681},
+  {d:'2026-02-25',n:"Fractionné court  (S-4)",race:false,trail:false,km:14.2,elev:21,w:322,hr:145,b400:122,b1k:306,b5k:1682,b10k:4392},
+  {d:'2026-02-27',n:"Fractionné long  (S-4)",race:false,trail:false,km:16.0,elev:36,w:319,hr:145,b400:139,b1k:351,b5k:1788,b10k:3693},
+  {d:'2026-03-01',n:"Sortie à la station trail de Bures sur Yvette :  parcours n6 (J-20)",race:false,trail:true,km:29.8,elev:640,w:290,hr:151,b400:124,b1k:320,b5k:1924,b10k:4053},
+  {d:'2026-03-04',n:"Fractionné court en côte (J-17)",race:false,trail:false,km:10.8,elev:108,w:336,hr:144,b400:127,b1k:315,b5k:1894,b10k:4510},
+  {d:'2026-03-06',n:"Boucle du dredi midi  (J-15)",race:false,trail:true,km:10.8,elev:24,w:325,hr:140,b400:138,b1k:347,b5k:1909,b10k:3874},
+  {d:'2026-03-06',n:"Fractionné long  (J-15)",race:false,trail:false,km:15.3,elev:18,w:323,hr:144,b400:128,b1k:324,b5k:1735,b10k:3651},
+  {d:'2026-03-08',n:"Station de trail de Bures sur Yvette : parcours n7  (J-13)",race:false,trail:true,km:27.5,elev:588,w:292,hr:153,b400:129,b1k:346,b5k:1802,b10k:3982},
+  {d:'2026-03-10',n:"Boucle du mardi  (J-11)",race:false,trail:true,km:12.1,elev:39,w:316,hr:140,b400:132,b1k:345,b5k:1874,b10k:3839},
+  {d:'2026-03-12',n:"Footing avec les collègues sur la coulée verte (J-9)",race:false,trail:false,km:6.5,elev:34,w:337,hr:145,b400:123,b1k:337,b5k:1760,b10k:null},
+  {d:'2026-03-13',n:"Footing d'affûtage (J-8)",race:false,trail:true,km:10.6,elev:27,w:334,hr:138,b400:137,b1k:348,b5k:1846,b10k:3858},
+  {d:'2026-03-15',n:"Sortie longue d'affûtage  (J-6)",race:false,trail:false,km:16.7,elev:88,w:338,hr:140,b400:119,b1k:315,b5k:1800,b10k:3963},
+  {d:'2026-03-27',n:"P'tit footing de reprise",race:false,trail:false,km:5.3,elev:15,w:309,hr:141,b400:144,b1k:366,b5k:2465,b10k:null},
+  {d:'2026-04-01',n:"Fractionné court",race:false,trail:false,km:9.3,elev:18,w:307,hr:146,b400:131,b1k:330,b5k:1927,b10k:null},
+  {d:'2026-04-08',n:"Fractionné court",race:false,trail:false,km:11.3,elev:20,w:327,hr:157,b400:113,b1k:311,b5k:1922,b10k:4612},
+  {d:'2026-04-10',n:"Fractionné long",race:false,trail:false,km:13.6,elev:51,w:339,hr:157,b400:113,b1k:286,b5k:1658,b10k:3576},
+  {d:'2026-04-15',n:"Fractionné court",race:false,trail:false,km:10.3,elev:21,w:328,hr:154,b400:115,b1k:319,b5k:2011,b10k:5488},
+  {d:'2026-04-17',n:"Fractionné long",race:false,trail:false,km:13.1,elev:20,w:331,hr:156,b400:108,b1k:280,b5k:1748,b10k:4118},
+  {d:'2026-04-19',n:"Un peu de D+ du côté de Gravelle",race:false,trail:true,km:14.6,elev:331,w:303,hr:156,b400:114,b1k:296,b5k:2288,b10k:4966},
+  {d:'2026-04-22',n:"Fractionné court en côte",race:false,trail:false,km:12.3,elev:130,w:345,hr:155,b400:126,b1k:323,b5k:1713,b10k:4453},
+  {d:'2026-04-24',n:"Fractionné long",race:false,trail:false,km:10.2,elev:26,w:347,hr:153,b400:97,b1k:281,b5k:1665,b10k:4275},
+  {d:'2026-04-26',n:"Séance Trail",race:false,trail:true,km:13.7,elev:218,w:308,hr:147,b400:137,b1k:367,b5k:2965,b10k:6171},
+  {d:'2026-05-06',n:"Fractionné court",race:false,trail:false,km:11.0,elev:18,w:335,hr:151,b400:109,b1k:282,b5k:1605,b10k:4466},
+  {d:'2026-05-08',n:"Fractionné long",race:false,trail:false,km:14.1,elev:36,w:320,hr:149,b400:111,b1k:300,b5k:1833,b10k:4143},
+  {d:'2026-05-10',n:"Trail des Lavoirs",race:true,trail:true,km:23.0,elev:526,w:306,hr:154,b400:118,b1k:310,b5k:1872,b10k:3806},
+  {d:'2026-05-13',n:"Fractionné court",race:false,trail:false,km:10.7,elev:25,w:331,hr:145,b400:118,b1k:304,b5k:1800,b10k:4452},
+  {d:'2026-05-15',n:"Fractionné long",race:false,trail:false,km:10.0,elev:41,w:344,hr:153,b400:113,b1k:287,b5k:1689,b10k:null},
+  {d:'2026-05-20',n:"Fractionné court",race:false,trail:false,km:11.2,elev:76,w:328,hr:154,b400:115,b1k:302,b5k:1817,b10k:4605},
+  {d:'2026-05-22',n:"Fractionné long",race:false,trail:false,km:10.6,elev:21,w:336,hr:155,b400:111,b1k:281,b5k:1686,b10k:4452},
+  {d:'2026-05-24',n:"Un peu de D+ Gravelle",race:false,trail:true,km:15.0,elev:375,w:273,hr:149,b400:139,b1k:356,b5k:2484,b10k:5280},
+  {d:'2026-05-27',n:"Fractionné court",race:false,trail:false,km:11.4,elev:21,w:317,hr:141,b400:116,b1k:319,b5k:2154,b10k:4670},
+  {d:'2026-05-31',n:"La foulée verte de Clamart",race:true,trail:true,km:17.5,elev:414,w:318,hr:163,b400:113,b1k:291,b5k:1849,b10k:3758},
+  {d:'2026-06-03',n:"Fractionné court",race:false,trail:false,km:12.0,elev:45,w:331,hr:146,b400:116,b1k:294,b5k:1789,b10k:4606},
+  {d:'2026-06-05',n:"Fractionné long",race:false,trail:false,km:9.8,elev:17,w:340,hr:155,b400:112,b1k:281,b5k:1513,b10k:null},
+  {d:'2026-06-10',n:"Fractionné court",race:false,trail:false,km:10.1,elev:25,w:331,hr:138,b400:106,b1k:337,b5k:2009,b10k:4508},
+  {d:'2026-06-12',n:"Mini footing du dredi midi",race:false,trail:false,km:5.3,elev:11,w:329,hr:137,b400:139,b1k:353,b5k:2213,b10k:null},
+  {d:'2026-06-14',n:"Les foulées du 12eme",race:true,trail:false,km:10.1,elev:20,w:402,hr:166,b400:108,b1k:274,b5k:1412,b10k:2869},
+  {d:'2026-06-17',n:"Fractionné court",race:false,trail:false,km:8.0,elev:18,w:320,hr:140,b400:130,b1k:364,b5k:2380,b10k:null},
+  {d:'2026-07-01',n:"Fractionné en côte",race:false,trail:false,km:11.6,elev:115,w:333,hr:148,b400:127,b1k:324,b5k:1970,b10k:4596},
+  {d:'2026-07-03',n:"Fractionné long",race:false,trail:false,km:10.9,elev:28,w:316,hr:146,b400:113,b1k:316,b5k:1702,b10k:4741},
+  {d:'2026-07-16',n:"P'tit tour du bois",race:false,trail:false,km:10.0,elev:35,w:354,hr:156,b400:124,b1k:315,b5k:1748,b10k:3724},
+  {d:'2026-07-17',n:"Boucle du dredi",race:false,trail:true,km:10.7,elev:27,w:319,hr:142,b400:137,b1k:346,b5k:2017,b10k:4137},
+  {d:'2026-07-22',n:"Fractionné court",race:false,trail:false,km:10.8,elev:29,w:322,hr:144,b400:117,b1k:312,b5k:1960,b10k:4622},
+  {d:'2026-08-09',n:"Retour sur le plat",race:false,trail:false,km:12.6,elev:65,w:323,hr:140,b400:129,b1k:325,b5k:1692,b10k:3924},
+  {d:'2026-08-16',n:"Sortie Endurance",race:false,trail:false,km:13.5,elev:39,w:331,hr:142,b400:123,b1k:316,b5k:1704,b10k:3778},
+  {d:'2026-08-19',n:"Mini footing",race:false,trail:false,km:5.1,elev:10,w:311,hr:130,b400:144,b1k:369,b5k:2721,b10k:null},
+  {d:'2026-08-28',n:"Fractionné long",race:false,trail:false,km:12.1,elev:14,w:327,hr:142,b400:130,b1k:326,b5k:1947,b10k:4779},
+  {d:'2026-08-30',n:"Sortie longue (prépa marathon Nice-Cannes)",race:false,trail:false,km:16.4,elev:83,w:347,hr:151,b400:124,b1k:313,b5k:1635,b10k:3732},
+  {d:'2026-09-02',n:"Fractionné court",race:false,trail:false,km:9.3,elev:17,w:334,hr:148,b400:114,b1k:297,b5k:1923,b10k:null},
+  {d:'2026-09-04',n:"Fractionné long",race:false,trail:false,km:10.9,elev:23,w:348,hr:149,b400:119,b1k:299,b5k:1719,b10k:4310},
+  {d:'2026-09-09',n:"Fractionné court",race:false,trail:false,km:11.4,elev:17,w:333,hr:149,b400:107,b1k:296,b5k:1679,b10k:4480},
+  {d:'2026-09-12',n:"Trail Canadian race Vimy",race:true,trail:true,km:20.2,elev:252,w:365,hr:168,b400:110,b1k:284,b5k:1596,b10k:3287},
+  {d:'2026-09-15',n:"Footing du mardi",race:false,trail:false,km:12.6,elev:44,w:336,hr:141,b400:130,b1k:328,b5k:1852,b10k:4043},
+  {d:'2026-09-18',n:"Fractionné long",race:false,trail:false,km:12.5,elev:21,w:340,hr:147,b400:124,b1k:315,b5k:1676,b10k:3793},
+  {d:'2026-09-20',n:"Sortie longue (prépa marathon)",race:false,trail:false,km:17.0,elev:74,w:351,hr:155,b400:125,b1k:316,b5k:1621,b10k:3519},
+  {d:'2026-09-22',n:"Footing du mardi",race:false,trail:false,km:10.0,elev:28,w:336,hr:143,b400:129,b1k:326,b5k:1811,b10k:null},
+  {d:'2026-09-23',n:"Fractionné court",race:false,trail:false,km:10.6,elev:18,w:333,hr:150,b400:117,b1k:301,b5k:1816,b10k:4534},
+  {d:'2026-09-25',n:"Fractionné long",race:false,trail:false,km:12.2,elev:22,w:342,hr:150,b400:127,b1k:320,b5k:1690,b10k:3979},
+  {d:'2026-09-27',n:"Paris-Versailles 2026",race:true,trail:false,km:16.2,elev:235,w:388,hr:166,b400:111,b1k:291,b5k:1549,b10k:3340},
+  {d:'2026-10-01',n:"Mini-séance de rattrapage",race:false,trail:false,km:6.5,elev:7,w:347,hr:152,b400:127,b1k:327,b5k:2033,b10k:null},
+  {d:'2026-10-02',n:"Fractionné long",race:false,trail:false,km:14.1,elev:21,w:341,hr:150,b400:127,b1k:320,b5k:1694,b10k:3547},
+  {d:'2026-10-04',n:"Boucle de la Marne",race:false,trail:false,km:23.4,elev:81,w:349,hr:149,b400:128,b1k:320,b5k:1652,b10k:3360},
+  {d:'2026-10-07',n:"Fractionné court",race:false,trail:false,km:11.6,elev:27,w:328,hr:149,b400:105,b1k:306,b5k:1770,b10k:4486}
+];
+// Footings faciles à plat avec FC (hr_store.json) — généré par update_report.py
+const effRuns = [
+  {d:'2026-01-01',n:"Tour du Bois de Vincennes (S-11)",ef:1.052,hr:149,pace:383},
+  {d:'2026-01-02',n:"Boucle du dredi midi  (S-11)",ef:1.196,hr:138,pace:364},
+  {d:'2026-01-11',n:"Boucle de la Marne - Bois de Vincennes (S-10)",ef:1.07,hr:147,pace:381},
+  {d:'2026-01-20',n:"Footing du mardi  (S-9)",ef:1.11,hr:143,pace:378},
+  {d:'2026-01-23',n:"Footing (S-9)",ef:1.115,hr:149,pace:361},
+  {d:'2026-02-06',n:"Footing du dredi midi  (S-7)",ef:1.147,hr:146,pace:357},
+  {d:'2026-02-08',n:"Bois de Vincennes - Bords de Marne - V de Gravelle  (S-7)",ef:0.987,hr:148,pace:411},
+  {d:'2026-02-10',n:"Footing du mardi   (S-6)",ef:1.084,hr:143,pace:387},
+  {d:'2026-02-13',n:"Boucle du dredi  (S-6)",ef:1.158,hr:147,pace:353},
+  {d:'2026-02-17',n:"Footing du mardi  (S-5)",ef:1.118,hr:143,pace:376},
+  {d:'2026-02-24',n:"Boucle du mardi soir  (S-4)",ef:1.139,hr:139,pace:378},
+  {d:'2026-02-27',n:"Boucle du dredi midi  (S-4)",ef:1.168,hr:142,pace:362},
+  {d:'2026-03-03',n:"Boucle du mardi  (J-18)",ef:1.156,hr:136,pace:381},
+  {d:'2026-03-18',n:"Footing d'affûtage  (J-3)",ef:1.159,hr:134,pace:387},
+  {d:'2026-04-24',n:"Boucle du dredi midi",ef:1.15,hr:147,pace:355},
+  {d:'2026-05-19',n:"Footing du mardi",ef:1.136,hr:147,pace:360},
+  {d:'2026-05-22',n:"Boucle du dredi midi",ef:1.132,hr:147,pace:361},
+  {d:'2026-05-29',n:"Boucle du dredi midi",ef:1.173,hr:145,pace:353},
+  {d:'2026-06-05',n:"Boucle du dredi midi",ef:1.199,hr:141,pace:354},
+  {d:'2026-06-09',n:"Footing du mardi",ef:1.169,hr:143,pace:359},
+  {d:'2026-06-19',n:"Boucle du dredi",ef:1.162,hr:142,pace:364},
+  {d:'2026-06-23',n:"P'tit footing d'acclimatation",ef:1.117,hr:148,pace:363},
+  {d:'2026-06-26',n:"Boucle du dredi",ef:1.138,hr:140,pace:376},
+  {d:'2026-06-30',n:"Footing du mardi",ef:1.177,hr:142,pace:359},
+  {d:'2026-07-03',n:"Boucle du dredi",ef:1.194,hr:144,pace:350},
+  {d:'2026-07-10',n:"Boucle du dredi",ef:1.182,hr:139,pace:364},
+  {d:'2026-07-14',n:"Run du 14 juillet",ef:1.201,hr:144,pace:347},
+  {d:'2026-07-21',n:"Footing du mardi",ef:1.159,hr:152,pace:340},
+  {d:'2026-08-12',n:"Footing à la fraîche",ef:1.149,hr:147,pace:355},
+  {d:'2026-08-14',n:"Footing à la fraîche",ef:1.153,hr:146,pace:356},
+  {d:'2026-09-01',n:"Footing du mardi",ef:1.156,hr:148,pace:351},
+  {d:'2026-09-04',n:"Boucle du dredi midi",ef:1.136,hr:145,pace:365},
+  {d:'2026-09-08',n:"Footing du mardi",ef:1.166,hr:150,pace:342},
+  {d:'2026-09-25',n:"Footing du dredi midi",ef:1.178,hr:142,pace:358},
+  {d:'2026-09-29',n:"Footing du mardi soir",ef:1.14,hr:148,pace:356},
+  {d:'2026-10-02',n:"Boucle du dredi midi",ef:1.196,hr:140,pace:358},
+  {d:'2026-10-09',n:"Boucle du dredi midi",ef:1.191,hr:138,pace:364}
+];
 
 // Datasets km empilés partagés (chart-volume et chart-elev)
 const _runKmDs   = { label:'Course à pied (km)', data:runKmOnly,   backgroundColor:ORANGE+'70', borderColor:ORANGE, borderWidth:1, stack:'km', yAxisID:'yKm', order:3 };
@@ -1462,36 +1233,6 @@ new Chart(document.getElementById('chart-cals'), {
   }
 });
 
-// ── chart-acwr ──
-new Chart(document.getElementById('chart-acwr'), {
-  type: 'line',
-  data: {
-    labels: weeks,
-    datasets: [
-      {
-        label: 'ACWR', data: acwr,
-        borderColor:BLUE, backgroundColor:BLUE+'15',
-        tension:0.3, fill:true,
-        pointRadius: acwr.map(v => v>1.3 ? 6 : 3),
-        pointBackgroundColor: acwr.map(v => v>1.5 ? RED : v>1.3 ? '#f97316' : BLUE),
-        pointBorderColor:'white', pointBorderWidth:1.5,
-      },
-      { label:'Zone rouge (1.5)',  data:weeks.map(()=>1.5), borderColor:RED,   borderDash:[6,3], borderWidth:1.5, pointRadius:0, fill:false },
-      { label:'Optimal min (0.8)', data:weeks.map(()=>0.8), borderColor:GREEN, borderDash:[4,4], borderWidth:1,   pointRadius:0, fill:false },
-    ]
-  },
-  options: {
-    plugins: {
-      legend: { position:'bottom', labels:{ font:{size:11}, boxWidth:12 } },
-      tooltip: { callbacks: { label: ctx => ctx.dataset.label+': '+ctx.parsed.y.toFixed(2) } }
-    },
-    scales: {
-      y: { min:0, max:2.2, ticks:{ stepSize:0.5 } },
-      x: xWks,
-    }
-  }
-});
-
 // ── chart-acwr-dplus ──
 new Chart(document.getElementById('chart-acwr-dplus'), {
   type: 'line',
@@ -1524,9 +1265,9 @@ new Chart(document.getElementById('chart-acwr-dplus'), {
 
 // ── chart-sports ──
 const sportActuals = [
-  [104,66,21,10,6,1],
-  [1196.3,1038.2,96.8,272.3,0.0,0.0],
-  [121.3,155.6,19.0,12.1,2.7,1.1],
+  [106,67,21,10,6,1],
+  [1220.6,1049.0,96.8,272.3,0.0,0.0],
+  [123.7,156.7,19.0,12.1,2.7,1.1],
 ];
 const sportPct   = sportActuals.map(row => { const tot=row.reduce((a,b)=>a+b,0); return row.map(v => +(v/tot*100).toFixed(1)); });
 const sportUnits = [' séances',' km',' h'];
@@ -1592,262 +1333,196 @@ new Chart(document.getElementById('chart-fc-zones'), {
   }
 });
 
-// ── chart-be-speed ──
-new Chart(document.getElementById('chart-be-speed'), {
-  type: 'line',
-  data: {
-    labels: beLabels,
-    datasets: [
-      {
-        label:'400 m (s)', data:be400,
-        borderColor:PURPLE, backgroundColor:PURPLE+'20',
-        tension:0.3, fill:false,
-        pointRadius: be400.map((_,i) => i===5 ? 8 : 5),
-        pointBackgroundColor: be400.map((_,i) => i===5 ? ORANGE : PURPLE),
-        pointBorderColor:'white', pointBorderWidth:2, yAxisID:'y400',
-      },
-      {
-        label:'1 km (s)', data:be1k,
-        borderColor:BLUE, backgroundColor:BLUE+'15',
-        tension:0.3, fill:false,
-        pointRadius: be1k.map((_,i) => i===5 ? 8 : 5),
-        pointBackgroundColor: be1k.map((_,i) => i===5 ? ORANGE : BLUE),
-        pointBorderColor:'white', pointBorderWidth:2, yAxisID:'y1k',
-      }
-    ]
-  },
-  options: {
-    plugins: {
-      legend: { position:'bottom', labels:{ font:{size:11}, boxWidth:12 } },
-      tooltip: {
-        callbacks: {
-          label: ctx => {
-            const v = ctx.parsed.y;
-            return ctx.dataset.label+' : '+fmt(v)+' ('+(ctx.datasetIndex===0 ? (v/400*1000/60).toFixed(1)+'s/100m' : fmt(Math.round(v))+'/km')+')';
-          }
+// ── Best efforts, W/kg, records ── depuis perfRuns (best efforts Strava + puissance par séance)
+(function() {
+  const fmt2 = v => v == null ? '—' : (v >= 3600 ? Math.floor(v/3600)+'h'+String(Math.floor(v%3600/60)).padStart(2,'0')+'′'+String(v%60).padStart(2,'0')
+                                                 : Math.floor(v/60)+':'+String(v%60).padStart(2,'0'));
+  const MOIS = ['jan','fév','mar','avr','mai','juin','juil','août','sept','oct','nov','déc'];
+  const DIST = { b400:400, b1k:1000, b5k:5000, b10k:10000 };
+  const pace = (k, v) => fmt2(Math.round(v / DIST[k] * 1000)) + '/km';
+  const fmtD = d => d.slice(8,10)+'/'+d.slice(5,7);
+  const months = [...new Set(perfRuns.map(r => r.d.slice(0,7)))].sort();
+  const bestOf = (k, rows) => rows.filter(r => r[k] != null).reduce((b, r) => !b || r[k] < b[k] ? r : b, null);
+  const monthly = k => months.map(m => bestOf(k, perfRuns.filter(r => r.d.startsWith(m))));
+
+  function chart(id, keys, colors, names) {
+    const S = keys.map(monthly);
+    new Chart(document.getElementById(id), {
+      type: 'line',
+      data: { labels: months.map(m => MOIS[+m.slice(5,7)-1]),
+        datasets: keys.map((k, j) => ({ label:names[j], data:S[j].map(r => r ? r[k] : null), yAxisID: j ? 'yB' : 'yA',
+          borderColor:colors[j], tension:0.3, spanGaps:true, fill:false,
+          pointRadius:S[j].map(r => r && r.race ? 7 : 4), pointBackgroundColor:S[j].map(r => r && r.race ? ORANGE : colors[j]),
+          pointBorderColor:'white', pointBorderWidth:1.5 })) },
+      options: {
+        plugins: {
+          legend: { position:'bottom', labels:{ font:{size:11}, boxWidth:12 } },
+          tooltip: { callbacks:{ label: ctx => { const r = S[ctx.datasetIndex][ctx.dataIndex], k = keys[ctx.datasetIndex]; if (!r) return '';
+            return names[ctx.datasetIndex]+' : '+fmt2(r[k])+' ('+pace(k, r[k])+') · '+fmtD(r.d)+' '+r.n+(r.race ? ' 🏁' : ''); } } }
+        },
+        scales: {
+          yA: { position:'left',  reverse:true, title:{display:true,text:names[0]+' (↓ = mieux)',color:colors[0],font:{size:10}}, ticks:{color:colors[0],callback:v => fmt2(v)} },
+          yB: { position:'right', reverse:true, title:{display:true,text:names[1]+' (↓ = mieux)',color:colors[1],font:{size:10}}, ticks:{color:colors[1],callback:v => fmt2(v)}, grid:noGrid },
+          x: { ticks:{ font:{size:10} } },
         }
       }
-    },
-    scales: {
-      y400: { type:'linear', position:'left',  reverse:true, min:100, max:155, title:{display:true,text:'400 m (sec, ↓ = mieux)',color:PURPLE,font:{size:10}}, ticks:{color:PURPLE,callback:v=>fmt(v)} },
-      y1k:  { type:'linear', position:'right', reverse:true, min:260, max:390, title:{display:true,text:'1 km (sec, ↓ = mieux)',color:BLUE,  font:{size:10}}, ticks:{color:BLUE,  callback:v=>fmt(v)}, grid:noGrid },
-    }
+    });
   }
-});
+  chart('chart-be-speed', ['b400','b1k'], [PURPLE, BLUE], ['400 m','1 km']);
+  chart('chart-be-endurance', ['b5k','b10k'], [BLUE, GREEN], ['5 km','10 km']);
 
-// ── chart-be-endurance ──
-new Chart(document.getElementById('chart-be-endurance'), {
-  type: 'bar',
-  data: {
-    labels: beLabels,
-    datasets: [
-      { label:'5 km',  data:be5k,  backgroundColor:be5k.map( (_,i)=>isRace[i]?ORANGE+'cc':BLUE+'55'),   borderColor:be5k.map( (_,i)=>isRace[i]?ORANGE:'#2563eb'), borderWidth:1.5, yAxisID:'y5k'  },
-      { label:'10 km', data:be10k, backgroundColor:be10k.map((_,i)=>isRace[i]?'#c2410c99':GREEN+'44'), borderColor:be10k.map((_,i)=>isRace[i]?'#c2410c':GREEN),  borderWidth:1.5, yAxisID:'y10k' },
-    ]
-  },
-  options: {
-    plugins: {
-      legend: { position:'bottom', labels:{ font:{size:11}, boxWidth:12 } },
-      tooltip: { callbacks: { label: ctx => ctx.dataset.label+' : '+(ctx.parsed.y ? fmt(ctx.parsed.y) : '—') } }
-    },
-    scales: {
-      y5k:  { type:'linear', position:'left',  reverse:true, min:1300, max:2000, title:{display:true,text:'5 km (sec)', color:BLUE,  font:{size:10}}, ticks:{color:BLUE,  callback:v=>fmt(v)} },
-      y10k: { type:'linear', position:'right', reverse:true, min:2700, max:4000, title:{display:true,text:'10 km (sec)',color:GREEN, font:{size:10}}, ticks:{color:GREEN, callback:v=>fmt(v)}, grid:noGrid },
-    }
-  }
-});
+  // Tableau des records : record saison vs meilleur des 60 derniers jours
+  const lastD = perfRuns.reduce((m, r) => r.d > m ? r.d : m, '');
+  const cutoff = new Date(Date.parse(lastD) - 60*864e5).toISOString().slice(0,10);
+  const recent = perfRuns.filter(r => r.d >= cutoff);
+  let atRecord = 0;
+  const rows = [['400 m','b400'],['1 km','b1k'],['5 km','b5k'],['10 km','b10k']].map(([lab, k]) => {
+    const rec = bestOf(k, perfRuns), cur = bestOf(k, recent);
+    if (!rec) return '';
+    const gap = cur ? cur[k] - rec[k] : null, pct = gap != null ? Math.round(1000*gap/rec[k])/10 : null;
+    if (gap === 0) atRecord++;
+    const gapTxt = gap == null ? '—' : gap === 0 ? '<span style="color:#16a34a;font-weight:600">record récent ✅</span>' : '+'+fmt2(gap)+' (+'+pct+' %)';
+    return '<tr class="border-t border-slate-100"><td class="p-2 font-semibold text-slate-700">'+lab+'</td>' +
+      '<td class="p-2"><strong>'+fmt2(rec[k])+'</strong> <span class="text-slate-400">'+pace(k, rec[k])+'</span><br><span class="text-slate-400">'+fmtD(rec.d)+' · '+rec.n+(rec.race ? ' 🏁' : '')+'</span></td>' +
+      '<td class="p-2">'+(cur ? fmt2(cur[k])+' <span class="text-slate-400">'+pace(k, cur[k])+'</span><br><span class="text-slate-400">'+fmtD(cur.d)+' · '+cur.n+'</span>' : '—')+'</td>' +
+      '<td class="p-2">'+gapTxt+'</td></tr>';
+  }).join('');
+  document.getElementById('be-table').innerHTML =
+    '<table class="w-full text-xs"><thead><tr class="bg-slate-50 text-left">' +
+    '<th class="p-2 text-slate-600">Distance</th><th class="p-2 text-slate-600">Record 2026</th><th class="p-2 text-slate-600">Meilleur 60 j</th><th class="p-2 text-slate-600">Écart</th>' +
+    '</tr></thead><tbody>'+rows+'</tbody></table>';
+  STATUS.be = { label:'Best efforts', val: atRecord+'/4', txt: atRecord ? 'record(s) battu(s) sur 60 j' : 'aucun record sur 60 j', color: atRecord ? '#16a34a' : '#64748b' };
 
-// ── chart-wkg ──
-const wkgLabels = ['Vincennes\n30km (fév)', 'Trail Lavoirs\n23km (mai)', 'Foulée\nClamart (mai)', 'Race 10km\n(juin)'];
-const wkgVals   = [293.4/86, 306.3/86, 318.5/86, 402.1/86];
-const wkgColors = ['#2563eb99','#16a34a99','#f97316aa','#FC4C02cc'];
-new Chart(document.getElementById('chart-wkg'), {
-  type: 'bar',
-  data: {
-    labels: wkgLabels,
-    datasets: [{ label:'W/kg', data:wkgVals, backgroundColor:wkgColors, borderColor:wkgColors.map(c=>c.slice(0,7)), borderWidth:1.5 }]
-  },
-  options: {
-    plugins: {
-      legend: { display:false },
-      tooltip: { callbacks: { label: ctx => ctx.parsed.y.toFixed(2)+' W/kg' } }
-    },
-    scales: { y:{ beginAtZero:false, min:3, max:5, ticks:{ callback:v => v.toFixed(1)+' W/kg' } } }
-  }
-});
-
-// ── chart-efficiency ──
-new Chart(document.getElementById('chart-efficiency'), {
-  type: 'line',
-  data: {
-    labels: effLabels,
-    datasets: [{
-      label: 'Efficacité (m/s ÷ bpm × 1000)',
-      data: effRatio,
-      borderColor:PURPLE, backgroundColor:PURPLE+'18',
-      tension:0.3, fill:true,
-      pointRadius: effRatio.map((_,i) => i===4 ? 7 : 4),
-      pointBackgroundColor: effRatio.map((_,i) => i===4 ? ORANGE : PURPLE),
-      pointBorderColor:'white', pointBorderWidth:2,
-    }]
-  },
-  options: {
-    plugins: {
-      legend: { display:false },
-      tooltip: { callbacks: { label: ctx => 'Efficacité : '+ctx.parsed.y.toFixed(2) } }
-    },
-    scales: { y:{ min:14, max:22, ticks:{ callback:v => v.toFixed(1) } } }
-  }
-});
-
-// ── chart-re ──
-new Chart(document.getElementById('chart-re'), {
-  type: 'line',
-  data: {
-    labels: weeks,
-    datasets: [{
-      label: 'Relative Effort',
-      data: reData,
-      borderColor:PURPLE, backgroundColor:PURPLE+'18',
-      tension:0.3, fill:true,
-      pointRadius: reData.map((_,i) => i===11 ? 7 : 3),
-      pointBackgroundColor: reData.map((_,i) => i===11 ? RED : PURPLE),
-    }]
-  },
-  options: {
-    plugins: {
-      legend: { display:false },
-      tooltip: { callbacks: { label: ctx => 'RE: '+ctx.parsed.y } }
-    },
-    scales: { y:{ beginAtZero:true }, x:xWks }
-  }
-});
-
-// ── chart-course-economy ──
-new Chart(document.getElementById('chart-course-economy'), {
-  type: 'line',
-  data: {
-    labels: weeks,
-    datasets: [{
-      label: 'km / RE ajusté',
-      data: wkEfficiency,
-      borderColor:GREEN, backgroundColor:GREEN+'18',
-      tension:0.3, fill:true, spanGaps:true,
-      pointRadius: 3,
-    }]
-  },
-  options: {
-    plugins: {
-      legend: { display:false },
-      tooltip: { callbacks: { label: ctx => ctx.parsed.y != null ? ctx.parsed.y.toFixed(3)+' km/RE' : '—' } }
-    },
-    scales: { y:{ beginAtZero:true }, x:xWks }
-  }
-});
-
-// ── CTL / ATL / TSB ──
-(function() {
-  const kATL = Math.exp(-7/7), kCTL = Math.exp(-7/42);
-  let atl=0, ctl=0;
-  const atlD=[], ctlD=[], tsbD=[], tsbBg=[], tsbBo=[];
-  reData.forEach(re => {
-    atl = atl*kATL + re*(1-kATL);
-    ctl = ctl*kCTL + re*(1-kCTL);
-    const tsb = Math.round(ctl-atl);
-    atlD.push(Math.round(atl)); ctlD.push(Math.round(ctl)); tsbD.push(tsb);
-    tsbBg.push(tsb >= 0 ? '#16a34a55' : '#ef444455');
-    tsbBo.push(tsb >= 0 ? '#16a34a' : '#ef4444');
-  });
-  new Chart(document.getElementById('chart-ctl'), {
+  // W/kg en compétition
+  const WEIGHT_KG = 86;
+  const races = perfRuns.filter(r => r.race && r.w);
+  new Chart(document.getElementById('chart-wkg'), {
     type: 'bar',
-    data: {
-      labels: weeks,
-      datasets: [
-        { label:'TSB (Forme)', data:tsbD, backgroundColor:tsbBg, borderColor:tsbBo, borderWidth:1, yAxisID:'yTSB', order:3 },
-        { label:'CTL (Fitness)', data:ctlD, type:'line', borderColor:BLUE, backgroundColor:BLUE+'15', tension:0.4, fill:false, pointRadius:2, pointBorderColor:'white', yAxisID:'yLoad', order:1 },
-        { label:'ATL (Fatigue)', data:atlD, type:'line', borderColor:RED,  backgroundColor:RED+'10',  tension:0.4, fill:false, pointRadius:2, pointBorderColor:'white', yAxisID:'yLoad', order:2 },
-      ]
-    },
+    data: { labels: races.map(r => [r.n.length > 20 ? r.n.slice(0,19)+'…' : r.n, fmtD(r.d)]),
+      datasets: [{ label:'W/kg', data: races.map(r => +(r.w/WEIGHT_KG).toFixed(2)),
+        backgroundColor: races.map(r => r.trail ? '#16a34a99' : '#FC4C02cc'), borderColor: races.map(r => r.trail ? '#16a34a' : '#FC4C02'), borderWidth:1.5 }] },
     options: {
-      plugins: {
-        legend: { position:'bottom', labels:{ font:{size:11}, boxWidth:12 } },
-        tooltip: { mode:'index', callbacks:{ label: ctx => ctx.dataset.label+' : '+ctx.parsed.y } }
-      },
-      scales: {
-        yLoad: { type:'linear', position:'left',  beginAtZero:true, title:{display:true,text:'CTL / ATL (RE)',font:{size:10}}, ticks:{font:{size:10}} },
-        yTSB:  { type:'linear', position:'right', title:{display:true,text:'TSB (forme)',font:{size:10}}, ticks:{font:{size:10}}, grid:noGrid },
-        x: xWks,
-      }
+      plugins: { legend:{ display:false },
+        tooltip: { callbacks:{ label: ctx => { const r = races[ctx.dataIndex];
+          return [ctx.parsed.y.toFixed(2)+' W/kg ('+r.w+' W)', r.km+' km · D+ '+r.elev+' m · FC '+r.hr+' bpm']; } } } },
+      scales: { y:{ min:2.5, max:5, ticks:{ callback:v => v.toFixed(1)+' W/kg' } }, x:{ ticks:{ font:{size:10} } } }
     }
   });
 })();
 
-// ── Monotonie + Contrainte ──
+// ── chart-efficiency ── Efficiency Factor (vitesse m/min ÷ FC moy) sur footings faciles à plat
 (function() {
-  const monotony = reData.map((_, wi) => {
-    const win = reData.slice(Math.max(0, wi-3), wi+1);
-    if (win.length < 2) return 0;
-    const mean = win.reduce((a,b)=>a+b,0)/win.length;
-    const std  = Math.sqrt(win.reduce((a,b)=>a+(b-mean)**2,0)/win.length);
-    return std > 0 ? +(mean/std).toFixed(2) : 0;
-  });
-  const strain = reData.map((re, i) => Math.round(re * (monotony[i]||0)));
-  new Chart(document.getElementById('chart-monotonie'), {
-    type: 'bar',
+  const ef = effRuns.map(r => r.ef);
+  const sorted = [...ef].sort((x,y) => x-y), median = sorted[Math.floor(sorted.length/2)];
+  const roll = ef.map((_, i) => { const w = ef.slice(Math.max(0, i-4), i+1); return +(w.reduce((x,y)=>x+y,0)/w.length).toFixed(3); });
+  const fmtPace = sec => Math.floor(sec/60)+':'+String(sec%60).padStart(2,'0');
+  const fmtD = d => d.slice(8,10)+'/'+d.slice(5,7);
+  const cur = roll[roll.length-1], delta = Math.round(1000*(cur/median - 1))/10;
+  const col = delta >= 2 ? '#16a34a' : delta <= -2 ? '#f59e0b' : '#64748b';
+  const verdict = delta >= 2 ? 'meilleure que d\'habitude' : delta <= -2 ? 'en dessous — fatigue, chaleur ou baisse de forme' : 'stable, dans ta moyenne';
+  document.getElementById('eff-status').innerHTML =
+    '<span class="badge" style="background:'+col+'22;color:'+col+';border:1px solid '+col+'">' +
+    '5 derniers footings : EF '+cur.toFixed(3)+' ('+(delta >= 0 ? '+' : '')+delta.toFixed(1)+' % vs médiane saison '+median.toFixed(3)+') → '+verdict+'</span>';
+  STATUS.eff = { label:'Efficacité aérobie', val:(delta >= 0 ? '+' : '')+delta.toFixed(1)+' %', txt: verdict, color: col };
+  new Chart(document.getElementById('chart-efficiency'), {
+    type: 'line',
     data: {
-      labels: weeks,
+      labels: effRuns.map(r => fmtD(r.d)),
       datasets: [
-        { label:'Contrainte (RE×mono)',      data:strain,   backgroundColor:PURPLE+'50', borderColor:PURPLE, borderWidth:1, yAxisID:'yStrain', order:3 },
-        { label:'Monotonie (risque > 2.0)', data:monotony, type:'line', borderColor:AMBER='#f97316', backgroundColor:AMBER+'18',
-          tension:0.3, fill:false, pointRadius:2, pointBorderColor:'white', yAxisID:'yMono', order:1 },
-        { label:'Seuil 2.0', data:weeks.map(()=>2.0), type:'line', borderColor:'#ef4444', borderDash:[6,3], borderWidth:1.5, pointRadius:0, fill:false, yAxisID:'yMono', order:0 },
+        { label:'Moyenne 5 footings', data:roll, borderColor:PURPLE, borderWidth:3, tension:0.35, fill:false, pointRadius:0, order:1 },
+        { label:'Footing', data:ef, showLine:false, pointRadius:3.5, pointBorderColor:'white', pointBorderWidth:1,
+          pointBackgroundColor: ef.map(v => v >= median ? '#16a34aaa' : '#f59e0baa'), order:2 },
+        { label:'Médiane saison', data:ef.map(() => median), borderColor:'#94a3b8', borderDash:[6,3], borderWidth:1.5, pointRadius:0, fill:false, order:3 },
       ]
     },
     options: {
       plugins: {
         legend: { position:'bottom', labels:{ font:{size:11}, boxWidth:12 } },
-        tooltip: { mode:'index', callbacks:{ label: ctx => ctx.dataset.label+' : '+ctx.parsed.y } }
+        tooltip: { mode:'index', callbacks:{
+          title: items => { const r = effRuns[items[0].dataIndex]; return r.d.slice(8,10)+'/'+r.d.slice(5,7)+' · '+r.n; },
+          label: ctx => {
+            const r = effRuns[ctx.dataIndex];
+            if (ctx.datasetIndex === 1) return 'EF '+r.ef.toFixed(3)+' · '+fmtPace(r.pace)+'/km à '+r.hr+' bpm';
+            return ctx.dataset.label+' : '+ctx.parsed.y.toFixed(3);
+          } } }
       },
       scales: {
-        yStrain: { type:'linear', position:'left',  beginAtZero:true, ticks:{font:{size:10}} },
-        yMono:   { type:'linear', position:'right', min:0, max:3.5, ticks:{font:{size:10}}, grid:noGrid },
-        x: xWks,
+        y: { title:{display:true,text:'m/min par battement',font:{size:10}}, ticks:{ callback:v => v.toFixed(2) } },
+        x: { ticks:{ maxRotation:45, font:{ size:10 }, autoSkip:true, maxTicksLimit:14 } },
       }
     }
   });
 })();
 
 // ── Cadence ──
-const wkCadence = [85.1,87.0,84.7,84.2,84.8,86.0,83.6,82.6,85.0,85.3,86.1,81.5,86.0,81.9,84.9,85.0,85.8,73.3,84.7,85.8,84.7,85.2,85.1,86.0,86.4,83.6,83.1,85.6,86.0,79.4,60.3,67.8,85.7,70.3,68.5,86.2,86.1,85.9,85.8,86.2];
-const wkVeloOutKm = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,33.7,0.0,0.0,0.0,0.0,0.0,66.8,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
-const wkVeloInKm = [0.0,0.0,44.5,0.0,30.7,32.9,12.2,24.1,0.0,14.0,0.0,0.0,0.0,0.0,13.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
-const wkVeloElev = [0,0,163,0,319,197,13,136,0,14,0,0,0,0,245,0,0,0,0,0,0,159,0,0,0,0,0,456,0,0,0,0,0,0,0,0,0,0,0,0];
-const wkVeloWatts = [null,null,105.1,null,102.5,90.3,115.2,96.4,null,111.4,null,null,null,null,126.7,null,null,null,null,null,null,105.3,null,null,null,null,null,118.1,null,null,null,null,null,null,null,null,null,null,null,null];
-new Chart(document.getElementById('chart-cadence'), {
-  type: 'line',
-  data: {
-    labels: weeks,
-    datasets: [{
-      label: 'Cadence (spm)',
-      data: wkCadence,
-      borderColor: BLUE, backgroundColor: BLUE+'15',
-      tension: 0.3, fill: true,
-      pointRadius: wkCadence.map((v,i) => v && v < 80 ? 7 : 3),
-      pointBackgroundColor: wkCadence.map((v,i) => v && v < 80 ? '#f97316' : BLUE),
-      pointBorderColor: 'white', pointBorderWidth: 1.5,
-    }]
-  },
-  options: {
-    plugins: {
-      legend: { display:false },
-      tooltip: { callbacks:{ label: ctx => ctx.parsed.y ? ctx.parsed.y+' spm' : 'n/d' } }
-    },
-    scales: {
-      y: { min:70, max:92, ticks:{ callback:v => v+' spm', stepSize:2 } },
-      x: xWks,
+const wkCadence = [172.6,174.0,173.0,172.7,173.5,170.1,170.9,170.1,172.1,172.7,172.6,172.3,171.4,163.0,170.1,171.7,172.3,172.1,172.5,171.7,172.1,172.7,172.5,172.3,172.8,170.9,169.7,173.6,172.1,171.7,null,171.1,171.5,170.4,171.2,172.4,172.4,172.0,171.7,172.8,172.0];
+const wkVeloOutKm = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,33.7,0.0,0.0,0.0,0.0,0.0,66.8,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
+const wkVeloInKm = [0.0,0.0,44.5,0.0,30.7,32.9,12.2,24.1,0.0,14.0,0.0,0.0,0.0,0.0,13.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
+const wkVeloElev = [0,0,163,0,319,197,13,136,0,14,0,0,0,0,245,0,0,0,0,0,0,159,0,0,0,0,0,456,0,0,0,0,0,0,0,0,0,0,0,0,0];
+const wkVeloWatts = [null,null,105.1,null,102.5,90.3,115.2,96.4,null,111.4,null,null,null,null,126.7,null,null,null,null,null,null,105.3,null,null,null,null,null,118.1,null,null,null,null,null,null,null,null,null,null,null,null,null];
+// Cadence en pas/min réels (avg_cadence Strava ×2), course à plat uniquement — voir update_report.py
+(function() {
+  const ZONES = [
+    { min: 180, max: 999, label:'Très élevée', txt:'foulée courte et rapide',          color:'#0ea5e9' },
+    { min: 170, max: 180, label:'Bonne',       txt:'zone de référence 170–180 spm',    color:'#16a34a' },
+    { min: 160, max: 170, label:'Moyenne',     txt:'un peu basse, foulée plus longue', color:'#f59e0b' },
+    { min: 0,   max: 160, label:'Basse',       txt:'foulée longue, plus d\'impact',    color:'#ef4444' },
+  ];
+  const zoneOf = v => ZONES.find(z => v >= z.min && v < z.max);
+  const vals = wkCadence.filter(v => v != null);
+  const season = vals.reduce((x,y)=>x+y,0)/vals.length;
+  const last4 = wkCadence.slice(-4).filter(v => v != null);
+  const cur = last4.reduce((x,y)=>x+y,0)/last4.length, cz = zoneOf(cur);
+  document.getElementById('cad-status').innerHTML =
+    '<span class="badge" style="background:'+cz.color+'22;color:'+cz.color+';border:1px solid '+cz.color+'">' +
+    '4 dernières semaines : '+cur.toFixed(1)+' spm → '+cz.label+' (moyenne saison '+season.toFixed(1)+' spm)</span>';
+  STATUS.cad = { label:'Cadence', val: cur.toFixed(0)+' spm', txt: cz.label+' (4 dernières sem.)', color: cz.color };
+  const bands = {
+    id: 'cadBands',
+    beforeDatasetsDraw(chart) {
+      const { ctx, chartArea: ca, scales: { y } } = chart;
+      ctx.save();
+      ZONES.forEach(z => {
+        const top = Math.max(y.getPixelForValue(Math.min(z.max, y.max)), ca.top);
+        const bot = Math.min(y.getPixelForValue(Math.max(z.min, y.min)), ca.bottom);
+        if (bot <= top) return;
+        ctx.fillStyle = z.color + '14';
+        ctx.fillRect(ca.left, top, ca.right-ca.left, bot-top);
+      });
+      ctx.restore();
     }
-  }
-});
+  };
+  new Chart(document.getElementById('chart-cadence'), {
+    type: 'line',
+    data: {
+      labels: weeks,
+      datasets: [{
+        label: 'Cadence (spm)',
+        data: wkCadence,
+        borderColor: BLUE, tension: 0.3, fill: false, spanGaps: true,
+        pointRadius: 3.5,
+        pointBackgroundColor: wkCadence.map(v => v == null ? 'transparent' : zoneOf(v).color),
+        pointBorderColor: 'white', pointBorderWidth: 1.5,
+      }]
+    },
+    plugins: [bands],
+    options: {
+      plugins: {
+        legend: { display:false },
+        tooltip: { callbacks:{ label: ctx => {
+          const v = ctx.parsed.y;
+          if (v == null) return 'aucune course à plat cette semaine';
+          const z = zoneOf(v);
+          return v+' spm → '+z.label+' ('+z.txt+')';
+        } } }
+      },
+      scales: {
+        y: { min:155, max:185, ticks:{ callback:v => v+' spm', stepSize:5 } },
+        x: xWks,
+      }
+    }
+  });
+})();
 
 // ── Zones d'intensité ──
 new Chart(document.getElementById('chart-zones'), {
@@ -1855,7 +1530,7 @@ new Chart(document.getElementById('chart-zones'), {
   data: {
     labels: ['Z1–Z2 Endurance','Z2–Z3 Aérobie','Z4 Seuil','Z5 Haute Int.'],
     datasets: [{
-      data: [101.8, 127.5, 35.5, 12.1],
+      data: [102.9, 128.8, 36.7, 12.1],
       backgroundColor: [GREEN+'cc', BLUE+'cc', '#f97316cc', RED+'33'],
       borderColor: [GREEN, BLUE, '#f97316', '#ef444433'],
       borderWidth: 1.5,
@@ -1865,7 +1540,7 @@ new Chart(document.getElementById('chart-zones'), {
     maintainAspectRatio: false,
     plugins: {
       legend: { display:false },
-      tooltip: { callbacks:{ label: ctx => ctx.label+' : '+[101.8,127.5,35.5,12.1][ctx.dataIndex].toFixed(1)+'h ('+[37,46,13,4][ctx.dataIndex]+'%)' } }
+      tooltip: { callbacks:{ label: ctx => ctx.label+' : '+[102.9,128.8,36.7,12.1][ctx.dataIndex].toFixed(1)+'h ('+[37,46,13,4][ctx.dataIndex]+'%)' } }
     },
     cutout: '68%',
   }
@@ -1873,7 +1548,7 @@ new Chart(document.getElementById('chart-zones'), {
 
 // ── Heatmap ──
 (function() {
-  const hm = [[1,2,0,0],[3,0,0,21],[2,2,1,27],[3,1,0,5],[10,23,3,20],[6,1,2,3],[29,2,3,0]];
+  const hm = [[1,2,0,0],[3,0,0,22],[2,2,1,28],[3,1,0,5],[10,24,3,20],[6,1,2,3],[29,2,3,0]];
   const jours  = ['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
   const joursL = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
   const slots  = ['Matin','Midi','Après-midi','Soir'];
@@ -1931,7 +1606,7 @@ new Chart(document.getElementById('chart-zones'), {
   colTotals.forEach(ct => {
     html += `<td style="text-align:center;padding-top:8px;font-size:13px;font-weight:700;color:#ea580c">${ct}</td>`;
   });
-  html += '<td style="text-align:center;padding-top:8px;padding-left:10px;font-size:14px;font-weight:800;color:#374151">170</td>';
+  html += '<td style="text-align:center;padding-top:8px;padding-left:10px;font-size:14px;font-weight:800;color:#374151">173</td>';
   html += '</tr></tbody></table>';
 
   // ── Legend
@@ -2048,36 +1723,32 @@ function initMap() {
 // ══════════ CHARTS COMPÉTITIONS ══════════
 const kms       = ['km1','km2','km3','km4','km5','km6','km7','km8','km9','km10'];
 const splitSec  = [293,291,292,293,287,282,286,287,280,275];
-const splitPace = splitSec.map(s => +(s/60).toFixed(2));
 const fcData    = [139.9,152.4,160.1,164.1,167.7,171.8,172.9,175.1,176.9,181.0];
 const wattsData = [395.3,391.6,400.5,395.5,394.0,411.6,399.0,409.8,414.0,409.5];
 
-// ── C1. Splits 10km ──
-new Chart(document.getElementById('chart-comp-splits'), {
-  type: 'bar',
-  data: {
-    labels: kms,
-    datasets: [{
-      label: 'Allure (min/km)',
-      data: splitPace,
-      backgroundColor: splitSec.map((_,i) => i>=5 ? ORANGE+'cc' : ORANGE+'55'),
-      borderColor: ORANGE, borderWidth:1.5,
-    }]
-  },
-  options: {
-    plugins: {
-      legend: { display:false },
-      tooltip: { callbacks: { label: ctx => fmt(splitSec[ctx.dataIndex])+'/km' } }
+// ── C1. Splits 10km ── allure par km, axe inversé (plus haut = plus rapide), moyenne en pointillé
+(function() {
+  const avg = splitSec.reduce((a,b)=>a+b,0)/splitSec.length;
+  new Chart(document.getElementById('chart-comp-splits'), {
+    type: 'line',
+    data: {
+      labels: kms,
+      datasets: [
+        { label:'Allure', data: splitSec, borderColor:ORANGE, borderWidth:3, tension:0.3, fill:false,
+          pointRadius:5, pointBorderColor:'white', pointBorderWidth:1.5,
+          pointBackgroundColor: splitSec.map(v => v < avg ? GREEN : ORANGE) },
+        { label:'Moyenne '+fmt(Math.round(avg))+'/km', data: splitSec.map(() => avg), borderColor:'#94a3b8', borderDash:[6,3], borderWidth:1.5, pointRadius:0 },
+      ]
     },
-    scales: {
-      y: {
-        reverse:true, min:4.0, max:5.3,
-        ticks: { callback: v => { const m=Math.floor(v); return m+':'+String(Math.round((v%1)*60)).padStart(2,'0'); } },
-        title: { display:true, text:'Allure (↓ = plus rapide)', font:{size:10} }
-      }
+    options: {
+      plugins: {
+        legend: { position:'bottom', labels:{ font:{size:11}, boxWidth:12 } },
+        tooltip: { callbacks: { label: ctx => ctx.datasetIndex ? ctx.dataset.label : fmt(splitSec[ctx.dataIndex])+'/km ('+(splitSec[ctx.dataIndex] < avg ? 'plus vite' : 'plus lent')+' que la moyenne)' } }
+      },
+      scales: { y: { reverse:true, min:270, max:300, ticks:{ stepSize:5, callback: v => fmt(v) } } }
     }
-  }
-});
+  });
+})();
 
 // ── C2. FC + Watts 10km ──
 new Chart(document.getElementById('chart-comp-fcwatts'), {
@@ -2085,48 +1756,16 @@ new Chart(document.getElementById('chart-comp-fcwatts'), {
   data: {
     labels: kms,
     datasets: [
-      { label:'FC (bpm)',      data:fcData,    borderColor:RED,  backgroundColor:RED+'15',  tension:0.3, fill:true,  pointRadius:4, yAxisID:'yFC' },
-      { label:'Puissance (W)', data:wattsData, borderColor:BLUE, backgroundColor:BLUE+'10', tension:0.3, fill:false, pointRadius:4, yAxisID:'yW'  },
+      { label:'FC (bpm)',      data:fcData,    borderColor:RED,  backgroundColor:RED+'15',  tension:0.3, fill:true,  pointRadius:3, yAxisID:'yFC' },
+      { label:'Puissance (W)', data:wattsData, borderColor:BLUE, backgroundColor:BLUE+'10', tension:0.3, fill:false, pointRadius:3, yAxisID:'yW'  },
     ]
   },
   options: {
     plugins: { legend: { position:'bottom', labels:{ font:{size:11}, boxWidth:12 } } },
     scales: {
-      yFC: { type:'linear', position:'left',  min:130, max:195, title:{display:true,text:'FC (bpm)',color:RED, font:{size:10}}, ticks:{color:RED}  },
-      yW:  { type:'linear', position:'right', min:360, max:440, title:{display:true,text:'Watts',   color:BLUE,font:{size:10}}, ticks:{color:BLUE}, grid:noGrid },
+      yFC: { type:'linear', position:'left',  min:130, max:190, ticks:{color:RED, stepSize:10}  },
+      yW:  { type:'linear', position:'right', min:360, max:440, ticks:{color:BLUE}, grid:noGrid },
     }
-  }
-});
-
-// ── C3. Radar performance ──
-new Chart(document.getElementById('chart-comp-radar'), {
-  type: 'radar',
-  data: {
-    labels: ['Effort FC\n(% FCmax)', 'Puissance\n(W/kg)', 'Vitesse\n(km/h)', 'Terrain\n(D+/km)', 'Distance\n(km)'],
-    datasets: [
-      radarDs('Maxicross 25km',      [90, 60, 58,100,100], GREEN),
-      radarDs('Trail Lavoirs 23km',  [92, 76, 71, 75, 92], '#10b981'),
-      radarDs('Foulée Verte 17.5km', [98, 79, 75, 78, 70], '#f97316'),
-      radarDs('Foulées 10km (route)',[99, 100,100,  6, 41], ORANGE, 2.5),
-      radarDs('Trail Vimy 20.2km',   [100, 91, 83, 41, 81], '#0891b2'),
-      radarDs('Paris-Versailles 16.2km (route)', [99, 97, 86, 48, 65], '#9333ea'),
-    ]
-  },
-  options: {
-    plugins: {
-      legend: { position:'bottom', labels:{ font:{size:10}, boxWidth:10, padding:8 } },
-      tooltip: {
-        callbacks: {
-          label: ctx => {
-            const labels = ['Effort FC','Puissance','Vitesse','Terrain','Distance'];
-            const units  = ['%','W/kg','km/h','m D+/km','km'];
-            const raws   = [[80,2.82,7.3,30.5,24.9],[82,3.56,9.0,23.0,22.9],[87,3.70,9.6,23.7,17.5],[88,4.68,12.7,2.0,10.1],[89.5,4.25,10.48,12.46,20.2],[88.3,4.52,10.97,14.5,16.2]];
-            return ctx.dataset.label+' — '+labels[ctx.dataIndex]+' : '+raws[ctx.datasetIndex][ctx.dataIndex]+' '+units[ctx.dataIndex];
-          }
-        }
-      }
-    },
-    scales: { r:{ beginAtZero:true, max:100, ticks:{display:false}, pointLabels:{font:{size:10}}, grid:{color:'#e2e8f0'}, angleLines:{color:'#cbd5e1'} } }
   }
 });
 
@@ -2339,8 +1978,122 @@ const calActs = [
   {d:'2026-10-01',t:'Run',km:6.5,dur:'39min',re:28,elev:7,n:"Mini-séance de rattrapage",race:false,hike:false},
   {d:'2026-10-02',t:'Trail',km:10.9,dur:'1h04',re:17,elev:22,n:"Boucle du dredi midi",race:false,hike:false},
   {d:'2026-10-02',t:'Run',km:14.1,dur:'1h24',re:61,elev:21,n:"Fractionné long",race:false,hike:false},
-  {d:'2026-10-04',t:'Run',km:23.4,dur:'2h15',re:75,elev:81,n:"Boucle de la Marne",race:false,hike:false}
+  {d:'2026-10-04',t:'Run',km:23.4,dur:'2h15',re:75,elev:81,n:"Boucle de la Marne",race:false,hike:false},
+  {d:'2026-10-06',t:'Run',km:12.7,dur:'1h15',re:25,elev:40,n:"Footing du mardi",race:false,hike:false},
+  {d:'2026-10-07',t:'Run',km:11.6,dur:'1h11',re:43,elev:27,n:"Fractionné court",race:false,hike:false},
+  {d:'2026-10-09',t:'Trail',km:10.8,dur:'1h05',re:16,elev:24,n:"Boucle du dredi midi",race:false,hike:false}
 ];
+
+// ── C3. Tableau + KPI + puissance/durée — à partir de calActs (race:true) et perfRuns ──
+// Infos non disponibles dans les données (nom lisible, temps officiel, résultat) : à compléter à chaque nouvelle course.
+const RACE_INFO = {
+  '2026-02-01': { n:'Maxicross 25 km — Montlignon',            time:'3:25:00', res:'Finisher ✅' },
+  '2026-03-21': { n:'ETP 120 — EcoTrail de Paris',             time:'21:21:00', res:'Finisher ✅ · objectif A' },
+  '2026-05-10': { n:'Trail des Lavoirs — Saint-Forget',        time:'2:32:00', res:'21 PRs' },
+  '2026-05-31': { n:'Foulée Verte de Clamart',                  time:'1:50:00', res:'FC max 188 🔥' },
+  '2026-06-14': { n:'Foulées du 12ème — 10 km Paris',           time:'0:47:49', res:'2e all-time 🥈 · split négatif' },
+  '2026-08-22': { n:'Maratrail de l\'Échappée Belle',           time:'9:27:00', res:'Finisher ✅ · 9 PRs' },
+  '2026-09-12': { n:'Trail Canadian de Vimy',                   time:'1:56:00', res:'Sub-2h ✅' },
+  '2026-09-27': { n:'Paris-Versailles',                         time:'1:28:00', res:'53 PRs · ≈ 3h50 marathon (Enduraw)' },
+};
+const NEXT_RACE = { d:'2026-11-08', n:'Marathon Nice-Cannes', km:42.2, target:'3h52–3h56 (5:30–5:35/km)' };
+(function() {
+  const KG = 86, HRMAX = 188;
+  const toSec = t => t.split(':').reduce((a,v) => a*60 + +v, 0);
+  const durSec = d => { const m = d.match(/(?:(\d+)h)?(\d+)?(?:min)?/); return ((+m[1]||0)*60 + (+m[2]||0))*60; };
+  const hms = sec => { const h = Math.floor(sec/3600), m = Math.round(sec%3600/60); return h ? h+'h'+String(m).padStart(2,'0') : fmt(Math.round(sec)); };
+  const fmtD = d => new Date(d+'T12:00').toLocaleDateString('fr-FR', { day:'numeric', month:'short' });
+  const races = calActs.filter(a => a.race).map(a => {
+    const info = RACE_INFO[a.d] || {}, perf = perfRuns.find(r => r.d === a.d && r.race) || {};
+    const sec = info.time ? toSec(info.time) : durSec(a.dur);
+    return { d:a.d, n:info.n || a.n, res:info.res || '', trail:a.t !== 'Run', km:a.km, elev:a.elev,
+             sec, pace:Math.round(sec/a.km), hr:perf.hr, w:perf.w,
+             dpk:a.elev/a.km, pct: perf.hr ? perf.hr/HRMAX*100 : null };
+  });
+  const pctCol = v => v == null ? '#94a3b8' : v >= 88 ? '#dc2626' : v >= 80 ? '#f59e0b' : '#16a34a';
+
+  // Tableau
+  const th = 'p-2 text-left text-slate-600 whitespace-nowrap';
+  let h = '<thead><tr class="bg-slate-50">' + ['Date','Course','Distance','D+','Temps','Allure','Intensité','W/kg','Résultat']
+    .map(x => '<th class="'+th+'">'+x+'</th>').join('') + '</tr></thead><tbody class="divide-y divide-slate-100">';
+  races.forEach(r => {
+    const c = pctCol(r.pct);
+    h += '<tr>' +
+      '<td class="p-2 text-slate-500 whitespace-nowrap">'+fmtD(r.d)+'</td>' +
+      '<td class="p-2"><span class="badge '+(r.trail ? 'badge-trail' : 'badge-route')+'" style="font-size:9px">'+(r.trail ? 'TRAIL' : 'ROUTE')+'</span> <span class="font-semibold text-slate-800">'+r.n+'</span></td>' +
+      '<td class="p-2 whitespace-nowrap">'+r.km.toFixed(1)+' km</td>' +
+      '<td class="p-2 whitespace-nowrap">'+r.elev.toLocaleString('fr-FR')+' m <span class="text-slate-400">('+Math.round(r.dpk)+'/km)</span></td>' +
+      '<td class="p-2 font-bold whitespace-nowrap" style="color:'+(r.trail ? '#15803d' : '#c2410c')+'">'+hms(r.sec)+'</td>' +
+      '<td class="p-2 whitespace-nowrap">'+fmt(r.pace)+'/km</td>' +
+      '<td class="p-2 whitespace-nowrap">'+(r.pct == null ? '<span class="text-slate-400">—</span>' :
+        '<span class="badge" style="background:'+c+'22;color:'+c+'">'+Math.round(r.pct)+' %</span> <span class="text-slate-400">'+Math.round(r.hr)+' bpm</span>')+'</td>' +
+      '<td class="p-2 whitespace-nowrap">'+(r.w ? (r.w/KG).toFixed(2) : '<span class="text-slate-400">—</span>')+'</td>' +
+      '<td class="p-2 text-slate-500">'+r.res+'</td></tr>';
+  });
+  const days = Math.ceil((new Date(NEXT_RACE.d+'T00:00') - new Date()) / 864e5);
+  if (days > 0) h += '<tr style="background:#fff7ed"><td class="p-2 text-slate-500 whitespace-nowrap">'+fmtD(NEXT_RACE.d)+'</td>' +
+    '<td class="p-2"><span class="badge badge-route" style="font-size:9px">ROUTE</span> <span class="font-semibold text-slate-800">'+NEXT_RACE.n+'</span></td>' +
+    '<td class="p-2 whitespace-nowrap">'+NEXT_RACE.km+' km</td><td class="p-2">plat</td>' +
+    '<td class="p-2 font-bold" style="color:#c2410c" colspan="4">Objectif '+NEXT_RACE.target+'</td>' +
+    '<td class="p-2"><span class="badge badge-orange">J-'+days+'</span></td></tr>';
+  document.getElementById('comp-table').innerHTML = h + '</tbody>';
+
+  // Ajustement puissance–durée (log-log) sur les courses roulantes avec puissance
+  const flat = races.filter(r => r.w && r.dpk < 15);
+  const X = flat.map(r => Math.log(r.sec/60)), Y = flat.map(r => Math.log(r.w/KG));
+  const mx = X.reduce((a,b)=>a+b,0)/X.length, my = Y.reduce((a,b)=>a+b,0)/Y.length;
+  const slope = X.reduce((a,x,i) => a+(x-mx)*(Y[i]-my), 0) / X.reduce((a,x) => a+(x-mx)**2, 0);
+  const wkgAt = min => Math.exp(my + slope*(Math.log(min)-mx));
+  const MAR_MIN = 235, marWkg = wkgAt(MAR_MIN), marW = Math.round(marWkg*KG);
+  const fit = [];
+  for (let m = 40; m <= 250; m += 5) fit.push({ x:m, y:+wkgAt(m).toFixed(3) });
+  document.getElementById('pw-status').innerHTML =
+    '<span class="badge" style="background:#FC4C0222;color:#c2410c;border:1px solid #FC4C02">⭐ Projection ~3h55 : ≈ '+marW+' W ('+marWkg.toFixed(2)+' W/kg)</span>' +
+    '<span class="badge" style="background:#64748b22;color:#475569;border:1px solid #64748b">−'+Math.round((1-Math.exp(slope*Math.log(2)))*100)+' % de puissance à chaque doublement de durée</span>';
+
+  new Chart(document.getElementById('chart-comp-power'), {
+    type: 'scatter',
+    data: { datasets: [
+      { label:'Courbe (courses roulantes)', data:fit, showLine:true, borderColor:'#94a3b8', borderDash:[6,3], borderWidth:1.5, pointRadius:0 },
+      { label:'Route', data:races.filter(r => r.w && !r.trail).map(r => ({ x:r.sec/60, y:r.w/KG, r })),
+        pointRadius:7, pointBackgroundColor:ORANGE, pointBorderColor:'white', pointBorderWidth:2 },
+      { label:'Trail', data:races.filter(r => r.w && r.trail).map(r => ({ x:r.sec/60, y:r.w/KG, r })),
+        pointRadius:7, pointBackgroundColor:GREEN, pointBorderColor:'white', pointBorderWidth:2 },
+      { label:'Nice-Cannes (projection)', data:[{ x:MAR_MIN, y:marWkg }], pointStyle:'star', pointRadius:14,
+        pointBorderColor:ORANGE, pointBackgroundColor:ORANGE+'55', pointBorderWidth:2 },
+    ] },
+    options: {
+      plugins: {
+        legend: { position:'bottom', labels:{ font:{size:11}, boxWidth:12, usePointStyle:true } },
+        tooltip: { callbacks: { label: ctx => {
+          const r = ctx.raw.r;
+          if (r) return r.n+' — '+ctx.parsed.y.toFixed(2)+' W/kg ('+Math.round(r.w)+' W) en '+hms(r.sec)+' · D+ '+Math.round(r.dpk)+' m/km';
+          if (ctx.datasetIndex === 3) return 'Projection Nice-Cannes : '+marWkg.toFixed(2)+' W/kg ≈ '+marW+' W pendant ~3h55';
+          return 'Courbe : '+ctx.parsed.y.toFixed(2)+' W/kg à '+hms(ctx.parsed.x*60);
+        } } }
+      },
+      scales: {
+        x: { type:'logarithmic', min:40, max:260, title:{ display:true, text:'Durée de course (échelle log)', font:{size:10} },
+             afterBuildTicks: ax => { ax.ticks = [45,60,90,120,180,240].map(v => ({ value:v })); },
+             ticks:{ callback: v => hms(v*60) } },
+        y: { min:2.5, max:5, title:{ display:true, text:'W/kg', font:{size:10} } },
+      }
+    }
+  });
+
+  // KPI
+  const road = races.filter(r => !r.trail).sort((a,b) => a.pace-b.pace)[0];
+  const best = races.filter(r => r.w).sort((a,b) => b.w-a.w)[0];
+  const box = (border, lbl, val, col, sub) => '<div class="metric-box" style="border-left:4px solid '+border+'"><div class="metric-lbl">'+lbl+'</div>' +
+    '<div class="metric-val" style="color:'+col+'">'+val+'</div><div class="text-xs text-slate-400">'+sub+'</div></div>';
+  const nTrail = races.filter(r => r.trail).length;
+  document.getElementById('comp-kpi').innerHTML =
+    box('#64748b', 'Compétitions 2026', races.length, '#1e293b', (races.length-nTrail)+' route · '+nTrail+' trail') +
+    box(ORANGE, 'Meilleure allure route', fmt(road.pace)+'/km', ORANGE, road.n.split(' — ')[0]+' · '+hms(road.sec)) +
+    box(BLUE, 'Puissance max en course', (best.w/KG).toFixed(2)+' W/kg', BLUE, best.n.split(' — ')[0]+' · '+Math.round(best.w)+' W') +
+    box(ORANGE, NEXT_RACE.n, days > 0 ? 'J-'+days : 'Jour J', ORANGE, 'cible ≈ '+marW+' W · '+NEXT_RACE.target.split(' (')[0]);
+})();
+
 
 // Détail sorties vélo (Ride/VirtualRide), extrait de activities_store.json par update_report.py
 const veloSessions = [
@@ -2358,6 +2111,248 @@ const veloSessions = [
 
 // Détail séries/répétitions/charges des séances muscu, extrait des .fit Garmin par update_muscu.py
 const muscuSessions = [{"id":"23515352314","date":"2026-07-07","start_local":"2026-07-07T21:35:00","name":"Renforcement musculaire","duration_s":1135,"calories":93,"avg_hr":93.0,"max_hr":109.0,"exercises":[{"category_name":"Squat","muscles":["quads","glutes","hamstrings"],"sets":[{"reps":20,"weight":0,"duration_s":61.4},{"reps":20,"weight":0,"duration_s":63.0},{"reps":20,"weight":0,"duration_s":58.6},{"reps":20,"weight":0,"duration_s":62.1}]},{"category_name":"Ischio-jambiers (élastique)","muscles":["hamstrings"],"sets":[{"reps":20,"weight":0,"duration_s":66.1},{"reps":20,"weight":0,"duration_s":72.9}]},{"category_name":"Mollets (calf raise)","muscles":["calves"],"sets":[{"reps":20,"weight":0,"duration_s":56.1},{"reps":20,"weight":0,"duration_s":56.1}]},{"category_name":"Crunch triceps","muscles":["abs","triceps"],"sets":[{"reps":10,"weight":0,"duration_s":41.4},{"reps":10,"weight":0,"duration_s":37.2}]}],"source":"garmin_api"}];
+
+// ── Charge hebdo RE ajustée (partagée par chart-re et chart-ctl) ── (placé après calActs)
+// RE ×7 après RE_SCALE_SHIFT : sans ça, la charge paraît divisée par 7 à partir de juillet.
+// CTL/ATL amorcés sur la moyenne des 4 premières semaines (évite un faux creux en janvier).
+const RE_ADJ = (function() {
+  const RE_SCALE_SHIFT = '2026-06-25';
+  const D0 = Date.UTC(2025, 11, 29);
+  const load = weeks.map(() => 0);
+  calActs.forEach(a => {
+    const wi = Math.floor((Date.parse(a.d) - D0) / (7*864e5));
+    if (wi >= 0 && wi < load.length) load[wi] += (a.re || 0) * (a.d >= RE_SCALE_SHIFT ? 7 : 1);
+  });
+  const lastDay = calActs.reduce((m, a) => a.d > m ? a.d : m, '');
+  const lastSunday = new Date(D0 + (7*(weeks.length-1) + 6)*864e5).toISOString().slice(0, 10);
+  const kATL = Math.exp(-7/7), kCTL = Math.exp(-7/42);
+  let atl = load.slice(0,4).reduce((x,y)=>x+y,0)/4, ctl = atl;
+  const atlD = [], ctlD = [];
+  load.forEach(l => {
+    atl = atl*kATL + l*(1-kATL); ctl = ctl*kCTL + l*(1-kCTL);
+    atlD.push(atl); ctlD.push(ctl);
+  });
+  return { load, atl: atlD, ctl: ctlD, partial: lastDay < lastSunday };
+})();
+
+// ── chart-re ── charge hebdo (RE ajusté) colorée par l'ACWR officiel (acwr[], update_report.py)
+(function() {
+  const { load, ctl, partial } = RE_ADJ;
+  const ZONES = [
+    { min: 1.5, max: 99,  label:'Pic',         txt:'bond de charge, risque de blessure', color:'#ef4444' },
+    { min: 1.3, max: 1.5, label:'Attention',   txt:'forte hausse, à ne pas enchaîner',  color:'#f59e0b' },
+    { min: 0.8, max: 1.3, label:'Progression', txt:'charge productive',                 color:'#16a34a' },
+    { min: -1,  max: 0.8, label:'Allègement',  txt:'récupération ou coupure',           color:'#94a3b8' },
+  ];
+  const zoneOf = r => ZONES.find(z => r >= z.min && r < z.max);
+  const last = load.length-1, isCur = i => partial && i === last;
+  const li = partial ? last-1 : last, lz = zoneOf(acwr[li]);
+  document.getElementById('re-status').innerHTML =
+    '<span class="badge" style="background:'+lz.color+'22;color:'+lz.color+';border:1px solid '+lz.color+'">' +
+    'Dernière semaine complète ('+weeks[li]+') : '+Math.round(load[li])+' RE · ACWR '+acwr[li].toFixed(2)+' → '+lz.label+' — '+lz.txt+'</span>' +
+    (partial ? ' <span class="badge" style="background:#f1f5f9;color:#64748b">Semaine du '+weeks[last]+' en cours (barre pâle) : '+Math.round(load[last])+' RE à ce jour</span>' : '');
+  STATUS.charge = { label:'Charge (ACWR)', val: acwr[li].toFixed(2), txt: lz.label+' — '+lz.txt, color: lz.color };
+  new Chart(document.getElementById('chart-re'), {
+    type: 'bar',
+    data: {
+      labels: weeks,
+      datasets: [
+        { label:'Charge habituelle (CTL)', data:ctl.map(Math.round), type:'line', borderColor:BLUE, borderDash:[5,3], borderWidth:2,
+          tension:0.4, fill:false, pointRadius:0, order:1 },
+        { label:'Relative Effort de la semaine', data:load,
+          backgroundColor: load.map((_, i) => isCur(i) ? '#94a3b830' : zoneOf(acwr[i]).color+'99'),
+          borderColor:     load.map((_, i) => isCur(i) ? '#94a3b8'   : zoneOf(acwr[i]).color),
+          borderWidth:1, order:2 },
+      ]
+    },
+    options: {
+      plugins: {
+        legend: { position:'bottom', labels:{ font:{size:11}, boxWidth:12 } },
+        tooltip: { mode:'index', callbacks:{ label: ctx => {
+          if (ctx.datasetIndex === 0) return 'Charge habituelle : '+ctx.parsed.y;
+          const i = ctx.dataIndex, z = zoneOf(acwr[i]);
+          return 'RE : '+Math.round(ctx.parsed.y)+' · ACWR '+acwr[i].toFixed(2)+' → '+(isCur(i) ? 'semaine en cours' : z.label+' — '+z.txt);
+        } } }
+      },
+      scales: { y:{ beginAtZero:true, title:{display:true,text:'RE hebdo (ajusté)',font:{size:10}} }, x:xWks }
+    }
+  });
+})();
+
+// ── chart-course-economy ── km/RE sur course à plat hors compétitions (wkEfficiency, update_report.py)
+(function() {
+  const vals = wkEfficiency.filter(v => v != null).sort((a,b) => a-b);
+  const median = vals[Math.floor(vals.length/2)];
+  const roll = wkEfficiency.map((_, i) => {
+    const w = wkEfficiency.slice(Math.max(0, i-3), i+1).filter(v => v != null);
+    return w.length ? +(w.reduce((a,b)=>a+b,0)/w.length).toFixed(3) : null;
+  });
+  const cur = roll[roll.length-1], delta = Math.round(100*(cur/median - 1));
+  const good = delta >= 0;
+  const col = good ? '#16a34a' : '#f59e0b';
+  document.getElementById('eco-status').innerHTML =
+    '<span class="badge" style="background:'+col+'22;color:'+col+';border:1px solid '+col+'">' +
+    'Moyenne 4 dernières semaines : '+cur.toFixed(3)+' km/RE, soit '+(delta >= 0 ? '+' : '')+delta+' % vs médiane saison ('+median.toFixed(3)+') → ' +
+    (good ? 'économie au niveau ou meilleure' : 'en dessous — semaines plus intenses ou fatigue') + '</span>';
+  STATUS.eco = { label:'Économie de course', val:(delta >= 0 ? '+' : '')+delta+' %', txt: good ? 'au niveau ou mieux' : 'semaines intenses ou fatigue', color: col };
+  new Chart(document.getElementById('chart-course-economy'), {
+    type: 'line',
+    data: {
+      labels: weeks,
+      datasets: [
+        { label:'Moyenne 4 semaines', data:roll, borderColor:GREEN, borderWidth:3, tension:0.35, fill:false, pointRadius:0, spanGaps:true, order:1 },
+        { label:'Semaine', data:wkEfficiency, showLine:false, spanGaps:true, pointRadius:3.5, pointBorderColor:'white', pointBorderWidth:1,
+          pointBackgroundColor: wkEfficiency.map(v => v == null ? 'transparent' : v >= median ? GREEN+'aa' : '#f59e0baa'), order:2 },
+        { label:'Médiane saison', data:weeks.map(() => median), borderColor:'#94a3b8', borderDash:[6,3], borderWidth:1.5, pointRadius:0, fill:false, order:3 },
+      ]
+    },
+    options: {
+      plugins: {
+        legend: { position:'bottom', labels:{ font:{size:11}, boxWidth:12 } },
+        tooltip: { mode:'index', callbacks:{ label: ctx => ctx.parsed.y != null ? ctx.dataset.label+' : '+ctx.parsed.y.toFixed(3)+' km/RE' : ctx.dataset.label+' : —' } }
+      },
+      scales: { y:{ beginAtZero:true, title:{display:true,text:'km par point de RE',font:{size:10}} }, x:xWks }
+    }
+  });
+})();
+
+// ── CTL / ATL / TSB ── (placé après RE_ADJ)
+// Forme exprimée en % de CTL (TSB/CTL) pour pouvoir la lire avec des zones fixes,
+// indépendantes de l'unité RE.
+(function() {
+  const { load, partial } = RE_ADJ;
+  const ZONES = [
+    { min: 25,   max: 999, label:'Transition', txt:'trop frais, la forme se perd',            color:'#a78bfa' },
+    { min: 5,    max: 25,  label:'Frais',      txt:'prêt à performer, zone visée le jour J',  color:'#0ea5e9' },
+    { min: -10,  max: 5,   label:'Neutre',     txt:'maintien, peu de stimulus',               color:'#94a3b8' },
+    { min: -30,  max: -10, label:'Optimal',    txt:'bonne charge, la forme progresse',        color:'#16a34a' },
+    { min: -999, max: -30, label:'Risque',     txt:'surcharge, risque de blessure',           color:'#ef4444' },
+  ];
+  const zoneOf = v => ZONES.find(z => v >= z.min && v < z.max);
+  const atlD=[], ctlD=[], formD=[], bg=[], bo=[];
+  load.forEach((l, i) => {
+    const atl = RE_ADJ.atl[i], ctl = RE_ADJ.ctl[i];
+    const f = Math.round(100*(ctl-atl)/ctl);
+    const z = zoneOf(f), cur = partial && i === load.length-1;
+    atlD.push(Math.round(atl)); ctlD.push(Math.round(ctl)); formD.push(f);
+    bg.push(cur ? z.color+'30' : z.color+'99'); bo.push(z.color);
+  });
+  // Statut courant : dernière semaine complète
+  const li = partial ? load.length-2 : load.length-1, lz = zoneOf(formD[li]);
+  document.getElementById('ctl-status').innerHTML =
+    '<span class="badge" style="background:'+lz.color+'22;color:'+lz.color+';border:1px solid '+lz.color+'">' +
+    'Dernière semaine complète ('+weeks[li]+') : forme '+(formD[li] > 0 ? '+' : '')+formD[li]+' % → '+lz.label+' — '+lz.txt+'</span>' +
+    (partial ? ' <span class="badge" style="background:#f1f5f9;color:#64748b">Semaine du '+weeks[load.length-1]+' en cours (barre pâle) : provisoire</span>' : '');
+  STATUS.forme = { label:'Forme (TSB)', val:(formD[li] > 0 ? '+' : '')+formD[li]+' %', txt: lz.label+' — '+lz.txt, color: lz.color };
+  const zoneBands = {
+    id: 'zoneBands',
+    beforeDatasetsDraw(chart) {
+      const { ctx, chartArea: ca, scales: { yForm } } = chart;
+      ctx.save();
+      ZONES.forEach(z => {
+        const top = Math.max(yForm.getPixelForValue(Math.min(z.max, yForm.max)), ca.top);
+        const bot = Math.min(yForm.getPixelForValue(Math.max(z.min, yForm.min)), ca.bottom);
+        if (bot <= top) return;
+        ctx.fillStyle = z.color + '14';
+        ctx.fillRect(ca.left, top, ca.right-ca.left, bot-top);
+      });
+      ctx.restore();
+    }
+  };
+  new Chart(document.getElementById('chart-ctl'), {
+    type: 'bar',
+    data: {
+      labels: weeks,
+      datasets: [
+        { label:'Forme (% CTL)', data:formD, backgroundColor:bg, borderColor:bo, borderWidth:1, yAxisID:'yForm', order:3 },
+        { label:'CTL (Fitness)', data:ctlD, type:'line', borderColor:BLUE, backgroundColor:BLUE+'15', tension:0.4, fill:false, pointRadius:2, pointBorderColor:'white', yAxisID:'yLoad', order:1 },
+        { label:'ATL (Fatigue)', data:atlD, type:'line', borderColor:RED,  backgroundColor:RED+'10',  tension:0.4, fill:false, pointRadius:2, pointBorderColor:'white', yAxisID:'yLoad', order:2 },
+      ]
+    },
+    plugins: [zoneBands],
+    options: {
+      plugins: {
+        legend: { position:'bottom', labels:{ font:{size:11}, boxWidth:12 } },
+        tooltip: { mode:'index', callbacks:{ label: ctx => {
+          if (ctx.dataset.yAxisID !== 'yForm') return ctx.dataset.label+' : '+ctx.parsed.y;
+          const v = ctx.parsed.y, z = zoneOf(v);
+          return 'Forme : '+(v > 0 ? '+' : '')+v+' % → '+z.label+' ('+z.txt+')'+(partial && ctx.dataIndex === load.length-1 ? ' · semaine en cours' : '');
+        } } }
+      },
+      scales: {
+        yLoad: { type:'linear', position:'left',  beginAtZero:true, title:{display:true,text:'CTL / ATL (RE hebdo)',font:{size:10}}, ticks:{font:{size:10}} },
+        yForm: { type:'linear', position:'right', min:-70, max:50, title:{display:true,text:'Forme (% de CTL)',font:{size:10}}, ticks:{font:{size:10}, stepSize:10, callback:v => (v > 0 ? '+' : '')+v+' %'}, grid:noGrid },
+        x: xWks,
+      }
+    }
+  });
+})();
+
+// ── Monotonie + Contrainte ── (placé après calActs dont il dépend)
+// Monotonie de Foster : moyenne / écart-type des 7 charges quotidiennes de la semaine
+// (jours de repos = 0). RE rescalé ×7 après RE_SCALE_SHIFT pour garder un ratio cohérent
+// sur la semaine du 22/06 qui chevauche le changement d'échelle. Semaine en cours : seuls
+// les jours écoulés jusqu'à la dernière activité sont pris en compte.
+(function() {
+  const RE_SCALE_SHIFT = '2026-06-25';
+  const dayLoad = {};
+  calActs.forEach(a => {
+    dayLoad[a.d] = (dayLoad[a.d] || 0) + (a.re || 0) * (a.d >= RE_SCALE_SHIFT ? 7 : 1);
+  });
+  const lastDay = calActs.reduce((m, a) => a.d > m ? a.d : m, '');
+  const monotony = weeks.map((_, wi) => {
+    const loads = [];
+    for (let k = 0; k < 7; k++) {
+      const d = new Date(Date.UTC(2025, 11, 29 + 7*wi + k)).toISOString().slice(0, 10);
+      if (d > lastDay) break;
+      loads.push(dayLoad[d] || 0);
+    }
+    if (loads.length < 2) return null;
+    const mean = loads.reduce((x,y)=>x+y,0)/loads.length;
+    const std  = Math.sqrt(loads.reduce((x,y)=>x+(y-mean)**2,0)/loads.length);
+    return std > 0 ? +(mean/std).toFixed(2) : null;
+  });
+  const strain = reData.map((re, i) => Math.round(re * (monotony[i]||0)));
+  new Chart(document.getElementById('chart-monotonie'), {
+    type: 'bar',
+    data: {
+      labels: weeks,
+      datasets: [
+        { label:'Contrainte (RE×mono)',      data:strain,   backgroundColor:PURPLE+'50', borderColor:PURPLE, borderWidth:1, yAxisID:'yStrain', order:3 },
+        { label:'Monotonie (risque > 2.0)', data:monotony, type:'line', borderColor:AMBER='#f97316', backgroundColor:AMBER+'18',
+          tension:0.3, fill:false, pointRadius:2, pointBorderColor:'white', yAxisID:'yMono', order:1 },
+        { label:'Seuil 2.0', data:weeks.map(()=>2.0), type:'line', borderColor:'#ef4444', borderDash:[6,3], borderWidth:1.5, pointRadius:0, fill:false, yAxisID:'yMono', order:0 },
+      ]
+    },
+    options: {
+      plugins: {
+        legend: { position:'bottom', labels:{ font:{size:11}, boxWidth:12 } },
+        tooltip: { mode:'index', callbacks:{ label: ctx => ctx.dataset.label+' : '+ctx.parsed.y } }
+      },
+      scales: {
+        yStrain: { type:'linear', position:'left',  beginAtZero:true, ticks:{font:{size:10}} },
+        yMono:   { type:'linear', position:'right', min:0, suggestedMax:2.5, ticks:{font:{size:10}}, grid:noGrid },
+        x: xWks,
+      }
+    }
+  });
+})();
+
+
+// ── Tableau de bord ── synthèse des verdicts (STATUS) en tête de page
+(function() {
+  const li = acwrDplus.length - (RE_ADJ.partial ? 2 : 1), v = acwrDplus[li];
+  const c = v > 1.5 ? '#ef4444' : v > 1.3 ? '#f59e0b' : v >= 0.8 ? '#16a34a' : '#94a3b8';
+  STATUS.dplus = { label:'ACWR D+', val: v.toFixed(2), txt: v > 1.5 ? 'pic de charge excentrique' : v > 1.3 ? 'forte hausse du D+' : v >= 0.8 ? 'D+ habituel' : 'peu de D+ récemment', color: c };
+  const days = Math.ceil((Date.parse('2026-11-08') - Date.parse(new Date().toISOString().slice(0,10))) / 864e5);
+  STATUS.race = { label:'Marathon Nice-Cannes', val: days > 0 ? 'J-'+days : 'Jour J', txt:'8 novembre 2026', color:'#FC4C02' };
+  document.getElementById('status-strip').innerHTML = ['race','forme','charge','dplus','eff','eco','cad','be']
+    .filter(k => STATUS[k]).map(k => { const t = STATUS[k];
+      return '<div style="border:1px solid '+t.color+'55;background:'+t.color+'12;border-radius:10px;padding:8px 10px">' +
+        '<div style="font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:#64748b">'+t.label+'</div>' +
+        '<div style="font-size:18px;font-weight:700;color:'+t.color+'">'+t.val+'</div>' +
+        '<div style="font-size:11px;color:#475569">'+t.txt+'</div></div>'; }).join('');
+})();
 
 // ── chart-zones-week ── (placé après calActs dont il dépend)
 (function() {
@@ -2459,121 +2454,175 @@ const muscuSessions = [{"id":"23515352314","date":"2026-07-07","start_local":"20
 })();
 
 (function renderCalendar() {
-  const SPORT_COLORS = {
-    'Run':    {bg:'#ffedd5', text:'#c2410c'},
-    'Trail':  {bg:'#dcfce7', text:'#15803d'},
-    'Marche': {bg:'#fef9c3', text:'#854d0e'},
-    'Vélo':   {bg:'#dbeafe', text:'#1d4ed8'},
-    'Muscu':  {bg:'#f1f5f9', text:'#475569'},
-    'Yoga':   {bg:'#faf5ff', text:'#6d28d9'},
+  // ── Classification des séances ──
+  const TYPES = {
+    footing: { label:'Footing',        bg:'#e0f2fe', text:'#0369a1', bar:'#7dd3fc' },
+    qualite: { label:'Qualité',        bg:'#fee2e2', text:'#b91c1c', bar:'#ef4444' },
+    longue:  { label:'Sortie longue',  bg:'#ede9fe', text:'#6d28d9', bar:'#8b5cf6' },
+    dplus:   { label:'D+ / montagne',  bg:'#dcfce7', text:'#15803d', bar:'#16a34a' },
+    rando:   { label:'Rando',          bg:'#ecfccb', text:'#4d7c0f', bar:'#a3e635' },
+    course:  { label:'Course',         bg:'#ffedd5', text:'#c2410c', bar:'#FC4C02' },
   };
-  const SPORT_LABEL = {Run:'R', Trail:'T', Marche:'M', Vélo:'V', Muscu:'G', Yoga:'Y'};
+  const ORDER = ['footing','longue','qualite','dplus','rando','course'];
+  const OTHER = {
+    'Vélo':   { l:'V', bg:'#dbeafe', text:'#1d4ed8' },
+    'Muscu':  { l:'G', bg:'#f1f5f9', text:'#475569' },
+    'Marche': { l:'M', bg:'#fef9c3', text:'#854d0e' },
+    'Yoga':   { l:'Y', bg:'#faf5ff', text:'#6d28d9' },
+  };
+  const isRun = a => a.t === 'Run' || a.t === 'Trail';
+  const classify = a => {
+    if (a.race) return 'course';
+    if (a.hike) return 'rando';
+    if (/déblocage|remplacé|échauffement/i.test(a.n)) return 'footing';
+    if (/fraction|côte|rattrapage/i.test(a.n)) return 'qualite';
+    if (a.t === 'Trail' && a.km > 0 && a.elev/a.km >= 25) return 'dplus';
+    if (a.km >= 20 || /sortie longue/i.test(a.n)) return 'longue';
+    return 'footing';
+  };
+  const durH = d => { const m = d.match(/^(?:(\d+)h)?(\d+)?(?:min)?$/); return m ? (+m[1]||0) + (+m[2]||0)/60 : 0; };
+  calActs.forEach(a => { if (isRun(a)) a.k = classify(a); });
 
-  // Index by date
+  const runs = calActs.filter(isRun);
+  const lastDay = calActs.reduce((m, a) => a.d > m ? a.d : m, '');
+  const lastMonth = +lastDay.slice(5,7);
+  const D0 = Date.UTC(2025, 11, 29);
+  const weekIdx = d => Math.floor((Date.parse(d) - D0) / (7*864e5));
+
+  // ── Composition hebdo ──
+  const mix = {}; ORDER.forEach(k => mix[k] = weeks.map(() => 0));
+  runs.forEach(a => { const w = weekIdx(a.d); if (w >= 0 && w < weeks.length) mix[a.k][w] += a.km; });
+  new Chart(document.getElementById('chart-session-mix'), {
+    type: 'bar',
+    data: { labels: weeks, datasets: ORDER.map(k => ({
+      label: TYPES[k].label, data: mix[k].map(v => +v.toFixed(1)), backgroundColor: TYPES[k].bar, stack:'km', borderRadius:2,
+    })) },
+    options: {
+      plugins: {
+        legend: { position:'bottom', labels:{ font:{size:11}, boxWidth:12 } },
+        tooltip: { mode:'index', callbacks: {
+          label: ctx => ctx.parsed.y ? ctx.dataset.label+' : '+ctx.parsed.y+' km' : null,
+          footer: items => 'Total : '+items.reduce((t,i) => t+i.parsed.y, 0).toFixed(1)+' km',
+        } }
+      },
+      scales: { x: { ...xWks, stacked:true }, y: { stacked:true, ticks:{ callback:v => v+' km' } } }
+    }
+  });
+
+  // ── Verdicts sur les 28 derniers jours ──
+  const from = new Date(Date.parse(lastDay) - 27*864e5).toISOString().slice(0,10);
+  const recent = runs.filter(a => a.d >= from);
+  const nQual = recent.filter(a => a.k === 'qualite').length / 4;
+  const perW = k => (recent.filter(a => a.k === k).length/4).toFixed(1).replace('.0','');
+  const longest = recent.reduce((m,a) => a.k !== 'course' && a.km > m.km ? a : m, { km:0 });
+  const runDays = new Set(recent.map(a => a.d)).size;
+  const restW = (28 - runDays) / 4;
+  const badge = (ok, txt) => { const c = ok === true ? '#16a34a' : ok === false ? '#f59e0b' : '#64748b';
+    return '<span class="badge" style="background:'+c+'22;color:'+c+';border:1px solid '+c+'">'+(ok === true ? '✅ ' : ok === false ? '🟠 ' : '')+txt+'</span>'; };
+  document.getElementById('mix-status').innerHTML =
+    '<span class="text-xs text-slate-500 self-center">4 dernières semaines :</span>' +
+    badge(nQual >= 1.5 && nQual <= 3, nQual.toFixed(1)+' séance(s) de qualité/sem' + (nQual < 1.5 ? ' — un peu juste' : nQual > 3 ? ' — beaucoup' : '')) +
+    badge(null, perW('footing')+' footing(s) et '+perW('longue')+' sortie(s) longue(s)/sem') +
+    badge(longest.km >= 28, 'Plus longue sortie : '+longest.km.toFixed(1)+' km' + (longest.km < 28 ? ' — viser 28–32 km avant l\'affûtage' : '')) +
+    badge(restW >= 1 && restW <= 4, restW.toFixed(1)+' jour(s) sans course/sem');
+
+  // ── Récapitulatif mensuel ──
+  const MONTHS = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+  const monthList = Array.from({ length:lastMonth }, (_, i) => i+1);
+  const stats = monthList.map(m => {
+    const prefix = '2026-'+String(m).padStart(2,'0')+'-';
+    const acts = calActs.filter(a => a.d.startsWith(prefix)), r = acts.filter(isRun);
+    const nDays = m === lastMonth ? +lastDay.slice(8,10) : new Date(2026, m, 0).getDate();
+    const cnt = k => r.filter(a => a.k === k).length;
+    return { m, nDays, n:r.length,
+      km: r.reduce((t,a) => t+a.km, 0), elev: r.reduce((t,a) => t+a.elev, 0), h: r.reduce((t,a) => t+durH(a.dur), 0),
+      longest: r.filter(a => !a.race).reduce((x,a) => Math.max(x, a.km), 0),
+      qual: cnt('qualite'), longues: cnt('longue'), races: cnt('course'),
+      velo: acts.filter(a => a.t === 'Vélo').reduce((t,a) => t+a.km, 0),
+      muscu: acts.filter(a => a.t === 'Muscu' || a.t === 'Yoga').length,
+      rest: nDays - new Set(r.map(a => a.d)).size };
+  });
+  const maxKm = Math.max(...stats.map(x => x.km));
+  const td = 'padding:6px 8px;white-space:nowrap';
+  let tbl = '<thead><tr style="border-bottom:2px solid #e2e8f0;text-align:left">' +
+    ['Mois','Séances','Course à pied','km/sem','D+','Heures','+ longue','Qualité','Longues','Courses','Vélo','Muscu','J sans course']
+      .map(x => '<th style="'+td+';font-size:11px;color:#64748b;font-weight:600">'+x+'</th>').join('') + '</tr></thead><tbody>';
+  stats.slice().reverse().forEach((x, i) => {
+    const cur = x.m === lastMonth;
+    tbl += '<tr style="background:'+(i%2 ? 'white' : '#f8fafc')+';border-bottom:1px solid #f1f5f9">' +
+      '<td style="'+td+';font-weight:700;color:#1e293b">'+MONTHS[x.m-1]+(cur ? ' <span class="badge badge-orange" style="font-size:9px">en cours</span>' : '')+'</td>' +
+      '<td style="'+td+'">'+x.n+'</td>' +
+      '<td style="'+td+'"><div style="display:flex;align-items:center;gap:6px"><div style="width:70px;height:6px;background:#f1f5f9;border-radius:3px"><div style="width:'+Math.round(x.km/maxKm*100)+'%;height:6px;background:#94a3b8;border-radius:3px"></div></div><b>'+x.km.toFixed(0)+' km</b></div></td>' +
+      '<td style="'+td+';color:#334155">'+(x.km/x.nDays*7).toFixed(0)+'</td>' +
+      '<td style="'+td+';color:#15803d">'+Math.round(x.elev).toLocaleString('fr-FR')+' m</td>' +
+      '<td style="'+td+'">'+fmtH(x.h)+'</td>' +
+      '<td style="'+td+'">'+x.longest.toFixed(1)+' km</td>' +
+      '<td style="'+td+';color:#b91c1c">'+(x.qual || '—')+'</td>' +
+      '<td style="'+td+';color:#6d28d9">'+(x.longues || '—')+'</td>' +
+      '<td style="'+td+';color:#c2410c">'+(x.races ? x.races+' ★' : '—')+'</td>' +
+      '<td style="'+td+';color:#1d4ed8">'+(x.velo ? x.velo.toFixed(0)+' km' : '—')+'</td>' +
+      '<td style="'+td+';color:#475569">'+(x.muscu ? x.muscu+'×' : '—')+'</td>' +
+      '<td style="'+td+';color:#94a3b8">'+x.rest+' j</td></tr>';
+  });
+  const sum = f => stats.reduce((t,x) => t+f(x), 0);
+  const nDaysTot = sum(x => x.nDays);
+  tbl += '<tr style="background:#fff7ed;border-top:2px solid #fed7aa;font-weight:700">' +
+    '<td style="'+td+';color:#ea580c">SAISON</td><td style="'+td+'">'+sum(x => x.n)+'</td>' +
+    '<td style="'+td+'">'+sum(x => x.km).toFixed(0)+' km</td><td style="'+td+'">'+(sum(x => x.km)/nDaysTot*7).toFixed(0)+'</td>' +
+    '<td style="'+td+';color:#15803d">'+Math.round(sum(x => x.elev)).toLocaleString('fr-FR')+' m</td><td style="'+td+'">'+fmtH(sum(x => x.h))+'</td>' +
+    '<td style="'+td+'">'+Math.max(...stats.map(x => x.longest)).toFixed(1)+' km</td>' +
+    '<td style="'+td+';color:#b91c1c">'+sum(x => x.qual)+'</td><td style="'+td+';color:#6d28d9">'+sum(x => x.longues)+'</td>' +
+    '<td style="'+td+';color:#c2410c">'+sum(x => x.races)+' ★</td><td style="'+td+';color:#1d4ed8">'+sum(x => x.velo).toFixed(0)+' km</td>' +
+    '<td style="'+td+';color:#475569">'+sum(x => x.muscu)+'×</td><td style="'+td+';color:#94a3b8">'+sum(x => x.rest)+' j</td></tr></tbody>';
+  document.getElementById('cal-stats').innerHTML = tbl;
+
+  // ── Calendriers ──
+  document.getElementById('cal-legend').innerHTML = ORDER.map(k =>
+    '<span class="badge" style="background:'+TYPES[k].bg+';color:'+TYPES[k].text+'">'+(k === 'course' ? '★ ' : '')+TYPES[k].label+'</span>').join('') +
+    Object.entries(OTHER).map(([t,o]) => '<span class="badge" style="background:'+o.bg+';color:'+o.text+'">'+o.l+' '+t+'</span>').join('');
+
   const byDate = {};
   calActs.forEach(a => { (byDate[a.d] || (byDate[a.d] = [])).push(a); });
+  const weekKm = weeks.map(() => 0);
+  runs.forEach(a => { const w = weekIdx(a.d); if (w >= 0 && w < weekKm.length) weekKm[w] += a.km; });
+  const iso = (m, d) => '2026-'+String(m).padStart(2,'0')+'-'+String(d).padStart(2,'0');
 
-  // Render each monthly grid
-  [1,2,3,4,5,6,7,8,9].forEach(m => {
-    const el = document.getElementById('cal-'+m);
-    if (!el) return;
-    const daysInMonth = new Date(2026, m, 0).getDate();
-    let firstDow = new Date(2026, m-1, 1).getDay();
-    firstDow = firstDow === 0 ? 6 : firstDow - 1; // Mon=0
-
-    let html = '<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px">';
-    ['L','M','M','J','V','S','D'].forEach(d => {
-      html += `<div style="text-align:center;font-size:10px;font-weight:700;color:#94a3b8;padding-bottom:4px">${d}</div>`;
-    });
-    for (let i=0; i<firstDow; i++) html += '<div></div>';
-
-    for (let day=1; day<=daysInMonth; day++) {
-      const ds = `2026-${String(m).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
-      const acts = byDate[ds] || [];
-      const hasRace = acts.some(a => a.race);
-      const runActs = acts.filter(a => a.t==='Run' || a.t==='Trail');
-      const kmTotal = runActs.reduce((s,a) => s+a.km, 0);
-
-      const tooltip = acts.map(a => {
-        return [a.n, a.km ? a.km+'km' : '', a.dur].filter(Boolean).join(' · ');
-      }).join(' / ');
-
-      const cellBg = hasRace ? '#fff7ed' : acts.length ? '#f8fafc' : 'transparent';
-      const dayCl  = acts.length ? '#0f172a' : '#cbd5e1';
-      const border = hasRace ? 'border:1.5px solid #f97316;' : acts.length ? 'border:1px solid #e2e8f0;' : '';
-
-      html += `<div style="${border}background:${cellBg};border-radius:6px;padding:3px 2px;min-height:50px;cursor:default" title="${tooltip.replace(/"/g,'&quot;')}">`;
-      html += `<div style="font-size:10px;font-weight:${acts.length?700:400};color:${dayCl};text-align:center;line-height:1.3">${day}${hasRace?' <span style="color:#f97316">★</span>':''}</div>`;
-
-      if (acts.length) {
-        html += '<div style="display:flex;flex-wrap:wrap;gap:1px;justify-content:center;margin-top:2px">';
-        acts.forEach(a => {
-          // Rando (Hike) compte comme Trail dans tous les agrégats (t==='Trail'), mais garde un
-          // badge visuel distinct ici pour rester repérable dans le calendrier.
-          const sc = a.hike ? {bg:'#ecfccb', text:'#4d7c0f'} : (SPORT_COLORS[a.t] || {bg:'#f1f5f9', text:'#475569'});
-          const lbl = a.hike ? 'H' : (SPORT_LABEL[a.t] || a.t[0]);
-          html += `<span style="background:${sc.bg};color:${sc.text};border-radius:3px;font-size:8px;font-weight:800;padding:1px 3px;line-height:1.4">${lbl}</span>`;
-        });
-        html += '</div>';
-        if (kmTotal > 0) {
-          html += `<div style="text-align:center;font-size:8px;color:#64748b;margin-top:1px">${kmTotal.toFixed(0)}km</div>`;
-        }
+  const monthHtml = m => {
+    const st = stats[m-1];
+    const days = new Date(2026, m, 0).getDate();
+    let dow = new Date(2026, m-1, 1).getDay(); dow = dow === 0 ? 6 : dow-1;
+    let h = '<div class="flex items-baseline justify-between mb-2"><h3 class="font-bold text-slate-700 text-sm">'+MONTHS[m-1]+(m === lastMonth ? ' <span class="text-xs font-normal text-slate-400">(en cours)</span>' : '')+'</h3>' +
+      '<span class="text-xs text-slate-500">'+st.km.toFixed(0)+' km · '+st.n+' séances</span></div>';
+    h += '<div style="display:grid;grid-template-columns:repeat(7,1fr) 34px;gap:2px">';
+    ['L','M','M','J','V','S','D','Σ'].forEach(d => h += '<div style="text-align:center;font-size:10px;font-weight:700;color:#94a3b8;padding-bottom:3px">'+d+'</div>');
+    for (let i = 0; i < dow; i++) h += '<div></div>';
+    for (let day = 1; day <= days; day++) {
+      const ds = iso(m, day), acts = byDate[ds] || [];
+      const r = acts.filter(isRun), main = r.slice().sort((x,y) => (y.race-x.race) || (y.km-x.km))[0];
+      const km = r.reduce((t,a) => t+a.km, 0);
+      const T = main ? TYPES[main.k] : null, future = ds > lastDay;
+      const tip = acts.map(a => [a.n, a.km ? a.km+' km' : '', a.dur, isRun(a) ? TYPES[a.k].label : a.t].filter(Boolean).join(' · ')).join(' / ');
+      h += '<div title="'+tip.replace(/"/g,'&quot;')+'" style="border-radius:5px;min-height:40px;padding:2px 1px;text-align:center;' +
+        (T ? 'background:'+T.bg+';' : acts.length ? 'background:#f8fafc;' : '') + (main && main.race ? 'outline:2px solid #FC4C02;outline-offset:-2px;' : '') + '">' +
+        '<div style="font-size:9px;color:'+(future ? '#e2e8f0' : acts.length ? '#475569' : '#cbd5e1')+'">'+day+(main && main.race ? ' ★' : '')+'</div>' +
+        (km ? '<div style="font-size:11px;font-weight:800;color:'+T.text+';line-height:1.2">'+km.toFixed(0)+'</div>' : '') +
+        '<div style="display:flex;gap:1px;justify-content:center;flex-wrap:wrap">' +
+        acts.filter(a => !isRun(a)).map(a => { const o = OTHER[a.t] || { l:a.t[0], bg:'#f1f5f9', text:'#475569' };
+          return '<span style="background:'+o.bg+';color:'+o.text+';border-radius:2px;font-size:7px;font-weight:800;padding:0 2px">'+o.l+'</span>'; }).join('') +
+        '</div></div>';
+      if ((dow + day) % 7 === 0 || day === days) {
+        if (day === days && (dow + day) % 7 !== 0) for (let i = (dow + day) % 7; i < 7; i++) h += '<div></div>';
+        const w = weekIdx(ds), v = w >= 0 && w < weekKm.length ? weekKm[w] : 0;
+        h += '<div style="display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#334155;background:#f1f5f9;border-radius:5px">'+(v ? v.toFixed(0) : '—')+'</div>';
       }
-      html += '</div>';
     }
-    html += '</div>';
-    el.innerHTML = html;
-  });
-
-  // Monthly stats table
-  const MONTHS = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre'];
-  let tbl = '<thead><tr style="border-bottom:2px solid #e2e8f0;text-align:left">';
-  ['Mois','Run+Trail','Run (km)','Trail (km)','Total km','Vélo (km)','Muscu','RE total','J repos'].forEach(h => {
-    tbl += `<th style="padding:6px 10px;font-size:11px;color:#64748b;font-weight:600;white-space:nowrap">${h}</th>`;
-  });
-  tbl += '</tr></thead><tbody>';
-
-  let totalRunKm=0, totalTrailKm=0, totalVeloKm=0, totalMuscu=0, totalRe=0, totalSeances=0, totalRest=0;
-  [1,2,3,4,5,6,7,8,9].forEach((m,i) => {
-    const daysInMonth = new Date(2026, m, 0).getDate();
-    const prefix = `2026-${String(m).padStart(2,'0')}-`;
-    const acts = calActs.filter(a => a.d.startsWith(prefix));
-    const runKm   = acts.filter(a=>a.t==='Run').reduce((s,a)=>s+a.km,0);
-    const trailKm = acts.filter(a=>a.t==='Trail').reduce((s,a)=>s+a.km,0);
-    const veloKm  = acts.filter(a=>a.t==='Vélo').reduce((s,a)=>s+a.km,0);
-    const muscu   = acts.filter(a=>a.t==='Muscu'||a.t==='Yoga').length;
-    const seances = acts.filter(a=>a.t==='Run'||a.t==='Trail').length;
-    const re      = acts.reduce((s,a)=>s+a.re,0);
-    const activeDays = new Set(acts.map(a=>a.d)).size;
-    const restDays = daysInMonth - activeDays;
-    totalRunKm+=runKm; totalTrailKm+=trailKm; totalVeloKm+=veloKm; totalMuscu+=muscu;
-    totalRe+=re; totalSeances+=seances; totalRest+=restDays;
-    const rowBg = i%2===0 ? '#f8fafc' : 'white';
-    tbl += `<tr style="background:${rowBg};border-bottom:1px solid #f1f5f9">
-      <td style="padding:7px 10px;font-weight:700;color:#1e293b">${MONTHS[i]}</td>
-      <td style="padding:7px 10px;color:#334155">${seances}</td>
-      <td style="padding:7px 10px;color:#c2410c">${runKm.toFixed(0)} km</td>
-      <td style="padding:7px 10px;color:#15803d">${trailKm.toFixed(0)} km</td>
-      <td style="padding:7px 10px;font-weight:700;color:#0f172a">${(runKm+trailKm).toFixed(0)} km</td>
-      <td style="padding:7px 10px;color:#1d4ed8">${veloKm > 0 ? veloKm.toFixed(0)+' km' : '—'}</td>
-      <td style="padding:7px 10px;color:#475569">${muscu > 0 ? muscu+'×' : '—'}</td>
-      <td style="padding:7px 10px;color:#334155">${re}</td>
-      <td style="padding:7px 10px;color:#94a3b8">${restDays}j</td>
-    </tr>`;
-  });
-  tbl += `<tr style="background:#fff7ed;border-top:2px solid #fed7aa;font-weight:700">
-    <td style="padding:8px 10px;color:#ea580c">TOTAL</td>
-    <td style="padding:8px 10px">${totalSeances}</td>
-    <td style="padding:8px 10px;color:#c2410c">${totalRunKm.toFixed(0)} km</td>
-    <td style="padding:8px 10px;color:#15803d">${totalTrailKm.toFixed(0)} km</td>
-    <td style="padding:8px 10px;font-size:1.05em">${(totalRunKm+totalTrailKm).toFixed(0)} km</td>
-    <td style="padding:8px 10px;color:#1d4ed8">${totalVeloKm.toFixed(0)} km</td>
-    <td style="padding:8px 10px;color:#475569">${totalMuscu}×</td>
-    <td style="padding:8px 10px">${totalRe}</td>
-    <td style="padding:8px 10px;color:#94a3b8">${totalRest}j</td>
-  </tr>`;
-  tbl += '</tbody>';
-  document.getElementById('cal-stats').innerHTML = tbl;
+    return '<div>'+h+'</div></div>';
+  };
+  const desc = monthList.slice().reverse();
+  document.getElementById('cal-recent').innerHTML = desc.slice(0,3).map(monthHtml).join('');
+  document.getElementById('cal-older').innerHTML = desc.slice(3).map(monthHtml).join('');
+  const fmtDay = d => new Date(d+'T12:00').toLocaleDateString('fr-FR', { day:'numeric', month:'short' });
+  document.getElementById('cal-foot').textContent = calActs.length+' activités · 1 janv. → '+fmtDay(lastDay)+' 2026 · Données : MCP Strava';
 })();
 
 // ── MUSCULATION ──
