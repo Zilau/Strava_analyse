@@ -2269,5 +2269,166 @@
    "achievement_count": 1,
    "pr_count": 0
   }
+ },
+ {
+  "id": "20519021871",
+  "name": "Fractionné long 🔵🟡",
+  "description": "6000m AS42 + 4000m AS42+\n\n📊 My Enduraw Report 🏃\nAdjusted Pace: 5:56/km\n🏝️ Elevation (0.4% avg) cost you 0'02\"/km.\n😳 Heat (20°C) cost you 0'04\"/km.",
+  "sport_type": "Run",
+  "start_local": "2026-10-09T19:35:19",
+  "location_summary": "Charenton-le-Pont, France",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 15651.8,
+   "moving_time": 5662,
+   "elapsed_time": 6213,
+   "elevation_gain": 57,
+   "avg_speed": 2.7643588837866475,
+   "max_speed": 3.74,
+   "relative_effort": 72,
+   "total_calories": 1298,
+   "avg_cadence": 85.4083,
+   "kudos_count": 57,
+   "achievement_count": 6,
+   "pr_count": 4
+  }
+ },
+ {
+  "id": "20538645089",
+  "name": "Boucle de la Marne 🔵🟡",
+  "description": "40' footing \n20' Allure AS42\n30' footing+\n30' Allure AS42\n\n🚀 My Enduraw Report 💪\nAdjusted Pace: 5:32/km\n🏝️ Elevation (0.4% avg) cost you 0'05\"/km.\n🍃 Wind (8.4km/h) cost you 0'08\"/km.",
+  "sport_type": "Run",
+  "start_local": "2026-10-11T09:35:49",
+  "location_summary": "Charenton-le-Pont, France",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 22755.9,
+   "moving_time": 7842,
+   "elapsed_time": 8035,
+   "elevation_gain": 84,
+   "avg_speed": 2.9017980107115533,
+   "max_speed": 3.78,
+   "relative_effort": 75,
+   "total_calories": 1905,
+   "avg_cadence": 86.164,
+   "kudos_count": 67,
+   "achievement_count": 45,
+   "pr_count": 45
+  }
+ },
+ {
+  "id": "20572277583",
+  "name": "Footing du mardi soir 🔵🟡",
+  "description": "3000m AS42-\n\n🎯 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 ✅\n🎭 That's 1.4x the distance from the Sydney Opera House to Bondi Beach!\nAdjusted Pace: 𝟱:𝟯𝟴/km\n🏝️ Elevation (0.3% avg) cost you 𝟬'𝟬𝟰\"/km.\n😳 Heat (21.8°C) cost you 𝟬'𝟬𝟲\"/km.\n🍃 Wind (12.9km/h) cost you 𝟬'𝟭𝟯\"/km.\n⏱️ Net effect: conditions cost you 𝟰'𝟱𝟯\" today!\n🔥 1029-1258 kcal (🍕 ~4.0 pizza slices) · 💧 0.7-1.3L fluid loss (0.7L/h)\n🙂 Air quality: Fair · still a great day to be outside.\n\nLearn more 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-10-13T19:11:53",
+  "location_summary": "Nogent-sur-Marne, France",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 12752.9,
+   "moving_time": 4597,
+   "elapsed_time": 6134,
+   "elevation_gain": 37,
+   "avg_speed": 2.774178812268871,
+   "max_speed": 3.42,
+   "relative_effort": 22,
+   "total_calories": 1026,
+   "avg_cadence": 85.9836,
+   "kudos_count": 31,
+   "achievement_count": 0,
+   "pr_count": 0
+  }
+ },
+ {
+  "id": "20586362889",
+  "name": "Fractionné court en Côte 🔵🟡",
+  "description": "4x(250m↗️-50m↘️-250m↗️-450m↘️)\n\n🎯 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 ✅\n🏁 At this pace, your marathon would take 4 hours and 18 minutes.\nAdjusted Pace: 𝟱:𝟱𝟰/km\n🏕️ Elevation (1.2% avg) cost you 𝟬'𝟬𝟵\"/km.\n😳 Heat (20°C) cost you 𝟬'𝟬𝟰\"/km.\n⏱️ Net effect: conditions cost you 𝟮'𝟭𝟯\" today!\n🔥 799-977 kcal (🍕 ~3.1 pizza slices) · 💧 0.6-1.1L fluid loss (0.8L/h)\n😷 Air quality: Poor · consider easing off or moving your session indoors.\n\nLearn more 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-10-14T19:35:45",
+  "location_summary": "Charenton-le-Pont, France",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 9649.8,
+   "moving_time": 3553,
+   "elapsed_time": 4592,
+   "elevation_gain": 115,
+   "avg_speed": 2.7159583450605123,
+   "max_speed": 4.54,
+   "relative_effort": 27,
+   "total_calories": 783,
+   "avg_cadence": 85.6462,
+   "kudos_count": 51,
+   "achievement_count": 0,
+   "pr_count": 0
+  }
+ },
+ {
+  "id": "20607160724",
+  "name": "Ekiden connecté du Stade Français",
+  "description": "Partiellement nuageux, 19°C, Ressenti 18°C, Humidité 72%, Vent 3m/s du O - KlimatApp\n\n🚀 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 💪\n🕊️ That's 1.7x the distance from the Brandenburg Gate to the Berlin Wall!\nAdjusted Pace: 𝟱:𝟱𝟬/km\n🏝️ Elevation (0.2% avg) cost you 𝟬'𝟬𝟰\"/km.\n😳 Heat (20°C) cost you 𝟬'𝟬𝟰\"/km.\n⏱️ Net effect: conditions cost you 𝟭'𝟮𝟯\" today!\n🔥 814-995 kcal (🍔 ~1.6 burgers) · 💧 0.6-1.1L fluid loss (0.8L/h)\n🙂 Air quality: Fair · still a great day to be outside.\n\nLearn more 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-10-16T12:10:02",
+  "location_summary": "Charenton-le-Pont, France",
+  "gear_id": "28975365",
+  "summary": {
+   "distance": 10033,
+   "moving_time": 3593,
+   "elapsed_time": 4024,
+   "elevation_gain": 23,
+   "avg_speed": 2.7923740606735317,
+   "max_speed": 3.52,
+   "relative_effort": 22,
+   "total_calories": 756,
+   "avg_cadence": 86.0847,
+   "kudos_count": 49,
+   "achievement_count": 3,
+   "pr_count": 0
+  }
+ },
+ {
+  "id": "20612372332",
+  "name": "Fractionné long 🔵🟡",
+  "description": "4000mAS42+\n3000mAS42-\n4000mAS42+\n\n📊 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 🏃\n🌊 That's 48% of the distance from Nice to Cannes!\nAdjusted Pace: 𝟱:𝟰𝟲/km\n🏝️ Elevation (0.3% avg) cost you 𝟬'𝟬𝟱\"/km.\n😳 Heat (20°C) cost you 𝟬'𝟬𝟰\"/km.\n⏱️ Net effect: conditions cost you 𝟮'𝟭𝟵\" today!\n🔥 1218-1489 kcal (🍔 ~2.5 burgers) · 💧 0.9-1.7L fluid loss (0.8L/h)\n🙂 Air quality: Fair · still a great day to be outside.\n\nLearn more 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-10-16T19:36:39",
+  "location_summary": "Charenton-le-Pont, France",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 14928.2,
+   "moving_time": 5308,
+   "elapsed_time": 5614,
+   "elevation_gain": 43,
+   "avg_speed": 2.8123963828183873,
+   "max_speed": 3.84,
+   "relative_effort": 61,
+   "total_calories": 1125,
+   "avg_cadence": 87.1138,
+   "kudos_count": 57,
+   "achievement_count": 3,
+   "pr_count": 3
+  }
+ },
+ {
+  "id": "20632101586",
+  "name": "Boucle de la Marne 🔵🟡",
+  "description": "40' footing \n20' AS42-\n20' AS42\n20' AS42+\n\n📊 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 🏃\n🏁 At this pace, your marathon would take 4 hours and 2 minutes.\nAdjusted Pace: 𝟱:𝟯𝟳/km\n🏝️ Elevation (0.4% avg) cost you 𝟬'𝟬𝟱\"/km.\n😳 Heat (20°C) cost you 𝟬'𝟬𝟰\"/km.\n⏱️ Net effect: conditions cost you 𝟯'𝟭𝟯\" today!\n🔥 1803-2204 kcal (🍔 ~3.6 burgers) · 💧 1.3-2.4L fluid loss (0.9L/h)\n🙂 Air quality: Fair · still a great day to be outside.\n\nMore info 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-10-18T09:37:37",
+  "location_summary": "Charenton-le-Pont, France",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 22350.8,
+   "moving_time": 7718,
+   "elapsed_time": 8077,
+   "elevation_gain": 85,
+   "avg_speed": 2.8959315884944283,
+   "max_speed": 4.02,
+   "relative_effort": 63,
+   "total_calories": 1657,
+   "avg_cadence": 87.2588,
+   "kudos_count": 48,
+   "achievement_count": 40,
+   "pr_count": 40
+  }
  }
 ]
