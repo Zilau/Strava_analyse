@@ -2430,5 +2430,28 @@
    "achievement_count": 40,
    "pr_count": 40
   }
+ },
+ {
+  "id": "20665259597",
+  "name": "Footing du mardi 🔵🟡",
+  "description": "3000m AS42\n\n🎯 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 ✅\n🏁 At this pace, your marathon would take 4 hours and 12 minutes.\nAdjusted Pace: 𝟱:𝟱𝟮/km\n🏝️ Elevation (0.3% avg) cost you 𝟬'𝟬𝟯\"/km.\n😳 Heat (20°C) cost you 𝟬'𝟬𝟰\"/km.\n⏱️ Net effect: conditions cost you 𝟭'𝟯𝟴\" today!\n🔥 1031-1260 kcal (🍔 ~2.1 burgers) · 💧 0.8-1.4L fluid loss (0.8L/h)\n😶‍🌫️ Air quality: Moderate · sensitive athletes may notice it.\n\nLearn more 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-10-20T19:19:23",
+  "location_summary": "Saint-Maurice, France",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 12755.9,
+   "moving_time": 4587,
+   "elapsed_time": 5651,
+   "elevation_gain": 39,
+   "avg_speed": 2.780880749945498,
+   "max_speed": 3.54,
+   "relative_effort": 24,
+   "total_calories": 949,
+   "avg_cadence": 85.6081,
+   "kudos_count": 36,
+   "achievement_count": 0,
+   "pr_count": 0
+  }
  }
 ]
