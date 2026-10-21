@@ -95,7 +95,7 @@
       </div>
       <div class="pt-3 border-t border-slate-700">
         <span class="text-xs font-bold uppercase tracking-wide text-orange-400">🎯 Prochain objectif</span>
-        <p class="text-sm text-slate-300 leading-relaxed mt-1"><strong class="text-orange-400">Marathon Nice-Cannes · 8 novembre · J-19</strong></p>
+        <p class="text-sm text-slate-300 leading-relaxed mt-1"><strong class="text-orange-400">Marathon Nice-Cannes · 8 novembre · <span class="j-race">J-19</span></strong></p>
       </div>
     </div>
   </div>
@@ -117,7 +117,7 @@
           <span class="badge badge-orange mt-0.5">P2</span>
           <div>
             <p class="font-semibold text-slate-800 text-sm">Semaine du 19/10 : dernière semaine de charge, sans hausse</p>
-            <p class="text-xs text-slate-600 mt-1">Deux semaines à 70–74 km (ACWR 1.16 puis 1.05) bien absorbées : le pic du bloc est derrière. Trois pics au-dessus de 1.3 cette saison (ETP 1.36, Chartreuse 1.68, Vimy 1.48) sont passés sans blessure, mais à J-19 une gêne coûterait la course. <strong>Semaine du 19/10 : 60–70 km au maximum. Le rappel d'allure du 20/10 (3000 m AS42) est fait : au plus une séance de qualité à allure marathon d'ici la sortie du 25/10, le reste en footing.</strong> La séance de côtes (FC jusqu'à 175) et le fractionné long ne sont plus utiles : la VMA ne bougera plus d'ici le 8/11. Lever le pied au moindre signal (douleur, FC de repos anormale, EF qui chute).</p>
+            <p class="text-xs text-slate-600 mt-1">Deux semaines à 70–74 km (ACWR 1.16 puis 1.05) bien absorbées : le pic du bloc est derrière. Trois pics au-dessus de 1.3 cette saison (ETP 1.36, Chartreuse 1.68, Vimy 1.48) sont passés sans blessure, mais à <span class="j-race">J-19</span> une gêne coûterait la course. <strong>Semaine du 19/10 : 60–70 km au maximum. Le rappel d'allure du 20/10 (3000 m AS42) est fait : au plus une séance de qualité à allure marathon d'ici la sortie du 25/10, le reste en footing.</strong> La séance de côtes (FC jusqu'à 175) et le fractionné long ne sont plus utiles : la VMA ne bougera plus d'ici le 8/11. Lever le pied au moindre signal (douleur, FC de repos anormale, EF qui chute).</p>
           </div>
         </div>
       </div>
@@ -157,7 +157,7 @@
 
   <div class="pt-4">
     <h3 class="text-sm font-bold uppercase tracking-wide text-slate-500">2 · Charge &amp; risque de blessure</h3>
-    <p class="text-xs text-slate-400">Est-ce que je charge trop ou pas assez ? Priorité à J-19.</p>
+    <p class="text-xs text-slate-400">Est-ce que je charge trop ou pas assez ? Priorité à <span class="j-race">J-19</span>.</p>
   </div>
 
   <div class="card">
@@ -197,8 +197,6 @@
       <span class="badge badge-orange">🟠 16 mars : ACWR 1.36 — ETP 120 (charge planifiée)</span>
       <span class="badge badge-red">🔴 27 juil : ACWR 1.68 — camp Chartreuse (12 sorties enchaînées), seul vrai pic de la saison</span>
       <span class="badge badge-orange">🟠 7 sept : ACWR 1.48 — semaine du Trail de Vimy, juste sous le seuil</span>
-      <span class="badge badge-blue">ℹ️ Actuel (20 oct) : ACWR 0.53, non représentatif : la semaine du 19/10 ne compte qu'un footing (12.8 km avec 3000 m AS42 à 5:27, RE 24). Référence : dernière semaine complète</span>
-      <span class="badge badge-green">✅ 12 oct : ACWR 1.05 (zone de progression), semaine du 12/10 à 69.7 km (RE 195) : footing 12.8 km avec 3000 m AS42- (13/10), côtes 4×250 m (14/10), Ekiden 10 km en footing et fractionné long 4000/3000/4000 m AS42 (16/10), sortie longue 22.4 km avec 3×20' AS42-/AS42/AS42+ (18/10). Après 1.29 → 1.20 → 1.16, la charge se stabilise sans pic : bonne base pour l'affûtage</span>
       <span class="badge badge-orange">🌡️ 15–23 juin : 32–35.7°C — volume réduit + acclimatation intentionnelle</span>
     </div>
   </div>
@@ -206,10 +204,8 @@
   <div class="card">
     <h2>ACWR D+ — Charge aiguë 7j / Charge chronique 28j (Dénivelé)</h2>
     <p class="text-xs text-slate-400 mb-3">Même modèle que l'ACWR ci-dessus, appliqué au D+ hebdo au lieu du Relative Effort. Le RE sous-pondère les longues sorties D+ lentes (rando/trail montagne) — cet indicateur capture la <strong>charge excentrique / fatigue neuromusculaire</strong> que le RE seul ne reflète pas. Zone verte : 0.8–1.3 · Zone rouge : &gt; 1.5.</p>
+    <div id="dplus-status" class="flex gap-2 flex-wrap mb-3"></div>
     <canvas id="chart-acwr-dplus" height="90"></canvas>
-    <div class="flex gap-3 mt-3 flex-wrap">
-      <span class="badge badge-green">✅ Actuel (20 oct) : ACWR D+ 0.23 (semaine du 19/10 en cours, 39 m de D+). Dernière semaine complète, le 12/10 : 0.44 avec 303 m de D+ (dont 115 m sur la séance de côtes du 14/10). Le bloc reste quasi plat : charge excentrique minimale, cohérente avec un marathon route à J-19</span>
-    </div>
   </div>
 
   <div class="pt-4">
@@ -784,8 +780,15 @@
 
   <div class="bg-slate-800 rounded-xl p-4">
     <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-3">Volume réel à allure marathon ou plus rapide (objectif 5:41/km)</h2>
-    <p class="text-xs text-slate-500 mb-3">Kilomètres identifiés dans les descriptions de séances à allure cible marathon ou plus rapide, semaine par semaine, depuis la reprise post-Échappée Belle (24 août 2026). 12 dernières semaines affichées.</p>
+    <p class="text-xs text-slate-500 mb-3">Kilomètres à allure cible marathon ou plus rapide, semaine par semaine, depuis la reprise post-Échappée Belle (24 août 2026) : laps ≥ 1 km sous 5:41/km, corrigés à la main si besoin. 12 dernières semaines affichées.</p>
     <canvas id="chart-marathon-pace" height="70"></canvas>
+  </div>
+
+  <div class="bg-slate-800 rounded-xl p-4">
+    <h2 class="text-sm font-semibold text-slate-300 uppercase tracking-wider mb-3">FC à allure marathon — est-ce que l'allure coûte moins cher ?</h2>
+    <p class="text-xs text-slate-500 mb-3">Chaque point = un lap ≥ 1 km couru sous 5:41/km (courses exclues), FC moyenne du lap. <strong class="text-slate-300">Ligne = FC ramenée à 5:30/km</strong> (corrigée de l'allure réelle), moyenne glissante sur 4 séances. Si elle baisse, la même allure coûte moins cher. Les laps en fin de sortie longue lisent un peu plus haut (dérive cardiaque).</p>
+    <div id="mp-hr-status" class="flex gap-2 flex-wrap mb-3"></div>
+    <canvas id="chart-mp-hr" height="80"></canvas>
   </div>
 
   <div class="bg-slate-800 rounded-xl p-4">
@@ -1078,6 +1081,43 @@ const perfRuns = [
   {d:'2026-10-16',n:"Fractionné long",race:false,trail:false,km:14.9,elev:43,w:336,hr:149,b400:125,b1k:319,b5k:1712,b10k:3438},
   {d:'2026-10-18',n:"Boucle de la Marne",race:false,trail:false,km:22.4,elev:85,w:331,hr:147,b400:124,b1k:314,b5k:1599,b10k:3239},
   {d:'2026-10-20',n:"Footing du mardi",race:false,trail:false,km:12.8,elev:39,w:323,hr:142,b400:128,b1k:322,b5k:1802,b10k:3888}
+];
+// Laps ≥ 1 km à allure marathon ou plus vite (hr_store.json laps, courses exclues) — généré par update_report.py
+const mpLaps = [
+  {d:'2026-08-28',n:"Fractionné long",km:2.2,pace:329,hr:148.8},
+  {d:'2026-08-28',n:"Fractionné long",km:2.2,pace:329,hr:154.4},
+  {d:'2026-08-30',n:"Sortie longue (prépa marathon Nice-Cannes)",km:5.5,pace:329,hr:165.5},
+  {d:'2026-09-04',n:"Fractionné long",km:3.0,pace:338,hr:153.0},
+  {d:'2026-09-04',n:"Fractionné long",km:2.0,pace:318,hr:161.5},
+  {d:'2026-09-15',n:"Footing du mardi",km:1.0,pace:334,hr:148.7},
+  {d:'2026-09-15',n:"Footing du mardi",km:1.0,pace:329,hr:152.4},
+  {d:'2026-09-18',n:"Fractionné long",km:2.0,pace:319,hr:154.5},
+  {d:'2026-09-18',n:"Fractionné long",km:3.0,pace:326,hr:159.1},
+  {d:'2026-09-20',n:"Sortie longue (prépa marathon)",km:7.3,pace:328,hr:162.7},
+  {d:'2026-09-22',n:"Footing du mardi",km:2.7,pace:329,hr:157.6},
+  {d:'2026-09-25',n:"Fractionné long",km:3.0,pace:327,hr:155.8},
+  {d:'2026-09-25',n:"Fractionné long",km:3.0,pace:321,hr:159.2},
+  {d:'2026-10-01',n:"Mini-séance de rattrapage",km:1.0,pace:334,hr:158.2},
+  {d:'2026-10-01',n:"Mini-séance de rattrapage",km:1.0,pace:330,hr:160.2},
+  {d:'2026-10-01',n:"Mini-séance de rattrapage",km:1.0,pace:329,hr:163.1},
+  {d:'2026-10-02',n:"Fractionné long",km:3.0,pace:329,hr:155.7},
+  {d:'2026-10-02',n:"Fractionné long",km:3.0,pace:323,hr:158.2},
+  {d:'2026-10-02',n:"Fractionné long",km:3.0,pace:324,hr:156.3},
+  {d:'2026-10-04',n:"Boucle de la Marne",km:3.7,pace:325,hr:153.1},
+  {d:'2026-10-04',n:"Boucle de la Marne",km:3.7,pace:329,hr:158.6},
+  {d:'2026-10-06',n:"Footing du mardi",km:3.0,pace:323,hr:151.8},
+  {d:'2026-10-09',n:"Fractionné long",km:6.0,pace:326,hr:157.9},
+  {d:'2026-10-09',n:"Fractionné long",km:4.0,pace:323,hr:160.7},
+  {d:'2026-10-11',n:"Boucle de la Marne",km:3.7,pace:327,hr:154.0},
+  {d:'2026-10-11',n:"Boucle de la Marne",km:5.5,pace:325,hr:155.6},
+  {d:'2026-10-13',n:"Footing du mardi soir",km:3.0,pace:335,hr:147.6},
+  {d:'2026-10-16',n:"Fractionné long",km:4.0,pace:324,hr:154.8},
+  {d:'2026-10-16',n:"Fractionné long",km:3.0,pace:334,hr:154.0},
+  {d:'2026-10-16',n:"Fractionné long",km:4.0,pace:324,hr:155.5},
+  {d:'2026-10-18',n:"Boucle de la Marne",km:3.6,pace:331,hr:149.4},
+  {d:'2026-10-18',n:"Boucle de la Marne",km:3.7,pace:326,hr:152.4},
+  {d:'2026-10-18',n:"Boucle de la Marne",km:3.8,pace:317,hr:156.7},
+  {d:'2026-10-20',n:"Footing du mardi",km:3.0,pace:327,hr:149.5}
 ];
 // Footings faciles à plat avec FC (hr_store.json) — généré par update_report.py
 const effRuns = [
@@ -2015,6 +2055,10 @@ const RACE_INFO = {
   '2026-09-27': { n:'Paris-Versailles',                         time:'1:28:00', res:'53 PRs · ≈ 3h50 marathon (Enduraw)' },
 };
 const NEXT_RACE = { d:'2026-11-08', n:'Marathon Nice-Cannes', km:42.2, target:'3h52–3h56 (5:30–5:35/km)' };
+// Compte à rebours unique : tous les « J-x » de la page en dérivent (texte des .j-race, KPI, tableau de bord)
+const RACE_DAYS = Math.round((new Date(NEXT_RACE.d+'T00:00') - new Date(new Date().toDateString())) / 864e5);
+const RACE_J = RACE_DAYS > 0 ? 'J-'+RACE_DAYS : RACE_DAYS === 0 ? 'Jour J' : 'course passée';
+document.querySelectorAll('.j-race').forEach(e => e.textContent = RACE_J);
 (function() {
   const KG = 86, HRMAX = 188;
   const toSec = t => t.split(':').reduce((a,v) => a*60 + +v, 0);
@@ -2048,7 +2092,7 @@ const NEXT_RACE = { d:'2026-11-08', n:'Marathon Nice-Cannes', km:42.2, target:'3
       '<td class="p-2 whitespace-nowrap">'+(r.w ? (r.w/KG).toFixed(2) : '<span class="text-slate-400">—</span>')+'</td>' +
       '<td class="p-2 text-slate-500">'+r.res+'</td></tr>';
   });
-  const days = Math.ceil((new Date(NEXT_RACE.d+'T00:00') - new Date()) / 864e5);
+  const days = RACE_DAYS;
   if (days > 0) h += '<tr style="background:#fff7ed"><td class="p-2 text-slate-500 whitespace-nowrap">'+fmtD(NEXT_RACE.d)+'</td>' +
     '<td class="p-2"><span class="badge badge-route" style="font-size:9px">ROUTE</span> <span class="font-semibold text-slate-800">'+NEXT_RACE.n+'</span></td>' +
     '<td class="p-2 whitespace-nowrap">'+NEXT_RACE.km+' km</td><td class="p-2">plat</td>' +
@@ -2205,22 +2249,25 @@ const RE_ADJ = (function() {
     const w = wkEfficiency.slice(Math.max(0, i-3), i+1).filter(v => v != null);
     return w.length ? +(w.reduce((a,b)=>a+b,0)/w.length).toFixed(3) : null;
   });
-  const cur = roll[roll.length-1], delta = Math.round(100*(cur/median - 1));
+  // Statut sur la dernière semaine complète : une semaine entamée (1–2 footings) fausse le ratio
+  const { partial } = RE_ADJ, last = wkEfficiency.length-1, isCur = i => partial && i === last;
+  const cur = roll[partial ? last-1 : last], delta = Math.round(100*(cur/median - 1));
   const good = delta >= 0;
   const col = good ? '#16a34a' : '#f59e0b';
   document.getElementById('eco-status').innerHTML =
     '<span class="badge" style="background:'+col+'22;color:'+col+';border:1px solid '+col+'">' +
-    'Moyenne 4 dernières semaines : '+cur.toFixed(3)+' km/RE, soit '+(delta >= 0 ? '+' : '')+delta+' % vs médiane saison ('+median.toFixed(3)+') → ' +
-    (good ? 'économie au niveau ou meilleure' : 'en dessous — semaines plus intenses ou fatigue') + '</span>';
+    'Moyenne 4 dernières semaines complètes : '+cur.toFixed(3)+' km/RE, soit '+(delta >= 0 ? '+' : '')+delta+' % vs médiane saison ('+median.toFixed(3)+') → ' +
+    (good ? 'économie au niveau ou meilleure' : 'en dessous — semaines plus intenses ou fatigue') + '</span>' +
+    (partial ? ' <span class="badge" style="background:#f1f5f9;color:#64748b">Semaine du '+weeks[last]+' en cours (point pâle) : provisoire</span>' : '');
   STATUS.eco = { label:'Économie de course', val:(delta >= 0 ? '+' : '')+delta+' %', txt: good ? 'au niveau ou mieux' : 'semaines intenses ou fatigue', color: col };
   new Chart(document.getElementById('chart-course-economy'), {
     type: 'line',
     data: {
       labels: weeks,
       datasets: [
-        { label:'Moyenne 4 semaines', data:roll, borderColor:GREEN, borderWidth:3, tension:0.35, fill:false, pointRadius:0, spanGaps:true, order:1 },
+        { label:'Moyenne 4 semaines', data:partial ? roll.map((v, i) => isCur(i) ? null : v) : roll, borderColor:GREEN, borderWidth:3, tension:0.35, fill:false, pointRadius:0, spanGaps:true, order:1 },
         { label:'Semaine', data:wkEfficiency, showLine:false, spanGaps:true, pointRadius:3.5, pointBorderColor:'white', pointBorderWidth:1,
-          pointBackgroundColor: wkEfficiency.map(v => v == null ? 'transparent' : v >= median ? GREEN+'aa' : '#f59e0baa'), order:2 },
+          pointBackgroundColor: wkEfficiency.map((v, i) => v == null ? 'transparent' : isCur(i) ? '#94a3b840' : v >= median ? GREEN+'aa' : '#f59e0baa'), order:2 },
         { label:'Médiane saison', data:weeks.map(() => median), borderColor:'#94a3b8', borderDash:[6,3], borderWidth:1.5, pointRadius:0, fill:false, order:3 },
       ]
     },
@@ -2262,6 +2309,29 @@ const RE_ADJ = (function() {
     'Dernière semaine complète ('+weeks[li]+') : forme '+(formD[li] > 0 ? '+' : '')+formD[li]+' % → '+lz.label+' — '+lz.txt+'</span>' +
     (partial ? ' <span class="badge" style="background:#f1f5f9;color:#64748b">Semaine du '+weeks[load.length-1]+' en cours (barre pâle) : provisoire</span>' : '');
   STATUS.forme = { label:'Forme (TSB)', val:(formD[li] > 0 ? '+' : '')+formD[li]+' %', txt: lz.label+' — '+lz.txt, color: lz.color };
+  // Projection jour J : on prolonge CTL/ATL avec une charge = % de la moyenne des 3 dernières semaines
+  // complètes — 90 % jusqu'à J-14, −30 % la semaine d'avant, −50 % la semaine de course (marathon exclu).
+  // Semaine en cours : la charge déjà faite si elle dépasse déjà le plan.
+  const raceWi = Math.floor((Date.parse(NEXT_RACE.d) - Date.UTC(2025, 11, 29)) / (7*864e5));
+  if (raceWi > li) {
+    const base = load.slice(li-2, li+1).reduce((a,b) => a+b, 0)/3;
+    const kA = Math.exp(-7/7), kC = Math.exp(-7/42);
+    let atl = RE_ADJ.atl[li], ctl = RE_ADJ.ctl[li], f = 0;
+    const steps = [];
+    for (let w = li+1; w <= raceWi; w++) {
+      const pct = w === raceWi ? 0.5 : w === raceWi-1 ? 0.7 : 0.9;
+      const l = Math.max(base*pct, w < load.length ? load[w] : 0);
+      atl = atl*kA + l*(1-kA); ctl = ctl*kC + l*(1-kC);
+      f = Math.round(100*(ctl-atl)/ctl);
+      const mon = new Date(Date.UTC(2025, 11, 29) + w*7*864e5);
+      steps.push(String(mon.getUTCDate()).padStart(2,'0')+'/'+String(mon.getUTCMonth()+1).padStart(2,'0')+' : '+(f > 0 ? '+' : '')+f+' %');
+    }
+    const pz = zoneOf(f);
+    document.getElementById('ctl-status').innerHTML +=
+      ' <span class="badge" style="background:'+pz.color+'22;color:'+pz.color+';border:1px dashed '+pz.color+'">' +
+      '🎯 Projection '+NEXT_RACE.n+' : forme '+(f > 0 ? '+' : '')+f+' % → '+pz.label+' (semaines '+steps.join(' · ') +
+      ' — hypothèse : 90 % de la charge habituelle, puis −30 % et −50 %)</span>';
+  }
   const zoneBands = {
     id: 'zoneBands',
     beforeDatasetsDraw(chart) {
@@ -2360,10 +2430,21 @@ const RE_ADJ = (function() {
 // ── Tableau de bord ── synthèse des verdicts (STATUS) en tête de page
 (function() {
   const li = acwrDplus.length - (RE_ADJ.partial ? 2 : 1), v = acwrDplus[li];
+  if (RE_ADJ.partial) {  // chart-acwr-dplus est créé avant RE_ADJ : on pâlit ici le point de la semaine en cours
+    const ch = Chart.getChart('chart-acwr-dplus'), ds = ch.data.datasets[0], n = acwrDplus.length-1;
+    ds.pointBackgroundColor[n] = '#94a3b840';
+    ds.pointBorderColor = acwrDplus.map((_, i) => i === n ? '#94a3b8' : 'white');
+    ch.update('none');
+  }
   const c = v > 1.5 ? '#ef4444' : v > 1.3 ? '#f59e0b' : v >= 0.8 ? '#16a34a' : '#94a3b8';
-  STATUS.dplus = { label:'ACWR D+', val: v.toFixed(2), txt: v > 1.5 ? 'pic de charge excentrique' : v > 1.3 ? 'forte hausse du D+' : v >= 0.8 ? 'D+ habituel' : 'peu de D+ récemment', color: c };
-  const days = Math.ceil((Date.parse('2026-11-08') - Date.parse(new Date().toISOString().slice(0,10))) / 864e5);
-  STATUS.race = { label:'Marathon Nice-Cannes', val: days > 0 ? 'J-'+days : 'Jour J', txt:'8 novembre 2026', color:'#FC4C02' };
+  const dTxt = v > 1.5 ? 'pic de charge excentrique' : v > 1.3 ? 'forte hausse du D+' : v >= 0.8 ? 'D+ habituel' : 'peu de D+ récemment';
+  STATUS.dplus = { label:'ACWR D+', val: v.toFixed(2), txt: dTxt, color: c };
+  const n = acwrDplus.length-1;
+  document.getElementById('dplus-status').innerHTML =
+    '<span class="badge" style="background:'+c+'22;color:'+c+';border:1px solid '+c+'">' +
+    'Dernière semaine complète ('+weeks[li]+') : '+totalElev[li]+' m de D+ · ACWR D+ '+v.toFixed(2)+' → '+dTxt+'</span>' +
+    (RE_ADJ.partial ? ' <span class="badge" style="background:#f1f5f9;color:#64748b">Semaine du '+weeks[n]+' en cours (point pâle) : '+totalElev[n]+' m à ce jour</span>' : '');
+  STATUS.race = { label:NEXT_RACE.n, val: RACE_J, txt: new Date(NEXT_RACE.d+'T00:00').toLocaleDateString('fr-FR', { day:'numeric', month:'long', year:'numeric' }), color:'#FC4C02' };
   document.getElementById('status-strip').innerHTML = ['race','forme','charge','dplus','eff','eco','cad','be']
     .filter(k => STATUS[k]).map(k => { const t = STATUS[k];
       return '<div style="border:1px solid '+t.color+'55;background:'+t.color+'12;border-radius:10px;padding:8px 10px">' +
@@ -2475,7 +2556,7 @@ const RE_ADJ = (function() {
   // ── Classification des séances ──
   const TYPES = {
     footing: { label:'Footing',        bg:'#e0f2fe', text:'#0369a1', bar:'#7dd3fc' },
-    qualite: { label:'Qualité',        bg:'#fee2e2', text:'#b91c1c', bar:'#ef4444' },
+    qualite: { label:'Qualité',        bg:'#fce7f3', text:'#be185d', bar:'#db2777' },
     longue:  { label:'Sortie longue',  bg:'#ede9fe', text:'#6d28d9', bar:'#8b5cf6' },
     dplus:   { label:'D+ / montagne',  bg:'#dcfce7', text:'#15803d', bar:'#16a34a' },
     rando:   { label:'Rando',          bg:'#ecfccb', text:'#4d7c0f', bar:'#a3e635' },
@@ -2859,11 +2940,69 @@ new Chart(document.getElementById('chart-marathon-pace'), {
   }
 });
 
+// ── chart-mp-hr ── FC des laps à allure marathon (mpLaps, update_report.py), ramenée à 5:30/km
+(function() {
+  if (!mpLaps.length) return;
+  const REF = 330, HRMAX = 188, D0 = Date.parse(mpLaps[0].d);
+  const fmtP = s => Math.floor(s/60)+':'+String(Math.round(s%60)).padStart(2,'0');
+  // Pente FC/allure (bpm par s/km) ajustée sur tous les laps, pondérée par la distance ;
+  // garde-fou si l'ajustement sort de la plage physiologique (allures trop resserrées).
+  const W = mpLaps.reduce((s,l) => s+l.km, 0);
+  const mx = mpLaps.reduce((s,l) => s+l.pace*l.km, 0)/W, my = mpLaps.reduce((s,l) => s+l.hr*l.km, 0)/W;
+  const fit = mpLaps.reduce((s,l) => s+l.km*(l.pace-mx)*(l.hr-my), 0) / mpLaps.reduce((s,l) => s+l.km*(l.pace-mx)**2, 0);
+  const slope = fit < -0.2 && fit > -1 ? fit : -0.4;
+  // Une valeur par séance : FC moyenne des laps ramenée à 5:30, pondérée par la distance
+  const bySess = {};
+  mpLaps.forEach(l => { const s = bySess[l.d] = bySess[l.d] || { d:l.d, n:l.n, km:0, sum:0 };
+    s.km += l.km; s.sum += l.km*(l.hr + slope*(REF - l.pace)); });
+  const sess = Object.values(bySess).map(s => ({ d:s.d, n:s.n, km:s.km, norm:s.sum/s.km }));
+  const roll = sess.map((_, i) => { const w = sess.slice(Math.max(0, i-3), i+1);
+    return +(w.reduce((a,s) => a+s.norm*s.km, 0)/w.reduce((a,s) => a+s.km, 0)).toFixed(1); });
+  const dayX = d => Math.round((Date.parse(d) - D0)/864e5);
+  // Verdict : 3 dernières semaines vs début du bloc (tout ce qui précède)
+  const lastD = sess[sess.length-1].d, cut = new Date(Date.parse(lastD) - 21*864e5).toISOString().slice(0,10);
+  const wavg = arr => arr.reduce((a,s) => a+s.norm*s.km, 0)/arr.reduce((a,s) => a+s.km, 0);
+  const rec = sess.filter(s => s.d > cut), old = sess.filter(s => s.d <= cut);
+  const cur = wavg(rec), delta = old.length ? cur - wavg(old) : 0;
+  const hr535 = cur + slope*(335 - REF), col = delta <= -2 ? '#16a34a' : delta < 2 ? '#94a3b8' : '#f59e0b';
+  document.getElementById('mp-hr-status').innerHTML =
+    '<span class="badge" style="background:'+col+'22;color:'+col+';border:1px solid '+col+'">' +
+    'FC à 5:30 sur les 3 dernières semaines : '+Math.round(cur)+' bpm ('+Math.round(cur/HRMAX*100)+' % FCmax)' +
+    (old.length ? ', '+(delta > 0 ? '+' : '')+delta.toFixed(1)+' bpm vs début du bloc' : '')+'</span>' +
+    ' <span class="badge" style="background:#33415580;color:#cbd5e1">Estimée à 5:35 : '+Math.round(hr535)+' bpm ('+Math.round(hr535/HRMAX*100)+' % FCmax) · pente '+slope.toFixed(2)+' bpm par s/km</span>';
+  const pc = p => p <= 325 ? ORANGE : p <= 335 ? SKY : '#94a3b8';
+  new Chart(document.getElementById('chart-mp-hr'), {
+    type: 'scatter',
+    data: {
+      datasets: [
+        { label:'FC ramenée à 5:30 (moy. 4 séances)', type:'line', data:sess.map((s, i) => ({ x:dayX(s.d), y:roll[i] })),
+          borderColor:'#f8fafc', borderWidth:2, tension:0.3, pointRadius:0, order:1 },
+        { label:'Lap (orange ≤ 5:25 · bleu 5:26–5:35 · gris > 5:35)', data:mpLaps.map(l => ({ x:dayX(l.d), y:l.hr, l })),
+          pointBackgroundColor:mpLaps.map(l => pc(l.pace)+'cc'), pointBorderColor:'#1e293b',
+          pointRadius:mpLaps.map(l => 3 + Math.min(l.km, 7)), order:2 },
+      ]
+    },
+    options: {
+      plugins: {
+        legend: { position:'bottom', labels:{ color:'#cbd5e1', font:{size:11}, boxWidth:12 } },
+        tooltip: { callbacks: {
+          title: items => { const r = items[0].raw; return new Date(D0 + r.x*864e5).toLocaleDateString('fr-FR', { day:'numeric', month:'short' }); },
+          label: ctx => { const l = ctx.raw.l;
+            return l ? l.n+' · '+l.km+' km à '+fmtP(l.pace)+'/km · FC '+Math.round(l.hr) : 'FC ramenée à 5:30 : '+ctx.parsed.y+' bpm'; } } }
+      },
+      scales: {
+        y: { title:{ display:true, text:'FC moyenne du lap (bpm)', color:'#94a3b8', font:{size:10} }, ticks:{ color:'#94a3b8' }, grid:{ color:'#334155' } },
+        x: { type:'linear', ticks:{ color:'#94a3b8', font:{size:10}, stepSize:7,
+               callback: v => new Date(D0 + v*864e5).toLocaleDateString('fr-FR', { day:'2-digit', month:'2-digit' }) },
+             grid:{ color:'#334155' } },
+      }
+    }
+  });
+})();
+
 // ── PLAN MARATHON NICE-CANNES ──
 (function() {
-  var race = new Date('2026-11-08');
-  var today = new Date(); today.setHours(0,0,0,0);
-  var days = Math.round((race - today) / 86400000);
+  var days = RACE_DAYS;
   var el = document.getElementById('marathon-countdown');
   if (el) el.textContent = days;
 

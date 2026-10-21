@@ -48,6 +48,10 @@ NAME_OVERRIDES = {
 # Km courus à allure marathon (objectif sub-4h, 5:41/km) ou plus rapide, identifiés
 # manuellement dans la description de chaque activité. Démarre au bloc marathon actuel
 # (28/08/2026, post-Échappée Belle) — pas de rétro-tagging de la saison antérieure.
+# Depuis le 20/10, détection automatique par les laps de hr_store.json (marathon_pace_km) :
+# n'ajouter une entrée ici que pour corriger la détection (laps auto 1 km, segment mal découpé…).
+MP_PACE_S = 341   # 5:41/km
+LAPS_TRACK_FROM = '2026-10-20'   # sorties dont les laps sont attendus dans hr_store.json
 MARATHON_PACE_KM = {
     '19939788054': 4.4,   # 28/08 Fractionné long — 2x12' à 5'30 (plus rapide que 5:41 cible)
     '19959802255': 5.3,   # 30/08 Sortie longue — 30' à allure marathon
@@ -67,7 +71,6 @@ MARATHON_PACE_KM = {
     '20572277583': 3.0,   # 13/10 Footing du mardi — 3000m AS42- (5:35)
     '20612372332': 11.0,  # 16/10 Fractionné long — 4000m AS42+ (5:24) + 3000m AS42- (5:34) + 4000m AS42+ (5:24)
     '20632101586': 11.1,  # 18/10 Sortie longue 22.4 km — 20' AS42- (5:31) + 20' AS42 (5:26) + 20' AS42+ (5:17)
-    '20665259597': 3.0,   # 20/10 Footing du mardi — 3000m AS42 (5:27)
 }
 
 KNOWN_TEMPS = {
@@ -158,7 +161,17 @@ def clean_name(name):
 
 # ── CALCULS DÉRIVÉS ──────────────────────────────────────────────────
 
+def marathon_pace_km(act_id, hr):
+    """Km à allure marathon ou plus vite : MARATHON_PACE_KM s'il y a une entrée (prioritaire),
+    sinon somme des laps ≥ 1 km courus à ≤ MP_PACE_S dans hr_store.json (`laps` = [[m, s, fc], ...])."""
+    if act_id in MARATHON_PACE_KM:
+        return MARATHON_PACE_KM[act_id]
+    laps = hr.get(act_id, {}).get('laps') or []
+    return round(sum(m for m, s, _ in laps if m >= 1000 and s / (m / 1000) <= MP_PACE_S) / 1000, 1)
+
+
 def compute_weekly(all_acts):
+    hr = load_json(HR_PATH) if HR_PATH.exists() else {}
     dts = [datetime.fromisoformat(a['start_local']) for a in all_acts]
     start_m, end_m = week_monday(min(dts)), week_monday(max(dts))
     week_list = []
@@ -207,7 +220,7 @@ def compute_weekly(all_acts):
             t = extract_temp(a.get('description'))
             if t is not None:
                 b['temp'] = max(b['temp'] or 0, t)
-            b['mpKm'] += MARATHON_PACE_KM.get(a['id'], 0)
+            b['mpKm'] += marathon_pace_km(a['id'], hr)
             re_adj = re_ * (7 if a['start_local'][:10] >= RE_SCALE_SHIFT_DATE else 1)
             # Économie de course : course sur terrain plat uniquement (< 15 m D+/km), quel que soit le
             # sport_type — le trail/rando gonfle le RE au km et ferait croire à une régression.
@@ -484,6 +497,30 @@ def compute_perf_runs(all_acts):
                     'w': round(h['avg_watts']) if h.get('avg_watts') else None, 'hr': round(h['avg_hr']),
                     'b400': b.get('400m'), 'b1k': b.get('1k'), 'b5k': b.get('5k'), 'b10k': b.get('10k')})
     return out, missing
+
+
+MP_LAPS_FROM = '2026-08-24'   # reprise post-Échappée Belle = début du bloc marathon
+
+
+def compute_mp_laps(all_acts):
+    """Laps ≥ 1 km courus à allure marathon ou plus vite (hr_store.json `laps`), courses exclues
+    (effort max + dénivelé) : alimente le graphe FC ↔ allure de l'onglet marathon."""
+    hr = load_json(HR_PATH) if HR_PATH.exists() else {}
+    out = []
+    for a in all_acts:
+        if a['sport_type'] != 'Run' or a['id'] in RACES or a['start_local'][:10] < MP_LAPS_FROM:
+            continue
+        for m, s, h in hr.get(a['id'], {}).get('laps') or []:
+            if m >= 1000 and s / (m / 1000) <= MP_PACE_S:
+                out.append({'d': a['start_local'][:10], 'n': NAME_OVERRIDES.get(a['id'], clean_name(a['name'])),
+                            'km': round(m / 1000, 1), 'pace': round(s / (m / 1000)), 'hr': round(h, 1)})
+    return sorted(out, key=lambda e: e['d'])
+
+
+def serialize_mp_laps(entries):
+    lines = [f"  {{d:'{e['d']}',n:{json.dumps(e['n'], ensure_ascii=False)},km:{e['km']},pace:{e['pace']},hr:{e['hr']}}}"
+             for e in entries]
+    return 'const mpLaps = [\n' + ',\n'.join(lines) + '\n];'
 
 
 def serialize_perf_runs(entries):
@@ -784,6 +821,8 @@ def main():
         lambda m: serialize_eff_runs(eff_runs), 'effRuns', flags=re.DOTALL)
     new_perf_html = sub_or_die(new_perf_html, r'const perfRuns = \[.*?\];',
         lambda m: serialize_perf_runs(perf_runs), 'perfRuns', flags=re.DOTALL)
+    new_perf_html = sub_or_die(new_perf_html, r'const mpLaps = \[.*?\];',
+        lambda m: serialize_mp_laps(compute_mp_laps(all_acts)), 'mpLaps', flags=re.DOTALL)
 
     annuel_html = HTML_ANNUEL.read_text(encoding='utf-8')
     new_annuel_html, annuel_totals = patch_annuel_html(annuel_html, all_acts, monthly, velo_sessions, last_date_str, last_date)
@@ -817,13 +856,19 @@ def main():
           f"{perf_totals['total_km']:.0f} km · D+ {perf_totals['total_elev']:.0f} m · "
           f"{perf_totals['total_kcal']:.0f} kcal")
     w = weekly
+    # Semaine en cours incomplète si la dernière activité n'est pas un dimanche : ses ACWR /
+    # économie sont provisoires, les verdicts portent sur la dernière semaine complète.
+    partial = datetime.strptime(last_date, '%Y-%m-%d').weekday() < 6
+    lc = -2 if partial else -1
     print(f"\nDernières semaines ({w['weeks'][-3]} / {w['weeks'][-2]} / {w['weeks'][-1]}) :")
     for i in range(-3, 0):
         print(f"  {w['weeks'][i]:>6} : {w['runKm'][i]:>5.1f} km · D+ {w['trailElev'][i]+w['runElev'][i]:>4} m · "
-              f"RE {w['reData'][i]:>4} · ACWR {w['acwr'][i]} · ACWR D+ {w['acwrDplus'][i]}")
-    print(f"\nACWR actuel : {w['acwr'][-1]} · ACWR D+ actuel : {w['acwrDplus'][-1]}")
-    print(f"Économie de course (km/RE ajusté) : {w['wkEfficiency'][-1]} · "
-          f"Allure marathon cette semaine : {w['wkMarathonPaceKm'][-1]} km")
+              f"RE {w['reData'][i]:>4} · ACWR {w['acwr'][i]} · ACWR D+ {w['acwrDplus'][i]}"
+              + ('  (en cours, provisoire)' if partial and i == -1 else ''))
+    print(f"\nDernière semaine complète ({w['weeks'][lc]}) : ACWR {w['acwr'][lc]} · ACWR D+ {w['acwrDplus'][lc]} · "
+          f"économie {w['wkEfficiency'][lc]} km/RE · allure marathon {w['wkMarathonPaceKm'][lc]} km")
+    if partial:
+        print(f"Semaine en cours ({w['weeks'][-1]}, provisoire) : allure marathon {w['wkMarathonPaceKm'][-1]} km à ce jour")
     if eff_runs:
         last5 = eff_runs[-5:]
         print(f"Efficacité aérobie (EF, 5 derniers footings) : {sum(e['ef'] for e in last5)/len(last5):.3f} "
@@ -832,17 +877,25 @@ def main():
     if perf_missing:
         print(f"⚠ Best efforts manquants pour {len(perf_missing)} séance(s) : get_activity_performance puis hr_store.json → "
               + ', '.join(perf_missing))
+    hr = load_json(HR_PATH) if HR_PATH.exists() else {}
+    no_laps = [a['id'] for a in all_acts if a['sport_type'] in ('Run', 'TrailRun')
+               and a['start_local'][:10] >= LAPS_TRACK_FROM and a['id'] not in MARATHON_PACE_KM
+               and 'laps' not in hr.get(a['id'], {})]
+    if no_laps:
+        print(f"⚠ Laps manquants pour {len(no_laps)} sortie(s) (allure marathon non détectée) : "
+              f"get_activity_performance puis hr_store.json → " + ', '.join(no_laps))
     if eff_missing:
         print(f"⚠ FC manquante pour {len(eff_missing)} footing(s) : get_activity_performance puis hr_store.json → "
               + ', '.join(eff_missing))
     for label, date_str in [('Échappée Belle (22 août 2026)', '2026-08-22'),
                              ('Marathon Nice-Cannes (8 nov. 2026)', '2026-11-08')]:
         days = (datetime.strptime(date_str, '%Y-%m-%d') - datetime.strptime(last_date, '%Y-%m-%d')).days
-        print(f"  J-{days} · {label}")
+        if days >= 0:
+            print(f"  J-{days} · {label}")
     print(f"\nBilan annuel 2026 (Jan–{MONTHS[len(monthly['sessions'])-1]}) : "
           f"{annuel_totals['total_sessions']} séances · {annuel_totals['total_km']} km · "
           f"D+ {annuel_totals['total_elev']} m")
-    print('\n→ Il reste à rédiger/ajuster à la main : badge ACWR (texte), résumé exécutif, recommandations P1/P2/P3.')
+    print('\n→ Il reste à rédiger/ajuster à la main : résumé exécutif, recommandations P1/P2/P3.')
 
 
 if __name__ == '__main__':
