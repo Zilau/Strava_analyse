@@ -2453,5 +2453,28 @@
    "achievement_count": 0,
    "pr_count": 0
   }
+ },
+ {
+  "id": "20678990324",
+  "name": "Fractionné court 🔵🟡",
+  "description": "2x (1'-1'30-2'-1'30-1')\n\n🧮 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 🤓\n🌬️ Without the wind, you would have gained about 5%.\nAdjusted Pace: 𝟱:𝟯𝟴/km\n🏝️ Elevation (0.3% avg) cost you 𝟬'𝟬𝟱\"/km.\n🌬️ Wind (16.6km/h) cost you 𝟬'𝟭𝟳\"/km.\n⏱️ Net effect: conditions cost you 𝟯'𝟱𝟴\" today!\n🔥 897-1096 kcal (🍔 ~1.8 burgers) · 💧 0.3-0.6L fluid loss (0.4L/h)\n🙂 Air quality: Fair · still a great day to be outside.\n\nLearn more 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-10-21T19:19:17",
+  "location_summary": "Paris, France",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 10951.1,
+   "moving_time": 3936,
+   "elapsed_time": 5701,
+   "elevation_gain": 32,
+   "avg_speed": 2.7822916666666666,
+   "max_speed": 5.04,
+   "relative_effort": 39,
+   "total_calories": 831,
+   "avg_cadence": 86.5278,
+   "kudos_count": 38,
+   "achievement_count": 1,
+   "pr_count": 1
+  }
  }
 ]
