@@ -604,9 +604,6 @@ def patch_performance_html(html, all_acts, weekly, calacts, velo_sessions, zones
         lambda m: f'{m.group(1)}{round(total_kcal):,} kcal'.replace(',', ' ') + m.group(2), 'kcal-caption')
 
     # 4. Répartition activités (h2 + texte %)
-    html = sub_or_die(html,
-        r'(<h2>Répartition des activités — )\d+( activités</h2>)',
-        lambda m: f'{m.group(1)}{total_acts}{m.group(2)}', 'sports-h2')
     sess, kmS, hrsS = sports
     idx_trail = SPORT_ORDER.index('Trail')
     pct_sess_trail = round(sess[idx_trail] / sum(sess) * 100)
@@ -620,9 +617,6 @@ def patch_performance_html(html, all_acts, weekly, calacts, velo_sessions, zones
 
     # 5. Heatmap (h2, texte pattern, hm JS, total colonne)
     total_seances_hm = sum(sum(row) for row in heatmap)
-    html = sub_or_die(html,
-        r'(<h2>Heatmap des entraînements — Jour × Créneau horaire \()\d+( séances Run\+Trail\)</h2>)',
-        lambda m: f'{m.group(1)}{rt_sessions}{m.group(2)}', 'heatmap-h2')
     dim_matin = heatmap[6][0]
     html = sub_or_die(html,
         r"(Dimanche matin = séance longue principale \()\d+(×\))",
@@ -746,8 +740,8 @@ def patch_annuel_html(html, all_acts, monthly, velo_sessions, last_date_str, las
     html = html[:start] + section + html[end:]
 
     html = sub_or_die(html,
-        r'(<tfoot><tr><td>Total Jan–)\w+(</td><td class="r" style="color:#16a34a">)\d+(</td>'
-        r'<td class="r" style="color:#ea580c">)[\d.]+(</td><td class="r">)[\d\s]+( km</td>'
+        r'(<tfoot><tr><td>Total Jan–)\w+(</td><td class="r" style="color:#1C6E8C">)\d+(</td>'
+        r'<td class="r" style="color:#3E6B4B">)[\d.]+(</td><td class="r">)[\d\s]+( km</td>'
         r'<td class="r" style="color:#2563eb">)[\d\s]+( m</td><td class="r">)\d+(</td><td class="r">~)\d+(h</td></tr></tfoot>)',
         lambda m: (f'{m.group(1)}{month_lbl}{m.group(2)}{round(total_run_km)}{m.group(3)}'
                    f'{round(total_trail_km)}{m.group(4)}{total_km:,}'.replace(',', ' ') + m.group(5) +
