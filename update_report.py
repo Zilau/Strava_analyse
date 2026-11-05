@@ -31,7 +31,7 @@ HTML_ANNUEL = ROOT / 'rapport_annuel.html'
 BACKUP_DIR  = ROOT / 'backup'
 HR_PATH     = ROOT / 'hr_store.json'
 
-RACES = {'18912947563', '18448862987', '18725084836', '17248882168', '17810798563', '19854851888', '20148273211', '20347752384'}
+RACES = {'18912947563', '18448862987', '18725084836', '17248882168', '17810798563', '19854851888', '20148273211', '20347752384', '20815282344'}
 
 # Renommages manuels conservés lors de la régénération de calActs (désambiguïsation / clarté)
 NAME_OVERRIDES = {
@@ -71,6 +71,7 @@ MARATHON_PACE_KM = {
     '20572277583': 3.0,   # 13/10 Footing du mardi — 3000m AS42- (5:35)
     '20612372332': 11.0,  # 16/10 Fractionné long — 4000m AS42+ (5:24) + 3000m AS42- (5:34) + 4000m AS42+ (5:24)
     '20632101586': 11.1,  # 18/10 Sortie longue 22.4 km — 20' AS42- (5:31) + 20' AS42 (5:26) + 20' AS42+ (5:17)
+    '20814456548': 0.0,   # 01/11 Échauffement Ekiden — lap unique de 4 km à 5:14 tiré par des lignes droites, pas une séance d'allure
 }
 
 KNOWN_TEMPS = {

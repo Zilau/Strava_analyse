@@ -96,5 +96,86 @@
    }
   ],
   "source": "garmin_api"
+ },
+ {
+  "id": "24861278048",
+  "date": "2026-10-26",
+  "start_local": "2026-10-26T20:18:22",
+  "name": "Renforcement musculaire",
+  "duration_s": 1136,
+  "calories": 94,
+  "avg_hr": 94.0,
+  "max_hr": 117.0,
+  "exercises": [
+   {
+    "category_name": "Squat",
+    "muscles": [
+     "quads",
+     "glutes",
+     "hamstrings"
+    ],
+    "sets": [
+     {
+      "reps": 20,
+      "weight": -1.0,
+      "duration_s": 65.6
+     },
+     {
+      "reps": 20,
+      "weight": -1.0,
+      "duration_s": 63.2
+     },
+     {
+      "reps": 20,
+      "weight": -1.0,
+      "duration_s": 56.7
+     },
+     {
+      "reps": 20,
+      "weight": -1.0,
+      "duration_s": 55.8
+     },
+     {
+      "reps": 20,
+      "weight": -1.0,
+      "duration_s": 59.9
+     }
+    ]
+   },
+   {
+    "category_name": "Mollets (calf raise)",
+    "muscles": [
+     "calves"
+    ],
+    "sets": [
+     {
+      "reps": 20,
+      "weight": 0,
+      "duration_s": 48.3
+     },
+     {
+      "reps": 20,
+      "weight": 0,
+      "duration_s": 50.3
+     },
+     {
+      "reps": 20,
+      "weight": 0,
+      "duration_s": 51.3
+     },
+     {
+      "reps": 20,
+      "weight": 0,
+      "duration_s": 49.0
+     },
+     {
+      "reps": 20,
+      "weight": 0,
+      "duration_s": 48.7
+     }
+    ]
+   }
+  ],
+  "source": "garmin_api"
  }
 ]

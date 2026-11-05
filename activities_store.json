@@ -2476,5 +2476,275 @@
    "achievement_count": 1,
    "pr_count": 1
   }
+ },
+ {
+  "id": "20703978373",
+  "name": "Fractionné long 🔵🟡 🌬️🌬️",
+  "description": "6000m AS42 + 4000m AS42\n\n📊 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 🏃\n⛪ That's 2.6x the distance from the Sagrada Familia to Park Güell!\nAdjusted Pace: 𝟱:𝟭𝟳/km\n🏝️ Elevation (0.5% avg) cost you 𝟬'𝟬𝟵\"/km.\n💨 Wind (28.2km/h) cost you 𝟬'𝟮𝟴\"/km.\n⏱️ Net effect: conditions cost you 𝟵'𝟮𝟱\" today!\n🔥 1253-1531 kcal (🍕 ~4.9 pizza slices) · 💧 0.3-0.6L fluid loss (0.3L/h)\n🙂 Air quality: Fair · still a great day to be outside.\n\nMore info 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-10-23T19:16:34",
+  "location_summary": "Saint-Maurice, France",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 15353.5,
+   "moving_time": 5429,
+   "elapsed_time": 6716,
+   "elevation_gain": 82,
+   "avg_speed": 2.828053048443544,
+   "max_speed": 3.84,
+   "relative_effort": 63,
+   "total_calories": 1170,
+   "avg_cadence": 86.6393,
+   "kudos_count": 60,
+   "achievement_count": 2,
+   "pr_count": 1
+  }
+ },
+ {
+  "id": "20723599571",
+  "name": "Sortie longue bords de Marne (J-14) 🔵🟡",
+  "description": "40' footing \n20' AS 42\n10' footing \n20' AS42\nRAC\n\n📊 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 🏃\n🌬️ Without the wind, you would have gained about 7%.\nAdjusted Pace: 𝟱:𝟭𝟳/km\n🏝️ Elevation (0.6% avg) cost you 𝟬'𝟬𝟵\"/km.\n🌬️ Wind (18.7km/h) cost you 𝟬'𝟮𝟱\"/km.\n⏱️ Net effect: conditions cost you 𝟭𝟭'𝟰𝟳\" today!\n🔥 1693-2069 kcal (🍔 ~3.4 burgers) · 💧 0.8-1.4L fluid loss (0.5L/h)\n🙂 Air quality: Fair · still a great day to be outside.\n\nMore info 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-10-25T09:34:55",
+  "location_summary": "Charenton-le-Pont, France",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 20821.1,
+   "moving_time": 7304,
+   "elapsed_time": 8019,
+   "elevation_gain": 126,
+   "avg_speed": 2.850643483023001,
+   "max_speed": 4.28,
+   "relative_effort": 56,
+   "total_calories": 1591,
+   "avg_cadence": 87.584,
+   "kudos_count": 48,
+   "achievement_count": 14,
+   "pr_count": 14
+  }
+ },
+ {
+  "id": "20741708684",
+  "name": "Renforcement musculaire",
+  "sport_type": "WeightTraining",
+  "start_local": "2026-10-26T20:18:22",
+  "summary": {
+   "distance": 0,
+   "moving_time": 1135,
+   "elapsed_time": 1135,
+   "elevation_gain": 0,
+   "avg_speed": 0,
+   "max_speed": 0,
+   "relative_effort": 2,
+   "total_calories": 94,
+   "kudos_count": 10,
+   "achievement_count": 1,
+   "pr_count": 0
+  }
+ },
+ {
+  "id": "20769753389",
+  "name": "Fractionné court 🔵🟡 (J-11)",
+  "description": "10x1' AS10 r:1'\n\n🎯 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 ✅\n🎭 That's 1.1x the distance from the Sydney Opera House to Bondi Beach!\nAdjusted Pace: 𝟲:𝟬𝟳/km\n🏝️ Elevation (0.2% avg) cost you 𝟬'𝟬𝟰\"/km.\n🍃 Wind (4.7km/h) cost you 𝟬'𝟬𝟰\"/km.\n⏱️ Net effect: conditions cost you 𝟭'𝟭𝟵\" today!\n🔥 790-965 kcal (🍔 ~1.6 burgers) · 💧 0.4-0.7L fluid loss (0.5L/h)\n😷 Air quality: Poor · consider easing off or moving your session indoors.\n\nLearn more 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-10-28T19:17:42",
+  "location_summary": "Paris",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 9689.6,
+   "moving_time": 3637,
+   "elapsed_time": 5477,
+   "elevation_gain": 24,
+   "avg_speed": 2.6641737695903216,
+   "max_speed": 4.3,
+   "relative_effort": 21,
+   "total_calories": 743,
+   "avg_cadence": 86.3109,
+   "kudos_count": 57,
+   "achievement_count": 3,
+   "pr_count": 3
+  },
+  "weather": {
+   "condition": "PartlyCloudy",
+   "wind_direction": "NW",
+   "temperature": 13,
+   "feels_like": 12.7,
+   "wind_speed": 0.4,
+   "humidity": 68
+  }
+ },
+ {
+  "id": "20790348591",
+  "name": "Boucle du dredi midi 🔵🟡",
+  "description": "🧮 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 🤓\n🌊 That's 35% of the distance from Nice to Cannes!\nAdjusted Pace: 𝟱:𝟯𝟯/km\n🏝️ Elevation (0.3% avg) cost you 𝟬'𝟬𝟱\"/km.\n🍃 Wind (10.2km/h) cost you 𝟬'𝟭𝟭\"/km.\n⏱️ Net effect: conditions cost you 𝟮'𝟰𝟵\" today!\n🔥 873-1067 kcal (🍕 ~3.4 pizza slices) · 💧 0.3-0.6L fluid loss (0.4L/h)\n😶‍🌫️ Air quality: Moderate · sensitive athletes may notice it.\n\nMore info 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-10-30T11:59:50",
+  "location_summary": "Saint-Maurice, Val-de-Marne",
+  "gear_id": "28975365",
+  "summary": {
+   "distance": 10892.2,
+   "moving_time": 3793,
+   "elapsed_time": 5126,
+   "elevation_gain": 29,
+   "avg_speed": 2.871658317954126,
+   "max_speed": 3.46,
+   "relative_effort": 25,
+   "total_calories": 813,
+   "avg_cadence": 86.753,
+   "kudos_count": 42,
+   "achievement_count": 1,
+   "pr_count": 0
+  },
+  "weather": {
+   "condition": "Clear",
+   "wind_direction": "ENE",
+   "temperature": 9.9,
+   "feels_like": 11.6,
+   "wind_speed": 1.9,
+   "humidity": 79
+  }
+ },
+ {
+  "id": "20795099983",
+  "name": "Fractionné long 🔵🟡 (J-9)",
+  "description": "4000m AS42\n3000m AS42\n\n🚀 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 💪\n🌬️ Without the wind, you would have gained about 2%.\nAdjusted Pace: 𝟱:𝟯𝟲/km\n🏝️ Elevation (0.2% avg) cost you 𝟬'𝟬𝟯\"/km.\n🍃 Wind (9.5km/h) cost you 𝟬'𝟬𝟲\"/km.\n⏱️ Net effect: conditions cost you 𝟭'𝟰𝟯\" today!\n🔥 916-1119 kcal (🍕 ~3.6 pizza slices) · 💧 0.4-0.8L fluid loss (0.5L/h)\n😶‍🌫️ Air quality: Moderate · sensitive athletes may notice it.\n\nMore info 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-10-30T19:35:38",
+  "location_summary": "Charenton-le-Pont, Val-de-Marne",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 11256.9,
+   "moving_time": 3881,
+   "elapsed_time": 4110,
+   "elevation_gain": 23,
+   "avg_speed": 2.9005153311002316,
+   "max_speed": 3.54,
+   "relative_effort": 51,
+   "total_calories": 872,
+   "avg_cadence": 86.7848,
+   "kudos_count": 42,
+   "achievement_count": 6,
+   "pr_count": 4
+  },
+  "weather": {
+   "condition": "Clear",
+   "wind_direction": "NE",
+   "temperature": 12.3,
+   "feels_like": 9.5,
+   "wind_speed": 2.8,
+   "humidity": 70
+  }
+ },
+ {
+  "id": "20814456548",
+  "name": "Échauffement Ekiden de Paris 🔵🟡",
+  "description": "🧠 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📍\n❄️ It was cold, but still manageable given the effort !\nAdjusted Pace: 𝟱:𝟬𝟵/km\n🏝️ Elevation (0.0% avg) cost you 𝟬'𝟬𝟭\"/km.\n🍃 Wind (8.4km/h) cost you 𝟬'𝟬𝟯\"/km.\n⏱️ Net effect: conditions cost you 𝟬'𝟭𝟳\" today!\n🔥 311-381 kcal (🍕 ~1.2 pizza slices) · 💧 0.1-0.2L fluid loss (0.5L/h)\n😶‍🌫️ Air quality: Moderate · sensitive athletes may notice it.\n\nMore info 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-11-01T10:45:15",
+  "location_summary": "Paris",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 4037.3,
+   "moving_time": 1267,
+   "elapsed_time": 2377,
+   "elevation_gain": 0,
+   "avg_speed": 3.186503551696922,
+   "max_speed": 4.4,
+   "relative_effort": 6,
+   "total_calories": 275,
+   "avg_cadence": 86.6738,
+   "kudos_count": 37,
+   "achievement_count": 5,
+   "pr_count": 5
+  },
+  "weather": {
+   "condition": "Clear",
+   "wind_direction": "NE",
+   "temperature": 8.1,
+   "feels_like": 9.2,
+   "wind_speed": 2.2,
+   "humidity": 83
+  }
+ },
+ {
+  "id": "20815282344",
+  "name": "Ekiden de Paris (relais 6) 🔵🟡",
+  "description": "📊 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 🏃\n🗼 That's 2.4x the distance from the Eiffel Tower to Concorde!\nAdjusted Pace: 𝟰:𝟰𝟬/km\n🏝️ Elevation (0.4% avg) cost you 𝟬'𝟬𝟰\"/km.\n🍃 Wind (8.7km/h) cost you 𝟬'𝟬𝟳\"/km.\n⏱️ Net effect: conditions cost you 𝟭'𝟮𝟮\" today!\n🔥 579-707 kcal (🍕 ~2.3 pizza slices) · 💧 0.2-0.4L fluid loss (0.5L/h)\n😶‍🌫️ Air quality: Moderate · sensitive athletes may notice it.\n\nMore info 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-11-01T11:33:03",
+  "location_summary": "Paris",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 7233.1,
+   "moving_time": 2104,
+   "elapsed_time": 2104,
+   "elevation_gain": 32,
+   "avg_speed": 3.4377851711026617,
+   "max_speed": 10.62,
+   "relative_effort": 62,
+   "total_calories": 538,
+   "avg_cadence": 88.0933,
+   "kudos_count": 53,
+   "achievement_count": 21,
+   "pr_count": 19
+  },
+  "weather": {
+   "condition": "Clear",
+   "wind_direction": "NE",
+   "temperature": 10.1,
+   "feels_like": 11.2,
+   "wind_speed": 2.4,
+   "humidity": 77
+  }
+ },
+ {
+  "id": "20833401386",
+  "name": "Étirements",
+  "sport_type": "Yoga",
+  "start_local": "2026-11-02T20:09:07",
+  "summary": {
+   "distance": 0,
+   "moving_time": 505,
+   "elapsed_time": 505,
+   "elevation_gain": 0,
+   "avg_speed": 0,
+   "max_speed": 0,
+   "relative_effort": 0,
+   "total_calories": 17,
+   "kudos_count": 21,
+   "achievement_count": 0,
+   "pr_count": 0
+  }
+ },
+ {
+  "id": "20860959401",
+  "name": "Affûtage 🔵🟡 (J-4)",
+  "description": "30' footing + 2km AS42\n\n🧮 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 🤓\n🌳 That's 32% of the distance from Central Park to Coney Island!\nAdjusted Pace: 𝟱:𝟰𝟰/km\n🏝️ Elevation (0.3% avg) cost you 𝟬'𝟬𝟰\"/km.\n🍃 Wind (11.5km/h) cost you 𝟬'𝟭𝟮\"/km.\n⏱️ Net effect: conditions cost you 𝟮'𝟬𝟴\" today!\n🔥 652-797 kcal (🍔 ~1.3 burgers) · 💧 0.2-0.5L fluid loss (0.4L/h)\n😶‍🌫️ Air quality: Moderate · sensitive athletes may notice it.\n\nMore info 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-11-04T19:35:30",
+  "location_summary": "Paris",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 8110.4,
+   "moving_time": 2917,
+   "elapsed_time": 3307,
+   "elevation_gain": 27,
+   "avg_speed": 2.780390812478574,
+   "max_speed": 3.44,
+   "relative_effort": 15,
+   "total_calories": 608,
+   "avg_cadence": 85.4431,
+   "kudos_count": 34,
+   "achievement_count": 2,
+   "pr_count": 1
+  },
+  "weather": {
+   "condition": "Cloudy",
+   "wind_direction": "ENE",
+   "temperature": 8.7,
+   "feels_like": 6.1,
+   "wind_speed": 3.1,
+   "humidity": 75
+  }
  }
 ]
