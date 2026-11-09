@@ -2746,5 +2746,96 @@
    "wind_speed": 3.1,
    "humidity": 75
   }
+ },
+ {
+  "id": "20881555909",
+  "name": "Affûtage 🔵🟡 (J-2)",
+  "description": "Dernière sortie \n30' footing + 1000m AS42 + rac\n\n\n📊 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 🏃\n🥪 A productive Lunch Break !\nAdjusted Pace: 𝟱:𝟰𝟳/km\n🏝️ Elevation (0.2% avg) cost you 𝟬'𝟬𝟰\"/km.\n🍃 Wind (5.0km/h) cost you 𝟬'𝟬𝟱\"/km.\n⏱️ Net effect: conditions cost you 𝟭'𝟭𝟳\" today!\n🔥 654-799 kcal (🍕 ~2.5 pizza slices) · 💧 0.2-0.5L fluid loss (0.4L/h)\n😷 Air quality: Poor · consider easing off or moving your session indoors.\n\nMore info 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-11-06T12:03:08",
+  "location_summary": "Paris",
+  "gear_id": "28975365",
+  "summary": {
+   "distance": 8012,
+   "moving_time": 2861,
+   "elapsed_time": 3727,
+   "elevation_gain": 18,
+   "avg_speed": 2.800419433764418,
+   "max_speed": 3.3,
+   "relative_effort": 24,
+   "total_calories": 627,
+   "avg_cadence": 86.6176,
+   "kudos_count": 49,
+   "achievement_count": 1,
+   "pr_count": 1
+  },
+  "weather": {
+   "condition": "Cloudy",
+   "wind_direction": "NW",
+   "temperature": 10.1,
+   "feels_like": 11,
+   "wind_speed": 0.8,
+   "humidity": 80
+  }
+ },
+ {
+  "id": "20906513552",
+  "name": "Marathon Nice-Cannes\nObjectif sub 4h00 ✅ et RP 🎉",
+  "description": "🧠 𝗠𝘆 𝗘𝗻𝗱𝘂𝗿𝗮𝘄 𝗥𝗲𝗽𝗼𝗿𝘁 📍\n🏁 At this pace, your marathon would take 3 hours and 54 minutes.\nAdjusted Pace: 𝟱:𝟮𝟲/km\n🏝️ Elevation (0.3% avg) cost you 𝟬'𝟬𝟰\"/km.\n🍃 Wind (6.0km/h) cost you 𝟬'𝟬𝟯\"/km.\n⏱️ Net effect: conditions cost you 𝟱'𝟬𝟮\" today!\n🔥 3451-4218 kcal (🍔 ~7.0 burgers) · 💧 1.5-2.8L fluid loss (0.5L/h)\n🙂 Air quality: Fair · still a great day to be outside.\n\nMore info 👉 https://app.enduraw.co/",
+  "sport_type": "Run",
+  "start_local": "2026-11-08T08:18:11",
+  "location_summary": "Nice, Maritime Alps",
+  "gear_id": "33437078",
+  "summary": {
+   "distance": 42450,
+   "moving_time": 14155,
+   "elapsed_time": 14198,
+   "elevation_gain": 135,
+   "avg_speed": 2.9898577264403436,
+   "max_speed": 3.64,
+   "relative_effort": 248,
+   "total_calories": 3200,
+   "avg_cadence": 88.576,
+   "kudos_count": 102,
+   "achievement_count": 17,
+   "pr_count": 8
+  },
+  "weather": {
+   "condition": "Cloudy",
+   "wind_direction": "N",
+   "temperature": 10.7,
+   "feels_like": 10.3,
+   "wind_speed": 1.9,
+   "humidity": 83
+  }
+ },
+ {
+  "id": "20920898130",
+  "name": "Marche de récup autour du lac",
+  "sport_type": "Walk",
+  "start_local": "2026-11-09T14:39:46",
+  "location_summary": "Charenton-le-Pont, Val-de-Marne",
+  "summary": {
+   "distance": 3925.6,
+   "moving_time": 3054,
+   "elapsed_time": 4035,
+   "elevation_gain": 11,
+   "avg_speed": 1.285396201702685,
+   "max_speed": 1.95,
+   "relative_effort": 4,
+   "total_calories": 266,
+   "avg_cadence": 57.7829,
+   "kudos_count": 13,
+   "achievement_count": 0,
+   "pr_count": 0
+  },
+  "weather": {
+   "condition": "Cloudy",
+   "wind_direction": "ENE",
+   "temperature": 9.5,
+   "feels_like": 8.3,
+   "wind_speed": 1.8,
+   "humidity": 86
+  }
  }
 ]

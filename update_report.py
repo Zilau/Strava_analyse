@@ -31,7 +31,7 @@ HTML_ANNUEL = ROOT / 'rapport_annuel.html'
 BACKUP_DIR  = ROOT / 'backup'
 HR_PATH     = ROOT / 'hr_store.json'
 
-RACES = {'18912947563', '18448862987', '18725084836', '17248882168', '17810798563', '19854851888', '20148273211', '20347752384', '20815282344'}
+RACES = {'18912947563', '18448862987', '18725084836', '17248882168', '17810798563', '19854851888', '20148273211', '20347752384', '20815282344', '20906513552'}
 
 # Renommages manuels conservés lors de la régénération de calActs (désambiguïsation / clarté)
 NAME_OVERRIDES = {
@@ -42,6 +42,7 @@ NAME_OVERRIDES = {
     '18632222472': 'Un peu de D+ Gravelle',
     '18698621123': 'Boucle du dredi midi',
     '18820391514': 'Séance Trail Gravelle',
+    '20906513552': 'Marathon Nice-Cannes',
 }
 
 # Températures connues pour les semaines sans description Enduraw exploitable (avant mai 2026)
