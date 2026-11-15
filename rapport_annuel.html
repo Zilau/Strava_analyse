@@ -301,7 +301,7 @@
     <div id="y2026-recap" class="space-y-4">
       <p class="highlights text-sm text-slate-700" id="read_2026"></p>
       <div class="inprogress">
-        <span><span class="dot-live"></span>Année en cours · données Jan – 9 nov. 2026</span>
+        <span><span class="dot-live"></span>Année en cours · données Jan – 15 nov. 2026</span>
         <a href="rapport_performance.html">→ Rapport détaillé 2026</a>
       </div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -311,10 +311,10 @@
         <div class="metric-box"><div class="metric-lbl">Temps de mouvement</div><div class="metric-val">~306 h</div></div>
       </div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-        <div class="metric-box" style="border-left:4px solid #2563eb"><div class="metric-lbl">Sorties vélo <span class="text-xs font-normal">(complémentaire)</span></div><div class="metric-val">10</div><div class="metric-note">2 extérieur · 8 home-trainer</div></div>
-        <div class="metric-box" style="border-left:4px solid #2563eb"><div class="metric-lbl">Distance vélo</div><div class="metric-val">272 km</div></div>
-        <div class="metric-box" style="border-left:4px solid #2563eb"><div class="metric-lbl">D+ vélo</div><div class="metric-val">1 696 m</div></div>
-        <div class="metric-box" style="border-left:4px solid #2563eb"><div class="metric-lbl">Vitesse moy. vélo</div><div class="metric-val">22.5 km/h</div></div>
+        <div class="metric-box" style="border-left:4px solid #2563eb"><div class="metric-lbl">Sorties vélo <span class="text-xs font-normal">(complémentaire)</span></div><div class="metric-val">11</div><div class="metric-note">2 extérieur · 9 home-trainer</div></div>
+        <div class="metric-box" style="border-left:4px solid #2563eb"><div class="metric-lbl">Distance vélo</div><div class="metric-val">297 km</div></div>
+        <div class="metric-box" style="border-left:4px solid #2563eb"><div class="metric-lbl">D+ vélo</div><div class="metric-val">1 740 m</div></div>
+        <div class="metric-box" style="border-left:4px solid #2563eb"><div class="metric-lbl">Vitesse moy. vélo</div><div class="metric-val">22.6 km/h</div></div>
       </div>
       <div class="grid grid-cols-3 gap-3">
         <div class="metric-box"><div class="metric-lbl">Courses (Jan–Nov)</div><div class="metric-val orange">8</div><div class="metric-note">0 DNF · 276 km compète</div></div>
@@ -453,7 +453,7 @@
 <script>
 const MONTHS = ['Jan','Fév','Mar','Avr','Mai','Jun','Jul','Aoû','Sep','Oct','Nov','Déc'];
 // Date de la dernière activité 2026 — patchée par update_report.py
-const AS_OF = '2026-11-09';
+const AS_OF = '2026-11-15';
 const AS_M = +AS_OF.slice(5,7) - 1, AS_D = +AS_OF.slice(8,10);
 const dim = (y, m) => new Date(y, m+1, 0).getDate();
 const doy = (y, m, d) => Math.round((Date.UTC(y, m, d) - Date.UTC(y, 0, 0)) / 864e5);

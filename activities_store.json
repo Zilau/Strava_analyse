@@ -2837,5 +2837,57 @@
    "wind_speed": 1.8,
    "humidity": 86
   }
+ },
+ {
+  "id": "20974446073",
+  "name": "P'tite marche nocturne (toujours en mode récup)",
+  "description": "Principalement dégagé, 9°C, Ressenti 6°C, Humidité 64%, Vent 2m/s du N - KlimatApp",
+  "sport_type": "Walk",
+  "start_local": "2026-11-13T17:47:23",
+  "location_summary": "Nogent-sur-Marne, Val-de-Marne",
+  "summary": {
+   "distance": 3005,
+   "moving_time": 2090,
+   "elapsed_time": 2122,
+   "elevation_gain": 7,
+   "avg_speed": 1.437799043062201,
+   "max_speed": 2.15,
+   "relative_effort": 3,
+   "total_calories": 196,
+   "avg_cadence": 59.5802,
+   "kudos_count": 36,
+   "achievement_count": 0,
+   "pr_count": 0
+  },
+  "weather": {
+   "condition": "PartlyCloudy",
+   "wind_direction": "NNE",
+   "temperature": 9.2,
+   "feels_like": 8,
+   "wind_speed": 2,
+   "humidity": 72
+  }
+ },
+ {
+  "id": "20994925378",
+  "name": "MyWhoosh - Al Qudra",
+  "description": "Pour faire tourner les jambes ",
+  "sport_type": "VirtualRide",
+  "start_local": "2026-11-15T10:41:38",
+  "location_summary": "Dubai, United Arab Emirates",
+  "summary": {
+   "distance": 24743.8,
+   "moving_time": 3658,
+   "elapsed_time": 3658,
+   "elevation_gain": 44,
+   "avg_speed": 6.764297430289775,
+   "max_speed": 10.04,
+   "relative_effort": 11,
+   "total_calories": 351,
+   "avg_cadence": 49.3911,
+   "kudos_count": 2,
+   "achievement_count": 4,
+   "pr_count": 4
+  }
  }
 ]

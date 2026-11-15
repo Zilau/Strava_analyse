@@ -172,6 +172,13 @@ def marathon_pace_km(act_id, hr):
     return round(sum(m for m, s, _ in laps if m >= 1000 and s / (m / 1000) <= MP_PACE_S) / 1000, 1)
 
 
+def ride_watts(a, hr):
+    """Puissance moyenne d'une sortie vélo : summary.avg_watts de list_activities si présent,
+    sinon avg_watts de hr_store.json (list_activities ne renvoie plus ce champ depuis nov. 2026,
+    il faut alors le récupérer via get_activity_performance)."""
+    return a.get('summary', {}).get('avg_watts') or hr.get(a['id'], {}).get('avg_watts')
+
+
 def compute_weekly(all_acts):
     hr = load_json(HR_PATH) if HR_PATH.exists() else {}
     dts = [datetime.fromisoformat(a['start_local']) for a in all_acts]
@@ -233,14 +240,14 @@ def compute_weekly(all_acts):
         elif st == 'Ride':
             b['veloOutKm'] += km
             b['veloElev'] += elev
-            if s.get('avg_watts'):
-                b['veloWattsSum'] += s['avg_watts']
+            if ride_watts(a, hr):
+                b['veloWattsSum'] += ride_watts(a, hr)
                 b['veloWattsN'] += 1
         elif st == 'VirtualRide':
             b['veloInKm'] += km
             b['veloElev'] += elev
-            if s.get('avg_watts'):
-                b['veloWattsSum'] += s['avg_watts']
+            if ride_watts(a, hr):
+                b['veloWattsSum'] += ride_watts(a, hr)
                 b['veloWattsN'] += 1
 
     labels = [w.strftime('%d/%m') for w in week_list]
@@ -363,6 +370,7 @@ def compute_calacts(all_acts):
 
 
 def compute_velo_sessions(all_acts):
+    hr = load_json(HR_PATH) if HR_PATH.exists() else {}
     out = []
     for a in all_acts:
         if a['sport_type'] not in ('Ride', 'VirtualRide'):
@@ -377,7 +385,9 @@ def compute_velo_sessions(all_acts):
             'duration_s': mt, 'avg_speed_kmh': round(km / (mt / 3600), 1) if mt else 0,
             'calories': int(s.get('total_calories', 0) or 0),
             'indoor': a['sport_type'] == 'VirtualRide',
-            'avg_watts': round(s['avg_watts'], 1) if s.get('avg_watts') else None,
+            'avg_watts': round(ride_watts(a, hr), 1) if ride_watts(a, hr) else None,
+            'avg_hr': round(hr[a['id']]['avg_hr']) if hr.get(a['id'], {}).get('avg_hr') else None,
+            'max_hr': hr.get(a['id'], {}).get('max_hr'),
         })
     return out
 
@@ -556,9 +566,11 @@ def serialize_velo(entries):
         n_json = json.dumps(e['name'], ensure_ascii=False)
         indoor = 'true' if e['indoor'] else 'false'
         watts = e['avg_watts'] if e['avg_watts'] is not None else 'null'
+        hr_avg = e['avg_hr'] if e['avg_hr'] is not None else 'null'
+        hr_max = e['max_hr'] if e['max_hr'] is not None else 'null'
         lines.append(f"  {{id:'{e['id']}',date:'{e['date']}',start_local:'{e['start_local']}',name:{n_json},"
                       f"km:{e['km']},elev:{e['elev']},duration_s:{e['duration_s']},"
-                      f"avg_speed_kmh:{e['avg_speed_kmh']},calories:{e['calories']},indoor:{indoor},avg_watts:{watts}}}")
+                      f"avg_speed_kmh:{e['avg_speed_kmh']},calories:{e['calories']},indoor:{indoor},avg_watts:{watts},avg_hr:{hr_avg},max_hr:{hr_max}}}")
     return 'const veloSessions = [\n' + ',\n'.join(lines) + '\n];'
 
 
@@ -880,6 +892,11 @@ def main():
     if no_laps:
         print(f"⚠ Laps manquants pour {len(no_laps)} sortie(s) (allure marathon non détectée) : "
               f"get_activity_performance puis hr_store.json → " + ', '.join(no_laps))
+    no_watts = [a['id'] for a in all_acts if a['sport_type'] in ('Ride', 'VirtualRide')
+                and not (ride_watts(a, hr) and hr.get(a['id'], {}).get('avg_hr'))]
+    if no_watts:
+        print(f"⚠ Puissance/FC manquantes pour {len(no_watts)} sortie(s) vélo : get_activity_performance puis "
+              f"avg_hr, max_hr, avg_watts dans hr_store.json → " + ', '.join(no_watts))
     if eff_missing:
         print(f"⚠ FC manquante pour {len(eff_missing)} footing(s) : get_activity_performance puis hr_store.json → "
               + ', '.join(eff_missing))
