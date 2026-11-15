@@ -901,7 +901,11 @@ def main():
         print(f"⚠ FC manquante pour {len(eff_missing)} footing(s) : get_activity_performance puis hr_store.json → "
               + ', '.join(eff_missing))
     for label, date_str in [('Échappée Belle (22 août 2026)', '2026-08-22'),
-                             ('Marathon Nice-Cannes (8 nov. 2026)', '2026-11-08')]:
+                             ('Marathon Nice-Cannes (8 nov. 2026)', '2026-11-08'),
+                             ('Trail des Mineurs, Grenay (14 mars 2027)', '2027-03-14'),
+                             ("Ultra Trail d'Oléron, relais à 4 (3 avril 2027)", '2027-04-03'),
+                             ('Foulée verte de Clamart (23 mai 2027)', '2027-05-23'),
+                             ('UT4M 180 Challenge (15–18 juillet 2027)', '2027-07-15')]:
         days = (datetime.strptime(date_str, '%Y-%m-%d') - datetime.strptime(last_date, '%Y-%m-%d')).days
         if days >= 0:
             print(f"  J-{days} · {label}")

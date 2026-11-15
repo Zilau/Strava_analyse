@@ -86,7 +86,7 @@
 <!-- TAB NAV -->
 <div class="max-w-5xl mx-auto mb-4 no-print">
   <nav class="flex gap-x-5 gap-y-2 flex-wrap items-center" aria-label="Onglets du rapport">
-    <div class="tab-group"><button id="btn-marathon" class="tab-btn tab-goal" onclick="showTab('marathon')">Plan Marathon NC</button></div>
+    <div class="tab-group"><button id="btn-ut4m" class="tab-btn tab-goal" onclick="showTab('ut4m')">Plan UT4M</button><button id="btn-marathon" class="tab-btn" onclick="showTab('marathon')">Plan Marathon NC</button></div>
     <div class="tab-group" aria-label="Analyse">
       <button id="btn-global" class="tab-btn tab-active" onclick="showTab('global')">Vue globale</button>
       <button id="btn-courses" class="tab-btn" onclick="showTab('courses')">Compétitions</button>
@@ -142,7 +142,7 @@
       </div>
       <div class="pt-3 border-t border-slate-200">
         <span class="text-sm font-bold text-slate-800">Prochain objectif</span>
-        <p class="text-sm text-slate-600 leading-relaxed mt-1">À définir. Le marathon Nice-Cannes était le dernier objectif fixé : les comptes à rebours et la frise d'affûtage disparaissent d'eux-mêmes.</p>
+        <p class="text-sm text-slate-600 leading-relaxed mt-1"><strong style="color:#B83A00">Trail des Mineurs, Grenay · 21 km, +400 m · dimanche 14 mars 2027 · <span class="j-race">J-119</span></strong><br>Puis l'Ultra Trail de l'île d'Oléron en relais à 4 (25 km par relayeur, environ +250 m), le samedi 3 avril 2027, trois semaines après Grenay. Enfin la Foulée verte de Clamart (18 km, environ +414 m), le dimanche 23 mai 2027 : déjà courue le 31 mai 2026 en 1h50, c'est un repère direct pour mesurer la progression. <strong>Grand objectif de la saison : l'UT4M 180 Challenge</strong>, 4 étapes du 15 au 18 juillet 2027 autour de Grenoble (environ 185 km et 11 900 m D+ annoncés), soit plus de 4 fois le D+ de l'Échappée Belle en 4 jours.</p>
       </div>
     </div>
   </div>
@@ -172,8 +172,8 @@
         <div class="flex items-start gap-3">
           <span class="badge badge-blue mt-0.5">P3</span>
           <div>
-            <p class="font-semibold text-slate-800 text-sm">Fixer le prochain objectif</p>
-            <p class="text-xs text-slate-600 mt-1">Une fois récupéré, choisir le prochain objectif et mettre à jour <code>NEXT_RACE</code> dans ce rapport et <code>GOAL</code> dans le bilan annuel. Pour un prochain marathon, deux pistes tirées de ce bloc : <strong>des sorties longues jusqu'à 28–32 km, avec un bloc à allure marathon en fin de sortie, et un départ calé sur la FC (≤ 148 jusqu'au 10e km) plutôt que sur l'allure.</strong> Avec ces deux ajustements, un objectif autour de 3h50 paraît atteignable, sans garantie : il reste à le confirmer pendant la préparation.</p>
+            <p class="font-semibold text-slate-800 text-sm">Préparer le Trail des Mineurs</p>
+            <p class="text-xs text-slate-600 mt-1">Prochain objectif : le Trail des Mineurs à Grenay, 21 km pour +400 m (environ 19 m D+/km), le 14 mars 2027 (<span class="j-race">J-119</span>). Le profil se rapproche de Vimy (20 km, 12 m D+/km, 1h56) plus que des trails de montagne. Après la récupération du marathon, <strong>reconstruire le volume en endurance jusqu'à fin décembre, puis réintroduire du D+ (côtes, sorties vallonnées) à partir de janvier</strong>. L'ACWR D+ du tableau de bord permet de suivre cette reprise du dénivelé sans à-coup. Le relais d'Oléron, trois semaines plus tard, est plus long (25 km) mais plus plat : <strong>Grenay sert de dernière grosse séance, puis une semaine de récupération et deux semaines d'entretien suffisent</strong>.</p>
           </div>
         </div>
       </div>
@@ -829,6 +829,119 @@
 </div><!-- /pane-carte -->
 
 <!-- Tooltip flottant pour les légendes des graphes -->
+
+<div id="pane-ut4m" class="max-w-5xl mx-auto space-y-5" style="display:none">
+
+  <div class="card" style="padding:24px 28px">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
+      <div>
+        <h1 class="text-2xl font-extrabold text-slate-900" style="font-stretch:115%">Plan UT4M 180 Challenge</h1>
+        <p class="text-slate-500 mt-1">4 étapes autour de Grenoble, <strong class="text-slate-700">du jeudi 15 au dimanche 18 juillet 2027</strong> : Vercors, Taillefer, Belledonne, Chartreuse</p>
+      </div>
+      <div class="md:text-right">
+        <div id="ut4m-countdown" class="tabular-nums" style="font-size:56px;line-height:1;font-weight:900;font-stretch:125%;color:#102A3A">—</div>
+        <div class="text-xs text-slate-500 mt-1">jours avant la 1re étape</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+    <div class="card">
+      <div class="text-xs text-slate-500 mb-1">La course</div>
+      <div class="text-2xl font-bold text-[#1C6E8C]">≈ 185 km · 11 900 m D+</div>
+      <div class="text-xs text-slate-500 mt-1">≈ 45 km et 3 000 m D+ par jour, 4 jours de suite (chiffres annoncés pour 2027, à confirmer au roadbook)</div>
+    </div>
+    <div class="card">
+      <div class="text-xs text-slate-500 mb-1">Ton repère le plus proche</div>
+      <div class="text-2xl font-bold text-[#1C6E8C]">Échappée Belle</div>
+      <div class="text-xs text-slate-500 mt-1">43 km, 2 831 m D+ en 9h27 (22 août 2026) : une étape d'UT4M, mais une seule</div>
+    </div>
+    <div class="card">
+      <div class="text-xs text-slate-500 mb-1">Courses de préparation</div>
+      <div class="text-2xl font-bold text-[#1C6E8C]">Grenay · Oléron · Clamart</div>
+      <div class="text-xs text-slate-500 mt-1">14 mars (21 km) · 3 avril (relais 25 km) · 23 mai (18 km) : tests, pas objectifs</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Où est la difficulté</h2>
+    <div class="mt-1 p-3 bg-amber-50 border border-amber-200 rounded-lg text-xs text-amber-900" style="line-height:1.55">
+      <strong>Point clé :</strong> chaque étape équivaut à ton Échappée Belle, et il faut en enchaîner quatre. Ce qui casse sur un ultra par étapes, ce sont les quadriceps en descente (fatigue excentrique) et la récupération d'un jour à l'autre, pas le cardio. Tu as déjà encaissé 7 041 m de D+ en une semaine (camp Chartreuse, fin juillet 2026), mais ton D+ habituel à Paris est de 100 à 500 m par semaine et tu as fait 7 séances de renfo en 2026. <strong>Les deux leviers du plan sont donc le renfo (2 fois par semaine, toute l'année) et la montée progressive du D+</strong>, le home-trainer servant à ajouter du volume sans impact. Vérifie les barrières horaires de chaque étape au roadbook : à ton rythme de l'Échappée Belle, compte 9 à 10 h par jour.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Est-ce que je suis le plan ?</h2>
+    <p class="text-xs text-slate-500 mb-2">Réalisé (run + trail) comparé à la cible de chaque semaine du plan ci-dessous. Semaine en cours en pâle, semaines futures sans barre « réel ».</p>
+    <div id="ut4m-status" class="flex gap-2 flex-wrap mb-3"></div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <p class="text-xs font-semibold text-slate-600 mb-1">Kilomètres par semaine</p>
+        <canvas id="chart-ut4m-km" height="170"></canvas>
+      </div>
+      <div>
+        <p class="text-xs font-semibold text-slate-600 mb-1">Dénivelé positif par semaine (m)</p>
+        <canvas id="chart-ut4m-dplus" height="170"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 class="mb-1">Plan semaine par semaine</h2>
+    <p class="text-xs text-slate-500 mb-4">Cibles de volume, de D+, de séances de renfo et d'heures de home-trainer. Une semaine allégée toutes les 3 ou 4 semaines. Les colonnes « fait » se remplissent avec les mises à jour Strava (renfo compté depuis Garmin/Strava, home-trainer et vélo en heures). Plan indicatif : à ajuster selon les sensations, les courses tests et le roadbook 2027.</p>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm border-collapse">
+        <thead>
+          <tr class="text-xs text-slate-500 border-b border-slate-200">
+            <th class="text-left py-2 pr-3 font-medium">Semaine</th>
+            <th class="text-center py-2 px-2 font-medium">Km<br><span class="font-normal">cible · fait</span></th>
+            <th class="text-center py-2 px-2 font-medium">D+ (m)<br><span class="font-normal">cible · fait</span></th>
+            <th class="text-center py-2 px-2 font-medium">Renfo<br><span class="font-normal">cible · fait</span></th>
+            <th class="text-center py-2 px-2 font-medium">Vélo (h)<br><span class="font-normal">cible · fait</span></th>
+            <th class="text-left py-2 px-2 font-medium">Séances clés</th>
+            <th class="text-left py-2 pl-2 font-medium">Focus</th>
+          </tr>
+        </thead>
+        <tbody id="ut4m-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Semaine type (phase base et force)</h2>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <tbody class="divide-y divide-slate-100">
+          <tr><td class="py-2 pr-3 font-semibold text-slate-700 whitespace-nowrap">Lundi</td><td class="py-2 text-slate-600"><strong>Renfo force</strong> 40 min</td></tr>
+          <tr><td class="py-2 pr-3 font-semibold text-slate-700 whitespace-nowrap">Mardi</td><td class="py-2 text-slate-600">Footing 50–60 min avec <strong>côtes</strong> (8–10 × 1 min) ou 15 min d'escaliers</td></tr>
+          <tr><td class="py-2 pr-3 font-semibold text-slate-700 whitespace-nowrap">Mercredi</td><td class="py-2 text-slate-600"><strong>Home-trainer</strong> 60–75 min, FC &lt; 130, dont 4–5 × 5 min en force à 55–60 tr/min</td></tr>
+          <tr><td class="py-2 pr-3 font-semibold text-slate-700 whitespace-nowrap">Jeudi</td><td class="py-2 text-slate-600"><strong>Renfo</strong> 30 min, footing court de 30 min facultatif</td></tr>
+          <tr><td class="py-2 pr-3 font-semibold text-slate-700 whitespace-nowrap">Vendredi</td><td class="py-2 text-slate-600">Séance de qualité : seuil ou fractionné long, sur le plat ou en côte</td></tr>
+          <tr><td class="py-2 pr-3 font-semibold text-slate-700 whitespace-nowrap">Samedi</td><td class="py-2 text-slate-600"><strong>Home-trainer</strong> 60–90 min très facile (FC &lt; 130, 80–90 tr/min), la veille de la sortie longue. Repos complet une semaine sur trois</td></tr>
+          <tr><td class="py-2 pr-3 font-semibold text-slate-700 whitespace-nowrap">Dimanche</td><td class="py-2 text-slate-600"><strong>Sortie longue trail vallonnée</strong> 2 h → 3 h (Gravelle, Meudon, Chevreuse), bâtons dès février</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-xs text-slate-500 mt-2">À partir d'avril, les week-ends s'enchaînent : le samedi, le home-trainer laisse la place à 2–3 h de trail (ou 2 h de home-trainer si les jambes tirent), puis la sortie longue du dimanche se court sur jambes déjà chargées, et une séance de marche rapide en montée par semaine s'ajoute (tapis incliné 12–15 % ou escaliers, bâtons).</p>
+  </div>
+
+  <div class="card">
+    <h2>Séances types</h2>
+    <div id="ut4m-sessions" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
+  </div>
+
+  <div class="card">
+    <h2>Garde-fous</h2>
+    <ul class="text-sm text-slate-600 space-y-1.5" style="line-height:1.5">
+      <li><strong>ACWR D+ ≤ 1,3</strong> (Vue globale, Charge &amp; risque) pendant toute la montée en dénivelé : c'est la reprise brutale du D+ qui crée la fatigue excentrique.</li>
+      <li><strong>ACWR de charge ≤ 1,3</strong>, une semaine allégée toutes les 3 ou 4 semaines (lignes « Allègement » du plan).</li>
+      <li><strong>Efficacité aérobie des footings</strong> : une baisse sur plusieurs semaines est un signal de fatigue, lever le pied.</li>
+      <li><strong>Alimentation</strong> : la répéter à chaque sortie de plus de 3 h (60–80 g de glucides par heure), avec le matériel obligatoire et les bâtons.</li>
+      <li><strong>Courses tests</strong> : Grenay, Oléron et Clamart se courent pour apprendre, pas au détriment du bloc. Au moindre signal de blessure, une course test se saute.</li>
+    </ul>
+  </div>
+
+</div><!-- /pane-ut4m -->
 
 <div id="pane-marathon" class="max-w-5xl mx-auto space-y-5" style="display:none">
 
@@ -1812,7 +1925,7 @@ new Chart(document.getElementById('chart-zones'), {
 // ══════════ TAB SWITCH ══════════
 let _mapInited = false;
 function showTab(name) {
-  ['global','courses','entrainement','muscu','velo','carte','lexique','marathon'].forEach(tab => {
+  ['global','courses','entrainement','muscu','velo','carte','lexique','marathon','ut4m'].forEach(tab => {
     document.getElementById('pane-'+tab).style.display = name===tab ? '' : 'none';
     document.getElementById('btn-'+tab).classList.toggle('tab-active', name===tab);
   });
@@ -2271,8 +2384,21 @@ const RACE_INFO = {
   '2026-11-01': { n:'Ekiden de Paris — relais 6 (7.2 km)',      time:'0:35:04', res:'19 PRs · 4:51/km' },
   '2026-11-08': { n:'Marathon des Alpes-Maritimes Nice-Cannes', time:'3:56:38', res:'Record marathon · sub-4h · 1:55:55 au semi' },
 };
+// Courses à venir, dans l'ordre chronologique. NEXT_RACE = la première dont la date n'est pas passée :
+// une fois Grenay courue, le rapport bascule seul sur la suivante.
 // from/to : départ et arrivée affichés sur la règle du parcours · blockFrom : début du bloc de préparation
-const NEXT_RACE = { d:'2026-11-08', n:'Marathon Nice-Cannes', km:42.195, target:'3h52–3h56 (5:30–5:35/km)', from:'Nice', to:'Cannes', blockFrom:'2026-08-24' };
+// trail:true → pas de km à allure marathon ni de projection de puissance route · elev : D+ affiché · note : format de la course (relais, étapes), affiché sous le nom
+const UPCOMING_RACES = [
+  { d:'2027-03-14', n:'Trail des Mineurs (Grenay)', km:21, elev:400, trail:true, target:'Finisher', from:'Grenay', to:'Grenay', blockFrom:'2026-11-16' },
+  { d:'2027-04-03', n:'Ultra Trail de l\'île d\'Oléron, relais à 4', km:25, elev:250, trail:true, target:'Finisher', note:'relais à 4 × 25 km',
+    from:'Le Château-d\'Oléron', to:'Le Château-d\'Oléron', blockFrom:'2027-03-15' },
+  { d:'2027-05-23', n:'La Foulée verte de Clamart', km:18, elev:414, trail:true, target:'Mieux que 1h50 (édition 2026)', from:'Clamart', to:'Clamart', blockFrom:'2027-04-04' },
+  { d:'2027-07-15', n:'UT4M 180 Challenge', km:184.6, elev:11933, trail:true, target:'Finisher', note:'4 étapes du 15 au 18 juillet : Vercors, Taillefer, Belledonne, Chartreuse',
+    from:'Vercors', to:'Chartreuse', blockFrom:'2027-05-24' },
+];
+const NEXT_RACE = UPCOMING_RACES.find(r => new Date(r.d+'T00:00') >= new Date(new Date().toDateString())) || UPCOMING_RACES[UPCOMING_RACES.length-1];
+// Objectif passé, figé pour l'onglet Plan Marathon NC (ne pas le faire suivre NEXT_RACE)
+const MARATHON = { d:'2026-11-08', n:'Marathon Nice-Cannes', km:42.195, target:'3h52–3h56 (5:30–5:35/km)', blockFrom:'2026-08-24' };
 // Compte à rebours unique : tous les « J-x » de la page en dérivent (texte des .j-race, KPI, tableau de bord)
 const RACE_DAYS = Math.round((new Date(NEXT_RACE.d+'T00:00') - new Date(new Date().toDateString())) / 864e5);
 const RACE_J = RACE_DAYS > 0 ? 'J-'+RACE_DAYS : RACE_DAYS === 0 ? 'Jour J' : 'course passée';
@@ -2311,11 +2437,16 @@ document.querySelectorAll('.j-race').forEach(e => e.textContent = RACE_J);
       '<td class="p-2 text-slate-500">'+r.res+'</td></tr>';
   });
   const days = RACE_DAYS;
-  if (days > 0) h += '<tr style="background:#fff7ed"><td class="p-2 text-slate-500 whitespace-nowrap">'+fmtD(NEXT_RACE.d)+'</td>' +
-    '<td class="p-2"><span class="badge badge-route" style="font-size:9px">Route</span> <span class="font-semibold text-slate-800">'+NEXT_RACE.n+'</span></td>' +
-    '<td class="p-2 whitespace-nowrap">'+NEXT_RACE.km+' km</td><td class="p-2">plat</td>' +
-    '<td class="p-2 font-bold" style="color:#c2410c" colspan="4">Objectif '+NEXT_RACE.target+'</td>' +
-    '<td class="p-2"><span class="badge badge-orange">J-'+days+'</span></td></tr>';
+  // Une ligne par course à venir (fond orange pâle), dans l'ordre de UPCOMING_RACES
+  UPCOMING_RACES.forEach(u => {
+    const dd = Math.round((new Date(u.d+'T00:00') - new Date(new Date().toDateString())) / 864e5);
+    if (dd <= 0) return;
+    h += '<tr style="background:#fff7ed"><td class="p-2 text-slate-500 whitespace-nowrap">'+fmtD(u.d)+'</td>' +
+      '<td class="p-2"><span class="badge '+(u.trail ? 'badge-trail' : 'badge-route')+'" style="font-size:9px">'+(u.trail ? 'Trail' : 'Route')+'</span> <span class="font-semibold text-slate-800">'+u.n+'</span>'+(u.note ? '<div class="text-xs text-slate-400">'+u.note+'</div>' : '')+'</td>' +
+      '<td class="p-2 whitespace-nowrap">'+u.km+' km</td><td class="p-2 whitespace-nowrap">'+(u.elev ? u.elev+' m' : 'plat')+'</td>' +
+      '<td class="p-2 font-bold" style="color:#c2410c" colspan="4">Objectif '+u.target+'</td>' +
+      '<td class="p-2"><span class="badge badge-orange">J-'+dd+'</span></td></tr>';
+  });
   document.getElementById('comp-table').innerHTML = h + '</tbody>';
 
   // Ajustement puissance–durée (log-log) sur les courses roulantes avec puissance
@@ -2339,7 +2470,7 @@ document.querySelectorAll('.j-race').forEach(e => e.textContent = RACE_J);
         pointRadius:7, pointBackgroundColor:ORANGE, pointBorderColor:'white', pointBorderWidth:2 },
       { label:'Trail', data:races.filter(r => r.w && r.trail).map(r => ({ x:r.sec/60, y:r.w/KG, r })),
         pointRadius:7, pointBackgroundColor:GREEN, pointBorderColor:'white', pointBorderWidth:2 },
-      { label:'Nice-Cannes (projection)', data:[{ x:MAR_MIN, y:marWkg }], pointStyle:'star', pointRadius:14,
+      { label:'Projection marathon (~3h55)', data:[{ x:MAR_MIN, y:marWkg }], pointStyle:'star', pointRadius:14,
         pointBorderColor:ORANGE, pointBackgroundColor:ORANGE+'55', pointBorderWidth:2 },
     ] },
     options: {
@@ -2348,7 +2479,7 @@ document.querySelectorAll('.j-race').forEach(e => e.textContent = RACE_J);
         tooltip: { callbacks: { label: ctx => {
           const r = ctx.raw.r;
           if (r) return r.n+' — '+ctx.parsed.y.toFixed(2)+' W/kg ('+Math.round(r.w)+' W) en '+hms(r.sec)+' · D+ '+Math.round(r.dpk)+' m/km';
-          if (ctx.datasetIndex === 3) return 'Projection Nice-Cannes : '+marWkg.toFixed(2)+' W/kg ≈ '+marW+' W pendant ~3h55';
+          if (ctx.datasetIndex === 3) return 'Projection marathon : '+marWkg.toFixed(2)+' W/kg ≈ '+marW+' W pendant ~3h55 (à comparer au point réel de Nice-Cannes)';
           return 'Courbe : '+ctx.parsed.y.toFixed(2)+' W/kg à '+hms(ctx.parsed.x*60);
         } } }
       },
@@ -2371,7 +2502,9 @@ document.querySelectorAll('.j-race').forEach(e => e.textContent = RACE_J);
     '<dl class="sum-grid">' +
       kv('Meilleure allure route', fmt(road.pace)+'/km', road.n.split(' — ')[0]+', '+hms(road.sec)) +
       kv('Puissance max en course', (best.w/KG).toFixed(2)+' W/kg', best.n.split(' — ')[0]+', '+Math.round(best.w)+' W') +
-      kv('Cible '+NEXT_RACE.n, '≈ '+marW+' W', NEXT_RACE.target.split(' (')[0]+(days > 0 ? ', dans '+days+' jours' : '')) +
+      (NEXT_RACE.trail || days < 0
+        ? kv('Prochaine course', days > 0 ? 'J-'+days : '—', NEXT_RACE.n+', '+NEXT_RACE.km+' km'+(NEXT_RACE.elev ? ' et '+NEXT_RACE.elev+' m D+' : ''))
+        : kv('Cible '+NEXT_RACE.n, '≈ '+marW+' W', NEXT_RACE.target.split(' (')[0]+(days > 0 ? ', dans '+days+' jours' : ''))) +
     '</dl>';
 })();
 
@@ -2532,8 +2665,9 @@ const RE_ADJ = (function() {
   // Projection jour J : on prolonge CTL/ATL avec une charge = % de la moyenne des 3 dernières semaines
   // complètes — 90 % jusqu'à J-14, −30 % la semaine d'avant, −50 % la semaine de course (marathon exclu).
   // Semaine en cours : la charge déjà faite si elle dépasse déjà le plan.
+  // Affichée seulement à 3 semaines ou moins de la course : plus loin, l'hypothèse 90 % n'a pas de sens.
   const raceWi = Math.floor((Date.parse(NEXT_RACE.d) - Date.UTC(2025, 11, 29)) / (7*864e5));
-  if (raceWi > li) {
+  if (raceWi > li && raceWi - li <= 3) {
     const base = load.slice(li-2, li+1).reduce((a,b) => a+b, 0)/3;
     const kA = Math.exp(-7/7), kC = Math.exp(-7/42);
     let atl = RE_ADJ.atl[li], ctl = RE_ADJ.ctl[li], f = 0;
@@ -2664,8 +2798,8 @@ const RE_ADJ = (function() {
     '<span class="badge" style="background:'+c+'22;color:'+c+';border:1px solid '+c+'">' +
     'Dernière semaine complète ('+weeks[li]+') : '+totalElev[li]+' m de D+ · ACWR D+ '+v.toFixed(2)+' → '+dTxt+'</span>' +
     (RE_ADJ.partial ? ' <span class="badge" style="background:#f1f5f9;color:#64748b">Semaine du '+weeks[n]+' en cours (point pâle) : '+totalElev[n]+' m à ce jour</span>' : '');
-  // Km à allure marathon : affiché tant que la course est à venir
-  if (RACE_DAYS >= 0) {
+  // Km à allure marathon : affiché tant que la course (route) est à venir
+  if (RACE_DAYS >= 0 && !NEXT_RACE.trail) {
     const s = wkMarathonPaceKm.slice(0, li+1), cur = s[li], max = Math.max(...s.slice(-12));
     STATUS.mp = { label:'Allure marathon', val: cur.toFixed(1)+' km',
       txt: cur >= max ? 'Record du bloc — meilleure semaine de la prépa' : 'Plus léger — max du bloc '+max.toFixed(1)+' km',
@@ -2708,7 +2842,7 @@ const RE_ADJ = (function() {
   const longest = block.reduce((m, a) => a.km > m.km ? a : m, { km:0 });
   // Séance la plus spécifique : le plus de km à allure marathon en une sortie (laps cumulés de mpLaps)
   const mpBy = {};
-  mpLaps.filter(l => l.d >= NEXT_RACE.blockFrom).forEach(l => { const k = l.d+'|'+l.n; mpBy[k] = (mpBy[k] || 0) + l.km; });
+  if (!NEXT_RACE.trail) mpLaps.filter(l => l.d >= NEXT_RACE.blockFrom).forEach(l => { const k = l.d+'|'+l.n; mpBy[k] = (mpBy[k] || 0) + l.km; });
   const [mpKey, mpKm] = Object.entries(mpBy).reduce((m, e) => e[1] >= m[1] ? e : m, ['', 0]);
   const [mpD, mpN] = mpKey.split('|'), mpAct = block.find(a => a.d === mpD && a.n === mpN);
   const mpEnd = mpAct ? mpAct.km : mpKm, mpStart = Math.max(0, mpEnd - mpKm);
@@ -2716,18 +2850,21 @@ const RE_ADJ = (function() {
   const jTxt = RACE_DAYS > 1 ? RACE_DAYS+' jours' : RACE_DAYS === 1 ? '1 jour' : 'Jour J';
   const dateTxt = new Date(NEXT_RACE.d+'T00:00').toLocaleDateString('fr-FR', { weekday:'long', day:'numeric', month:'long' });
   const ticks = [];
-  for (let k = 0; k < L - 2; k += 5) ticks.push('<div style="position:absolute;left:'+pct(k)+'%;top:76px;transform:translateX(-50%);font-size:12px;color:#64748b">'+k+'</div>');
+  const tick = L > 120 ? 20 : L > 60 ? 10 : 5;  // graduations lisibles quelle que soit la distance
+  for (let k = 0; k < L - 2; k += tick) ticks.push('<div style="position:absolute;left:'+pct(k)+'%;top:76px;transform:translateX(-50%);font-size:12px;color:#64748b">'+k+'</div>');
   el.innerHTML =
     '<div class="rh">' +
       '<div class="flex flex-wrap items-end justify-between gap-6">' +
         '<div><div style="font-size:17px;font-weight:600;font-stretch:110%;color:#475569">'+NEXT_RACE.n+', '+dateTxt+'</div>' +
+        (NEXT_RACE.note ? '<div style="font-size:13px;color:#64748b">'+NEXT_RACE.note+'</div>' : '') +
         '<div class="rh-j">'+jTxt+'</div></div>' +
         '<dl style="display:grid;grid-template-columns:auto auto;gap:4px 18px;font-size:14px;margin:0 0 6px">' +
           '<dt style="color:#64748b">Objectif</dt><dd style="margin:0;font-weight:700">'+tTime+'</dd>' +
           (tPace ? '<dt style="color:#64748b">Allure</dt><dd style="margin:0;font-weight:700">'+tPace+'</dd>' : '') +
+          (NEXT_RACE.elev ? '<dt style="color:#64748b">Dénivelé</dt><dd style="margin:0;font-weight:700">+'+NEXT_RACE.elev+' m</dd>' : '') +
         '</dl>' +
       '</div>' +
-      '<figure class="rh-ruler" role="img" aria-label="Sur '+fr(L, 3)+' km : plus longue sortie du bloc '+fr(longest.km)+' km, dont au mieux '+fr(mpKm)+' km à allure marathon en une sortie.">' +
+      '<figure class="rh-ruler" role="img" aria-label="Sur '+fr(L, 3)+' km : plus longue sortie du bloc '+fr(longest.km)+' km'+(mpKm ? ', dont au mieux '+fr(mpKm)+' km à allure marathon en une sortie' : '')+'.">' +
         '<div style="position:absolute;left:0;top:0;font-weight:700;font-stretch:110%;font-size:15px">'+(NEXT_RACE.from || 'Départ')+'</div>' +
         '<div style="position:absolute;right:0;top:0;font-weight:700;font-stretch:110%;font-size:15px;color:#B83A00">'+(NEXT_RACE.to || 'Arrivée')+', '+fr(L, 3)+' km</div>' +
         '<div style="position:absolute;left:0;right:0;top:56px;height:14px;background:#e2e8f0;border-radius:7px"></div>' +
@@ -2735,12 +2872,14 @@ const RE_ADJ = (function() {
         (mpKm ? '<div style="position:absolute;left:'+pct(mpStart)+'%;width:'+(pct(mpEnd) - pct(mpStart)).toFixed(2)+'%;top:56px;height:14px;background:#1C6E8C"></div>' : '') +
         '<div style="position:absolute;right:0;top:46px;width:4px;height:34px;background:#FC4C02;border-radius:2px"></div>' +
         ticks.join('') +
-        '<div class="rh-lbl" style="left:'+pct(longest.km)+'%;top:24px;transform:translateX(-100%);padding-right:8px;border-right:2px solid #A9CBD8;text-align:right;white-space:nowrap">' +
-          'Plus longue sortie du bloc : '+fr(longest.km)+' km ('+fmtD(longest.d)+')</div>' +
+        (longest.d
+          ? '<div class="rh-lbl" style="left:'+pct(longest.km)+'%;top:24px;transform:translateX(-100%);padding-right:8px;border-right:2px solid #A9CBD8;text-align:right;white-space:nowrap">' +
+            'Plus longue sortie du bloc : '+fr(longest.km)+' km ('+fmtD(longest.d)+')</div>'
+          : '<div class="rh-lbl" style="left:0;top:24px;color:#64748b;white-space:nowrap">Bloc à partir du '+fmtD(NEXT_RACE.blockFrom)+' : pas encore de sortie</div>') +
         (mpKm ? '<div class="rh-lbl" style="left:'+pct(mpStart)+'%;top:100px;max-width:300px;border-left:2px solid #1C6E8C;padding-left:8px">' +
           '<strong>'+fr(mpKm)+' km à allure marathon</strong> le '+fmtD(mpD)+', la séance la plus spécifique du bloc</div>' : '') +
-        '<div class="rh-lbl" style="right:0;top:100px;max-width:260px;text-align:right;color:#64748b">' +
-          fr(L - longest.km)+' km au-delà de la plus longue sortie : l\'affûtage et le jour J s\'en chargent.</div>' +
+        (longest.d && longest.km < L ? '<div class="rh-lbl" style="right:0;top:100px;max-width:260px;text-align:right;color:#64748b">' +
+          fr(L - longest.km)+' km au-delà de la plus longue sortie : l\'affûtage et le jour J s\'en chargent.</div>' : '') +
       '</figure>' +
     '</div>';
 })();
@@ -2751,7 +2890,7 @@ const RE_ADJ = (function() {
   const el = document.getElementById('taper');
   const D0 = Date.UTC(2025, 11, 29), li = runKm.length - (RE_ADJ.partial ? 2 : 1);
   const raceWi = Math.floor((Date.parse(NEXT_RACE.d) - D0) / (7*864e5));
-  if (RACE_DAYS < 0 || raceWi <= li) { el.remove(); return; }
+  if (RACE_DAYS < 0 || raceWi <= li || raceWi - li > 3) { el.remove(); return; }
   const base = runKm.slice(li-2, li+1).reduce((a,b) => a+b, 0)/3;
   const mon = w => new Date(D0 + w*7*864e5).toLocaleDateString('fr-FR', { day:'numeric', month:'long' });
   const COLORS = ['#1C6E8C', '#5E98AD', '#A9CBD8'];
@@ -2759,7 +2898,7 @@ const RE_ADJ = (function() {
   for (let w = li+1; w <= raceWi; w++) {
     const pct = w === raceWi ? 0.5 : w === raceWi-1 ? 0.7 : 0.9;
     const target = Math.round(base*pct), done = w < runKm.length ? runKm[w] : null;
-    const what = w === raceWi ? 'Semaine de course : volume divisé par deux, hors marathon. Footings courts et quelques accélérations.'
+    const what = w === raceWi ? 'Semaine de course : volume divisé par deux, hors course. Footings courts et quelques accélérations.'
       : w === raceWi-1 ? 'Volume réduit d\'un tiers. Garder un rappel d\'allure court, rien de nouveau.'
       : 'Dernière semaine de charge, sans hausse.';
     const prog = done != null
@@ -3462,14 +3601,20 @@ function bodySvg(view, muscleSets) {
 
 // ── PLAN MARATHON NICE-CANNES ──
 (function() {
-  var days = RACE_DAYS;
+  var days = Math.round((new Date(MARATHON.d+'T00:00') - new Date(new Date().toDateString())) / 864e5);
   var el = document.getElementById('marathon-countdown');
-  if (el) el.textContent = days;
-  // Objectif et allure depuis NEXT_RACE ('3h52–3h56 (5:30–5:35/km)'), écart avec le record 10 km (RACE_INFO + calActs)
-  var tm = NEXT_RACE.target.match(/^(.*?)\s*\((.*)\)$/) || [null, NEXT_RACE.target, ''];
+  var res = RACE_INFO[MARATHON.d];
+  if (el && days >= 0) el.textContent = days;
+  else if (el && res) {  // course passée : temps final à la place du compte à rebours
+    var t = res.time.split(':');
+    el.textContent = +t[0]+'h'+t[1];
+    el.nextElementSibling.textContent = 'temps final · '+res.res.split(' · ')[0].toLowerCase();
+  }
+  // Objectif et allure depuis MARATHON ('3h52–3h56 (5:30–5:35/km)'), écart avec le record 10 km (RACE_INFO + calActs)
+  var tm = MARATHON.target.match(/^(.*?)\s*\((.*)\)$/) || [null, MARATHON.target, ''];
   var setTxt = function(id, t) { var e = document.getElementById(id); if (e) e.textContent = t; };
   setTxt('mara-time', tm[1]);
-  setTxt('mara-pace', tm[2] ? tm[2]+' sur '+String(NEXT_RACE.km).replace('.', ',')+' km' : '');
+  setTxt('mara-pace', tm[2] ? tm[2]+' sur '+String(MARATHON.km).replace('.', ',')+' km' : '');
   setTxt('mara-pace2', tm[2] || '—');
   var pm = (tm[2] || '').match(/(\d+):(\d+)\D+(\d+):(\d+)/);
   var ten = calActs.find(function(a) { return a.d === '2026-06-14' && a.race; });
@@ -3479,7 +3624,7 @@ function bodySvg(view, muscleSets) {
     setTxt('mara-gap10', '+'+Math.round(pm[1]*60 + +pm[2] - p10)+' à +'+Math.round(pm[3]*60 + +pm[4] - p10)+' s/km vs le 10 km');
   }
   // Plus longue sortie depuis le début du bloc (même règle que la règle du parcours de la Vue globale)
-  var longest = calActs.filter(function(a) { return (a.t === 'Run' || a.t === 'Trail') && !a.race && !a.hike && a.d >= NEXT_RACE.blockFrom; })
+  var longest = calActs.filter(function(a) { return (a.t === 'Run' || a.t === 'Trail') && !a.race && !a.hike && a.d >= MARATHON.blockFrom && a.d < MARATHON.d; })
     .reduce(function(m, a) { return a.km > m.km ? a : m; }, { km:0, d:'' });
   setTxt('mara-long', longest.km.toFixed(1).replace('.', ',')+' km');
   setTxt('mara-long-d', longest.d ? 'le '+longest.d.slice(8,10)+'/'+longest.d.slice(5,7) : '');
@@ -3584,6 +3729,157 @@ function bodySvg(view, muscleSets) {
       }
     }
   });
+})();
+
+// ── PLAN UT4M 180 CHALLENGE ── plan semaine par semaine (lundi en ISO), réalisé lu dans les tableaux hebdo et calActs
+(function() {
+  const UT4M_D = '2027-07-15';
+  const days = Math.round((new Date(UT4M_D+'T00:00') - new Date(new Date().toDateString())) / 864e5);
+  const cd = document.getElementById('ut4m-countdown');
+  if (cd) { cd.textContent = days > 0 ? days : days === 0 ? 'Jour J' : '—'; }
+
+  // {w: lundi, ph: phase, km, dp: D+ cible, rf: séances de renfo, ht: heures de home-trainer/vélo, s: séances clés, f: focus}
+  const P = [
+    { w:'2026-11-16', ph:'Reprise', km:25, dp:150,  rf:2, ht:1.5, s:['RENFO force ×2','HT endurance'], f:'Footings faciles 30–40 min, FC < 140. Installer le renfo dès la reprise' },
+    { w:'2026-11-23', ph:'Reprise', km:35, dp:250,  rf:2, ht:1.5, s:['RENFO force ×2','HT endurance'], f:'4 footings, toujours en endurance' },
+    { w:'2026-11-30', ph:'Reprise', km:42, dp:350,  rf:2, ht:1.5, s:['RENFO force ×2','Côtes courtes','HT endurance'], f:'Premières côtes courtes, sans forcer' },
+    { w:'2026-12-07', ph:'Reprise', km:48, dp:400,  rf:2, ht:1,   s:['RENFO force ×2','Côtes','SL 1h45'], f:'Sortie longue vallonnée 1h45' },
+    { w:'2026-12-14', ph:'Base', km:52, dp:600,  rf:2, ht:1.5, s:['RENFO force ×2','Côtes 8×1\'','HT force','SL trail 2h'], f:'Semaine type en place' },
+    { w:'2026-12-21', ph:'Base', km:55, dp:700,  rf:2, ht:1.5, s:['RENFO force ×2','Seuil','HT force','SL trail 2h15'], f:'Retour de la séance de qualité du vendredi' },
+    { w:'2026-12-28', ph:'Allègement', km:45, dp:500, rf:1, ht:2, s:['RENFO force','HT endurance 1h30','SL 1h45'], f:'Fêtes : volume réduit, home-trainer pour compenser' },
+    { w:'2027-01-04', ph:'Base', km:58, dp:800,  rf:2, ht:1.5, s:['RENFO force ×2','Côtes 10×1\'','HT force','SL trail 2h30'], f:'D+ en hausse progressive' },
+    { w:'2027-01-11', ph:'Base', km:62, dp:900,  rf:2, ht:1.5, s:['RENFO force ×2','Seuil en côte','HT force','SL trail 2h30'], f:'Seuil en côte : 3 × 8 min en montée douce' },
+    { w:'2027-01-18', ph:'Base', km:65, dp:1000, rf:2, ht:1.5, s:['RENFO force ×2','Escaliers 20\'','HT force','SL trail 2h45'], f:'Bâtons à tester en sortie longue' },
+    { w:'2027-01-25', ph:'Allègement', km:50, dp:700, rf:1, ht:1.5, s:['RENFO force','HT endurance','SL 2h'], f:'Semaine allégée' },
+    { w:'2027-02-01', ph:'Base', km:65, dp:1100, rf:2, ht:1.5, s:['RENFO force ×2','Côtes longues 5×3\'','HT force','SL trail 3h'], f:'Première sortie de 3 h' },
+    { w:'2027-02-08', ph:'Base', km:68, dp:1200, rf:2, ht:1.5, s:['RENFO force ×2','Seuil','Marche rapide en montée','SL trail 3h'], f:'Marche rapide en montée avec bâtons' },
+    { w:'2027-02-15', ph:'Base', km:70, dp:1400, rf:2, ht:1.5, s:['RENFO force ×2','Côtes longues','HT force','SL trail 3h'], f:'Pic de la phase base' },
+    { w:'2027-02-22', ph:'Allègement', km:55, dp:900, rf:1, ht:1.5, s:['RENFO force','HT endurance','SL 2h'], f:'Semaine allégée' },
+    { w:'2027-03-01', ph:'Base', km:65, dp:1200, rf:2, ht:1.5, s:['RENFO force ×2','Seuil en côte','SL trail 2h30'], f:'Dernière semaine chargée avant Grenay' },
+    { w:'2027-03-08', ph:'Course test', km:45, dp:600, rf:1, ht:1, s:['RENFO léger','Footings','COURSE Grenay 21 km'], f:'Trail des Mineurs le dimanche 14 : test, pas objectif' },
+    { w:'2027-03-15', ph:'Récupération', km:35, dp:300, rf:1, ht:2, s:['RENFO léger','HT endurance ×2','Footings'], f:'Récupérer de Grenay, home-trainer pour le volume' },
+    { w:'2027-03-22', ph:'Volume', km:55, dp:1000, rf:2, ht:1.5, s:['RENFO excentrique ×2','Côtes','SL trail 2h30'], f:'Passage au renfo excentrique (descentes)' },
+    { w:'2027-03-29', ph:'Course test', km:50, dp:600, rf:1, ht:1, s:['RENFO léger','Footings','COURSE Oléron relais 25 km'], f:'Relais d\'Oléron le samedi 3 : sortie longue en course, allure facile' },
+    { w:'2027-04-05', ph:'Récupération', km:40, dp:500, rf:2, ht:2, s:['RENFO excentrique ×2','HT endurance ×2'], f:'Semaine calme après Oléron' },
+    { w:'2027-04-12', ph:'Volume', km:65, dp:1500, rf:2, ht:1.5, s:['RENFO excentrique ×2','Marche rapide en montée','Sam 2h + dim SL 3h (enchaînement)'], f:'Premier week-end enchaîné : 2 h le samedi, sortie longue le dimanche' },
+    { w:'2027-04-19', ph:'Volume', km:72, dp:1800, rf:2, ht:1.5, s:['RENFO excentrique ×2','Côtes longues','Sam 2h + dim SL 3h30 (enchaînement)'], f:'Descentes travaillées en sortie longue' },
+    { w:'2027-04-26', ph:'Volume', km:75, dp:2200, rf:2, ht:1, s:['RENFO excentrique ×2','Week-end en montagne 2 jours'], f:'Week-end en montagne : 2 × 1 500 m D+' },
+    { w:'2027-05-03', ph:'Allègement', km:55, dp:1200, rf:1, ht:2, s:['RENFO excentrique','HT endurance ×2','SL 2h30'], f:'Semaine allégée' },
+    { w:'2027-05-10', ph:'Volume', km:75, dp:2000, rf:2, ht:1.5, s:['RENFO excentrique ×2','Marche rapide en montée','Sam 2h + dim SL 4h (enchaînement)'], f:'Plus longue sortie de la phase : 4 h' },
+    { w:'2027-05-17', ph:'Course test', km:50, dp:900, rf:1, ht:1, s:['RENFO léger','Footings','COURSE Clamart 18 km'], f:'Foulée verte le dimanche 23 : repère vs 1h50 en 2026' },
+    { w:'2027-05-24', ph:'Spécifique', km:60, dp:1500, rf:2, ht:2, s:['RENFO excentrique ×2','HT endurance','SL trail 3h'], f:'Transition vers le bloc spécifique' },
+    { w:'2027-05-31', ph:'Spécifique', km:80, dp:2800, rf:2, ht:1.5, s:['RENFO excentrique ×2','Marche rapide en montée','Sam 3h + dim SL 5h (enchaînement)'], f:'Enchaînement long, alimentation de course testée' },
+    { w:'2027-06-07', ph:'Spécifique', km:85, dp:3500, rf:2, ht:1.5, s:['RENFO excentrique ×2','Côtes longues','Week-end montagne 2 jours'], f:'2 jours à 1 800 m D+ chacun' },
+    { w:'2027-06-14', ph:'Stage', km:100, dp:6000, rf:1, ht:0, s:['STAGE 4 jours montagne'], f:'Simulation UT4M : 4 jours à 1 500–2 000 m D+, matériel et bâtons de course' },
+    { w:'2027-06-21', ph:'Récupération', km:50, dp:1500, rf:2, ht:2, s:['RENFO excentrique ×2','HT endurance ×2','Footings'], f:'Absorber le stage' },
+    { w:'2027-06-28', ph:'Affûtage', km:60, dp:2000, rf:1, ht:1.5, s:['RENFO léger','Côtes','SL trail 3h'], f:'Dernière sortie longue, −30 % de volume' },
+    { w:'2027-07-05', ph:'Affûtage', km:40, dp:1000, rf:1, ht:1, s:['RENFO léger','Footings','SL 2h'], f:'−50 %, rien de nouveau' },
+    { w:'2027-07-12', ph:'Course', km:15, dp:300, rf:0, ht:0.5, s:['Footings courts','COURSE UT4M 15–18 juillet'], f:'Repos, logistique, départ jeudi 15' },
+  ];
+
+  // Réalisé : index de semaine depuis le lundi 29/12/2025 (même origine que weeks[] et runKm[])
+  const D0 = Date.UTC(2025, 11, 29);
+  const wIdx = iso => Math.round((Date.parse(iso) - D0) / (7*864e5));
+  const durH = d => { const m = String(d).match(/(?:(\d+)h)?(\d+)?(?:min)?/); return ((+m[1]||0)*60 + (+m[2]||0))/60; };
+  const rfDone = {}, htDone = {};
+  calActs.forEach(a => {
+    const i = Math.floor((Date.parse(a.d) - D0) / (7*864e5));
+    if (a.t === 'Muscu') rfDone[i] = (rfDone[i] || 0) + 1;
+    if (a.t === 'Vélo')  htDone[i] = (htDone[i] || 0) + durH(a.dur);
+  });
+  const lastWi = runKm.length - 1, partial = typeof RE_ADJ !== 'undefined' && RE_ADJ.partial;
+  const done = P.map(p => {
+    const i = wIdx(p.w);
+    if (i > lastWi) return null;
+    return { km: runKm[i] || 0, dp: (runElev[i] || 0) + (trailElev[i] || 0), rf: rfDone[i] || 0, ht: htDone[i] || 0, cur: i === lastWi && partial };
+  });
+
+  // Tableau
+  const PH = { 'Reprise':'text-amber-900 bg-amber-100', 'Base':'text-blue-900 bg-blue-100', 'Allègement':'text-slate-700 bg-slate-100',
+    'Course test':'text-orange-900 bg-orange-100', 'Récupération':'text-amber-900 bg-amber-100', 'Volume':'text-cyan-900 bg-cyan-100',
+    'Spécifique':'text-green-900 bg-green-100', 'Stage':'text-green-900 bg-green-200', 'Affûtage':'text-purple-900 bg-purple-100', 'Course':'text-red-900 bg-red-100' };
+  const sCls = s => /^COURSE|^STAGE/.test(s) ? 'bg-orange-100 text-orange-800 font-bold' : /^RENFO/.test(s) ? 'bg-purple-100 text-purple-900'
+    : /^HT/.test(s) ? 'bg-slate-200 text-slate-700' : /^SL|montagne|enchaînement/.test(s) ? 'bg-green-100 text-green-900'
+    : /Côtes|Escaliers|Marche|Seuil/.test(s) ? 'bg-blue-100 text-blue-900' : 'bg-slate-100 text-slate-700';
+  const lbl = iso => new Date(iso+'T00:00').toLocaleDateString('fr-FR', { day:'numeric', month:'short' });
+  const cell = (target, d, unit, dec) => {
+    if (!d) return '<span class="font-bold text-[#1C6E8C]">'+target+'</span>';
+    const v = dec ? d.toFixed(1).replace('.', ',') : Math.round(d);
+    return '<span class="font-bold text-[#1C6E8C]">'+target+'</span> <span class="text-slate-400">·</span> <span class="text-slate-700">'+v+'</span>';
+  };
+  const tbody = document.getElementById('ut4m-tbody');
+  if (tbody) tbody.innerHTML = P.map((p, k) => {
+    const d = done[k], cur = d && d.cur;
+    return '<tr class="border-b border-slate-100'+(cur ? ' bg-slate-50' : '')+'">' +
+      '<td class="py-2.5 pr-3 font-medium text-slate-800 whitespace-nowrap"><div>S'+(k+1)+' · '+lbl(p.w)+(cur ? ' <span class="text-xs text-slate-400">(en cours)</span>' : '')+'</div>' +
+        '<div class="mt-0.5"><span class="text-xs rounded px-1.5 py-0.5 '+(PH[p.ph] || PH['Allègement'])+'">'+p.ph+'</span></div></td>' +
+      '<td class="text-center py-2.5 px-2 whitespace-nowrap">'+cell(p.km, d && d.km)+'</td>' +
+      '<td class="text-center py-2.5 px-2 whitespace-nowrap">'+cell(p.dp.toLocaleString('fr-FR'), d && d.dp)+'</td>' +
+      '<td class="text-center py-2.5 px-2 whitespace-nowrap">'+(d ? '<span class="font-bold text-[#1C6E8C]">'+p.rf+'</span> <span class="text-slate-400">·</span> <span class="text-slate-700">'+d.rf+'</span>' : '<span class="font-bold text-[#1C6E8C]">'+p.rf+'</span>')+'</td>' +
+      '<td class="text-center py-2.5 px-2 whitespace-nowrap">'+cell(String(p.ht).replace('.', ','), d && d.ht, 'h', true)+'</td>' +
+      '<td class="py-2.5 px-2">'+p.s.map(s => '<span class="inline-block text-xs rounded px-1.5 py-0.5 mr-1 mb-0.5 '+sCls(s)+'">'+s+'</span>').join('')+'</td>' +
+      '<td class="py-2.5 pl-2 text-xs text-slate-500">'+p.f+'</td></tr>';
+  }).join('');
+
+  // Graphiques cible vs réel
+  const labels = P.map(p => lbl(p.w));
+  const pale = done.map(d => d && d.cur);
+  const mk = (id, key, unit) => new Chart(document.getElementById(id), {
+    type: 'bar',
+    data: { labels, datasets: [
+      { label:'Cible', data:P.map(p => p[key]), backgroundColor:'#47556955', borderColor:'#475569', borderWidth:1, borderRadius:3 },
+      { label:'Réel', data:done.map(d => d ? Math.round(d[key]) : null), backgroundColor:pale.map(c => c ? '#94a3b8' : BLUE), borderRadius:3 },
+    ] },
+    options: {
+      plugins: { legend: { position:'bottom', labels:{ font:{size:11}, boxWidth:12 } },
+        tooltip: { callbacks: { label: ctx => {
+          if (ctx.parsed.y == null) return ctx.dataset.label+' : —';
+          let t = ctx.dataset.label+' : '+ctx.parsed.y.toLocaleString('fr-FR')+' '+unit;
+          if (ctx.datasetIndex === 1) t += ' ('+Math.round(100*ctx.parsed.y/P[ctx.dataIndex][key])+' % de la cible)'+(pale[ctx.dataIndex] ? ', semaine en cours' : '');
+          return t;
+        } } } },
+      scales: { y: { beginAtZero:true }, x: { ticks:{ font:{size:9}, autoSkip:true, maxTicksLimit:12 } } },
+      ...anim,
+    }
+  });
+  mk('chart-ut4m-km', 'km', 'km');
+  mk('chart-ut4m-dplus', 'dp', 'm');
+
+  // Verdict : dernière semaine complète du plan
+  const st = document.getElementById('ut4m-status');
+  const lastK = done.map((d, k) => d && !d.cur ? k : -1).filter(k => k >= 0).pop();
+  const badge = (txt, c) => '<span class="badge" style="background:'+c+'22;color:'+c+';border:1px solid '+c+'">'+txt+'</span>';
+  if (st) {
+    if (lastK == null) {
+      st.innerHTML = badge('Le plan commence le '+lbl(P[0].w)+' : pas encore de semaine complète à comparer', '#64748b');
+    } else {
+      const p = P[lastK], d = done[lastK];
+      const r = Math.round(100 * d.km / p.km), rd = Math.round(100 * d.dp / p.dp);
+      const col = x => x >= 85 && x <= 120 ? BLUE : x > 120 ? '#b45309' : '#64748b';
+      st.innerHTML = badge('S'+(lastK+1)+' ('+lbl(p.w)+') : '+Math.round(d.km)+' / '+p.km+' km ('+r+' %)', col(r)) +
+        badge('D+ '+Math.round(d.dp).toLocaleString('fr-FR')+' / '+p.dp.toLocaleString('fr-FR')+' m ('+rd+' %)', col(rd)) +
+        badge('Renfo '+d.rf+' / '+p.rf, d.rf >= p.rf ? BLUE : '#b45309') +
+        badge('Vélo '+d.ht.toFixed(1).replace('.', ',')+' / '+String(p.ht).replace('.', ',')+' h', '#64748b');
+    }
+  }
+
+  // Séances types
+  const S = [
+    ['RENFO', 'bg-purple-100 text-purple-900', 'Renfo force (déc. → mars)', 'Squat gobelet, fentes bulgares, step-up lesté sur banc haut, soulevé de terre jambes tendues : 3–4 × 6–8, lourd. Mollets excentriques 3 × 15. Gainage : planche, latéral, pont fessier. 40 min.'],
+    ['RENFO', 'bg-purple-100 text-purple-900', 'Renfo excentrique (mars → juillet)', 'Squats et fentes en 4 s de descente, step-down lent, fentes sautées et petits sauts, équilibre sur une jambe (chevilles en terrain technique). Protège les quadriceps en descente.'],
+    ['HT', 'bg-slate-200 text-slate-700', 'Home-trainer endurance', '60–120 min en zone facile (FC < 130), 80–90 tr/min. Du volume aérobie sans impact, le samedi, veille de la sortie longue, ou pendant la récupération.'],
+    ['HT', 'bg-slate-200 text-slate-700', 'Home-trainer force', '4–6 × 5 min à 55–60 tr/min, résistance élevée, récup 3 min. Le transfert le plus direct vers la marche rapide en montée.'],
+    ['CÔTES', 'bg-blue-100 text-blue-900', 'Côtes et escaliers', 'Courtes : 8–10 × 1 min en côte, retour en trottinant. Longues : 4–5 × 3 min. Escaliers : 15–20 min continus. Travail de puissance en montée sans grosse fatigue.'],
+    ['MARCHE', 'bg-blue-100 text-blue-900', 'Marche rapide en montée', 'Tapis incliné 12–15 % ou longs escaliers, 30–45 min, avec bâtons. Sur l\'UT4M, l\'essentiel des montées se fait en marchant : c\'est une allure à entraîner.'],
+    ['SL', 'bg-green-100 text-green-900', 'Sortie longue trail', '2 h → 5 h sur terrain vallonné, descentes courues. Matériel et alimentation de course (60–80 g de glucides par heure).'],
+    ['B2B', 'bg-green-100 text-green-900', 'Week-end enchaîné', 'Samedi 2–3 h de trail, puis la sortie longue du dimanche sur jambes déjà chargées. C\'est la séance la plus spécifique d\'une course par étapes : apprendre à repartir le lendemain.'],
+    ['STAGE', 'bg-orange-100 text-orange-800', 'Stage de 4 jours (mi-juin)', '4 jours en montagne (Chartreuse, Vercors ou le parcours lui-même), 1 500–2 000 m D+ par jour. Répétition générale : sac, bâtons, alimentation, récupération entre les jours.'],
+  ];
+  const sEl = document.getElementById('ut4m-sessions');
+  if (sEl) sEl.innerHTML = S.map(([tag, cls, t, d]) =>
+    '<div class="bg-slate-50 border border-slate-200 rounded-lg p-3"><div class="flex items-center gap-2 mb-1">' +
+    '<span class="text-xs font-bold rounded px-1.5 py-0.5 '+cls+'">'+tag+'</span><span class="text-sm font-semibold text-slate-800">'+t+'</span></div>' +
+    '<p class="text-xs text-slate-500">'+d+'</p></div>').join('');
 })();
 
 </script>
