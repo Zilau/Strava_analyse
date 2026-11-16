@@ -2804,6 +2804,12 @@ const RE_ADJ = (function() {
 })();
 
 
+// Cible de renfo du plan UT4M par semaine (index depuis le lundi 29/12/2025) : 2 séances à partir du 16/11/2026,
+// 1 en semaine allégée, de course test, de stage ou d'affûtage, 0 la semaine de l'UT4M. Partagée par le tableau de bord et l'onglet Musculation.
+const RENFO_WI = iso => Math.floor((Date.parse(iso) - Date.UTC(2025, 11, 29)) / (7*864e5));
+const RENFO_ONE = ['2026-12-28','2027-01-25','2027-02-22','2027-03-08','2027-03-15','2027-03-29','2027-05-03','2027-05-17','2027-06-14','2027-06-28','2027-07-05'].map(RENFO_WI);
+const RENFO_TARGET = w => w < RENFO_WI('2026-11-16') ? null : w === RENFO_WI('2027-07-12') ? 0 : RENFO_ONE.includes(w) ? 1 : 2;
+
 // ── Tableau de bord ── synthèse des verdicts (STATUS) en tête de page
 (function() {
   const li = acwrDplus.length - (RE_ADJ.partial ? 2 : 1), v = acwrDplus[li];
@@ -2828,10 +2834,27 @@ const RE_ADJ = (function() {
       txt: cur >= max ? 'Record du bloc — meilleure semaine de la prépa' : 'Plus léger — max du bloc '+max.toFixed(1)+' km',
       color: cur >= max ? '#1C6E8C' : '#64748b', series: s };
   }
+  // Renfo : séances des 4 dernières semaines complètes vs cible du plan UT4M. L'effort relatif Strava (FC)
+  // ne voit presque pas la fatigue musculaire du renfo : cette ligne en suit la régularité à part.
+  {
+    const wk = Array(weeks.length).fill(0);
+    calActs.filter(a => a.t === 'Muscu').forEach(a => { const i = RENFO_WI(a.d); if (i >= 0 && i < wk.length) wk[i]++; });
+    const from = Math.max(0, li - 3), done = wk.slice(from, li + 1).reduce((a, b) => a + b, 0);
+    const tg = wk.slice(from, li + 1).map((_, k) => RENFO_TARGET(from + k)).filter(t => t != null);
+    const goal = tg.reduce((a, b) => a + b, 0);
+    let color, txt;
+    if (!tg.length) { color = '#64748b'; txt = 'Hors plan — cible de 2 séances par semaine à partir du 16 novembre'; }
+    else {
+      const r = goal ? done / goal : 1;
+      color = r >= 1 ? '#1C6E8C' : r >= 0.5 ? '#f59e0b' : '#ef4444';
+      txt = (r >= 1 ? 'Au plan' : r >= 0.5 ? 'En retard' : 'Très en retard') + ' — '+goal+' prévue'+(goal > 1 ? 's' : '')+' sur 4 semaines'+(tg.length < 4 ? ' (plan commencé en cours de période)' : '');
+    }
+    STATUS.renfo = { label:'Renfo', val: done+(tg.length ? ' / '+goal : ''), txt, color, series: wk.slice(0, li + 1) };
+  }
   const UNITS = {
     forme:'TSB en % de la CTL', charge:'charge aiguë / chronique', dplus:'ACWR sur le dénivelé',
     mp:'km à 5:41/km ou plus vite', eff:'5 derniers footings vs médiane', eco:'km/RE, 4 sem. vs médiane',
-    cad:'pas/min, 4 dernières sem.', be:'records 400 m–10 km sur 60 j',
+    cad:'pas/min, 4 dernières sem.', be:'records 400 m–10 km sur 60 j', renfo:'séances, 4 dernières sem.',
   };
   // Mini-courbe des 12 derniers points (null ignorés), dernier point dans la couleur du verdict
   const spark = (series, color) => {
@@ -2844,7 +2867,7 @@ const RE_ADJ = (function() {
       '<polyline points="'+xy.map(p => p.join(',')).join(' ')+'" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>' +
       '<circle cx="'+lx+'" cy="'+ly+'" r="3.5" fill="'+color+'"/></svg>';
   };
-  document.getElementById('status-strip').innerHTML = ['forme','charge','dplus','mp','eff','eco','cad','be']
+  document.getElementById('status-strip').innerHTML = ['forme','charge','dplus','renfo','mp','eff','eco','cad','be']
     .filter(k => STATUS[k]).map(k => { const t = STATUS[k], [tag, rest] = t.txt.split(' — ');
       return '<div class="ind-row">' +
         '<div><div class="text-sm font-semibold text-slate-800">'+t.label+'</div><div class="text-xs text-slate-500">'+UNITS[k]+'</div></div>' +
@@ -2887,9 +2910,9 @@ const RE_ADJ = (function() {
           (NEXT_RACE.elev ? '<dt style="color:#64748b">Dénivelé</dt><dd style="margin:0;font-weight:700">+'+NEXT_RACE.elev+' m</dd>' : '') +
         '</dl>' +
       '</div>' +
-      '<figure class="rh-ruler" role="img" aria-label="Sur '+fr(L, 3)+' km : plus longue sortie du bloc '+fr(longest.km)+' km'+(mpKm ? ', dont au mieux '+fr(mpKm)+' km à allure marathon en une sortie' : '')+'.">' +
+      '<figure class="rh-ruler" role="img" aria-label="Sur '+String(L).replace('.', ',')+' km : plus longue sortie du bloc '+fr(longest.km)+' km'+(mpKm ? ', dont au mieux '+fr(mpKm)+' km à allure marathon en une sortie' : '')+'.">' +
         '<div style="position:absolute;left:0;top:0;font-weight:700;font-stretch:110%;font-size:15px">'+(NEXT_RACE.from || 'Départ')+'</div>' +
-        '<div style="position:absolute;right:0;top:0;font-weight:700;font-stretch:110%;font-size:15px;color:#B83A00">'+(NEXT_RACE.to || 'Arrivée')+', '+fr(L, 3)+' km</div>' +
+        '<div style="position:absolute;right:0;top:0;font-weight:700;font-stretch:110%;font-size:15px;color:#B83A00">'+(NEXT_RACE.to || 'Arrivée')+', '+String(L).replace('.', ',')+' km</div>' +
         '<div style="position:absolute;left:0;right:0;top:56px;height:14px;background:#e2e8f0;border-radius:7px"></div>' +
         '<div style="position:absolute;left:0;width:'+pct(longest.km)+'%;top:56px;height:14px;background:#A9CBD8;border-radius:7px 0 0 7px"></div>' +
         (mpKm ? '<div style="position:absolute;left:'+pct(mpStart)+'%;width:'+(pct(mpEnd) - pct(mpStart)).toFixed(2)+'%;top:56px;height:14px;background:#1C6E8C"></div>' : '') +
@@ -3363,12 +3386,7 @@ function bodySvg(view, muscleSets) {
 
 // ── Renfo : régularité hebdo (calActs) et équilibre musculaire / exercices du plan UT4M (muscuSessions) ──
 (function() {
-  const D0 = Date.UTC(2025, 11, 29), WK = 7*864e5;
-  const wi = iso => Math.floor((Date.parse(iso) - D0) / WK);
-  const PLAN_FROM = '2026-11-16', planWi = wi(PLAN_FROM);
-  // Semaines à 1 séance dans le plan UT4M (allègement, courses tests, stage, affûtage) ; 0 la semaine de l'UT4M
-  const ONE = ['2026-12-28','2027-01-25','2027-02-22','2027-03-08','2027-03-15','2027-03-29','2027-05-03','2027-05-17','2027-06-14','2027-06-28','2027-07-05'];
-  const target = w => w < planWi ? null : w === wi('2027-07-12') ? 0 : ONE.some(d => wi(d) === w) ? 1 : 2;
+  const wi = RENFO_WI, target = RENFO_TARGET;  // cible commune avec le tableau de bord (Vue globale)
   const n = weeks.length, partial = RE_ADJ.partial, last = partial ? n-2 : n-1;
   const cnt = Array(n).fill(0);
   calActs.filter(a => a.t === 'Muscu').forEach(a => { const i = wi(a.d); if (i >= 0 && i < n) cnt[i]++; });
@@ -3488,18 +3506,18 @@ function bodySvg(view, muscleSets) {
 
   // [nom, regex sur category_name Garmin, silhouette, consigne]
   const EX = force ? [
-    ['Squat gobelet', /squat/i, 'squat', '3–4 × 6–8 · haltère contre la poitrine, cuisses parallèles au sol, genoux dans l\'axe des pieds'],
-    ['Fentes bulgares', /fente|lunge|split/i, 'bulgare', '3 × 6–8 par jambe · pied arrière sur un banc, genou avant au-dessus de la cheville'],
+    ['Squat gobelet', /^(?!.*(split|bulgar)).*squat/i, 'squat', '3–4 × 6–8 · haltère contre la poitrine, cuisses parallèles au sol, genoux dans l\'axe des pieds'],
+    ['Fentes bulgares', /^(?!.*(jump|saut)).*(fente|lunge|split|bulgar)/i, 'bulgare', '3 × 6–8 par jambe · pied arrière sur un banc, genou avant au-dessus de la cheville'],
     ['Step-up lesté', /step/i, 'stepup', '3 × 8 par jambe · banc à hauteur du genou, pousser sur le talon sans s\'aider de la jambe arrière'],
     ['Soulevé de terre jambes tendues', /soulev|deadlift|rdl/i, 'rdl', '3 × 8 · dos plat, genoux à peine fléchis, la charge glisse le long des jambes (ischios, fessiers)'],
     ['Mollets excentriques', /mollet|calf/i, 'calf', '3 × 15 · monter sur 2 pieds, redescendre en 3 s sur 1 pied, talon sous le niveau de la marche'],
-    ['Gainage (planche, latéral, pont)', /gainage|planche|plank|pont|bridge|hip thrust/i, 'plank', '3 × 45 s de planche, 2 × 30 s par côté, 3 × 12 ponts fessiers'],
+    ['Gainage (planche, latéral, pont)', /gainage|planche|plank|pont|bridge|hip thrust|hip raise|extension de hanche/i, 'plank', '3 × 45 s de planche, 2 × 30 s par côté, 3 × 12 ponts fessiers'],
   ] : [
-    ['Squat tempo', /squat/i, 'tempo', '3–4 × 8 · 4 s pour descendre, remontée normale : prépare les quadriceps aux descentes'],
-    ['Fentes', /fente|lunge|split/i, 'lunge', '3 × 10 par jambe · en avançant, descente contrôlée, genou arrière qui frôle le sol'],
+    ['Squat tempo', /^(?!.*(split|bulgar)).*squat/i, 'tempo', '3–4 × 8 · 4 s pour descendre, remontée normale : prépare les quadriceps aux descentes'],
+    ['Fentes', /^(?!.*(jump|saut)).*(fente|lunge|split|bulgar)/i, 'lunge', '3 × 10 par jambe · en avançant, descente contrôlée, genou arrière qui frôle le sol'],
     ['Step-down', /step/i, 'stepdown', '3 × 8 par jambe · descendre d\'une marche en 3–4 s sur une jambe, le talon effleure le sol'],
     ['Fentes sautées, petits sauts', /saut|jump|plyo/i, 'jump', '3 × 8 · changer de jambe en l\'air, réception souple et silencieuse'],
-    ['Équilibre sur une jambe', /équilibre|equilibre|balance|single/i, 'balance', '3 × 30 s par jambe · yeux fermés ou sur coussin pour progresser (chevilles)'],
+    ['Équilibre sur une jambe', /équilibre|equilibre|balance|stabilité de hanche|hip stability/i, 'balance', '3 × 30 s par jambe · yeux fermés ou sur coussin pour progresser (chevilles)'],
     ['Mollets excentriques', /mollet|calf/i, 'calf', '3 × 15 · monter sur 2 pieds, redescendre en 3 s sur 1 pied, talon sous le niveau de la marche'],
   ];
   const lastDone = re => {

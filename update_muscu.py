@@ -50,6 +50,30 @@ CATEGORY_FR = {
 NAME_FR = {
     'HAMSTRING_CURLS': 'Ischio-jambiers (élastique)',
     'TRICEPS_CRUNCH': 'Crunch triceps',
+    # Exercices du plan UT4M (noms Garmin supposés : un nom absent du catalogue retombe sur le libellé anglais,
+    # à vérifier sur la prochaine séance et à corriger ici). Les regex de rapport_performance.html
+    # (muscu-plan-check) reconnaissent aussi bien ces libellés français que les noms anglais.
+    'GOBLET_SQUAT': 'Squat gobelet',
+    'DUMBBELL_BULGARIAN_SPLIT_SQUAT': 'Fentes bulgares (haltères)',
+    'BARBELL_BULGARIAN_SPLIT_SQUAT': 'Fentes bulgares (barre)',
+    'BULGARIAN_SPLIT_SQUAT': 'Fentes bulgares',
+    'STEP_UP': 'Step-up',
+    'WEIGHTED_STEP_UP': 'Step-up lesté',
+    'DUMBBELL_STEP_UP': 'Step-up (haltères)',
+    'STRAIGHT_LEG_DEADLIFT': 'Soulevé de terre jambes tendues',
+    'DUMBBELL_STRAIGHT_LEG_DEADLIFT': 'Soulevé de terre jambes tendues (haltères)',
+    'BARBELL_STRAIGHT_LEG_DEADLIFT': 'Soulevé de terre jambes tendues (barre)',
+    'ROMANIAN_DEADLIFT': 'Soulevé de terre roumain',
+    'STANDING_CALF_RAISE': 'Mollets debout',
+    'SINGLE_LEG_STANDING_CALF_RAISE': 'Mollets sur une jambe',
+    'SINGLE_LEG_STANDING_DUMBBELL_CALF_RAISE': 'Mollets sur une jambe (haltère)',
+    'PLANK': 'Planche',
+    'SIDE_PLANK': 'Planche latérale',
+    'HIP_RAISE': 'Pont fessier',
+    'SINGLE_LEG_HIP_RAISE': 'Pont fessier sur une jambe',
+    'WALKING_LUNGE': 'Fentes marchées',
+    'DUMBBELL_LUNGE': 'Fentes (haltères)',
+    'JUMPING_LUNGE': 'Fentes sautées',
 }
 
 # Groupes musculaires sollicités par catégorie Garmin — zones du schéma corporel
