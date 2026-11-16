@@ -574,7 +574,30 @@
   <section class="card" id="muscu-sum" aria-label="Synthèse musculation"></section>
 
   <div class="card">
-    <h2>Musculation</h2>
+    <h2>Est-ce que je fais mon renfo régulièrement ?</h2>
+    <p class="text-xs text-slate-500 mb-2">Séances de renfo par semaine (toutes les séances Strava, détaillées ou non). Ligne pointillée = cible du plan UT4M (2 par semaine, 1 en semaine de course ou d'affûtage) à partir du 16 novembre 2026. Semaine en cours en pâle.</p>
+    <div id="muscu-reg-status" class="flex gap-2 flex-wrap mb-3"></div>
+    <canvas id="chart-muscu-weekly" height="70"></canvas>
+  </div>
+
+  <div class="card">
+    <h2>Est-ce que je travaille ce dont le trail a besoin ?</h2>
+    <p class="text-xs text-slate-500 mb-2">À gauche, séries cumulées par groupe musculaire sur toutes les séances détaillées (en bleu foncé, les groupes prioritaires pour l'UT4M : quadriceps, fessiers, ischio-jambiers, mollets, gainage). À droite, les exercices que le plan UT4M demande pour la phase en cours, et la dernière fois que tu les as faits.</p>
+    <div id="muscu-balance-status" class="flex gap-2 flex-wrap mb-3"></div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <p class="text-xs font-semibold text-slate-600 mb-1">Séries par groupe musculaire</p>
+        <canvas id="chart-muscu-groups" height="200"></canvas>
+      </div>
+      <div>
+        <p id="muscu-plan-title" class="text-xs font-semibold text-slate-600 mb-1">Exercices du plan</p>
+        <div id="muscu-plan-check"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Détail des séances</h2>
     <p class="text-xs text-slate-400 mb-1">Détail séries / répétitions / charges récupéré via l'API Garmin Connect — non disponible via l'API Strava, qui ne fournit qu'une durée et des calories globales pour ce type de séance.</p>
     <p class="text-xs text-slate-400 mb-3">Le schéma corporel colore les groupes musculaires sollicités : <span style="display:inline-block;width:10px;height:10px;background:#d3e6ee;border:1px solid #cbd5e1;border-radius:2px;vertical-align:middle;margin:0 2px"></span> peu de séries → <span style="display:inline-block;width:10px;height:10px;background:#1C6E8C;border-radius:2px;vertical-align:middle;margin:0 2px"></span> beaucoup de séries.</p>
     <div id="muscu-sessions"></div>
@@ -3215,37 +3238,49 @@ function muscleFill(n) {
   return MUSCLE_RAMP[Math.min(n, MUSCLE_RAMP.length - 1)];
 }
 function bodySvg(view, muscleSets) {
+  // Silhouette anatomique simplifiée (viewBox 100×210, axe x=50) : chaque groupe est dessiné côté gauche
+  // puis reflété, et coloré selon le nombre de séries (MUSCLE_RAMP). Survol = nom du groupe.
   const f = zone => muscleFill(muscleSets[zone] || 0);
-  const neutral = MUSCLE_RAMP[0], stroke = '#cbd5e1';
-  const head = `<circle cx="50" cy="15" r="11" fill="${neutral}" stroke="${stroke}"/><rect x="45" y="24" width="10" height="8" fill="${neutral}"/>`;
+  const base = MUSCLE_RAMP[0], stroke = '#cbd5e1', line = '#ffffff';
+  const mirror = d => '<path d="'+d+'" transform="translate(100,0) scale(-1,1)"';
+  const sym = (d, fill, title, extra = '') =>
+    '<path d="'+d+'" fill="'+fill+'" stroke="'+stroke+'" stroke-width="0.8"'+extra+'><title>'+title+'</title></path>' +
+    mirror(d)+' fill="'+fill+'" stroke="'+stroke+'" stroke-width="0.8"'+extra+'><title>'+title+'</title></path>';
+  const one = (d, fill, title) => '<path d="'+d+'" fill="'+fill+'" stroke="'+stroke+'" stroke-width="0.8"><title>'+title+'</title></path>';
+  // Silhouette de fond, commune aux deux vues
+  const body =
+    '<ellipse cx="50" cy="15" rx="10" ry="12" fill="'+base+'" stroke="'+stroke+'"/>' +
+    '<path d="M45 25 L55 25 L56 34 L44 34 Z" fill="'+base+'" stroke="'+stroke+'"/>' +
+    one('M33 34 Q50 29 67 34 Q72 40 70 48 L66 90 Q50 99 34 90 L30 48 Q28 40 33 34 Z', base, '') +
+    sym('M31 37 Q22 39 20 50 L17 80 Q19 85 24 83 L28 60 Z', base, '') +
+    sym('M17 82 L13 109 Q15 114 19 112 L25 85 Z', base, '') +
+    '<circle cx="15" cy="116" r="4.5" fill="'+base+'" stroke="'+stroke+'"/><circle cx="85" cy="116" r="4.5" fill="'+base+'" stroke="'+stroke+'"/>' +
+    sym('M34 88 Q42 95 50 96 L49 140 Q44 145 38 140 Z', base, '') +
+    sym('M38 141 L48 141 L47 191 Q43 195 40 191 Z', base, '') +
+    sym('M39 192 L48 192 Q49 199 44 200 L37 200 Q35 196 39 192 Z', base, '');
+  const svg = inner => '<svg viewBox="0 0 100 210" width="70" height="147">'+body+inner+'</svg>';
   if (view === 'front') {
-    return `<svg viewBox="0 0 100 200" width="72" height="144">${head}
-      <ellipse cx="27" cy="38" rx="9" ry="8" fill="${f('shoulders')}" stroke="${stroke}"><title>Épaules</title></ellipse>
-      <ellipse cx="73" cy="38" rx="9" ry="8" fill="${f('shoulders')}" stroke="${stroke}"><title>Épaules</title></ellipse>
-      <rect x="32" y="33" width="36" height="24" rx="6" fill="${f('chest')}" stroke="${stroke}"><title>Pectoraux</title></rect>
-      <rect x="36" y="57" width="28" height="30" rx="4" fill="${f('abs')}" stroke="${stroke}"><title>Abdominaux</title></rect>
-      <rect x="14" y="40" width="12" height="30" rx="6" fill="${f('biceps')}" stroke="${stroke}"><title>Biceps</title></rect>
-      <rect x="74" y="40" width="12" height="30" rx="6" fill="${f('biceps')}" stroke="${stroke}"><title>Biceps</title></rect>
-      <rect x="12" y="70" width="11" height="28" rx="5" fill="${f('forearms')}" stroke="${stroke}"><title>Avant-bras</title></rect>
-      <rect x="77" y="70" width="11" height="28" rx="5" fill="${f('forearms')}" stroke="${stroke}"><title>Avant-bras</title></rect>
-      <rect x="34" y="87" width="15" height="40" rx="6" fill="${f('quads')}" stroke="${stroke}"><title>Quadriceps</title></rect>
-      <rect x="51" y="87" width="15" height="40" rx="6" fill="${f('quads')}" stroke="${stroke}"><title>Quadriceps</title></rect>
-      <rect x="35" y="127" width="12" height="40" rx="5" fill="${neutral}" stroke="${stroke}"/>
-      <rect x="53" y="127" width="12" height="40" rx="5" fill="${neutral}" stroke="${stroke}"/>
-    </svg>`;
+    return svg(
+      sym('M33 35 Q23 37 21 47 Q27 47 32 44 Z', f('shoulders'), 'Épaules') +
+      sym('M36 40 Q43 37 49 39 L49 54 Q42 58 35 52 Z', f('chest'), 'Pectoraux') +
+      one('M41 58 L59 58 L58 88 Q50 93 42 88 Z', f('abs'), 'Abdominaux') +
+      '<path d="M50 59 V89 M42 66 H58 M42 74 H58 M42 82 H58" stroke="'+line+'" stroke-width="1" opacity="0.7"/>' +
+      sym('M22 50 Q26 48 29 52 L27 70 Q23 73 20 68 Z', f('biceps'), 'Biceps') +
+      sym('M18 84 Q22 82 25 86 L21 107 Q18 110 15 106 Z', f('forearms'), 'Avant-bras') +
+      sym('M36 95 Q44 95 49 99 L48 136 Q43 141 39 136 L36 110 Z', f('quads'), 'Quadriceps') +
+      '<path d="M43 100 L44 134 M57 100 L56 134" stroke="'+line+'" stroke-width="0.9" opacity="0.6"/>'
+    );
   }
-  return `<svg viewBox="0 0 100 200" width="72" height="144">${head}
-    <rect x="30" y="33" width="40" height="44" rx="8" fill="${f('back')}" stroke="${stroke}"><title>Dos</title></rect>
-    <rect x="14" y="40" width="12" height="30" rx="6" fill="${f('triceps')}" stroke="${stroke}"><title>Triceps</title></rect>
-    <rect x="74" y="40" width="12" height="30" rx="6" fill="${f('triceps')}" stroke="${stroke}"><title>Triceps</title></rect>
-    <rect x="12" y="70" width="11" height="28" rx="5" fill="${f('forearms')}" stroke="${stroke}"><title>Avant-bras</title></rect>
-    <rect x="77" y="70" width="11" height="28" rx="5" fill="${f('forearms')}" stroke="${stroke}"><title>Avant-bras</title></rect>
-    <rect x="33" y="78" width="34" height="16" rx="8" fill="${f('glutes')}" stroke="${stroke}"><title>Fessiers</title></rect>
-    <rect x="34" y="94" width="15" height="34" rx="6" fill="${f('hamstrings')}" stroke="${stroke}"><title>Ischio-jambiers</title></rect>
-    <rect x="51" y="94" width="15" height="34" rx="6" fill="${f('hamstrings')}" stroke="${stroke}"><title>Ischio-jambiers</title></rect>
-    <rect x="35" y="128" width="13" height="38" rx="5" fill="${f('calves')}" stroke="${stroke}"><title>Mollets</title></rect>
-    <rect x="52" y="128" width="13" height="38" rx="5" fill="${f('calves')}" stroke="${stroke}"><title>Mollets</title></rect>
-  </svg>`;
+  return svg(
+    one('M35 36 Q50 31 65 36 L67 50 Q61 70 53 80 L47 80 Q39 70 33 50 Z', f('back'), 'Dos') +
+    '<path d="M50 36 V79" stroke="'+line+'" stroke-width="1" opacity="0.7"/>' +
+    sym('M33 35 Q23 37 21 47 Q27 47 32 44 Z', f('shoulders'), 'Épaules') +
+    sym('M22 50 Q26 48 29 52 L27 70 Q23 73 20 68 Z', f('triceps'), 'Triceps') +
+    sym('M18 84 Q22 82 25 86 L21 107 Q18 110 15 106 Z', f('forearms'), 'Avant-bras') +
+    sym('M35 84 Q43 81 50 85 L50 99 Q42 103 35 97 Z', f('glutes'), 'Fessiers') +
+    sym('M36 101 Q44 101 49 104 L48 136 Q43 141 39 136 Z', f('hamstrings'), 'Ischio-jambiers') +
+    sym('M39 144 Q44 141 48 146 L47 172 Q43 177 40 172 Z', f('calves'), 'Mollets')
+  );
 }
 
 (function() {
@@ -3266,11 +3301,14 @@ function bodySvg(view, muscleSets) {
   const top = Object.entries(bySets).sort((a,b) => b[1]-a[1]).slice(0, 3).map(([m]) => MUSCLE_FR[m] || m);
   const nSets = muscuSessions.reduce((n,x) => n + x.exercises.reduce((k,e) => k + e.sets.length, 0), 0);
   const kvM = (lbl, val, sub) => '<div><dt class="text-xs text-slate-500">'+lbl+'</dt><dd class="sum-val">'+val+'</dd><dd class="text-xs text-slate-500">'+sub+'</dd></div>';
+  // Nombre de séances : toutes celles de Strava (calActs), dont une partie seulement a le détail Garmin
+  const allM = calActs.filter(a => a.t === 'Muscu'), lastAll = allM.length ? allM[allM.length-1] : null;
+  const agoAll = lastAll ? Math.round((new Date(new Date().toDateString()) - new Date(lastAll.d+'T00:00')) / 864e5) : ago;
   document.getElementById('muscu-sum').innerHTML =
-    '<h2 class="sum-h">'+muscuSessions.length+' séance'+(muscuSessions.length > 1 ? 's' : '')+' enregistrée'+(muscuSessions.length > 1 ? 's' : '')+', la dernière il y a '+ago+' jour'+(ago > 1 ? 's' : '')+'.</h2>' +
+    '<h2 class="sum-h">'+allM.length+' séance'+(allM.length > 1 ? 's' : '')+' de renfo en 2026, dont '+muscuSessions.length+' avec le détail des séries. La dernière date d\'il y a '+agoAll+' jour'+(agoAll > 1 ? 's' : '')+'.</h2>' +
     '<dl class="sum-grid">' +
-      kvM('Dernière séance', new Date(last.date+'T00:00').toLocaleDateString('fr-FR', { day:'numeric', month:'long' }), last.name) +
-      kvM('Séries au total', nSets, 'toutes séances confondues') +
+      kvM('Dernière séance', new Date((lastAll ? lastAll.d : last.date)+'T00:00').toLocaleDateString('fr-FR', { day:'numeric', month:'long' }), lastAll ? lastAll.dur : last.name) +
+      kvM('Séries au total', nSets, 'sur les '+muscuSessions.length+' séances détaillées') +
       kvM('Groupes les plus travaillés', top[0] || '—', top.slice(1).join(', ')) +
     '</dl>';
   let html = '';
@@ -3300,8 +3338,9 @@ function bodySvg(view, muscleSets) {
           <tbody>`;
     s.exercises.forEach(ex => {
       const repsStr = ex.sets.map(st => st.reps || '—').join(' / ');
+      // Garmin : weight 0 ou -1 = pas de charge saisie (poids du corps)
       const weights = ex.sets.map(st => st.weight).filter(w => w > 0);
-      const weightStr = weights.length ? Math.max(...weights) + ' kg' : '—';
+      const weightStr = weights.length ? Math.max(...weights) + ' kg' : '<span style="color:#94a3b8">poids du corps</span>';
       html += `<tr style="border-bottom:1px solid #f8fafc">
         <td style="padding:6px 8px;color:#334155">${ex.category_name}</td>
         <td style="padding:6px 8px;color:#0f172a">${repsStr}</td>
@@ -3310,7 +3349,183 @@ function bodySvg(view, muscleSets) {
     });
     html += `</tbody></table></div></div>`;
   });
+  // Séances Strava sans détail Garmin (antérieures à l'import, ou pas encore synchronisées)
+  const detailed = new Set(muscuSessions.map(s => s.date));
+  const bare = calActs.filter(a => a.t === 'Muscu' && !detailed.has(a.d)).reverse();
+  if (bare.length) {
+    html += `<div style="border-top:1px solid #f1f5f9;padding:14px 0">
+      <p class="text-xs text-slate-500 mb-2">${bare.length} autre${bare.length > 1 ? 's' : ''} séance${bare.length > 1 ? 's' : ''} sur Strava, sans le détail des séries (avant l'import Garmin, ou séance non reconnue par la montre) :</p>
+      <div class="flex gap-2 flex-wrap">${bare.map(a => '<span class="badge" style="background:#f1f5f9;color:#475569">'+
+        new Date(a.d+'T00:00').toLocaleDateString('fr-FR', { day:'numeric', month:'short' })+' · '+a.dur+'</span>').join('')}</div></div>`;
+  }
   el.innerHTML = html;
+})();
+
+// ── Renfo : régularité hebdo (calActs) et équilibre musculaire / exercices du plan UT4M (muscuSessions) ──
+(function() {
+  const D0 = Date.UTC(2025, 11, 29), WK = 7*864e5;
+  const wi = iso => Math.floor((Date.parse(iso) - D0) / WK);
+  const PLAN_FROM = '2026-11-16', planWi = wi(PLAN_FROM);
+  // Semaines à 1 séance dans le plan UT4M (allègement, courses tests, stage, affûtage) ; 0 la semaine de l'UT4M
+  const ONE = ['2026-12-28','2027-01-25','2027-02-22','2027-03-08','2027-03-15','2027-03-29','2027-05-03','2027-05-17','2027-06-14','2027-06-28','2027-07-05'];
+  const target = w => w < planWi ? null : w === wi('2027-07-12') ? 0 : ONE.some(d => wi(d) === w) ? 1 : 2;
+  const n = weeks.length, partial = RE_ADJ.partial, last = partial ? n-2 : n-1;
+  const cnt = Array(n).fill(0);
+  calActs.filter(a => a.t === 'Muscu').forEach(a => { const i = wi(a.d); if (i >= 0 && i < n) cnt[i]++; });
+  const badge = (txt, c) => '<span class="badge" style="background:'+c+'22;color:'+c+';border:1px solid '+c+'">'+txt+'</span>';
+  const AMBER = '#b45309', GREY = '#64748b';
+
+  new Chart(document.getElementById('chart-muscu-weekly'), {
+    type: 'bar',
+    data: { labels: weeks, datasets: [
+      { label: 'Séances de renfo', data: cnt, backgroundColor: cnt.map((v, i) => i === n-1 && partial ? '#94a3b8' : '#7c3aed'), borderRadius: 3, order: 1 },
+      { label: 'Cible plan UT4M', data: cnt.map((_, i) => target(i)), type: 'line', stepped: 'middle', borderColor: '#475569', borderDash: [5, 3], borderWidth: 1.5, pointRadius: 0, spanGaps: false, order: 0 },
+    ] },
+    options: {
+      plugins: { legend: { position: 'bottom', labels: { font: { size: 11 }, boxWidth: 12 } } },
+      scales: { y: { beginAtZero: true, suggestedMax: 3, ticks: { stepSize: 1 } }, x: { ...xWks } },
+      ...anim,
+    }
+  });
+
+  // Verdict : 4 dernières semaines complètes, comparées à la cible si le plan a commencé
+  const from = Math.max(0, last - 3), done4 = cnt.slice(from, last + 1).reduce((a, b) => a + b, 0);
+  const tgt4 = cnt.slice(from, last + 1).map((_, k) => target(from + k)).filter(v => v != null);
+  const season = cnt.reduce((a, b) => a + b, 0);
+  const lastS = calActs.filter(a => a.t === 'Muscu').pop();
+  const ago = lastS ? Math.round((new Date(new Date().toDateString()) - new Date(lastS.d+'T00:00')) / 864e5) : null;
+  const regEl = document.getElementById('muscu-reg-status');
+  regEl.innerHTML =
+    (tgt4.length
+      ? badge('4 dernières semaines : '+done4+' séance'+(done4 > 1 ? 's' : '')+' pour '+tgt4.reduce((a, b) => a + b, 0)+' prévues', done4 >= tgt4.reduce((a, b) => a + b, 0) ? BLUE : AMBER)
+      : badge('4 dernières semaines : '+done4+' séance'+(done4 > 1 ? 's' : '')+' · le plan UT4M (2 par semaine) commence le 16 novembre', done4 >= 4 ? BLUE : AMBER)) +
+    badge(season+' séances depuis janvier'+(ago != null ? ', la dernière il y a '+ago+' jour'+(ago > 1 ? 's' : '') : ''), GREY);
+
+  // Équilibre : séries par groupe sur les séances détaillées
+  const FR = { quads:'Quadriceps', glutes:'Fessiers', hamstrings:'Ischio-jambiers', calves:'Mollets', abs:'Abdominaux / gainage',
+    back:'Dos', shoulders:'Épaules', chest:'Pectoraux', biceps:'Biceps', triceps:'Triceps', forearms:'Avant-bras' };
+  const PRIO = ['quads', 'glutes', 'hamstrings', 'calves', 'abs'];
+  const sets = {};
+  Object.keys(FR).forEach(k => sets[k] = 0);
+  muscuSessions.forEach(s => s.exercises.forEach(ex => (ex.muscles || []).forEach(m => { if (m in sets) sets[m] += ex.sets.length; })));
+  const order = [...PRIO, ...Object.keys(FR).filter(k => !PRIO.includes(k) && sets[k] > 0)];
+  new Chart(document.getElementById('chart-muscu-groups'), {
+    type: 'bar',
+    data: { labels: order.map(k => FR[k]), datasets: [
+      { label: 'Séries', data: order.map(k => sets[k]), backgroundColor: order.map(k => PRIO.includes(k) ? BLUE : SKY), borderRadius: 3 },
+    ] },
+    options: {
+      indexAxis: 'y',
+      plugins: { legend: { display: false },
+        tooltip: { callbacks: { label: ctx => ctx.parsed.x+' séries'+(PRIO.includes(order[ctx.dataIndex]) ? ' (prioritaire trail)' : '') } } },
+      scales: { x: { beginAtZero: true, ticks: { stepSize: 2 } } },
+      ...anim,
+    }
+  });
+  const zero = PRIO.filter(k => !sets[k]).map(k => FR[k].toLowerCase());
+  const prioSets = PRIO.reduce((a, k) => a + sets[k], 0), allSets = Object.values(sets).reduce((a, b) => a + b, 0);
+
+  // Exercices du plan UT4M pour la phase en cours, retrouvés par nom dans les séances détaillées
+  const today = new Date().toISOString().slice(0, 10);
+  const force = today < '2027-03-15';
+  // Silhouettes de profil, tournées vers la droite (viewBox 80×80, sol à y=74).
+  // Membres côté spectateur en bleu du rapport, membres côté opposé en bleu clair derrière, matériel en gris, mouvement en ambre.
+  const NEAR = '#1C6E8C', FAR = '#8DB8C9', PROP = '#94a3b8', PROP_D = '#64748b', MOVE = '#b45309';
+  const seg = (pts, c, w) => '<polyline points="'+pts.map(p => p.join(',')).join(' ')+'" fill="none" stroke="'+c+'" stroke-width="'+w+'" stroke-linecap="round" stroke-linejoin="round"/>';
+  // Pose : tête, cou, bassin, jambes [genou, cheville, pointe], bras [coude, main], côté proche (n) et éloigné (f)
+  const figure = p =>
+    (p.af ? seg([p.neck, ...p.af], FAR, 4.5) : '') +
+    seg([p.hip, ...p.lf], FAR, 5.5) +
+    seg([p.neck, p.hip], NEAR, 9) +
+    '<circle cx="'+p.head[0]+'" cy="'+p.head[1]+'" r="6" fill="'+NEAR+'"/>' +
+    seg([p.hip, ...p.ln], NEAR, 5.5) +
+    (p.an ? seg([p.neck, ...p.an], NEAR, 4.5) : '');
+  const shadow = (x, w) => '<ellipse cx="'+x+'" cy="74.5" rx="'+w+'" ry="2" fill="#e2e8f0"/>';
+  const box = (x, y, w, h) => '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="2" fill="#cbd5e1"/><rect x="'+x+'" y="'+y+'" width="'+w+'" height="3" rx="1.5" fill="'+PROP+'"/>';
+  const bench = (x, y, w) => '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="5" rx="2" fill="'+PROP+'"/>' +
+    '<rect x="'+(x+3)+'" y="'+(y+5)+'" width="3" height="'+(74-y-5)+'" fill="'+PROP+'"/><rect x="'+(x+w-6)+'" y="'+(y+5)+'" width="3" height="'+(74-y-5)+'" fill="'+PROP+'"/>';
+  const dumbbell = (x, y) => '<rect x="'+(x-5)+'" y="'+(y-1.2)+'" width="10" height="2.4" fill="'+PROP_D+'"/>' +
+    '<rect x="'+(x-7)+'" y="'+(y-4)+'" width="3.5" height="8" rx="1" fill="'+PROP_D+'"/><rect x="'+(x+3.5)+'" y="'+(y-4)+'" width="3.5" height="8" rx="1" fill="'+PROP_D+'"/>';
+  const kettlebell = (x, y) => '<path d="M'+(x-3)+' '+(y-4)+' a3 3 0 0 1 6 0" fill="none" stroke="'+PROP_D+'" stroke-width="2"/><circle cx="'+x+'" cy="'+(y+1)+'" r="5" fill="'+PROP_D+'"/>';
+  const plate = (x, y) => '<circle cx="'+x+'" cy="'+y+'" r="9" fill="'+PROP+'"/><circle cx="'+x+'" cy="'+y+'" r="2.5" fill="'+PROP_D+'"/>';
+  const down = (x, y1, y2) => '<path d="M'+x+' '+y1+' V'+y2+' M'+(x-4)+' '+(y2-5)+' L'+x+' '+y2+' L'+(x+4)+' '+(y2-5)+'" fill="none" stroke="'+MOVE+'" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>';
+  const svg = body => '<svg viewBox="0 0 80 80" width="76" height="76" aria-hidden="true"><line x1="2" y1="74" x2="78" y2="74" stroke="#cbd5e1" stroke-width="1.5"/>'+body+'</svg>';
+  const squatPose = dx => ({ head:[46+dx,15], neck:[42+dx,24], hip:[29+dx,46],
+    ln:[[47+dx,50],[44+dx,72],[52+dx,73]], lf:[[45+dx,49],[41+dx,72],[49+dx,73]],
+    an:[[50+dx,34],[50+dx,28]], af:[[48+dx,34],[48+dx,28]] });
+  const IMG = {
+    squat:    svg(shadow(42, 14) + figure(squatPose(0)) + kettlebell(54, 28)),
+    tempo:    svg(shadow(36, 14) + figure(squatPose(-6)) + kettlebell(48, 28) + down(68, 14, 50) +
+                '<text x="61" y="64" font-size="10" font-weight="700" fill="'+MOVE+'">4 s</text>'),
+    bulgare:  svg(bench(3, 50, 24) + shadow(52, 8) +
+                figure({ head:[39,10], neck:[38,19], hip:[37,40], ln:[[51,54],[51,72],[58,73]], lf:[[30,62],[20,52],[14,50]],
+                         an:[[40,30],[41,41]], af:[[36,30],[36,41]] }) + dumbbell(41, 43)),
+    lunge:    svg(shadow(40, 20) +
+                figure({ head:[39,10], neck:[38,19], hip:[37,40], ln:[[51,54],[51,72],[58,73]], lf:[[29,66],[19,68],[15,73]],
+                         an:[[44,30],[41,39]], af:[[33,30],[34,39]] })),
+    stepup:   svg(box(40, 54, 36, 20) + shadow(28, 8) +
+                figure({ head:[36,8], neck:[35,17], hip:[33,37], ln:[[46,43],[47,54],[55,54]], lf:[[30,55],[25,72],[31,73]],
+                         an:[[38,27],[39,38]], af:[[33,27],[33,38]] }) + dumbbell(39, 40)),
+    stepdown: svg(box(4, 50, 34, 24) +
+                figure({ head:[26,7], neck:[25,15], hip:[25,33], ln:[[29,42],[27,50],[34,50]], lf:[[37,44],[43,60],[49,62]],
+                         an:[[33,20],[42,21]], af:[[32,22],[40,24]] }) + down(64, 44, 68)),
+    rdl:      svg(shadow(50, 12) +
+                figure({ head:[15,37], neck:[23,40], hip:[50,37], ln:[[53,55],[50,72],[57,73]], lf:[[51,55],[47,72],[54,73]],
+                         an:[[28,50],[30,61]], af:[[26,50],[28,61]] }) + plate(30, 64)),
+    calf:     svg(box(30, 62, 46, 12) +
+                figure({ head:[33,9], neck:[33,18], hip:[33,40], ln:[[34,52],[32,63],[38,62]], lf:[[30,53],[24,59],[23,64]],
+                         an:[[38,28],[44,24]], af:[[37,29],[42,26]] }) + down(14, 48, 70)),
+    plank:    svg(shadow(42, 30) +
+                figure({ head:[12,50], neck:[19,56], hip:[44,61], ln:[[57,66],[69,70],[72,73]], lf:[[57,66],[68,70],[71,73]],
+                         an:[[17,73],[29,73]], af:[[19,73],[31,73]] })),
+    jump:     svg(figure({ head:[38,7], neck:[37,16], hip:[36,35], ln:[[49,45],[49,58],[56,59]], lf:[[28,51],[18,53],[15,58]],
+                           an:[[30,25],[24,32]], af:[[44,23],[50,16]] }) +
+                '<path d="M14 66 h10 M44 66 h10" stroke="'+MOVE+'" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="3 3"/>'),
+    balance:  svg(shadow(38, 8) +
+                figure({ head:[38,9], neck:[38,18], hip:[38,40], ln:[[38,56],[38,72],[45,73]], lf:[[50,44],[48,58],[54,59]],
+                         an:[[48,22],[60,23]], af:[[28,22],[16,23]] })),
+  };
+
+  // [nom, regex sur category_name Garmin, silhouette, consigne]
+  const EX = force ? [
+    ['Squat gobelet', /squat/i, 'squat', '3–4 × 6–8 · haltère contre la poitrine, cuisses parallèles au sol, genoux dans l\'axe des pieds'],
+    ['Fentes bulgares', /fente|lunge|split/i, 'bulgare', '3 × 6–8 par jambe · pied arrière sur un banc, genou avant au-dessus de la cheville'],
+    ['Step-up lesté', /step/i, 'stepup', '3 × 8 par jambe · banc à hauteur du genou, pousser sur le talon sans s\'aider de la jambe arrière'],
+    ['Soulevé de terre jambes tendues', /soulev|deadlift|rdl/i, 'rdl', '3 × 8 · dos plat, genoux à peine fléchis, la charge glisse le long des jambes (ischios, fessiers)'],
+    ['Mollets excentriques', /mollet|calf/i, 'calf', '3 × 15 · monter sur 2 pieds, redescendre en 3 s sur 1 pied, talon sous le niveau de la marche'],
+    ['Gainage (planche, latéral, pont)', /gainage|planche|plank|pont|bridge|hip thrust/i, 'plank', '3 × 45 s de planche, 2 × 30 s par côté, 3 × 12 ponts fessiers'],
+  ] : [
+    ['Squat tempo', /squat/i, 'tempo', '3–4 × 8 · 4 s pour descendre, remontée normale : prépare les quadriceps aux descentes'],
+    ['Fentes', /fente|lunge|split/i, 'lunge', '3 × 10 par jambe · en avançant, descente contrôlée, genou arrière qui frôle le sol'],
+    ['Step-down', /step/i, 'stepdown', '3 × 8 par jambe · descendre d\'une marche en 3–4 s sur une jambe, le talon effleure le sol'],
+    ['Fentes sautées, petits sauts', /saut|jump|plyo/i, 'jump', '3 × 8 · changer de jambe en l\'air, réception souple et silencieuse'],
+    ['Équilibre sur une jambe', /équilibre|equilibre|balance|single/i, 'balance', '3 × 30 s par jambe · yeux fermés ou sur coussin pour progresser (chevilles)'],
+    ['Mollets excentriques', /mollet|calf/i, 'calf', '3 × 15 · monter sur 2 pieds, redescendre en 3 s sur 1 pied, talon sous le niveau de la marche'],
+  ];
+  const lastDone = re => {
+    const hit = [...muscuSessions].reverse().find(s => s.exercises.some(e => re.test(e.category_name)));
+    return hit ? hit.date : null;
+  };
+  document.getElementById('muscu-plan-title').textContent = 'Exercices du plan UT4M, phase '+(force ? 'force (jusqu\'au 14 mars)' : 'excentrique (à partir du 15 mars)');
+  let missing = 0;
+  document.getElementById('muscu-plan-check').innerHTML = '<div class="divide-y divide-slate-100">' + EX.map(([lbl, re, img, cue]) => {
+    const d = lastDone(re);
+    if (!d) missing++;
+    return '<div class="flex items-center gap-3 py-2">' +
+      '<div class="shrink-0 rounded-lg" style="background:#f8fafc;border:1px solid #e2e8f0">'+IMG[img]+'</div>' +
+      '<div class="flex-1 min-w-0"><div class="flex items-baseline justify-between gap-2 flex-wrap">' +
+        '<span class="text-sm font-semibold text-slate-800">'+lbl+'</span>' +
+        '<span class="text-xs '+(d ? 'text-slate-500' : 'text-amber-700')+'">'+(d ? '● dernière fois le '+new Date(d+'T00:00').toLocaleDateString('fr-FR', { day:'numeric', month:'short' }) : '○ jamais fait')+'</span></div>' +
+        '<div class="text-xs text-slate-500 mt-0.5" style="line-height:1.4">'+cue+'</div></div></div>';
+  }).join('') + '</div>' +
+    '<p class="text-xs text-slate-400 mt-2">Reconnaissance par le nom de l\'exercice dans Garmin Connect.' +
+    (muscuSessions.some(s => s.exercises.some(e => e.sets.some(st => st.weight > 0))) ? '' :
+      ' Toutes tes séries sont pour l\'instant au poids du corps : ajouter une charge (haltère, sac lesté) fait passer du travail d\'endurance (15–20 reps) au travail de force visé (6–8 reps).') + '</p>';
+
+  document.getElementById('muscu-balance-status').innerHTML =
+    badge(Math.round(100 * prioSets / (allSets || 1))+' % des séries sur les groupes prioritaires trail', prioSets / (allSets || 1) >= 0.7 ? BLUE : AMBER) +
+    (zero.length ? badge('Jamais travaillés : '+zero.join(', '), AMBER) : '') +
+    badge(missing+' exercice'+(missing > 1 ? 's' : '')+' du plan sur '+EX.length+' jamais faits', missing ? AMBER : BLUE);
 })();
 
 // ── VÉLO ──
