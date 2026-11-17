@@ -2889,5 +2889,24 @@
    "achievement_count": 4,
    "pr_count": 4
   }
+ },
+ {
+  "id": "21012051082",
+  "name": "Renforcement musculaire",
+  "sport_type": "WeightTraining",
+  "start_local": "2026-11-16T19:13:15",
+  "summary": {
+   "distance": 0,
+   "moving_time": 1442,
+   "elapsed_time": 1442,
+   "elevation_gain": 0,
+   "avg_speed": 0,
+   "max_speed": 0,
+   "relative_effort": 2,
+   "total_calories": 127,
+   "kudos_count": 4,
+   "achievement_count": 0,
+   "pr_count": 0
+  }
  }
 ]

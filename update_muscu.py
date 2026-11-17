@@ -71,6 +71,7 @@ NAME_FR = {
     'SIDE_PLANK': 'Planche latérale',
     'HIP_RAISE': 'Pont fessier',
     'SINGLE_LEG_HIP_RAISE': 'Pont fessier sur une jambe',
+    'MARCHING_HIP_RAISE': 'Pont fessier alterné',
     'WALKING_LUNGE': 'Fentes marchées',
     'DUMBBELL_LUNGE': 'Fentes (haltères)',
     'JUMPING_LUNGE': 'Fentes sautées',

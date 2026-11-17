@@ -79,7 +79,7 @@
     </svg>
     <h1 class="text-xl font-bold text-slate-800">Rapport Performance Strava</h1>
   </div>
-  <p class="text-sm text-slate-500">Laurent Miklic · 1 janv. → 15 nov. 2026 · 235 activités · Run+Trail : 192 séances</p>
+  <p class="text-sm text-slate-500">Laurent Miklic · 1 janv. → 16 nov. 2026 · 236 activités · Run+Trail : 192 séances</p>
   <p class="text-xs text-slate-400 mt-1">Généré par Claude Code via MCP Strava</p>
 </div>
 
@@ -316,7 +316,7 @@
     <canvas id="chart-volume" height="100"></canvas>
     <p class="text-xs text-slate-400 mt-4 mb-2">Barres = km (axe gauche) · Courbe bleue = D+ total (axe droit).</p>
     <canvas id="chart-elev" height="70"></canvas>
-    <p class="text-xs text-slate-400 mt-4 mb-2">Calories dépensées par semaine — toutes activités (total saison : <strong>227 534 kcal</strong>).</p>
+    <p class="text-xs text-slate-400 mt-4 mb-2">Calories dépensées par semaine — toutes activités (total saison : <strong>227 661 kcal</strong>).</p>
     <canvas id="chart-cals" height="70"></canvas>
     <p class="text-xs text-slate-400 mt-4 mb-2">Distribution estimée des zones FC par semaine (Run + Trail) — proxy RE/heure par séance + flag course. Tendances fiables ; valeurs absolues ±10 pts (sans streams FC complets). Seuils recalibrés à partir du 25 juin 2026 (chute d'échelle du relative_effort Strava, ÷7 environ). <span style="color:#3b82f6">■ Z1</span> · <span style="color:#22c55e">■ Z2</span> · <span style="color:#eab308">■ Z3</span> · <span style="color:#f97316">■ Z4</span> · <span style="color:#ef4444">■ Z5</span></p>
     <canvas id="chart-zones-week" height="80"></canvas>
@@ -424,7 +424,7 @@
     </div>
     <div class="card">
       <h2>Quels sports je pratique ? Répartition des activités</h2>
-      <p class="text-xs text-slate-400 mb-3">Chaque barre = 100 % d'une métrique. Le trail pèse moins en nombre de séances (29 %) qu'en temps de mouvement (45 %).</p>
+      <p class="text-xs text-slate-400 mb-3">Chaque barre = 100 % d'une métrique. Le trail pèse moins en nombre de séances (28 %) qu'en temps de mouvement (45 %).</p>
       <canvas id="chart-sports" height="160"></canvas>
     </div>
   </div>
@@ -587,6 +587,8 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div>
         <p class="text-xs font-semibold text-slate-600 mb-1">Séries par groupe musculaire</p>
+        <div id="muscu-groups-body" class="flex items-end justify-center gap-4 mb-1"></div>
+        <p id="muscu-groups-scale" class="text-xs text-slate-400 text-center mb-3"></p>
         <canvas id="chart-muscu-groups" height="200"></canvas>
       </div>
       <div>
@@ -612,6 +614,7 @@
 
   <div class="card">
     <h2>Volume hebdomadaire vélo (km)</h2>
+    <p class="text-xs text-slate-500 mb-2">Barres : km de la semaine, extérieur ou home-trainer. Triangles : D+ des semaines roulées. La puissance moyenne de la semaine s'affiche au survol ; son évolution sortie par sortie est dans le graphique « Puissance et FC moyennes par sortie » ci-dessous.</p>
     <canvas id="chart-velo-weekly" height="90"></canvas>
   </div>
 
@@ -1225,21 +1228,21 @@ const radarDs = (label, data, color, bw=2) => ({
 });
 
 // ── DONNÉES ──
-const weeks = ['29/12','05/01','12/01','19/01','26/01','02/02','09/02','16/02','23/02','02/03','09/03','16/03','23/03','30/03','06/04','13/04','20/04','27/04','04/05','11/05','18/05','25/05','01/06','08/06','15/06','22/06','29/06','06/07','13/07','20/07','27/07','03/08','10/08','17/08','24/08','31/08','07/09','14/09','21/09','28/09','05/10','12/10','19/10','26/10','02/11','09/11'];
-const runKm = [64.4,65.2,46.6,73.9,68.9,78.0,75.6,74.9,85.0,79.7,45.9,132.5,18.3,22.3,54.7,50.1,47.1,65.8,48.0,45.7,59.8,50.0,44.2,48.6,30.6,30.8,71.2,20.0,33.2,45.5,110.7,66.2,33.4,49.1,33.0,43.7,55.3,42.2,56.9,67.4,73.5,69.7,59.9,43.1,58.6,0.0];
-const runKmOnly = [38.0,65.2,36.3,40.8,44.0,47.8,38.2,49.0,44.4,26.1,23.2,6.5,18.3,9.3,44.0,23.3,22.5,13.0,25.1,45.7,34.3,22.0,21.8,36.1,30.6,0.0,60.4,1.9,22.5,21.5,0.0,12.6,33.4,5.1,28.5,33.0,24.4,42.2,48.9,56.6,62.7,69.7,59.9,43.1,58.6,0.0];
-const trailKmOnly = [26.4,0.0,10.3,33.0,24.9,30.2,37.5,25.9,40.6,53.6,22.7,125.9,0.0,13.1,10.7,26.7,24.6,52.8,23.0,0.0,25.5,28.1,22.4,12.4,0.0,30.8,10.9,18.1,10.7,24.0,110.7,53.6,0.0,44.0,4.5,10.8,30.9,0.0,8.0,10.9,10.8,0.0,0.0,0.0,0.0,0.0];
-const wkTimeH = [7.1,6.82,4.99,8.06,7.92,8.44,8.8,8.42,9.32,8.65,4.62,22.57,1.87,2.47,5.68,5.27,4.83,12.45,5.02,4.32,6.31,5.04,4.6,4.81,3.08,3.34,7.38,2.29,3.2,5.98,27.11,12.93,3.28,9.5,4.24,4.37,5.37,4.17,5.61,6.65,7.29,6.88,5.9,4.08,5.54,0.0];
-const runElev = [130,188,72,120,182,113,99,134,97,126,122,36,41,18,169,41,156,37,54,189,132,43,62,78,74,0,267,12,66,68,0,65,95,10,97,78,66,139,303,145,208,303,279,108,180,0];
-const trailElev = [538,0,329,810,760,396,1045,543,666,657,66,1894,0,187,31,372,246,2979,526,0,395,437,333,39,0,452,29,244,27,672,7041,3412,0,2902,46,35,279,0,52,22,24,0,0,0,0,0];
+const weeks = ['29/12','05/01','12/01','19/01','26/01','02/02','09/02','16/02','23/02','02/03','09/03','16/03','23/03','30/03','06/04','13/04','20/04','27/04','04/05','11/05','18/05','25/05','01/06','08/06','15/06','22/06','29/06','06/07','13/07','20/07','27/07','03/08','10/08','17/08','24/08','31/08','07/09','14/09','21/09','28/09','05/10','12/10','19/10','26/10','02/11','09/11','16/11'];
+const runKm = [64.4,65.2,46.6,73.9,68.9,78.0,75.6,74.9,85.0,79.7,45.9,132.5,18.3,22.3,54.7,50.1,47.1,65.8,48.0,45.7,59.8,50.0,44.2,48.6,30.6,30.8,71.2,20.0,33.2,45.5,110.7,66.2,33.4,49.1,33.0,43.7,55.3,42.2,56.9,67.4,73.5,69.7,59.9,43.1,58.6,0.0,0.0];
+const runKmOnly = [38.0,65.2,36.3,40.8,44.0,47.8,38.2,49.0,44.4,26.1,23.2,6.5,18.3,9.3,44.0,23.3,22.5,13.0,25.1,45.7,34.3,22.0,21.8,36.1,30.6,0.0,60.4,1.9,22.5,21.5,0.0,12.6,33.4,5.1,28.5,33.0,24.4,42.2,48.9,56.6,62.7,69.7,59.9,43.1,58.6,0.0,0.0];
+const trailKmOnly = [26.4,0.0,10.3,33.0,24.9,30.2,37.5,25.9,40.6,53.6,22.7,125.9,0.0,13.1,10.7,26.7,24.6,52.8,23.0,0.0,25.5,28.1,22.4,12.4,0.0,30.8,10.9,18.1,10.7,24.0,110.7,53.6,0.0,44.0,4.5,10.8,30.9,0.0,8.0,10.9,10.8,0.0,0.0,0.0,0.0,0.0,0.0];
+const wkTimeH = [7.1,6.82,4.99,8.06,7.92,8.44,8.8,8.42,9.32,8.65,4.62,22.57,1.87,2.47,5.68,5.27,4.83,12.45,5.02,4.32,6.31,5.04,4.6,4.81,3.08,3.34,7.38,2.29,3.2,5.98,27.11,12.93,3.28,9.5,4.24,4.37,5.37,4.17,5.61,6.65,7.29,6.88,5.9,4.08,5.54,0.0,0.0];
+const runElev = [130,188,72,120,182,113,99,134,97,126,122,36,41,18,169,41,156,37,54,189,132,43,62,78,74,0,267,12,66,68,0,65,95,10,97,78,66,139,303,145,208,303,279,108,180,0,0];
+const trailElev = [538,0,329,810,760,396,1045,543,666,657,66,1894,0,187,31,372,246,2979,526,0,395,437,333,39,0,452,29,244,27,672,7041,3412,0,2902,46,35,279,0,52,22,24,0,0,0,0,0,0];
 const totalElev = runElev.map((v,i) => v+trailElev[i]);
-const wkCal = [5940,5691,4826,6287,6524,7093,7413,6552,7496,7151,3922,11731,1439,1858,4706,4140,4455,7215,3923,3473,5376,5676,3611,4086,2454,3011,5568,3010,2581,4087,12184,6327,2613,5291,2552,3600,4931,3725,4726,5773,6029,5347,4541,3335,4452,813];
-const acwr = [1.03,1.02,0.9,1.03,1.1,1.12,1.08,1.01,1.1,1.07,0.74,1.36,0.72,0.52,0.79,0.9,0.87,0.98,0.95,0.85,1.02,1.0,0.86,0.78,0.65,0.71,1.05,0.9,0.86,1.06,1.68,1.3,0.86,1.15,0.89,0.96,1.48,1.14,1.29,1.2,1.16,1.05,0.98,0.92,1.19,0.58];
-const acwrDplus = [1.1,0.69,0.78,1.3,1.4,1.06,1.4,1.14,1.11,1.1,0.64,1.65,0.75,0.51,0.44,0.65,0.74,2.27,1.31,0.71,0.74,0.73,0.68,0.42,0.27,0.7,0.69,0.66,0.43,1.23,3.22,2.23,1.0,1.39,0.66,0.34,0.33,0.23,0.35,0.28,0.33,0.44,0.48,0.34,0.39,0.17];
-const reData = [1289,1238,960,1353,1447,1479,1378,1249,1550,1419,600,2567,297,399,1053,1062,900,1135,1000,788,1195,1038,758,675,471,202,160,96,96,146,335,174,78,210,104,146,328,161,269,225,231,195,182,167,287,18];
-const wkMaxTemp = [null,20.0,null,null,null,null,null,null,19.7,16.6,null,16.8,null,null,24.6,20.9,22.3,21.0,20.0,20.0,28.9,30.5,20.0,20.1,32.1,35.7,25.7,33.3,32.3,25.8,28.6,27.5,23.9,23.5,21.3,26.5,21.5,25.3,27.0,27.4,21.0,21.8,20.0,null,null,null];
-const wkEfficiency = [0.059,0.053,0.052,0.059,0.062,0.055,0.063,0.063,0.067,0.073,0.078,0.065,0.062,0.056,0.055,0.05,0.053,0.05,0.056,0.058,0.053,0.069,0.064,0.085,0.065,0.072,0.064,0.096,0.049,0.043,null,0.069,0.061,0.104,0.041,0.043,0.041,0.039,0.045,0.044,0.045,0.051,0.047,0.05,0.059,null];
-const wkMarathonPaceKm = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,9.7,6.0,0.0,15.0,24.9,19.3,22.2,25.1,20.4,14.2,39.1,0.0];
+const wkCal = [5940,5691,4826,6287,6524,7093,7413,6552,7496,7151,3922,11731,1439,1858,4706,4140,4455,7215,3923,3473,5376,5676,3611,4086,2454,3011,5568,3010,2581,4087,12184,6327,2613,5291,2552,3600,4931,3725,4726,5773,6029,5347,4541,3335,4452,813,127];
+const acwr = [1.03,1.02,0.9,1.03,1.1,1.12,1.08,1.01,1.1,1.07,0.74,1.36,0.72,0.52,0.79,0.9,0.87,0.98,0.95,0.85,1.02,1.0,0.86,0.78,0.65,0.71,1.05,0.9,0.86,1.06,1.68,1.3,0.86,1.15,0.89,0.96,1.48,1.14,1.29,1.2,1.16,1.05,0.98,0.92,1.19,0.58,0.26];
+const acwrDplus = [1.1,0.69,0.78,1.3,1.4,1.06,1.4,1.14,1.11,1.1,0.64,1.65,0.75,0.51,0.44,0.65,0.74,2.27,1.31,0.71,0.74,0.73,0.68,0.42,0.27,0.7,0.69,0.66,0.43,1.23,3.22,2.23,1.0,1.39,0.66,0.34,0.33,0.23,0.35,0.28,0.33,0.44,0.48,0.34,0.39,0.17,0.07];
+const reData = [1289,1238,960,1353,1447,1479,1378,1249,1550,1419,600,2567,297,399,1053,1062,900,1135,1000,788,1195,1038,758,675,471,202,160,96,96,146,335,174,78,210,104,146,328,161,269,225,231,195,182,167,287,18,2];
+const wkMaxTemp = [null,20.0,null,null,null,null,null,null,19.7,16.6,null,16.8,null,null,24.6,20.9,22.3,21.0,20.0,20.0,28.9,30.5,20.0,20.1,32.1,35.7,25.7,33.3,32.3,25.8,28.6,27.5,23.9,23.5,21.3,26.5,21.5,25.3,27.0,27.4,21.0,21.8,20.0,null,null,null,null];
+const wkEfficiency = [0.059,0.053,0.052,0.059,0.062,0.055,0.063,0.063,0.067,0.073,0.078,0.065,0.062,0.056,0.055,0.05,0.053,0.05,0.056,0.058,0.053,0.069,0.064,0.085,0.065,0.072,0.064,0.096,0.049,0.043,null,0.069,0.061,0.104,0.041,0.043,0.041,0.039,0.045,0.044,0.045,0.051,0.047,0.05,0.059,null,null];
+const wkMarathonPaceKm = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,9.7,6.0,0.0,15.0,24.9,19.3,22.2,25.1,20.4,14.2,39.1,0.0,0.0];
 // Séances avec best efforts / puissance (hr_store.json) — généré par update_report.py
 const perfRuns = [
   {d:'2026-01-02',n:"Fractionné long  (S-11)",race:false,trail:false,km:10.2,elev:19,w:330,hr:149,b400:125,b1k:319,b5k:1802,b10k:4244},
@@ -1589,9 +1592,9 @@ new Chart(document.getElementById('chart-acwr-dplus'), {
 
 // ── chart-sports ──
 const sportActuals = [
-  [125,67,23,11,7,2],
+  [125,67,23,11,8,2],
   [1490.3,1049.0,103.7,297.1,0.0,0.0],
-  [149.9,156.7,20.5,13.1,3.0,1.3],
+  [149.9,156.7,20.5,13.1,3.4,1.3],
 ];
 const sportPct   = sportActuals.map(row => { const tot=row.reduce((a,b)=>a+b,0); return row.map(v => +(v/tot*100).toFixed(1)); });
 const sportUnits = [' séances',' km',' h'];
@@ -1779,11 +1782,11 @@ new Chart(document.getElementById('chart-fc-zones'), {
 })();
 
 // ── Cadence ──
-const wkCadence = [172.6,174.0,173.0,172.7,173.5,170.1,170.9,170.1,172.1,172.7,172.6,172.3,171.4,163.0,170.1,171.7,172.3,172.1,172.5,171.7,172.1,172.7,172.5,172.3,172.8,170.9,169.7,173.6,172.1,171.7,null,171.1,171.5,170.4,171.2,172.4,172.4,172.0,171.7,172.8,171.9,173.2,173.4,173.7,175.7,null];
-const wkVeloOutKm = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,33.7,0.0,0.0,0.0,0.0,0.0,66.8,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
-const wkVeloInKm = [0.0,0.0,44.5,0.0,30.7,32.9,12.2,24.1,0.0,14.0,0.0,0.0,0.0,0.0,13.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,24.7];
-const wkVeloElev = [0,0,163,0,319,197,13,136,0,14,0,0,0,0,245,0,0,0,0,0,0,159,0,0,0,0,0,456,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,44];
-const wkVeloWatts = [null,null,105.1,null,102.5,90.3,115.2,96.4,null,111.4,null,null,null,null,126.7,null,null,null,null,null,null,105.3,null,null,null,null,null,118.1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,95.8];
+const wkCadence = [172.6,174.0,173.0,172.7,173.5,170.1,170.9,170.1,172.1,172.7,172.6,172.3,171.4,163.0,170.1,171.7,172.3,172.1,172.5,171.7,172.1,172.7,172.5,172.3,172.8,170.9,169.7,173.6,172.1,171.7,null,171.1,171.5,170.4,171.2,172.4,172.4,172.0,171.7,172.8,171.9,173.2,173.4,173.7,175.7,null,null];
+const wkVeloOutKm = [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,33.7,0.0,0.0,0.0,0.0,0.0,66.8,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0];
+const wkVeloInKm = [0.0,0.0,44.5,0.0,30.7,32.9,12.2,24.1,0.0,14.0,0.0,0.0,0.0,0.0,13.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,24.7,0.0];
+const wkVeloElev = [0,0,163,0,319,197,13,136,0,14,0,0,0,0,245,0,0,0,0,0,0,159,0,0,0,0,0,456,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,44,0];
+const wkVeloWatts = [null,null,105.1,null,102.5,90.3,115.2,96.4,null,111.4,null,null,null,null,126.7,null,null,null,null,null,null,105.3,null,null,null,null,null,118.1,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,95.8,null];
 // Cadence en pas/min réels (avg_cadence Strava ×2), course à plat uniquement — voir update_report.py
 (function() {
   const ZONES = [
@@ -2390,7 +2393,8 @@ const calActs = [
   {d:'2026-11-08',t:'Run',km:42.5,dur:'3h55',re:248,elev:135,n:"Marathon Nice-Cannes",race:true,hike:false},
   {d:'2026-11-09',t:'Marche',km:3.9,dur:'50min',re:4,elev:11,n:"Marche de récup autour du lac",race:false,hike:false},
   {d:'2026-11-13',t:'Marche',km:3.0,dur:'34min',re:3,elev:7,n:"P'tite marche nocturne (toujours en mode récup)",race:false,hike:false},
-  {d:'2026-11-15',t:'Vélo',km:24.7,dur:'1h00',re:11,elev:44,n:"MyWhoosh - Al Qudra",race:false,hike:false}
+  {d:'2026-11-15',t:'Vélo',km:24.7,dur:'1h00',re:11,elev:44,n:"MyWhoosh - Al Qudra",race:false,hike:false},
+  {d:'2026-11-16',t:'Muscu',km:0.0,dur:'24min',re:2,elev:0,n:"Renforcement musculaire",race:false,hike:false}
 ];
 
 // ── C3. Tableau + KPI + puissance/durée — à partir de calActs (race:true) et perfRuns ──
@@ -2548,7 +2552,7 @@ const veloSessions = [
 ];
 
 // Détail séries/répétitions/charges des séances muscu, extrait des .fit Garmin par update_muscu.py
-const muscuSessions = [{"id":"23515352314","date":"2026-07-07","start_local":"2026-07-07T21:35:00","name":"Renforcement musculaire","duration_s":1135,"calories":93,"avg_hr":93.0,"max_hr":109.0,"exercises":[{"category_name":"Squat","muscles":["quads","glutes","hamstrings"],"sets":[{"reps":20,"weight":0,"duration_s":61.4},{"reps":20,"weight":0,"duration_s":63.0},{"reps":20,"weight":0,"duration_s":58.6},{"reps":20,"weight":0,"duration_s":62.1}]},{"category_name":"Ischio-jambiers (élastique)","muscles":["hamstrings"],"sets":[{"reps":20,"weight":0,"duration_s":66.1},{"reps":20,"weight":0,"duration_s":72.9}]},{"category_name":"Mollets (calf raise)","muscles":["calves"],"sets":[{"reps":20,"weight":0,"duration_s":56.1},{"reps":20,"weight":0,"duration_s":56.1}]},{"category_name":"Crunch triceps","muscles":["abs","triceps"],"sets":[{"reps":10,"weight":0,"duration_s":41.4},{"reps":10,"weight":0,"duration_s":37.2}]}],"source":"garmin_api"},{"id":"24861278048","date":"2026-10-26","start_local":"2026-10-26T20:18:22","name":"Renforcement musculaire","duration_s":1136,"calories":94,"avg_hr":94.0,"max_hr":117.0,"exercises":[{"category_name":"Squat","muscles":["quads","glutes","hamstrings"],"sets":[{"reps":20,"weight":-1.0,"duration_s":65.6},{"reps":20,"weight":-1.0,"duration_s":63.2},{"reps":20,"weight":-1.0,"duration_s":56.7},{"reps":20,"weight":-1.0,"duration_s":55.8},{"reps":20,"weight":-1.0,"duration_s":59.9}]},{"category_name":"Mollets (calf raise)","muscles":["calves"],"sets":[{"reps":20,"weight":0,"duration_s":48.3},{"reps":20,"weight":0,"duration_s":50.3},{"reps":20,"weight":0,"duration_s":51.3},{"reps":20,"weight":0,"duration_s":49.0},{"reps":20,"weight":0,"duration_s":48.7}]}],"source":"garmin_api"}];
+const muscuSessions = [{"id":"23515352314","date":"2026-07-07","start_local":"2026-07-07T21:35:00","name":"Renforcement musculaire","duration_s":1135,"calories":93,"avg_hr":93.0,"max_hr":109.0,"exercises":[{"category_name":"Squat","muscles":["quads","glutes","hamstrings"],"sets":[{"reps":20,"weight":0,"duration_s":61.4},{"reps":20,"weight":0,"duration_s":63.0},{"reps":20,"weight":0,"duration_s":58.6},{"reps":20,"weight":0,"duration_s":62.1}]},{"category_name":"Ischio-jambiers (élastique)","muscles":["hamstrings"],"sets":[{"reps":20,"weight":0,"duration_s":66.1},{"reps":20,"weight":0,"duration_s":72.9}]},{"category_name":"Mollets (calf raise)","muscles":["calves"],"sets":[{"reps":20,"weight":0,"duration_s":56.1},{"reps":20,"weight":0,"duration_s":56.1}]},{"category_name":"Crunch triceps","muscles":["abs","triceps"],"sets":[{"reps":10,"weight":0,"duration_s":41.4},{"reps":10,"weight":0,"duration_s":37.2}]}],"source":"garmin_api"},{"id":"24861278048","date":"2026-10-26","start_local":"2026-10-26T20:18:22","name":"Renforcement musculaire","duration_s":1136,"calories":94,"avg_hr":94.0,"max_hr":117.0,"exercises":[{"category_name":"Squat","muscles":["quads","glutes","hamstrings"],"sets":[{"reps":20,"weight":-1.0,"duration_s":65.6},{"reps":20,"weight":-1.0,"duration_s":63.2},{"reps":20,"weight":-1.0,"duration_s":56.7},{"reps":20,"weight":-1.0,"duration_s":55.8},{"reps":20,"weight":-1.0,"duration_s":59.9}]},{"category_name":"Mollets (calf raise)","muscles":["calves"],"sets":[{"reps":20,"weight":0,"duration_s":48.3},{"reps":20,"weight":0,"duration_s":50.3},{"reps":20,"weight":0,"duration_s":51.3},{"reps":20,"weight":0,"duration_s":49.0},{"reps":20,"weight":0,"duration_s":48.7}]}],"source":"garmin_api"},{"id":"25100330933","date":"2026-11-16","start_local":"2026-11-16T19:13:15","name":"Renforcement musculaire","duration_s":1442,"calories":127,"avg_hr":95.0,"max_hr":118.0,"exercises":[{"category_name":"Squat","muscles":["quads","glutes","hamstrings"],"sets":[{"reps":8,"weight":-1.0,"duration_s":26.6},{"reps":8,"weight":-1.0,"duration_s":24.0},{"reps":8,"weight":-1.0,"duration_s":30.8}]},{"category_name":"Fente","muscles":["quads","glutes","hamstrings"],"sets":[{"reps":8,"weight":-1.0,"duration_s":32.8},{"reps":8,"weight":-1.0,"duration_s":29.9},{"reps":8,"weight":-1.0,"duration_s":31.4},{"reps":8,"weight":-1.0,"duration_s":32.1},{"reps":8,"weight":-1.0,"duration_s":31.6},{"reps":8,"weight":-1.0,"duration_s":30.6}]},{"category_name":"Mollets (calf raise)","muscles":["calves"],"sets":[{"reps":15,"weight":0,"duration_s":41.2},{"reps":15,"weight":0,"duration_s":40.1},{"reps":15,"weight":0,"duration_s":40.9}]},{"category_name":"Planche","muscles":["abs"],"sets":[{"reps":1,"weight":-1.0,"duration_s":45.6},{"reps":1,"weight":-1.0,"duration_s":46.3},{"reps":1,"weight":-1.0,"duration_s":45.6}]},{"category_name":"Pont fessier alterné","muscles":["glutes","hamstrings"],"sets":[{"reps":8,"weight":-1.0,"duration_s":39.8},{"reps":8,"weight":-1.0,"duration_s":41.2},{"reps":8,"weight":-1.0,"duration_s":46.9}]}],"source":"garmin_api"}];
 
 // ── Charge hebdo RE ajustée (partagée par chart-re et chart-ctl) ── (placé après calActs)
 // RE ×7 après RE_SCALE_SHIFT : sans ça, la charge paraît divisée par 7 à partir de juillet.
@@ -3260,16 +3264,23 @@ function muscleFill(n) {
   if (!n) return MUSCLE_RAMP[0];
   return MUSCLE_RAMP[Math.min(n, MUSCLE_RAMP.length - 1)];
 }
-function bodySvg(view, muscleSets) {
+function bodySvg(view, muscleSets, opts = {}) {
   // Silhouette anatomique simplifiée (viewBox 100×210, axe x=50) : chaque groupe est dessiné côté gauche
-  // puis reflété, et coloré selon le nombre de séries (MUSCLE_RAMP). Survol = nom du groupe.
-  const f = zone => muscleFill(muscleSets[zone] || 0);
+  // puis reflété, et coloré selon le nombre de séries (MUSCLE_RAMP). Survol = nom du groupe et séries.
+  // opts.max : échelle relative (cumul sur plusieurs séances, part du maximum par quart) ; opts.w : largeur en px.
+  const n = zone => muscleSets[zone] || 0;
+  const f = zone => {
+    if (!opts.max) return muscleFill(n(zone));
+    const r = n(zone) / opts.max;
+    return MUSCLE_RAMP[!n(zone) ? 0 : r > 0.75 ? 4 : r > 0.5 ? 3 : r > 0.25 ? 2 : 1];
+  };
+  const t = (zone, name) => name + ' · ' + (n(zone) ? n(zone) + ' série' + (n(zone) > 1 ? 's' : '') : 'aucune série');
   const base = MUSCLE_RAMP[0], stroke = '#cbd5e1', line = '#ffffff';
   const mirror = d => '<path d="'+d+'" transform="translate(100,0) scale(-1,1)"';
   const sym = (d, fill, title, extra = '') =>
     '<path d="'+d+'" fill="'+fill+'" stroke="'+stroke+'" stroke-width="0.8"'+extra+'><title>'+title+'</title></path>' +
     mirror(d)+' fill="'+fill+'" stroke="'+stroke+'" stroke-width="0.8"'+extra+'><title>'+title+'</title></path>';
-  const one = (d, fill, title) => '<path d="'+d+'" fill="'+fill+'" stroke="'+stroke+'" stroke-width="0.8"><title>'+title+'</title></path>';
+  const one = (d, fill, title, extra = '') => '<path d="'+d+'" fill="'+fill+'" stroke="'+stroke+'" stroke-width="0.8"'+extra+'><title>'+title+'</title></path>';
   // Silhouette de fond, commune aux deux vues
   const body =
     '<ellipse cx="50" cy="15" rx="10" ry="12" fill="'+base+'" stroke="'+stroke+'"/>' +
@@ -3281,28 +3292,29 @@ function bodySvg(view, muscleSets) {
     sym('M34 88 Q42 95 50 96 L49 140 Q44 145 38 140 Z', base, '') +
     sym('M38 141 L48 141 L47 191 Q43 195 40 191 Z', base, '') +
     sym('M39 192 L48 192 Q49 199 44 200 L37 200 Q35 196 39 192 Z', base, '');
-  const svg = inner => '<svg viewBox="0 0 100 210" width="70" height="147">'+body+inner+'</svg>';
+  const w = opts.w || 70;
+  const svg = inner => '<svg viewBox="0 0 100 210" width="'+w+'" height="'+Math.round(w*2.1)+'">'+body+inner+'</svg>';
   if (view === 'front') {
     return svg(
-      sym('M33 35 Q23 37 21 47 Q27 47 32 44 Z', f('shoulders'), 'Épaules') +
-      sym('M36 40 Q43 37 49 39 L49 54 Q42 58 35 52 Z', f('chest'), 'Pectoraux') +
-      one('M41 58 L59 58 L58 88 Q50 93 42 88 Z', f('abs'), 'Abdominaux') +
+      sym('M33 35 Q23 37 21 47 Q27 47 32 44 Z', f('shoulders'), t('shoulders', 'Épaules'), ' data-zone="shoulders"') +
+      sym('M36 40 Q43 37 49 39 L49 54 Q42 58 35 52 Z', f('chest'), t('chest', 'Pectoraux'), ' data-zone="chest"') +
+      one('M41 58 L59 58 L58 88 Q50 93 42 88 Z', f('abs'), t('abs', 'Abdominaux'), ' data-zone="abs"') +
       '<path d="M50 59 V89 M42 66 H58 M42 74 H58 M42 82 H58" stroke="'+line+'" stroke-width="1" opacity="0.7"/>' +
-      sym('M22 50 Q26 48 29 52 L27 70 Q23 73 20 68 Z', f('biceps'), 'Biceps') +
-      sym('M18 84 Q22 82 25 86 L21 107 Q18 110 15 106 Z', f('forearms'), 'Avant-bras') +
-      sym('M36 95 Q44 95 49 99 L48 136 Q43 141 39 136 L36 110 Z', f('quads'), 'Quadriceps') +
+      sym('M22 50 Q26 48 29 52 L27 70 Q23 73 20 68 Z', f('biceps'), t('biceps', 'Biceps'), ' data-zone="biceps"') +
+      sym('M18 84 Q22 82 25 86 L21 107 Q18 110 15 106 Z', f('forearms'), t('forearms', 'Avant-bras'), ' data-zone="forearms"') +
+      sym('M36 95 Q44 95 49 99 L48 136 Q43 141 39 136 L36 110 Z', f('quads'), t('quads', 'Quadriceps'), ' data-zone="quads"') +
       '<path d="M43 100 L44 134 M57 100 L56 134" stroke="'+line+'" stroke-width="0.9" opacity="0.6"/>'
     );
   }
   return svg(
-    one('M35 36 Q50 31 65 36 L67 50 Q61 70 53 80 L47 80 Q39 70 33 50 Z', f('back'), 'Dos') +
+    one('M35 36 Q50 31 65 36 L67 50 Q61 70 53 80 L47 80 Q39 70 33 50 Z', f('back'), t('back', 'Dos'), ' data-zone="back"') +
     '<path d="M50 36 V79" stroke="'+line+'" stroke-width="1" opacity="0.7"/>' +
-    sym('M33 35 Q23 37 21 47 Q27 47 32 44 Z', f('shoulders'), 'Épaules') +
-    sym('M22 50 Q26 48 29 52 L27 70 Q23 73 20 68 Z', f('triceps'), 'Triceps') +
-    sym('M18 84 Q22 82 25 86 L21 107 Q18 110 15 106 Z', f('forearms'), 'Avant-bras') +
-    sym('M35 84 Q43 81 50 85 L50 99 Q42 103 35 97 Z', f('glutes'), 'Fessiers') +
-    sym('M36 101 Q44 101 49 104 L48 136 Q43 141 39 136 Z', f('hamstrings'), 'Ischio-jambiers') +
-    sym('M39 144 Q44 141 48 146 L47 172 Q43 177 40 172 Z', f('calves'), 'Mollets')
+    sym('M33 35 Q23 37 21 47 Q27 47 32 44 Z', f('shoulders'), t('shoulders', 'Épaules'), ' data-zone="shoulders"') +
+    sym('M22 50 Q26 48 29 52 L27 70 Q23 73 20 68 Z', f('triceps'), t('triceps', 'Triceps'), ' data-zone="triceps"') +
+    sym('M18 84 Q22 82 25 86 L21 107 Q18 110 15 106 Z', f('forearms'), t('forearms', 'Avant-bras'), ' data-zone="forearms"') +
+    sym('M35 84 Q43 81 50 85 L50 99 Q42 103 35 97 Z', f('glutes'), t('glutes', 'Fessiers'), ' data-zone="glutes"') +
+    sym('M36 101 Q44 101 49 104 L48 136 Q43 141 39 136 Z', f('hamstrings'), t('hamstrings', 'Ischio-jambiers'), ' data-zone="hamstrings"') +
+    sym('M39 144 Q44 141 48 146 L47 172 Q43 177 40 172 Z', f('calves'), t('calves', 'Mollets'), ' data-zone="calves"')
   );
 }
 
@@ -3427,19 +3439,66 @@ function bodySvg(view, muscleSets) {
   Object.keys(FR).forEach(k => sets[k] = 0);
   muscuSessions.forEach(s => s.exercises.forEach(ex => (ex.muscles || []).forEach(m => { if (m in sets) sets[m] += ex.sets.length; })));
   const order = [...PRIO, ...Object.keys(FR).filter(k => !PRIO.includes(k) && sets[k] > 0)];
-  new Chart(document.getElementById('chart-muscu-groups'), {
+  function bodyBoxStyle() {
+    if (document.getElementById('muscu-hl-style')) return;
+    const st = document.createElement('style'); st.id = 'muscu-hl-style';
+    st.textContent = '#muscu-groups-body [data-zone]{transition:opacity .15s,stroke-width .15s;cursor:pointer}' +
+      '@media (prefers-reduced-motion: reduce){#muscu-groups-body [data-zone]{transition:none}}';
+    document.head.appendChild(st);
+  }
+  // Silhouettes face / dos : même cumul que le graphique, teinte relative au groupe le plus travaillé
+  const maxSets = Math.max(1, ...Object.values(sets));
+  const sw = (lbl, html) => '<div class="flex flex-col items-center">'+html+'<span style="font-size:11px;color:#94a3b8">'+lbl+'</span></div>';
+  document.getElementById('muscu-groups-body').innerHTML =
+    sw('Face', bodySvg('front', sets, { max: maxSets, w: 96 })) + sw('Dos', bodySvg('back', sets, { max: maxSets, w: 96 }));
+  const chip = c => '<span style="display:inline-block;width:10px;height:10px;background:'+c+';border:1px solid #cbd5e1;border-radius:2px;vertical-align:middle;margin:0 2px"></span>';
+  bodyBoxStyle();
+  document.getElementById('muscu-groups-scale').innerHTML =
+    chip(MUSCLE_RAMP[0])+' aucune série · '+chip(MUSCLE_RAMP[1])+chip(MUSCLE_RAMP[2])+chip(MUSCLE_RAMP[3])+chip(MUSCLE_RAMP[4])+' jusqu\'à '+maxSets+' séries (survol : détail par groupe)';
+  const groupsChart = new Chart(document.getElementById('chart-muscu-groups'), {
     type: 'bar',
     data: { labels: order.map(k => FR[k]), datasets: [
       { label: 'Séries', data: order.map(k => sets[k]), backgroundColor: order.map(k => PRIO.includes(k) ? BLUE : SKY), borderRadius: 3 },
     ] },
     options: {
       indexAxis: 'y',
+      interaction: { mode: 'nearest', axis: 'y', intersect: false },
+      onHover: (e, els) => highlightZone(els.length ? order[els[0].index] : null),
       plugins: { legend: { display: false },
-        tooltip: { callbacks: { label: ctx => ctx.parsed.x+' séries'+(PRIO.includes(order[ctx.dataIndex]) ? ' (prioritaire trail)' : '') } } },
+        // Plusieurs barres actives (survol d'un exercice du plan) : le nom du groupe sur chaque ligne, sans titre
+        tooltip: { callbacks: {
+          title: items => items.length > 1 ? '' : items.map(i => i.label),
+          label: ctx => ctx.label+' : '+ctx.parsed.x+' séries'+(PRIO.includes(order[ctx.dataIndex]) ? ' (prioritaire trail)' : '') } } },
       scales: { x: { beginAtZero: true, ticks: { stepSize: 2 } } },
       ...anim,
     }
   });
+  // Survol : la zone du groupe survolé reste pleine et cerclée d'encre, les autres s'estompent
+  // zone : un groupe, une liste de groupes (exercice du plan), ou null pour tout rétablir
+  function highlightZone(zone) {
+    const zs = zone == null ? null : [].concat(zone);
+    document.querySelectorAll('#muscu-groups-body [data-zone]').forEach(el => {
+      const on = !!zs && zs.includes(el.dataset.zone);
+      el.style.opacity = !zs || on ? 1 : 0.22;
+      el.style.stroke = on ? '#102A3A' : '';
+      el.style.strokeWidth = on ? '2' : '';
+    });
+  }
+  // Active les barres des groupes donnés dans l'histogramme (avec leur infobulle)
+  function activateBars(zones) {
+    const act = (zones || []).map(z => order.indexOf(z)).filter(i => i >= 0).map(i => ({ datasetIndex: 0, index: i }));
+    groupsChart.setActiveElements(act);
+    groupsChart.tooltip.setActiveElements(act, { x: 0, y: 0 });
+    groupsChart.update('none');
+  }
+  const bodyBox = document.getElementById('muscu-groups-body');
+  bodyBox.addEventListener('mouseover', e => {
+    const z = e.target.closest('[data-zone]'), i = z ? order.indexOf(z.dataset.zone) : -1;
+    if (i < 0) return;
+    activateBars([z.dataset.zone]);
+    highlightZone(z.dataset.zone);
+  });
+  bodyBox.addEventListener('mouseleave', () => { activateBars([]); highlightZone(null); });
   const zero = PRIO.filter(k => !sets[k]).map(k => FR[k].toLowerCase());
   const prioSets = PRIO.reduce((a, k) => a + sets[k], 0), allSets = Object.values(sets).reduce((a, b) => a + b, 0);
 
@@ -3526,20 +3585,41 @@ function bodySvg(view, muscleSets) {
   };
   document.getElementById('muscu-plan-title').textContent = 'Exercices du plan UT4M, phase '+(force ? 'force (jusqu\'au 14 mars)' : 'excentrique (à partir du 15 mars)');
   let missing = 0;
+  // Groupes musculaires sollicités par chaque exercice (clés des zones du schéma corporel)
+  const EX_MUSCLES = { squat:['quads','glutes'], tempo:['quads','glutes'], bulgare:['quads','glutes'], lunge:['quads','glutes','hamstrings'],
+    stepup:['quads','glutes'], stepdown:['quads','glutes'], rdl:['hamstrings','glutes','back'], calf:['calves'],
+    plank:['abs','glutes'], jump:['quads','glutes','calves'], balance:['calves','glutes'] };
   document.getElementById('muscu-plan-check').innerHTML = '<div class="divide-y divide-slate-100">' + EX.map(([lbl, re, img, cue]) => {
     const d = lastDone(re);
     if (!d) missing++;
-    return '<div class="flex items-center gap-3 py-2">' +
+    const mus = EX_MUSCLES[img] || [];
+    return '<div class="ex-row flex items-center gap-3 py-2 px-1 rounded-lg" data-muscles="'+mus.join(',')+'">' +
       '<div class="shrink-0 rounded-lg" style="background:#f8fafc;border:1px solid #e2e8f0">'+IMG[img]+'</div>' +
       '<div class="flex-1 min-w-0"><div class="flex items-baseline justify-between gap-2 flex-wrap">' +
         '<span class="text-sm font-semibold text-slate-800">'+lbl+'</span>' +
         '<span class="text-xs '+(d ? 'text-slate-500' : 'text-amber-700')+'">'+(d ? '● dernière fois le '+new Date(d+'T00:00').toLocaleDateString('fr-FR', { day:'numeric', month:'short' }) : '○ jamais fait')+'</span></div>' +
-        '<div class="text-xs text-slate-500 mt-0.5" style="line-height:1.4">'+cue+'</div></div></div>';
+        '<div class="text-xs text-slate-500 mt-0.5" style="line-height:1.4">'+cue+'</div>' +
+        '<div class="text-xs mt-0.5" style="color:#1C6E8C">'+mus.map(m => FR[m]).join(' · ')+'</div></div></div>';
   }).join('') + '</div>' +
     '<p class="text-xs text-slate-400 mt-2">Reconnaissance par le nom de l\'exercice dans Garmin Connect.' +
     (muscuSessions.some(s => s.exercises.some(e => e.sets.some(st => st.weight > 0))) ? '' :
       ' Toutes tes séries sont pour l\'instant au poids du corps : ajouter une charge (haltère, sac lesté) fait passer du travail d\'endurance (15–20 reps) au travail de force visé (6–8 reps).') + '</p>';
 
+  // Survol d'un exercice du plan : ses groupes ressortent sur les silhouettes et dans l'histogramme
+  const planBox = document.getElementById('muscu-plan-check');
+  let curRow = null;
+  planBox.addEventListener('mouseover', e => {
+    const row = e.target.closest('.ex-row');
+    if (!row || row === curRow) return;
+    if (curRow) curRow.style.background = '';
+    curRow = row; row.style.background = '#f1f5f9';
+    const mus = row.dataset.muscles ? row.dataset.muscles.split(',') : [];
+    highlightZone(mus); activateBars(mus);
+  });
+  planBox.addEventListener('mouseleave', () => {
+    if (curRow) curRow.style.background = '';
+    curRow = null; highlightZone(null); activateBars([]);
+  });
   document.getElementById('muscu-balance-status').innerHTML =
     badge(Math.round(100 * prioSets / (allSets || 1))+' % des séries sur les groupes prioritaires trail', prioSets / (allSets || 1) >= 0.7 ? BLUE : AMBER) +
     (zero.length ? badge('Jamais travaillés : '+zero.join(', '), AMBER) : '') +
@@ -3566,23 +3646,25 @@ function bodySvg(view, muscleSets) {
         datasets: [
           { label: 'Extérieur (km)', data: wkVeloOutKm, backgroundColor: BLUE, borderRadius: 4, stack: 'velo', order: 3 },
           { label: 'Home-trainer (km)', data: wkVeloInKm, backgroundColor: SLATE, borderRadius: 4, stack: 'velo', order: 3 },
-          { label: 'D+ (m)', data: wkVeloElev, type: 'line', yAxisID: 'yElev', borderColor: '#3E6B4B', backgroundColor: '#3E6B4B', tension: 0.3, order: 0, pointRadius: 3, pointBorderColor: 'white', borderWidth: 2 },
-          { label: 'Puissance moy. (W)', data: wkVeloWatts, type: 'line', yAxisID: 'yWatts', borderColor: PURPLE, backgroundColor: 'transparent', tension: 0.3, order: 0, borderWidth: 2, borderDash: [4, 2], spanGaps: false, pointRadius: wkVeloWatts.map(v => v === null ? 0 : 3), pointBorderColor: 'white' },
+          // Sorties rares (une semaine sur quatre) : D+ en points sur les seules semaines roulées, sans ligne
+          // qui retomberait à 0 entre deux sorties. La puissance n'est plus tracée ici (axe illisible, points
+          // isolés invisibles) : elle est dans l'infobulle, et par sortie dans « Puissance et FC moyennes par sortie ».
+          { label: 'D+ (m)', data: wkVeloElev.map(v => v > 0 ? v : null), type: 'line', showLine: false, yAxisID: 'yElev',
+            borderColor: '#2F5A3B', backgroundColor: '#7FA88A', order: 0, pointRadius: 7, pointHoverRadius: 8, pointStyle: 'triangle', pointBorderColor: '#2F5A3B', pointBorderWidth: 1.5 },
         ]
       },
       options: {
         plugins: {
           legend: { position: 'bottom', labels: { font: { size: 11 }, boxWidth: 12, padding: 10 } },
-          tooltip: { callbacks: { label: ctx => {
-            if (ctx.dataset.yAxisID === 'yElev') return ctx.dataset.label + ' : ' + ctx.parsed.y + ' m';
-            if (ctx.dataset.yAxisID === 'yWatts') return ctx.dataset.label + ' : ' + (ctx.parsed.y ?? '—') + ' W';
-            return ctx.dataset.label + ' : ' + ctx.parsed.y + ' km';
-          } } }
+          tooltip: { callbacks: {
+            label: ctx => ctx.dataset.yAxisID === 'yElev' ? ctx.dataset.label + ' : ' + ctx.parsed.y + ' m'
+              : ctx.parsed.y ? ctx.dataset.label + ' : ' + ctx.parsed.y + ' km' : null,
+            footer: items => { const w = items.length ? wkVeloWatts[items[0].dataIndex] : null; return w != null ? 'Puissance moy. : ' + Math.round(w) + ' W' : ''; },
+          } }
         },
         scales: {
           y: { type: 'linear', beginAtZero: true, stacked: true, ticks: { callback: v => v + ' km' } },
           yElev: { type: 'linear', position: 'right', beginAtZero: true, ticks: { callback: v => v + ' m' }, grid: noGrid },
-          yWatts: { type: 'linear', position: 'right', beginAtZero: true, display: false, grid: noGrid },
           x: { ...xWks, stacked: true },
         },
         ...anim,
