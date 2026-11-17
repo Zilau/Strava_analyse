@@ -301,7 +301,7 @@
     <div id="y2026-recap" class="space-y-4">
       <p class="highlights text-sm text-slate-700" id="read_2026"></p>
       <div class="inprogress">
-        <span><span class="dot-live"></span>Année en cours · données Jan – 15 nov. 2026</span>
+        <span><span class="dot-live"></span>Année en cours · données Jan – 16 nov. 2026</span>
         <a href="rapport_performance.html">→ Rapport détaillé 2026</a>
       </div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -453,7 +453,7 @@
 <script>
 const MONTHS = ['Jan','Fév','Mar','Avr','Mai','Jun','Jul','Aoû','Sep','Oct','Nov','Déc'];
 // Date de la dernière activité 2026 — patchée par update_report.py
-const AS_OF = '2026-11-15';
+const AS_OF = '2026-11-16';
 const AS_M = +AS_OF.slice(5,7) - 1, AS_D = +AS_OF.slice(8,10);
 const dim = (y, m) => new Date(y, m+1, 0).getDate();
 const doy = (y, m, d) => Math.round((Date.UTC(y, m, d) - Date.UTC(y, 0, 0)) / 864e5);
